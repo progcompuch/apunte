@@ -1,5 +1,3 @@
-# Apunte Taller de Hacking Competitivo
+# Apunte Taller de Programación Competitiva
 
-Este repositorio contiene el código fuente del apunte del curso CC5325 - Taller de Hacking Competitivo.
-
-Se puede ver su versión publicada en [este enlace](https://cc5325.xor.cl)
+Este repositorio contiene el código fuente para un apunte de Taller de Programación Competitiva.
