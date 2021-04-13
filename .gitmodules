@@ -1,0 +1,4 @@
+[submodule "public"]
+	path = public
+	url = https://github.com/progcompuch/progcompuch.github.io
+	branch = master
