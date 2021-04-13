@@ -1,0 +1,13 @@
+{{ $currentPage := . -}}
+{{ range .Site.Menus.writeups -}}
+  <h3>{{ .Name }}</h3>
+  {{ if .HasChildren -}}
+  <ul class="list-unstyled">
+    {{ range .Children -}}
+      {{- $active := or ($currentPage.IsMenuCurrent "writeups" .) ($currentPage.HasMenuCurrent "writeups" .) -}}
+      {{- $active = or $active (eq .Name $currentPage.Title) -}}
+      <li><a class="docs-link{{ if $active }} active{{ end }}" href="{{ .URL | absURL }}">{{ .Name }}</a></li>
+    {{ end -}}
+  </ul>
+  {{ end -}}
+{{ end -}}

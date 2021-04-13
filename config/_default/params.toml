@@ -1,0 +1,49 @@
+# Meta Data for SEO
+
+## Homepage
+title = "Taller de Hacking Competitivo"
+titleSeparator = "-"
+logo = "images/banner.svg"
+logoDark = "images/banner_dark.svg"
+titleAddition = "Introducción al Hacking Competitivo"
+description = "DCC universidad de Chile"
+
+## Open Graph + Twitter Cards
+images = ["logo_redondo.png"]
+twitterSite = "dccuchile"
+twitterCreator = "dccuchile"
+facebookAuthor = "DCCUChile"
+facebookPublisher = "DCCUChile"
+ogLocale = "es_CL"
+
+## JSON-LD
+schemaType = "Organization"
+schemaLogo = "logo-doks.png"
+schemaTwitter = "https://twitter.com/dccuchile"
+schemaLinkedIn = "https://www.linkedin.com/in/dccuchile/"
+schemaGitHub = "https://github.com/cc5325"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+
+# Footer
+footer = "Sitio generado con <a href=\"https://gohugo.io/\">Hugo</a> y <a href=\"https://getdoks.org/\">Doks</a>"
+
+# Alert
+alert = true
+alertText = "Cátedras: Jueves de 18:45 a 20:30 hrs | Auxiliares: Lunes de 18:15 a 20:00 hrs"
+
+# Edit Page
+docsRepo = "https://github.com/cc5325/apunte"
+editPage = true
