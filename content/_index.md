@@ -1,7 +1,7 @@
 ---
-title : "Apuntes Taller de Hacking Competitivo"
-lead: "Sitio con videos y material para el curso."
-date: 2020-10-06T08:47:36+00:00
-draft: false
+title: Programación Competitiva UChile
+lead: Información y material de programación competitiva para la Universidad de Chile
+date: 2020-10-06T08:47:36.000+00:00
 images: []
+
 ---
