@@ -1,15 +1,15 @@
 ---
-title : "Ejercicios Apps Web"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Ejercicios Apps Web
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: '080'
 menu:
   docs:
-    parent: "apps-web"
-weight: '080'
----
+    parent: apps-web
+    weight: 30
 
+---
 ## Web I
 
 1. Crearse una cuenta en [Hack The Box](https://www.hackthebox.eu/).

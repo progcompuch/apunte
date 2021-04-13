@@ -1,16 +1,15 @@
 ---
-title : "Intro a OSINT"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Intro a OSINT
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "8"
 menu:
   docs:
-    parent: "osint"
-weight: 010
+    parent: osint
+    weight: 14
 
 ---
-
 _Open Source Intelligence_ (OSINT) es una metodología para recolectar y analizar información mediante fuentes
 de tipo _open source_. Es decir, cualquier información que esté disponible públicamente.
 Esto se puede hacer de manera manual, pero, dependiendo del ámbito de la búsqueda, existen herramientas

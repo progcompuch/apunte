@@ -1,15 +1,15 @@
 ---
-title : "Criptografía Simétrica"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Criptografía Simétrica
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "24"
 menu:
   docs:
-    parent: "cripto-moderna"
-weight: 030
----
+    parent: cripto-moderna
+    weight: 22
 
+---
 En esta sección hablaremos de tres tipos de cifrado: **One-time pad**, **cifradores de bloque** y **cifradores de flujo**.
 
 ## One-Time Pad
@@ -270,4 +270,3 @@ Más información sobre el algoritmo de autentificación [en Wikipedia](https://
 ### ChaCha20-Poly1305 (Flujo)
 
 **ChaCha20-Poly1305** corresponde al uso combinado del cifrador de flujo ChaCha20 y del MAC Poly1305. Su funcionamiento es explicado en el [RFC 8439](https://tools.ietf.org/html/rfc8439). Google seleccionó este algoritmo como reemplazo de RC4 en TLS/SSL. Este algoritmo suele preferirse sobre AES-GCM en hardware que no tiene procesadores optimizados para AES.
-

@@ -1,16 +1,15 @@
 ---
-title : "The Harvester"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: The Harvester
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "32"
 menu:
   docs:
-    parent: "osint"
-weight: 040
+    parent: osint
+    weight: 12
 
 ---
-
 TheHarvester es una herramienta utilizada para buscar subdominios, IPs y correos asociados a un dominio
 particular. Esto se hace por medio de motores de búsqueda, como Google, Bing, DuckDuckGo, Github, Linkedin,
 Twitter, etc. Pueden encontrar la herramienta [aquí](https://github.com/laramies/theHarvester).

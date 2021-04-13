@@ -1,13 +1,13 @@
 ---
-title: "Senseless Behaviour"
-description: "Writeup del problema Senseless Behaviour"
-date: 2020-10-06T08:49:55+00:00
+title: Senseless Behaviour
+description: Writeup del problema Senseless Behaviour
+date: 2020-10-06T08:49:55.000+00:00
 menu:
   writeups:
-    parent: "stego"
-draft: false
----
+    parent: stego
+    weight: 1
 
+---
 Este problema es de Hack The Box, y fue diseñado por "sh3llf1sh"
 
 En el desafío nos entregan un archivo de audio, llamado `meow.wav`. Si lo abrimos tenemos el audio de Nyan Cat, pero distorsionado.

@@ -1,16 +1,15 @@
 ---
-title : "Have I Been Pwned"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Have I Been Pwned
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "40"
 menu:
   docs:
-    parent: "osint"
-weight: 050
+    parent: osint
+    weight: 15
 
 ---
-
 [Have I Been Pwned](https://haveibeenpwned.com/) es un sitio web que recopila contraseñas filtradas, asociadas a
 un correo. Luego, los usuarios pueden ingresar su correo, y el sitio responde si se ha encontrado
 contraseñas para ese correo, y de dónde salieron. Esto puede ser particularmente importante, pues la gran

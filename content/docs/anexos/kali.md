@@ -1,15 +1,15 @@
 ---
-title : "Kali Linux"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Kali Linux
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "24"
 menu:
   docs:
-    parent: "anexos"
-weight: 030
----
+    parent: anexos
+    weight: 35
 
+---
 Para facilitar tanto al equipo docente como a los estudiantes la solución de problemas relacionados con el ambiente de trabajo durante el transcurso de las actividades del curso, requerimos que utilicen **Kali Linux** para resolver las tareas y los ejercicios propuestos. A continuación, les explicamos dos formas en las que pueden usar Kali Linux en su computador sin tener que hacer cambios importantes o irreversibles a su configuración actual.
 
 ## Instalación en Máquina Virtual (Virtualbox)
@@ -34,4 +34,3 @@ Este procedimiento es un poco más largo y complejo que el de la máquina virtua
 Les recomendamos usar un pendrive USB 3, con 8 GB de espacio o más. Lamentablemente, el pendrive que usen para esto no podrán usarlo para otras cosas, pero a futuro pueden formatearlo y recuperar su anterior utilidad.
 
 Las instrucciones detalladas para crear un pendrive persistente se encuentran [en este tutorial oficial](https://www.kali.org/docs/usb/usb-persistence/).
-

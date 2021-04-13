@@ -1,17 +1,15 @@
 ---
-title : "Intro a la Esteganografía"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Intro a la Esteganografía
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "8"
 menu:
   docs:
-    parent: "stego"
-weight: 010
+    parent: stego
+    weight: 2
 
 ---
-
-
 La esteganografía corresponde a la práctica de esconder un mensaje dentro de otro mensaje u objeto, de forma que a simple vista no se sepa la existencia del mensaje oculto (o en algunos casos, que ni si quiera sea posible demostrarla).
 
 En los problemas de CTF, estos corresponden a los desafíos más "fáciles" en términos de conocimientos requeridos para resolverlos. Sin embargo, la dificultad de resolución puede variar bastante según las herramientas usadas para esconder y obtener el mensaje y los conocimientos transversales de distintas tecnologías y cifrados de quien participa en el CTF.

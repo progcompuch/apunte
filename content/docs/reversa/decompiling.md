@@ -1,15 +1,15 @@
 ---
-title : "Decompilación"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Decompilación
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "16"
 menu:
   docs:
-    parent: "reversa"
-weight: 020
----
+    parent: reversa
+    weight: 9
 
+---
 Con decompilación nos referiremos a la acción de tomar un programa compilado, ya sea a código binario o
 bytecode, y devolverlo a una forma legible para humanos. Esto puede ser código Assembler, o algo un poco
 más sofisticado, como C, Java, Python, .Net, PHP, entre otros. Hacer esto de manera manual se puede volver prohibitivamente costoso

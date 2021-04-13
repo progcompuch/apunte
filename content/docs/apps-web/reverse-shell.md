@@ -1,15 +1,15 @@
 ---
-title : "Reverse Shell"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Reverse Shell
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "48"
 menu:
   docs:
-    parent: "apps-web"
-weight: 060
----
+    parent: apps-web
+    weight: 26
 
+---
 En el capítulo anterior vimos cómo ejecutar comandos de manera remota en un servidor, sin tener acceso a una
 terminal. Esto es muy útil en un comienzo, pero rápidamente se vuelve evidente la lentitud, torpeza y limitaciones
 que significa este medio. Sería mucho más cómodo si de alguna forma se pudiese obtener acceso a una terminal,

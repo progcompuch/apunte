@@ -1,15 +1,15 @@
 ---
-title : "Cross-Site Scripting"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Cross-Site Scripting
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "24"
 menu:
   docs:
-    parent: "apps-web"
-weight: 030
----
+    parent: apps-web
+    weight: 24
 
+---
 El Cross-Site Scripting, o XSS (punto 7 en el OWASP Top 10), se refiere a una clase de vulnerabilidades que
 intentan introducir código JavaScript en un sitio web, el cual será ejecutado en el navegador de otros usuarios.
 Dependiendo de la aplicación en específico, las repercusiones de esto varían desde meras molestias hasta
@@ -79,4 +79,3 @@ consultas en su nombre. Esto funciona ya que las consultas hechas a través de J
 y parámetros de sesión del usuario, por lo que el atacante tiene el potencial de ganar los mismos permisos que
 la víctima. Esto se podría utilizar, por ejemplo, para realizar acciones en nombre del administrador, con lo cual
 crear otro usuario con permisos de administrador.
-

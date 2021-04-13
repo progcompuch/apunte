@@ -1,16 +1,15 @@
 ---
-title : "Shodan"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Shodan
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "48"
 menu:
   docs:
-    parent: "osint"
-weight: 060
+    parent: osint
+    weight: 13
 
 ---
-
 [Shodan](https://www.shodan.io/) es un motor de búsqueda que permite encontrar tipos específicos de computadores o dispositivos
 conectados a internet. Para esto implementa una variedad de filtros que ayudan en la búsqueda,
 de forma de hacerla más rápida y efectiva. Dentro de estos resultados pueden encontrar servicios mal

@@ -1,15 +1,15 @@
 ---
-title : "Comandos de Terminal de Linux"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Comandos de Terminal de Linux
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "37"
 menu:
   docs:
-    parent: "anexos"
-weight: 045
----
+    parent: anexos
+    weight: 37
 
+---
 Una _Shell_ o _Terminal_ en la práctica es una interfaz de usuario de texto que permite la ejecución de comandos y programas de tipo script.
 
 En sistemas Linux modernos, puedes interactuar con la _Shell_ usando un emulador de terminal. En varias distribuciones actuales, el emulador de terminal por defecto es `bash`. Sin embargo, en Kali Linux la shell usada por defecto es `zsh`.

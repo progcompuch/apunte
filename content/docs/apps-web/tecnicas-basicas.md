@@ -1,15 +1,15 @@
 ---
-title : "Técnicas Básicas de Análisis Web"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Técnicas Básicas de Análisis Web
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "16"
 menu:
   docs:
-    parent: "apps-web"
-weight: 020
----
+    parent: apps-web
+    weight: 25
 
+---
 En este capítulo hablaremos de algunas de las técnicas más básicas utilizadas para en análisis web.
 Para estas no se requiere ningún o casi ningún conocimiento sobre el funcionamiento o características del sitio,
 y pueden ser aplicadas de manera casi inmediata. Usualmente se utiliza herramientas muy simples, que

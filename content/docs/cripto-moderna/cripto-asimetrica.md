@@ -1,15 +1,15 @@
 ---
-title : "Criptografía Asimétrica"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Criptografía Asimétrica
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "32"
 menu:
   docs:
-    parent: "cripto-moderna"
-weight: 040
----
+    parent: cripto-moderna
+    weight: 23
 
+---
 ![Criptografía de llave pública](../public_key_crypto.png)
 
 La **criptografía asimétrica** o **criptografía de llave pública** se diferencia de la criptografía simétrica en que se usan llaves distintas para cifrar y descifrar mensajes, lo que hace posible publicar la llave de cifrado  con el objetivo de que otras personas puedan enviarnos mensajes que solo nosotros podremos descifrar, usando la llave de descifrado. Algo similar ocurre con la criptografía asimétrica usada para firmas digitales. Se usa una llave para "demostrar" que un mensaje fue enviado por nosotros mientras se publica la otra para que cualquiera pueda comprobar que la firma es válida.
@@ -125,6 +125,3 @@ Finalmente, para calcular el secreto compartido, cada parte eleva el valor recib
 ## Criptografía de Curvas Elípticas
 
 La criptografía de curvas elípticas (ECC) utiliza la estructura algebráica de curvas elípticas sobre cuerpos finitos que puee ser usada tanto para negociación de llaves como para firmas digitales, y tiene la ventaja de que las llaves y firmas producidas en ella suelen ser mucho más pequeñas que las de Diffie-Hellman o RSA, manteniendo el nivel de seguridad. En este curso no trataremos con ellas, pero en caso de querer saber más, recomendamos leer el capítulo 12 del libro **Serious Cryptography**.
-
-
-

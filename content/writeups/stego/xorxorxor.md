@@ -1,14 +1,10 @@
 ---
-title: "xorxorxor"
-description: "Writeup del problema 'xorxorxor' de Hack The box'"
-date: 2020-10-06T08:49:55+00:00
-draft: false
-menu:
-  writeups:
-    parent: "stego"
+title: xorxorxor
+description: Writeup del problema 'xorxorxor' de Hack The box'
+date: 2020-10-06T08:49:55.000+00:00
 images: []
----
 
+---
 Este problema es de Hack The Box, y fue diseñado por "r4j"
 
 Este problema nos entrega dos archivos, uno que "tiene la flag":

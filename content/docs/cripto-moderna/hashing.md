@@ -1,15 +1,15 @@
 ---
-title : "Hashing"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Hashing
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "16"
 menu:
   docs:
-    parent: "cripto-moderna"
-weight: 020
----
+    parent: cripto-moderna
+    weight: 20
 
+---
 Las funciones de _hash_ son utilizadas como un bloque fundamental en muchos otros componentes criptográficos, tales como firmas digitales, cifrado de llave pública, verificación de integridad de archivos, autentificación de mensajes, contraseñas, entre otros. 
 
 ![Función de hash](../hash.jpg)

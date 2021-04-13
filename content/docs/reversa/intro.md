@@ -1,15 +1,15 @@
 ---
-title : "Intro a la Ingeniería Reversa"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Intro a la Ingeniería Reversa
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "8"
 menu:
   docs:
-    parent: "reversa"
-weight: 010
----
+    parent: reversa
+    weight: 6
 
+---
 ## Motivación
 
 En computación, la ingeniería reversa (reverse engineering o _reversing_) se refiere al proceso de analizar

@@ -1,15 +1,15 @@
 ---
-title : "Proxy"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Proxy
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "32"
 menu:
   docs:
-    parent: "anexos"
-weight: 040
----
+    parent: anexos
+    weight: 34
 
+---
 Para poder realizar el análisis web de manera efectiva es necesario instalar un proxy que sea capaz de interceptar,
 modificar y reenviar todos los requests hacia el servidor, al igual que sus respuestas respectivas.
 En este caso utilizaremos el navegador FireFox, e instalaremos el plugin FoxyProxy para administrar la conexión

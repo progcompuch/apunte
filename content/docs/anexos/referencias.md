@@ -1,15 +1,15 @@
 ---
-title : "Referencias"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Referencias
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "40"
 menu:
   docs:
-    parent: "anexos"
-weight: 050
----
+    parent: anexos
+    weight: 33
 
+---
 A continuación se mencionan las referencias usadas para la realización de cada capítulo del apunte. También se agregan algunas referencias extra que podrían ser útiles para profundizar en contenidos.
 
 ## Esteganografía

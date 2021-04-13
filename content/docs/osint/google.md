@@ -1,16 +1,15 @@
 ---
-title : "Google Hacking"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Google Hacking
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "16"
 menu:
   docs:
-    parent: "osint"
-weight: 020
+    parent: osint
+    weight: 16
 
 ---
-
 Todos sabemos cómo hacer búsquedas en Google (o cualquier otro motor de búsqueda similar):
 simplemente ingresamos las palabras relevantes en el campo de búsqueda y dejamos que el algoritmo haga su
 trabajo. Sin embargo internet es muy (MUY) grande, y muchas veces obtenemos resultados que coinciden con

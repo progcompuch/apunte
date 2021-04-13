@@ -1,15 +1,15 @@
 ---
-title : "Configuración de VPN"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Configuración de VPN
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "24"
 menu:
   docs:
-    parent: "anexos"
-weight: 030
----
+    parent: anexos
+    weight: 32
 
+---
 Para poder tener acceso a la máquina que se usará en los CTF y tareas, necesitan conectarse por VPN a la red de la Universidad. A continuación se enumeran los pasos necesarios para hacer esto.
 
 * Inicien sesión en la máquina Kali que se usará en el curso

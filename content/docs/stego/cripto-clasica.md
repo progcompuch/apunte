@@ -1,16 +1,15 @@
 ---
-title : "Criptografía Clásica"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Criptografía Clásica
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "16"
 menu:
   docs:
-    parent: "stego"
-weight: 020
+    parent: stego
+    weight: 4
 
 ---
-
 Los cifradores clásicos son aquellos que han tenido un uso histórico masivo, pero que hoy en día no se utilizan, en parte debido a lo fácil que resulta romperlos con ayuda de un computador.  Además, estos cifradores suelen trabajar solamente con letras del alfabeto inglés, lo que limita los tipos de mensajes que se pueden cifrar.
 
 En general, al usar estos cifrados **se ignoran los espacios y signos de puntuación**, entregándose como mensaje cifrado un texto sin estos símbolos, los cuales generalmente se pueden recuperar interpretando el mensaje en texto plano.
@@ -100,6 +99,3 @@ DCode tiene herramientas para los siguientes cifradores de transposición:
 * [Transposición por fila/columna](https://www.dcode.fr/transposition-cipher)
 * [Transposición columnar](https://www.dcode.fr/columnar-transposition-cipher)
 * [Transposición Doble](https://www.dcode.fr/double-transposition-cipher)
-
-
- 

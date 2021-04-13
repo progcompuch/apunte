@@ -1,15 +1,15 @@
 ---
-title : "Common Vulnerabilities and Exposures"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Common Vulnerabilities and Exposures
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "56"
 menu:
   docs:
-    parent: "apps-web"
-weight: 070
----
+    parent: apps-web
+    weight: 31
 
+---
 Muchas veces ustedes se encontrarán con sistemas (web u otro tipo) que utilizan software con vulnerabilidades
 conocidas (punto 9 del OWASP Top 10). Estas vulnerabilidades se catalogan como _Common Vulnerabilities and
 Exposures_ (CVE), el cual es un sistema que intenta proveer información y documentación sobre

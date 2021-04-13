@@ -1,16 +1,15 @@
 ---
-title : "Conceptos Básicos"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Conceptos Básicos
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "13"
 menu:
   docs:
-    parent: "stego"
-weight: 015
+    parent: stego
+    weight: 5
 
 ---
-
 En términos generales, para poder comunicar un valor entre un emisor y un receptor, es necesario que ambas partes se comuniquen mediante un lenguaje en común. En el caso de computadores, esta información se encuentra "codificada" en algún formato. Hay formatos y representaciones de datos comunes y estandarizadas, mientras que hay otras más esotéricas. 
 
 ## Codificaciones

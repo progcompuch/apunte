@@ -1,15 +1,15 @@
 ---
-title : "Inyecciones"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Inyecciones
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "32"
 menu:
   docs:
-    parent: "apps-web"
-weight: 040
----
+    parent: apps-web
+    weight: 28
 
+---
 En términos generales, una inyección (punto 1 del OWASP Top 10) es un ataque que intenta confundir al servidor
 de forma que interprete datos como si fueran código. Esto tiene un potencial muy grande de explotación, aunque
 usualmente está restringido por factores como filtros, configuraciones de seguridad y tecnologías usadas.

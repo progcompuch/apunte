@@ -1,14 +1,14 @@
 ---
-title: "Classic, yet complicated"
-description: "Writeup del problema 'Classic, yet complicated' de Hack The box'"
-date: 2020-10-06T08:49:55+00:00
-draft: false
+title: Classic, yet complicated
+description: Writeup del problema 'Classic, yet complicated' de Hack The box'
+date: 2020-10-06T08:49:55.000+00:00
+images: []
 menu:
   writeups:
-    parent: "stego"
-images: []
----
+    parent: stego
+    weight: 2
 
+---
 Este es un problema sacado de Hack The Box, es de los inactivos. Fue diseñado por "P3t4".
 
 Tenemos un solo archivo, que tiene dentro

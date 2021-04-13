@@ -1,16 +1,15 @@
 ---
-title : "Stego en texto, imágenes y audio"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Stego en texto, imágenes y audio
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "24"
 menu:
   docs:
-    parent: "stego"
-weight: 030
+    parent: stego
+    weight: 1
 
 ---
-
 Este capítulo mostrará algunas técnicas de esteganografía en texto, imágenes y audio. También listaremos las herramientas y algoritmos necesarios para extraer la información, además de consejos y estrategias para casos no listados en este apunte.
 
 ## Stego en Texto

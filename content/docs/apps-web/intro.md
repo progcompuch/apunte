@@ -1,15 +1,15 @@
 ---
-title : "Intro a Aplicaciones Web"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Intro a Aplicaciones Web
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "8"
 menu:
   docs:
-    parent: "apps-web"
-weight: 010
----
+    parent: apps-web
+    weight: 29
 
+---
 ## Motivación
 
 Web es uno de los temas más amplios en las competencias de CTF.
@@ -159,5 +159,3 @@ checklists y buenas prácticas para proyectos para múltiples lenguajes de progr
 
 * [Zed Attack Proxy (ZAP)](https://owasp.org/www-project-zap/): Herramienta automatizada de análisis web dinámico.
 Realiza una serie estandarizada de pruebas a aplicaciones web para encontrar vulnerabilidades comunes.
-
-

@@ -1,16 +1,15 @@
 ---
-title : "Intro a Criptografía Moderna"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Intro a Criptografía Moderna
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "8"
 menu:
   docs:
-    parent: "cripto-moderna"
-weight: 010
+    parent: cripto-moderna
+    weight: 19
+
 ---
-
-
 ## Motivación
 
 Debido tanto al _tecnooptimismo_ de sus creadores como a las limitaciones tecnológicas de la época, la Internet se pensó inicialmente como una red pública, en la que potencialmente cualquier par de computadores pudiese comunicarse de forma fácil y directa, sin importar en qué lugar geográfico se encontrasen o si compartían proveedor de Internet. Eran tiempos más simples, en los que la información que fluía por ahí no era necesariamente muy importante, o al menos la gente que podía ser capaz de interceptarla y leerla era muy poca. 

@@ -1,15 +1,15 @@
 ---
-title : "Remote Code Execution"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Remote Code Execution
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "40"
 menu:
   docs:
-    parent: "apps-web"
-weight: 050
----
+    parent: apps-web
+    weight: 27
 
+---
 El Remote Code Execution (RCE) se refiere a la ejecución de comandos de sistema, o de algún lenguaje instalado, sin tener acceso a una
 terminal ni algún otro canal permitido para ejecutar comandos. El alcance de este ataque depende del sistema
 operativo, frameworks, lenguajes y filtros que se tenga instalados en el servidor.

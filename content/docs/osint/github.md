@@ -1,16 +1,15 @@
 ---
-title : "Búsqueda en Github"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Búsqueda en Github
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "24"
 menu:
   docs:
-    parent: "osint"
-weight: 030
+    parent: osint
+    weight: 17
 
 ---
-
 Github contiene una cantidad impresionantemente grande repositorios, código y datos. Muchas veces se puede
 encontrar información privada dentro de estos, como contraseñas, por lo cual poder buscar dentro de
 ellos es muy útil. Esto se hace con la [búsqueda avanzada de Github](https://github.com/search/advanced),
@@ -34,4 +33,3 @@ encontrada, y `extension:txt`, pues buscamos contraseñas en texto plano.
 
 Encontramos muchos resultados, los cuales deben ser revisados manualmente, o se puede restringir aún más
 la búsqueda para acelerar el proceso.
-

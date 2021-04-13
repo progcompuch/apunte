@@ -1,15 +1,15 @@
 ---
-title : "Ejercicios Cripto Moderna"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Ejercicios Cripto Moderna
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "40"
 menu:
   docs:
-    parent: "cripto-moderna"
-weight: 050
----
+    parent: cripto-moderna
+    weight: 21
 
+---
 ## Recursos Generales
 
 * [**Cryptopals**](https://cryptopals.com/): Ejercicios de implementación de herramientas para ejecutar ataques criptográficos

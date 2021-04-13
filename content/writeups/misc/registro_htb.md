@@ -1,14 +1,14 @@
 ---
-title: "Registro en Hack The Box"
-description: "Writeup del registro en Hack The Box"
-date: 2020-10-06T08:49:55+00:00
-draft: false
+title: Registro en Hack The Box
+description: Writeup del registro en Hack The Box
+date: 2020-10-06T08:49:55.000+00:00
+images: []
 menu:
   writeups:
-    parent: "misc"
-images: []
----
+    parent: misc
+    weight: 3
 
+---
 La página de registro no nos deja simplemente ingresar las credenciales que queremos:
 
 ![pantallazo registro](../registro.png)

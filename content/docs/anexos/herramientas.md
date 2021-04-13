@@ -1,16 +1,15 @@
 ---
-title : "Herramientas"
-lead: ""
-date: 2020-10-06T08:48:45+00:00
-draft: false
+title: Herramientas
+lead: ''
+date: 2020-10-06T08:48:45.000+00:00
 images: []
+weight: "16"
 menu:
   docs:
-    parent: "anexos"
-weight: 020
+    parent: anexos
+    weight: 36
+
 ---
-
-
 A continuación se agrupan enlaces a herramientas útiles para cada una de las siguientes categorías de problemas. Estas herramientas son mencionadas en cada capítulo de forma desordenada, por lo que esta sección sirve para encontrarlas directamente.
 
 ## Esteganografía
