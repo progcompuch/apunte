@@ -6,7 +6,7 @@ images: []
 menu:
   writeups:
     parent: stego
-    weight: 2
+    weight: 1
 
 ---
 Este es un problema sacado de Hack The Box, es de los inactivos. Fue diseñado por "P3t4".

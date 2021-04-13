@@ -6,7 +6,7 @@ images: []
 menu:
   writeups:
     parent: misc
-    weight: 3
+    weight: 2
 
 ---
 La página de registro no nos deja simplemente ingresar las credenciales que queremos:
