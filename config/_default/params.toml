@@ -1,11 +1,11 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "Taller de Hacking Competitivo"
+title = "Programación Competitiva UChile"
 titleSeparator = "-"
 logo = "images/banner.svg"
 logoDark = "images/banner_dark.svg"
-titleAddition = "Introducción al Hacking Competitivo"
+titleAddition = "Inicio"
 description = "DCC universidad de Chile"
 
 ## Open Graph + Twitter Cards
@@ -21,7 +21,7 @@ schemaType = "Organization"
 schemaLogo = "logo-doks.png"
 schemaTwitter = "https://twitter.com/dccuchile"
 schemaLinkedIn = "https://www.linkedin.com/in/dccuchile/"
-schemaGitHub = "https://github.com/cc5325"
+schemaGitHub = "https://github.com/progcompuch"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -41,9 +41,9 @@ lqipWidth = "20x"
 footer = "Sitio generado con <a href=\"https://gohugo.io/\">Hugo</a> y <a href=\"https://getdoks.org/\">Doks</a>"
 
 # Alert
-alert = true
-alertText = "Cátedras: Jueves de 18:45 a 20:30 hrs | Auxiliares: Lunes de 18:15 a 20:00 hrs"
+alert = false
+alertText = ""
 
 # Edit Page
-docsRepo = "https://github.com/cc5325/apunte"
+docsRepo = "https://github.com/progcompuch/apunte"
 editPage = true
