@@ -10,18 +10,17 @@ menu:
     weight: 11
 
 ---
-Este apunte recoge los contenidos planificados para el curso **CC5325 - Taller de Hacking Competitivo** del [Departamento de Ciencias de la Computación](https://dcc.uchile.cl) de la [Facultad de Ciencias Físicas y Matemáticas](https://ingenieria.uchile.cl) de la [Universidad de Chile](https://uchile.cl). El objetivo de este curso es entregar a el o la estudiante las herramientas básicas necesarias para introducirse en el mundo de competencias y desafíos de ciberseguridad, además de motivarle a conocer más varios conceptos relacionados con ciberseguridad en el mundo profesional.
+Este apunte recoge los contenidos usualmente vistos los cursos de **Taller de Programación Competitiva** del [Departamento de Ciencias de la Computación](https://dcc.uchile.cl) de la [Facultad de Ciencias Físicas y Matemáticas](https://ingenieria.uchile.cl) de la [Universidad de Chile](https://uchile.cl). El objetivo de estos cursos es acercar al estudiante al área de la programación competitiva, aplicando eficazmente estructuras de datos y algoritmos para resolver en corto tiempo problemas de programación complejos, limitados en tiempo y memoria computacional.
 
 Este apunte también funciona como un documento vivo, en el que se le invita a quienes lo leen a modificarlo, copiarlo y/o a aportar con pull requests nuevas secciones, ejemplos y ejercicios.
 
-El apunte está basado en muchas fuentes de información disponibles en Internet, así como también algunos libros relacionados al tema. Estos documentos se citan en el anexo Referencias.
 
 ## ¿Por donde partir?
 
 ### Contenido del curso
 
-Los capítulos de la barra lateral se muestran en el orden que se planean abordar en el curso. Por lo tanto, es recomendable seguirlos en ese mismo orden.
+Los capítulos de la barra lateral se muestran un orden de complejidad ascendiente. Por lo tanto, es recomendable seguirlos en ese mismo orden, no obstante, siéntete libre de omitir secciones en las que te manejes.
 
-### Preparación del entorno de trabajo
+### Preparación del entorno de programación
 
-Para preparar el entorno de trabajo, recomendamos revisar los anexos "Kali Linux" y "VPN".
+Para manejar las herramientas mínimas requeridas para programar, revisa el anexo sobre "IDEs y Compilación".
