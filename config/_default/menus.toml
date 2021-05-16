@@ -5,10 +5,10 @@
   url = "/docs/prologo/"
 
 [[docs]]
-  name = "Esteganografía"
+  name = "Intro a la Programación"
   weight = 20
-  identifier = "stego"
-  url = "/docs/stego/"
+  identifier = "intro"
+  url = "/docs/intro/"
 
 [[docs]]
   name = "Criptografía Moderna"
