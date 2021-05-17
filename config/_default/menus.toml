@@ -11,41 +11,10 @@
   url = "/docs/intro/"
 
 [[docs]]
-  name = "Criptografía Moderna"
+  name = "Tema2"
   weight = 30
-  identifier = "cripto-moderna"
-  url = "/docs/cripto-moderna/"
-
-[[docs]]
-  name = "Aplicaciones Web"
-  weight = 40
-  identifier = "apps-web"
-  url = "/docs/apps-web/"
-
-
-[[docs]]
-  name = "Análisis Forense"
-  weight = 50
-  identifier = "forense"
-  url = "/docs/forense/"
-
-[[docs]]
-  name = "Ingeniería Reversa"
-  weight = 60
-  identifier = "reversa"
-  url = "/docs/reversa/"
-
-[[docs]]
-  name = "Pwning"
-  weight = 70
-  identifier = "pwning"
-  url = "/docs/pwning/"
-
-[[docs]]
-  name = "OSINT"
-  weight = 80
-  identifier = "osint"
-  url = "/docs/osint/"
+  identifier = "tema2"
+  url = "/docs/tema2/"
 
 [[docs]]
   name = "Anexos"
