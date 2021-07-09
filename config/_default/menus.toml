@@ -34,8 +34,8 @@
   weight = 20
 
   [[main]]
-  name = "Writeups"
-  url = "/writeups/misc/registro_htb"
+  name = "Recursos"
+  url = "/recursos/contests/intro"
   weight = 25
 
 [[main]]
