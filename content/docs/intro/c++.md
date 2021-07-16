@@ -3,11 +3,10 @@ title: Entendiendo C++
 lead: ''
 date: 2020-10-06T08:48:45.000+00:00
 images: []
-weight: "8"
+weight: 101
 menu:
   docs:
     parent: intro
-    weight: 2
 
 ---
 Para partir programando, primero debemos entender en qué formato se programa. Para los programas en c++ solo requieres crear un archivo de texto cualquiera, en el editor de texto que elijas (funciona hasta en un block de notas), cuyo nombre termine con la extención ".cpp" (del inglés "cee plus plus"). Este archivo contendrá la serie de instrucciones que se ejecutarán paso a paso.
