@@ -3,11 +3,10 @@ title: Prólogo
 lead: ''
 date: 2020-10-06T08:48:45.000+00:00
 images: []
-weight: "8"
+weight: 1
 menu:
   docs:
     parent: prologo
-    weight: 11
 
 ---
 Este apunte recoge los contenidos usualmente vistos los cursos de **Taller de Programación Competitiva** del [Departamento de Ciencias de la Computación](https://dcc.uchile.cl) de la [Facultad de Ciencias Físicas y Matemáticas](https://ingenieria.uchile.cl) de la [Universidad de Chile](https://uchile.cl). El objetivo de estos cursos es acercar al estudiante al área de la programación competitiva, aplicando eficazmente estructuras de datos y algoritmos para resolver en corto tiempo problemas de programación complejos, limitados en tiempo y memoria computacional.
