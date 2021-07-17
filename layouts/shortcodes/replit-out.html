@@ -1,0 +1,31 @@
+<!--
+  Positional Arguments:
+      0 : string -> name of the repl
+      1 : int    -> (optional) number of lines to display (defaults to 21)
+      2 : string -> (optional) author of the repl, must include '@' (defaults to "@progcompuch")
+
+  Named Arguments:
+      name   : string -> name of the repl
+      lines  : int    -> (optional) number of lines to display (defaults to 21)
+      author : string -> (optional) author of the repl, must include '@' (defaults to "@progcompuch")
+-->
+
+<!-- Arguments -->
+{{ $name   := default (.Get "name")   (.Get 0) | string }}
+{{ $lines  := default (.Get "lines")  (.Get 1) | default 21 | int }}
+{{ $author := default (.Get "author") (.Get 2) | default "@progcompuch" | string }}
+
+<!-- Error Handling -->
+{{ if hasPrefix $author "@" | not}}
+  {{ warnf "[replit-out shortcode] Did you forget to prefix the author name with '@'?" }}
+{{ end }}
+{{ if eq $name "" }}
+  {{ errorf "[replit-out shorcode] missing required argument 'name' (or positial argument 0)."}}
+{{ end }}
+
+<!-- Style Variables -->
+{{ $height := mul $lines 16 | math.Round | add 90 }}
+
+<iframe frameborder="0" width="100%"
+height="{{ $height }}px"
+src="https://replit.com/{{ $author }}/{{ $name }}?lite=1&outputonly=1"></iframe>
