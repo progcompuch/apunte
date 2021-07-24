@@ -3,7 +3,7 @@
 		<div class="col-lg-5 col-xl-4 docs-sidebar">
 			<nav class="docs-links" aria-label="Main navigation">
 				{{ partial "sidebar/docs-menu.html" . }}
-			</nav>        
+			</nav>
 		</div>
 		{{ if ne .Params.toc false -}}
 		<nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation">
@@ -17,7 +17,8 @@
 		{{ end -}}
 			<h1>{{ .Title }}</h1>
 			<p class="lead">{{ .Params.lead | safeHTML }}</p>
-			{{ partial "main/headline-hash.html" .Content }}
+			{{ $contentDocsHtml := partial "main/headline-hash.html" .Content }}
+      {{ replace $contentDocsHtml "<table>" "<table class=\"table table-dark\">" | safeHTML }}
 			{{ if .Site.Params.editPage -}}
 				{{ partial "main/edit-page.html" . }}
 			{{ end -}}
