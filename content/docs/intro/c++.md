@@ -97,4 +97,4 @@ int main(){
 }
 ```
 
-Para marcar comentarios que aclaren el código, o si desear probar un programa sin que se ejecute una línea, puedes "comentar una línea", que es anteponerle dos slashes ("//) para que nuestra máquina ignore el contenido que le siga a esos caracteres.
+Para marcar comentarios que aclaren el código, o si desear probar un programa sin que se ejecute una línea, puedes "comentar una línea", que es anteponerle dos slashes ("//") para que nuestra máquina ignore el contenido que le siga a esos caracteres.
