@@ -1,11 +1,8 @@
 if (localStorage.getItem('theme') === 'dark') {
 
   document.body.classList.add('dark');
-
-} else {
-
-  document.querySelectorAll('.table-dark').forEach(element => {
-    element.classList.remove('table-dark');
+  document.querySelectorAll('.table').forEach(element => {
+    element.classList.add('table-dark');
   });
 
 }
