@@ -129,3 +129,9 @@ $alert-border-width:                0;
 $alert-bg-level:                    0;
 $alert-border-level:                0;
 $alert-color-level:                 0;
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-accent-bg:             rgba(#000, .05);

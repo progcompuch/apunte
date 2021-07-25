@@ -18,7 +18,7 @@
 			<h1>{{ .Title }}</h1>
 			<p class="lead">{{ .Params.lead | safeHTML }}</p>
 			{{ $contentDocsHtml := partial "main/headline-hash.html" .Content }}
-      {{ replace $contentDocsHtml "<table>" "<table class=\"table\">" | safeHTML }}
+      {{ replace $contentDocsHtml "<table>" "<table class=\"table table-responsive table-striped\">" | safeHTML }}
 			{{ if .Site.Params.editPage -}}
 				{{ partial "main/edit-page.html" . }}
 			{{ end -}}
