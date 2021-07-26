@@ -24,7 +24,7 @@ La mayoría de los operadores bitwise funcionan como operadores lógicos así qu
 Los operadores unarios son los más interesantes:
 
 1. NOT al operarse sobre todos los bits del número va a convertir todos los ceros del principio en unos, esto siempre resulta en en ~a = -a-1 por temas de como interpretan los bits el computador.
-2. Se puede notar que LEFT SHIFT y RIGHT SHIFT son solamente formas de multiplicar y dividir por potencias de dos rápidamente, aunque usualmente los compiladores optimizan las operaciones de este tipo internamente es bueno saberla por si queremos aplicarlas nosotros. También es importante recordar que la división y el RIGHT SHIFT simplemente trunca el último dígito, o sea que es equivalente a la división piso, y el LEFT SHIFT hace algo similar si el número se pasa de la cantidad de bits que tiene el número asignado, los bits que se pasan simplemente se truncan.
+2. Se puede notar que LEFT SHIFT y RIGHT SHIFT son solamente formas de multiplicar y dividir por potencias de dos rápidamente, aunque usualmente los compiladores optimizan las operaciones de este tipo internamente es bueno saberla por si queremos aplicarlas directamente nosotros. También es importante recordar que la división y el RIGHT SHIFT simplemente trunca el último dígito, o sea que es equivalente a la división piso; el LEFT SHIFT hace algo similar si el número se pasa de la cantidad de bits que tiene el número asignado, los bits que se pasan simplemente se truncan.
 
 | Operador    | Sintaxis | Ejemplo | a    | bits de a | resultado | bits del resultado |
 | ----------- | -------- | ------- | ---- | --------- | --------- | ------------------ |
@@ -46,6 +46,12 @@ for (int mask=0;mask < (1 << n);++mask){
 }
 ```
 
-Lo que hace este código es usar mask como un arreglo de booleanos, este va pasa por todos los números en [ 0 , 2<sup>n</sup> ) que son todos los subconjuntos posibles del arreglo, luego usamos un for para pasar por todos los elementos y comprobamos si el bit *i* está prendido haciendo un AND entre la máscara y 2<sup>i</sup> (que es solo un 1 en el bit *i* ), esto nos va a dar cero solamente si el bit *i* está apagado, por lo tanto esto solo van a ser sumados los elementos que no estén prendidos en mask. Por supuesto que esto es solo un ejemplo ya que la suma es solo una pequeña cosa que podemos hacer con cualquier subconjunto del arreglo.
+Lo que hace este código es usar mask como un arreglo de booleanos, este va pasar por todos los números en [ 0 , 2<sup>n</sup> ) que son todos los subconjuntos posibles del arreglo, luego usamos un for para pasar por todos los elementos y comprobamos si el bit *i* está prendido haciendo un AND entre la máscara y 2<sup>i</sup> (que es solo un 1 en el bit *i* ), esto nos va a dar cero solamente si el bit *i* está apagado, por lo tanto solo van a ser sumados los elementos que estén prendidos en mask. Por supuesto que esto es solo un ejemplo ya que la suma es solo una pequeña cosa que podemos hacer con cualquier subconjunto del arreglo.
 
 Lo más importante de recordar es que a pesar de que esto es muy rápido, sigue siendo pasar por todos los subconjuntos de un arreglo, esto es complejidad O(2<sup>n</sup>) aunque usemos los operadores bitwise, además mask está limitado por las capacidades del computador que solo le permite tener 32 bits a un int, aunque si usamos un long long podemos hacer lo mismo para tener 64 bits.
+
+### Problemas
+
+[11933 - Splitting Numbers]: https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3084
+[10264 - The Most Potent Corner]: https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=1205
+
