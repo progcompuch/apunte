@@ -52,6 +52,6 @@ Lo más importante de recordar es que a pesar de que esto es muy rápido, sigue 
 
 ### Problemas
 
-[11933 - Splitting Numbers]: https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3084	"11933 - Splitting Numbers"
-[10264 - The Most Potent Corner]: https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=1205	"10264 - The Most Potent Corner"
+[11933 - Splitting Numbers](https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3084)
 
+[10264 - The Most Potent Corner](https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=1205)                                     
