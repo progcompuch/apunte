@@ -24,8 +24,7 @@ void unaFuncion() {
 
 Luego la función puede ser llamada usando su nombre: `unaFuncion()`.
 
-Al ser llamada la función ejecutará su cuerpo hasta terminar o hasta encontrar la instrucción
-`return`, por ejemplo, en el siguiente código el segundo `cout` jamás se ejecuta:
+Al ser llamada la función ejecutará su cuerpo hasta terminar o hasta encontrar la instrucción `return`, por ejemplo, en el siguiente código el segundo `cout` jamás se ejecuta:
 
 ```c++
 #include <iostream>
@@ -44,18 +43,18 @@ int main() {
 ```
 
 ## Parámetros
-Dentro de los párentesis que siguen al nombre de la función se pueden declarar los parámetros separados
-por comas, al igual que las variables estos deben ir con su tipo:
+Dentro de los párentesis que siguen al nombre de la función se pueden declarar los parámetros separados por comas, al igual que las variables estos deben ir con su tipo:
 ```c++
 void imprimirSuma(int a, int b) {
-    cout << a + b << '\n'
+    cout << a + b << '\n';
 }
 ```
 
 Luego se puede llamar la función pasando sus argumentos, por ej. `imprimirSuma(5,6)`.
 
-A los parámetros pueden tener valores por defecto, al hacerlo se convierten en parámetros opcionales, la sintáxis es igual a inicializar una variable:
+Los parámetros pueden tener valores por defecto, al hacerlo se convierten en parámetros opcionales, la sintáxis es igual a inicializar una variable:
 ```c++
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -65,7 +64,8 @@ void saludar(string nombre, string saludo = "Hola,") { // el segundo parámetro 
 
 int main() {
   saludar("Diego Salas");
-  saludar("", "Ohayou,")
+  saludar("", "Ohayou,");
+  return 0;
 }
 ```
 <!-- Falta nombre con lore -->
@@ -73,9 +73,7 @@ int main() {
 Los parámetros opcionales siempre deben definirse después de todos los parámetros obligatorios.
 
 ## Valor de retorno
-Para que la función retorne un valor, el tipo de este se declara antes del nombre de la misma, luego
-usando `return` la función devuelve un valor.
-Por ejemplo, la siguiente función toma 2 enteros y retona su división con decimales:
+Para que la función retorne un valor, el tipo de este se declara antes del nombre de la misma, luego usando `return` la función devuelve un valor. Por ejemplo, la siguiente función toma 2 enteros y retona su división con decimales:
 ```c++
 float divisionNormal(int num1, int num2) {
     return (float) num1 / (float) num2;
@@ -137,9 +135,7 @@ int fibonacci(int n) {
 ```
 Esta definición de la sucesión de Fibonacci no es la más óptima, una mejor versión se discutirá más adelante.
 
-<!-- Análisis de complejidad -->
-
-Aunque los jueces utilizan opciones que permiten muchas llamadas recursivas, esto no es cierto si pruebas un código en tú máquina local, donde sin cambiar las configuraciones unas $10^6$ llamadas podrían comenzar a dar problemas. Además hacer recursión es más lento que hacer ciclos, por lo que puede resultar conveniente pasar la recursión a ciclos, el ejemplo de Fibonacci se puede hacer así:
+Aunque los jueces utilizan opciones que permiten muchas llamadas recursivas, esto no es necesariamente cierto si pruebas un programa recursivo en tú máquina local, donde sin cambiar las configuraciones unas $10^6$ llamadas podrían comenzar a dar problemas. Además hacer recursión es más lento que hacer ciclos, por lo que puede resultar conveniente pasar la recursión a ciclos, el ejemplo de Fibonacci se puede hacer así:
 ```c++
 int fibonacci(int n) {
   int anterior1 = 0, anterior2 = 1, suma = 0;
@@ -153,7 +149,9 @@ int fibonacci(int n) {
 ```
 
 ## Lambdas
-Desde C++11 se pueden definir lambdas, o funciones sin nombre, y usan la sintáxis <code>[<i>capturas</i>] (<i>parámetros</i>) {<i>cuerpo</i>}</code>, dentro de los corchetes van las capturas, por simplicidad solo utilizaremos un `&`, esto porque la captura `&` hace que se la lambda se comporte igual a como lo hacen en la mayoría de lenguajes (como Python y JavaScript). La lista de parámetros y cuerpo son idénticos a los de una función normal, un ejemplo:
+Desde C++11 se pueden definir lambdas, o funciones sin nombre, y como implementar rápido los algoritmos puede volverse importante en programación competitiva, usarlas en funciones como `min`, `max` y `sort` resulta útil.
+
+Su sintáxis es <code>[<i>capturas</i>] (<i>parámetros</i>) {<i>cuerpo</i>}</code>, dentro de los corchetes van las capturas, por simplicidad solo utilizaremos `[&]`, esto porque la captura `&` hace que la lambda se comporte igual a las lambdas de la mayoría de lenguajes (como Python y JavaScript). La lista de parámetros y cuerpo son idénticos a los de una función normal, un ejemplo:
 ```c++
 #include <iostream>
 using namespace std;
@@ -164,10 +162,7 @@ int main() {
   return 0;
 }
 ```
-
-{{ alert icon="👉" text="Las lambdas no necesitan llevar su tipo de retorno, ya que el compilador lo deduce de los <code>return</code>."}}
-
-Ya que escribir código rápido es importante en programación competitiva, las lambdas son una buena forma de pasar una funcion a funciones como `min`, `max` y `sort`.
+{{< alert icon="👉" text="Las lambdas no necesitan llevar su tipo de retorno, ya que el compilador lo deduce de los <code>return</code>." >}}
 
 ## Función `main` y el Flujo del Programa
 Como ya habrán visto, la función `main` es el punto de partida de los programas en C++. Esta función retorna un `int`, cuyo valor es el código de termino del programa y cualquier valor distinto de `0` se considera un código de error.
@@ -185,7 +180,7 @@ int main() {
         cout << "Caso borde, no es necesario ejecutar lo que sige\n";
         exit(0); // terminamos temprano con código 0
     }
-    // Resto del algoritmo
+    /* Resto del algoritmo */
     return 0;
 }
 ```
@@ -196,12 +191,12 @@ Temas que no sé si agregar, (ya van 200 lineas de artículo)
 ## Recursión de Cola (Tail-Recursion) ??
 
 
-## Parámetros Volátiles y Constantes *
+## Parámetros Volátiles y Constantes ?
 Requerido para sobrecarga de operadores
 
-## Funciones Miembras *
+## Funciones Miembras ?
 Usado en las definiciones que suben para el segment tree y fenwick tree (faltaría templates)
 
 ## Sobrecarga de Operadores ??
-útil para hacer greater<>, less<> de structs
+útil para hacer greater<>, less<>, ...
 -->
