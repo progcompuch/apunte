@@ -24,12 +24,13 @@ jobs:
           pip install -r cses-standings/requirements.txt
           mkdir cses
           cp -r cses-standings/static cses/static
-          python cses-standings/main.py -u cses-users.txt -o cses/index.html
+          python cses-standings/main.py -u cses-users.txt -o cses/cses.html
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: cses
-          destination_dir: cses
+          destination_dir: ./
+          keep_files: true
 
