@@ -9,6 +9,38 @@ menu:
     parent: intro
 
 ---
+### Números binarios
+
+Probablemente te sea familiar el concepto de los números binarios, son números que están compuestos solamente por unos y ceros, cada dígito es llamado un bit, y dependiendo de la posición de este dígito es una distinta potencia de 2:
+
+<center> <img src="bitwise-binarioadecimal.png" width="450"/> </center>
+
+Hay bastantes problemas que requieren que revises los bits de un número y trabajes sobre ellos y esto es bastante fácil si sabes como hacerlo:
+
+```c++
+int number;
+cin>>number;
+vector<int> bits;
+while (number != 0){
+    bits.push_back(number%2);
+    number/=2;
+}
+```
+El código anterior lee un número y guarda sus bits en un vector. El módulo 2 revisa el último bit y dividirlo por 2 representa moverse al siguiente bit. Luego volver del vector al número es igual de fácil:
+
+```c++
+int pot = 1;
+int number = 0;
+for (int i=0;i<bits.size();i++){
+    number += pot * bits[i];
+    pot *= 2;
+}
+```
+
+Aquí nos movemos bit por bit y a medida que cambiamos el bit cambiamos la potencia que representa.
+
+El computador usa este sistema para guardar los números de forma interna y C++ nos permite trabajar directamente con ellos.
+
 ### Operadores bitwise
 
 C++ nos permite usar operadores que trabajan sobre los bits de un número, estos son sumamente rápidos ya que el computador está diseñado para trabajar con ellos y saber usarlos bien puede ser una herramienta muy útil en ciertos problemas.
@@ -32,7 +64,22 @@ Los operadores unarios son los más interesantes:
 | LEFT SHIFT  | a << x   | a << 2  | 19   | 10011     | 76        | 1001100            |
 | RIGHT SHIFT | a >> x   | a >> 2  | 19   | 10011     | 4         | 100                |
 
-Ahora, ¿cómo nos puede servir esto para programación competitiva? Resulta que con esto podemos usar los números como arreglos de booleanos y, como dije al principio, las operaciones bitwise son bastante rápidas, por lo tanto son bastante útiles para cuando necesitamos iterar por subconjuntos de un arreglo. Para dar un ejemplo, digamos que tenemos un vector *a* con *n* números y queremos probar todas las sumas posibles de los subconjuntos, si *n* es pequeño podemos hacer lo siguiente
+Con estos operadores podemos mejorar el código que mostramos al principio:
+
+```c++
+int number;
+cin>>number;
+vector<int> bits;
+while (number != 0){
+    bits.push_back(number&1);
+    number>>=1;
+}
+```
+El operador ```&1``` hace un AND con puros ceros excepto en la primera posición en donde va a ser 1 solamente si el primer bit también es 1. Luego el shift es equivalente a dividir por 2.
+
+### Números como vectores booleanos
+
+Resulta que con esto podemos usar los números como arreglos de booleanos y, como dije al principio, las operaciones bitwise son bastante rápidas, por lo tanto son bastante útiles para cuando necesitamos iterar por subconjuntos de un arreglo. Para dar un ejemplo, digamos que tenemos un vector *a* con *n* números y queremos probar todas las sumas posibles de los subconjuntos, si *n* es pequeño podemos hacer lo siguiente
 
 ```c++
 for (int mask=0;mask < (1 << n);++mask){
