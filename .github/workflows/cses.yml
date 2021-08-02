@@ -1,0 +1,36 @@
+name: auto deploy cses standings
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  # Checkout cses-standings submodule
+          fetch-depth: 0    # Fetch all history for all branches and tags
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8.5'
+
+      - run: |
+          python -m pip install --upgrade pip 
+          pip install -r cses-standings/requirements.txt
+          mkdir cses
+          cp -r cses-standings/static cses/static
+          python cses-standings/main.py -u cses-users.txt -o cses/cses.html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: cses
+          destination_dir: ./
+          keep_files: true
+
