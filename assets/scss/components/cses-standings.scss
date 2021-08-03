@@ -1,0 +1,44 @@
+.problem-name {
+  text-align: left;
+}
+
+body.dark .problem-category-title {
+  background-color: $gray-900;
+}
+
+
+.problem-category-title {
+  background-color: white;
+}
+
+.problem-category-title td {
+  border: 0px;
+}
+
+.task-score:before {
+  content: '❔'
+}
+
+.task-score.none:before {
+  content: '➖'
+}
+
+.task-score.none {
+  @extend .table-active
+}
+
+.task-score.attempted:before {
+  content: '❌'
+}
+
+.task-score.attempted {
+  @extend .table-danger
+}
+
+.task-score.accepted:before {
+  content: '✔'
+}
+
+.task-score.accepted {
+  @extend .table-success
+}

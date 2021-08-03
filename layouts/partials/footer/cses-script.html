@@ -1,0 +1,8 @@
+{{ $csesTemplate := resources.Get "js/cses.js" -}}
+{{ $cses := $csesTemplate | resources.ExecuteAsTemplate "cses.js" . -}}
+{{ if eq (hugo.Environment) "development" -}}
+  <script src="{{ $cses.Permalink }}" defer></script>
+{{ else -}}
+  {{ $csesProd := $cses | resources.Minify | resources.Fingerprint "sha512" -}}
+  <script src="{{ $csesProd.Permalink }}" integrity="{{ $csesProd.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}

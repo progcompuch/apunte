@@ -17,7 +17,8 @@ module.exports = {
           './assets/scss/components/_search.scss',
           './assets/scss/common/_dark.scss',
           './assets/scss/components/code-dark.scss',
-          './node_modules/bootstrap/scss/_tables.scss'
+          './assets/scss/components/cses-standings.scss',
+          './node_modules/bootstrap/scss/_tables.scss',
         ]),
       ],
     }),

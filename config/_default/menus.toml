@@ -33,15 +33,20 @@
   url = "/docs/prologo/intro"
   weight = 2
 
-  [[main]]
-  name = "Recursos"
-  url = "/recursos/contests/intro"
-  weight = 3
+[[main]]
+name = "Recursos"
+url = "/recursos/contests/intro"
+weight = 3
 
 [[main]]
   name = "Acerca"
   url = "/acerca"
   weight = 4
+
+#[[main]]
+#  name = "CSES"
+#  url = "/cses"
+#  weight = 5
 
 [[social]]
   name = "GitHub"
