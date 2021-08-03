@@ -21,7 +21,7 @@
           {{ range $index, $name := index $names $parentIndex -}}
             {{ $id := index $ids $parentIndex $index -}}
             <tr class="problem" data-id="{{ $id }}">
-              <td class="problem-name"><a href="{{ $id | string | path.Join $problemUrl }}">{{ $name }}</a></td>
+              <td class="problem-name"><a href="{{ $problemUrl }}{{ $id }}">{{ $name }}</a></td>
               {{ range $userNames -}}
                 <td class="task-score"></td>
               {{ end }}
