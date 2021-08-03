@@ -1,6 +1,8 @@
 [Params]
 
   ## CSES Standings config
+  ### IMPORTANT: The external API uses this file, and the `csesIds` config to fetch the user ids
+
   csesIds   = [69586, 72638, 72385, 74066, 74173]
   csesNames = ["Blaz", "Gonxo", "Dmitri", "wawer", "Davicom"]
   csesEndpoint = "https://uch.ibanezd.ml/api/cses-tasks/"
