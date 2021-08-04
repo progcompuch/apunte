@@ -1,4 +1,4 @@
-const csesIds=[69586,72638,72385,74066,74173,];const taskClases={'accepted':'accepted','attempted':'attempted','notAttempted':'none'}
+const csesIds=[69586,72638,72385,74066,74173,74511,];const taskClases={'accepted':'accepted','attempted':'attempted','notAttempted':'none'}
 function loadStandings(data){let problemsRows={};for(const node of document.getElementsByClassName("problem")){problemsRows[node.dataset.id]=node;};for(const idIndex in csesIds){let userId=csesIds[idIndex];let userData=data[userId];if(userData===undefined){Object.values(problemsRows).forEach(tr=>{tr.children[parseInt(idIndex)+1].className="task-score";});return;}
 Object.keys(userData).forEach(state=>{let problemIds=userData[state];let stateClass=taskClases[state];problemIds.forEach(problemId=>{if(problemsRows[problemId]===undefined){return;}
 problemsRows[problemId].children[parseInt(idIndex)+1].className="task-score "+stateClass;});});}}
