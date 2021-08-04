@@ -118,7 +118,7 @@ int main() {
 
 {{< alert icon="💡" text="No confundir <b>&</b> en la declaración de una variable o parámetro con el operador de dirección <b>&</b>" >}}
 
-Esta técnica también es útil cuando se quiere pasar a una función estructuras muy grandes, esto ya que pasarlos por copia puede se vuelver lento, normalmente la operación copia es a lo menos O(n), donde n es la cantidad de datos de la estructura, en cambio pasar por referencia es siempre O(1).
+Esta técnica también es útil cuando se quiere pasar a una función estructuras muy grandes, esto ya que pasarlos por copia se puede volver lento, normalmente la operación copia es a lo menos O(n), donde n es la cantidad de datos de la estructura, en cambio pasar por referencia es siempre O(1).
 
 ## Recursividad
 Una función puede llamarse a sí misma, al hacerlo se dice recursiva, de una forma similar a una definición matemática por recurrencia, por ejemplo con la sucesión de Fibonacci:
@@ -149,7 +149,7 @@ int fibonacci(int n) {
 ```
 
 ## Lambdas
-Desde C++11 se pueden definir lambdas, o funciones sin nombre, y como implementar rápido los algoritmos puede volverse importante en programación competitiva, usarlas en funciones como `min`, `max` y `sort` resulta útil.
+Desde C++11 se pueden definir lambdas, o funciones sin nombre, y como implementar rápido los algoritmos es importante en programación competitiva, usarlas en funciones como `min`, `max` y `sort` resulta útil.
 
 Su sintáxis es <code>[<i>capturas</i>] (<i>parámetros</i>) {<i>cuerpo</i>}</code>, dentro de los corchetes van las capturas, por simplicidad solo utilizaremos `[&]`, esto porque la captura `&` hace que la lambda se comporte igual a las lambdas de la mayoría de lenguajes (como Python y JavaScript). La lista de parámetros y cuerpo son idénticos a los de una función normal, un ejemplo:
 ```c++
@@ -184,19 +184,3 @@ int main() {
     return 0;
 }
 ```
-
-<!--
-Temas que no sé si agregar, (ya van 200 lineas de artículo)
-
-## Recursión de Cola (Tail-Recursion) ??
-
-
-## Parámetros Volátiles y Constantes ?
-Requerido para sobrecarga de operadores
-
-## Funciones Miembras ?
-Usado en las definiciones que suben para el segment tree y fenwick tree (faltaría templates)
-
-## Sobrecarga de Operadores ??
-útil para hacer greater<>, less<>, ...
--->
