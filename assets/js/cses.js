@@ -59,7 +59,7 @@ if (csesContainer !== null) {
 {{ if eq (hugo.Environment) "development" }}
   if (true) {
 {{ else }}
-  if (cache === null || cache.expires < dt.getSeconds) {
+  if (cache === null || cache.expires < dt.getTime()) {
 {{ end }}
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
