@@ -39,14 +39,14 @@ url = "/recursos/contests/intro"
 weight = 3
 
 [[main]]
-  name = "Acerca"
-  url = "/acerca"
+  name = "CSES"
+  url = "/cses"
   weight = 4
 
-#[[main]]
-#  name = "CSES"
-#  url = "/cses"
-#  weight = 5
+[[main]]
+  name = "Acerca"
+  url = "/acerca"
+  weight = 5
 
 [[social]]
   name = "GitHub"
