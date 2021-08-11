@@ -22,31 +22,25 @@
   identifier = "anexos"
   url = "/docs/anexos/"
 
-
-[[main]]
-  name = "Videos"
-  url = "/blog/"
-  weight = 1
-
 [[main]]
   name = "Apunte"
   url = "/docs/prologo/intro"
-  weight = 2
+  weight = 1
 
 [[main]]
 name = "Recursos"
 url = "/recursos/contests/intro"
-weight = 3
+weight = 2
 
 [[main]]
   name = "CSES"
   url = "/cses"
-  weight = 4
+  weight = 3
 
 [[main]]
   name = "Acerca"
   url = "/acerca"
-  weight = 5
+  weight = 4
 
 [[social]]
   name = "GitHub"
