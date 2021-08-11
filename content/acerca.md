@@ -1,3 +1,11 @@
+---
+title: Acerca
+description: "Creadores, licencia y agradecimientos"
+date: 2020-10-06T08:47:36.000+00:00
+images: []
+type: about
+---
+
 El objetivo de este sitio es servir como apoyo para los cursos de Programación Competitiva de la [Universidad de Chile](https://uchile.cl), pero no busca limitarse con solo eso, sino ser un material abierto y disponible para quien quiera aprender a cuenta propia o aprender más allá de lo visto en el curso, incluso sin necesitar de experiencias previas programando.
 
 # Creadores y Licencia
