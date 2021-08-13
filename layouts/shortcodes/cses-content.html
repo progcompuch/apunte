@@ -4,19 +4,17 @@
 {{ $problemUrl := .Site.Params.csesProblemUrl }}
 
 <div id="cses-tables-container">
-  <div class="problem-category">
-    <table class="table table-sm table-bordered">
-      <tbody>
-        {{ range $title := $titles }}
-          <tr class="problem-category-title"><td colspan="{{ len $userNames | add 1 }}"><h2>{{ $title }}</h2></td></tr>
-          <tr>
-            <td></td>
-            {{ range $userName := $userNames }}
-              <td>{{ $userName }}</td>
-            {{ end }}
-          </tr>
-        {{ end }}
-      </tbody>
-    </table>
-  </div>
+  <table class="table table-sm table-bordered cses-table">
+    <tbody>
+      {{ range $title := $titles }}
+        <tr class="problem-category-title"><td colspan="{{ len $userNames | add 1 }}"><h2>{{ $title }}</h2></td></tr>
+        <tr>
+          <td></td>
+          {{ range $userName := $userNames }}
+            <td>{{ $userName }}</td>
+          {{ end }}
+        </tr>
+      {{ end }}
+    </tbody>
+  </table>
 </div>

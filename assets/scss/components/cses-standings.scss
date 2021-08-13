@@ -2,10 +2,13 @@
   text-align: left;
 }
 
+.cses-table {
+  border: 0px;
+}
+
 body.dark .problem-category-title {
   background-color: $gray-900;
 }
-
 
 .problem-category-title {
   background-color: white;
@@ -15,30 +18,66 @@ body.dark .problem-category-title {
   border: 0px;
 }
 
+.task-score {
+  padding: 0.1em !important;
+  font-size: 20px;
+}
+
 .task-score:before {
-  content: '❔'
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: '\f128';
+  color: $gray-600;
+}
+
+body.dark .task-score:before {
+  color: $gray-500;
 }
 
 .task-score.none:before {
-  content: '➖'
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: '\f068';
 }
 
 .task-score.none {
-  @extend .table-active
+  @extend .table-active;
 }
 
 .task-score.attempted:before {
-  content: '❌'
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: '\f00d';
+  color: #aa0000;
+}
+
+body.dark .task-score.attempted {
+  background-color: darken(#fa6540, 25%);
+}
+
+body.dark .task-score.attempted:before {
+  color: #ffe7e7;
 }
 
 .task-score.attempted {
-  @extend .table-danger
+  @extend .table-danger;
 }
 
 .task-score.accepted:before {
-  content: '✔'
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: '\f00c';
+  color: #005800;
+}
+
+body.dark .task-score.accepted {
+  background-color: darken(#40fab0, 25%);
+}
+
+body.dark .task-score.accepted:before {
+  color: #ecffec;
 }
 
 .task-score.accepted {
-  @extend .table-success
+  @extend .table-success;
 }

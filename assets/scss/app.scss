@@ -7,6 +7,9 @@
 /** Import Bootstrap */
 @import "bootstrap/scss/bootstrap";
 
+/** Import FontAwesome */
+@import "@fortawesome/fontawesome-free/scss/solid";
+
 /** Import theme styles */
 @import "common/fonts";
 @import "common/global";

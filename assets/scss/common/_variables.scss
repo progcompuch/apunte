@@ -134,4 +134,14 @@ $alert-color-level:                 0;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-accent-bg:             rgba(#000, .05);
+$table-accent-bg:             rgba($black, .05);
+
+
+/******************/
+/*  Font Awesome  */
+/******************/
+
+// Variables
+// --------------------------
+
+$fa-font-path:         "fonts/vendor/fontawesome";

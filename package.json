@@ -51,5 +51,8 @@
     "standard-version": "^9.1",
     "stylelint": "^13.11",
     "stylelint-config-standard": "^20.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4"
   }
 }
