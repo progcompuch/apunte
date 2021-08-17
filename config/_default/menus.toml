@@ -11,10 +11,10 @@
   url = "/docs/intro/"
 
 [[docs]]
-  name = "Tema2"
+  name = "La STL"
   weight = 3
-  identifier = "tema2"
-  url = "/docs/tema2/"
+  identifier = "stl"
+  url = "/docs/stl/"
 
 [[docs]]
   name = "Anexos"
