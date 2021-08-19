@@ -30,16 +30,19 @@ Al principio puede que no sea tan intuitivo la sintaxis, ¡pero con la práctica
 
 ## Tipos de variables
 
-* **Números**: Tenemos distintos tipos de números, los cuales cumplen funciones distintas. Hay que tener ojo con que pertenezcan al rango correspondiente, ya que en caso de superar uno de estos límites se genera un "overflow", o "underflow", lo que distorsiona el número y no nos da el valor deseado. Tenemos 3 tipos básicos:
+### Númericos
+Tenemos distintos tipos de números, los cuales cumplen funciones distintas. Hay que tener ojo con que pertenezcan al rango correspondiente, ya que en caso de superar uno de estos límites se genera un "overflow", o "underflow", lo que distorsiona el número y no nos da el valor deseado. Tenemos 3 tipos básicos:
   * *int*: Se usa para enteros (_integers_ en inglés) y cubren valores entre -2,147,483,648 y 2,147,483,647 (correspondiendo al 2<sup>31</sup>-1). Como regla general, se usa para valores entre el -2\*10<sup>10</sup> y 2\*10<sup>10</sup>. Tienen la desventaja de no poder almacenar valores decimales pero son útiles en la mayoría de las situaciones. La operación de estos siempre te dará resultado entero, por lo que hay que tener ojo con la division entera (3/2 = 1 bajo esta lógica).
-  * *long long int*: Usualmente conocido simplemente como "_long long_", se usa en caso de que necesites un rango mayor que el int, el rango es de –9, 223, 372, 036, 854, 775, 808 a 9, 223, 372, 036, 854, 775, 807. Esto nos permite trabajar con números entre -10<sup>18</sup> y 10<sup>18</sup>.
+  * *long long int*: Usualmente conocido simplemente como "_long long_", se usa en caso de que necesites un rango mayor que el int, el rango es de –9,223,372,036,854,775,808 a 9,223,372,036,854,775,807. Esto nos permite trabajar con números entre aproximadamente -10<sup>18</sup> y 10<sup>18</sup>.
   * *float*: Este tipo se usa para trabajar números con decimales. Por las limitaciones de la memoria este número contiene un valor aproximado hasta cierto decimal, pero no tiende a importar tanto pues generalmente se usa para calculos numericos no tan precisos, considerando el rango de decimales.
 
-* **Cadenas**: Se usan para registrar "palabras" o "caracteres". Puede incluir letras, números y simbolos, por lo que hay que tener cuidado a la hora de manipular números como variables de este tipo, pues no se comportan igual (no es lo mismo el número 2 que el caracter "2", podemos sumar números pero no caracteres). En esta categoría tenemos dos tipos:
+### Cadenas
+Se usan para registrar "palabras" o "caracteres". Puede incluir letras, números y simbolos, por lo que hay que tener cuidado a la hora de manipular números como variables de este tipo, pues no se comportan igual (no es lo mismo el número 2 que el caracter "2", podemos sumar números pero no caracteres). En esta categoría tenemos dos tipos:
   * *char*: La unidad mínima, almacenando un único caracter. Ej: "h", "2", "o", etc.
   * *string*: El tipo más usado de las cadenas, es un arreglo (es decir, una serie ordenada) de "char"s, con lo que puedes procesar varios caracteres seguidos. Ej: "hola", "c++", "123", "h0l4", etc.
 
-* **Booleanos**: Es el tipo más pequeño, almacenando dos posibles valores, "_True_" (para verdadero) y "_False_" (para falso). Se guarda para registrar si cierta condición se cumple.
+### Booleanos
+Es el tipo más pequeño, almacenando dos posibles valores, "_True_" (para verdadero) y "_False_" (para falso). Se guarda para registrar si cierta condición se cumple.
 
 ## Haciendo un programa
 
