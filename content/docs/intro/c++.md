@@ -1,5 +1,5 @@
 ---
-title: Entendiendo C++
+title: Sintaxis, variables, tipos y ciclos
 lead: ''
 date: 2020-10-06T08:48:45.000+00:00
 images: []
@@ -9,8 +9,41 @@ menu:
     parent: intro
 
 ---
-Para partir programando, primero debemos entender en qué formato se programa. Para los programas en c++ solo requieres crear un archivo de texto cualquiera, en el editor de texto que elijas (funciona hasta en un block de notas), cuyo nombre termine con la extención ".cpp" (del inglés "cee plus plus"). Este archivo contendrá la serie de instrucciones que se ejecutarán paso a paso.
-Lo primero que se ejecuta en un archivo cpp será una función a la que llamamos "main", cuya notación es:
+
+Ahora que tienes las herramientas para programar, podemos empezar a entender las partes de un programa en C++. En esta sección se explican todos los conceptos previos necesarios para empezar a resolver problemas de programación, sientete libre de omitir esta parte si sabes como funciona la programación o has tenido experiencia programado antes.
+
+## Sintaxis
+
+Tal como en otros lenguajes de programación (como c, kotlin o python) vamos a identificar las instrucciones de nuestro código a partir de la manera en que están agrupadas las líneas de código. En python se agrupan según la indentación, es decir, si una serie de líneas están con la misma indentación es porque comparten nivel de prioridad. En el caso de C++ estos bloques se agruparán a partir del uso de corchetes ("{}").
+
+<!-- imagen bonita -->
+
+Las instrucciones de C++ se delimitan marcando el final con un punto y coma (";"), a diferencia de python donde bastaba hacer un salto de línea; esto significa que c++ ignora los saltos de línea, por lo que técnicamente podrías escribir varias instrucciones en una sola línea.
+
+<!-- imagen bonita -->
+
+En C++, a diferencia de python, debes especificar entre parentesis las condiciones de valor que usarás en tus "if"s y "while"s.
+
+<!-- imagen bonita -->
+
+Al principio puede que no sea tan intuitivo la sintaxis, ¡pero con la práctica no olvidarás poner tus punto y coma! Para comenzar a trabajar con C++ manipularemos distintos formatos de variables ¡y no todos se comportan de la misma manera! 
+
+## Tipos de variables
+
+* **Números**: Tenemos distintos tipos de números, los cuales cumplen funciones distintas. Hay que tener ojo con que pertenezcan al rango correspondiente, ya que en caso de superar uno de estos límites se genera un "overflow", o "underflow", lo que distorsiona el número y no nos da el valor deseado. Tenemos 3 tipos básicos:
+  * *int*: Se usa para enteros (_integers_ en inglés) y cubren valores entre -2,147,483,648 y 2,147,483,647 (correspondiendo al 2<sup>31</sup>-1). Como regla general, se usa para valores entre el -2\*10<sup>10</sup> y 2\*10<sup>10</sup>. Tienen la desventaja de no poder almacenar valores decimales pero son útiles en la mayoría de las situaciones. La operación de estos siempre te dará resultado entero, por lo que hay que tener ojo con la division entera (3/2 = 1 bajo esta lógica).
+  * *long long int*: Usualmente conocido simplemente como "_long long_", se usa en caso de que necesites un rango mayor que el int, el rango es de –9, 223, 372, 036, 854, 775, 808 a 9, 223, 372, 036, 854, 775, 807. Esto nos permite trabajar con números entre -10<sup>18</sup> y 10<sup>18</sup>.
+  * *float*: Este tipo se usa para trabajar números con decimales. Por las limitaciones de la memoria este número contiene un valor aproximado hasta cierto decimal, pero no tiende a importar tanto pues generalmente se usa para calculos numericos no tan precisos, considerando el rango de decimales.
+
+* **Cadenas**: Se usan para registrar "palabras" o "caracteres". Puede incluir letras, números y simbolos, por lo que hay que tener cuidado a la hora de manipular números como variables de este tipo, pues no se comportan igual (no es lo mismo el número 2 que el caracter "2", podemos sumar números pero no caracteres). En esta categoría tenemos dos tipos:
+  * *char*: La unidad mínima, almacenando un único caracter. Ej: "h", "2", "o", etc.
+  * *string*: El tipo más usado de las cadenas, es un arreglo (es decir, una serie ordenada) de "char"s, con lo que puedes procesar varios caracteres seguidos. Ej: "hola", "c++", "123", "h0l4", etc.
+
+* **Booleanos**: Es el tipo más pequeño, almacenando dos posibles valores, "_True_" (para verdadero) y "_False_" (para falso). Se guarda para registrar si cierta condición se cumple.
+
+## Haciendo un programa
+
+Lo primero que se ejecuta en un archivo cpp será una función a la que llamamos "main" (que es necesaria para que el programa funcione) cuya notación es:
 
 ```c++
 int main(){
@@ -36,6 +69,7 @@ Intentar compilar el programa descrito anteriormente fallará pues no reconocer�
 ```c++
 #include <iostream>
 ```
+
 Que hace cargar una serie de instrucciones que permiten el paso de entrada y salida de información al programa (Input-Output STREAM). Nuestro programa quedará así:
 
 ```c++
@@ -65,6 +99,8 @@ int main(){
 }
 ```
 Notemos que un mismo cout puede recibir multiples strings, y estas van a seguir el flujo que indiquen los símbolos "<<", imprimiendo una línea tras otra, por lo que es importante notar que si necesito un espacio entre dos valores a imprimir, como es el caso al final de algunas de las nuevas líneas, caso contrario concatenaría cada string una al lado de la otra. En el ejemplo también se muestra el uso de números, el cual la máquina interpreta antes de imprimir por lo que no tiene problemas a la hora de mezclar con las strings.
+
+## Operaciones aritmeticas
 
 Otra cosa que puedes hacer en c++, tan como en los otros lenguajes de programación, es realizar operaciones aritmeticas. Podemos pedirles cálculos tales como sumas, restas, multiplicaciones y divisiones. Entonces, si tuvieramos un programa como:
 ```c++
@@ -98,3 +134,7 @@ int main(){
 ```
 
 Para marcar comentarios que aclaren el código, o si desear probar un programa sin que se ejecute una línea, puedes "comentar una línea", que es anteponerle dos slashes ("//") para que nuestra máquina ignore el contenido que le siga a esos caracteres.
+
+## Ciclos "for" y "while"
+
+
