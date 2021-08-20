@@ -103,7 +103,18 @@ int main(){
 ```
 Notemos que un mismo cout puede recibir multiples strings, y estas van a seguir el flujo que indiquen los símbolos "<<", imprimiendo una línea tras otra, por lo que es importante notar que si necesito un espacio entre dos valores a imprimir, como es el caso al final de algunas de las nuevas líneas, caso contrario concatenaría cada string una al lado de la otra. En el ejemplo también se muestra el uso de números, el cual la máquina interpreta antes de imprimir por lo que no tiene problemas a la hora de mezclar con las strings.
 
-Ahora
+Ahora veremos que si queremos leer información desde la terminal (como input del programa) tenemos que usar "cin", para lo cual debemos declarar las variables antes de recibirlas, y les asignamos su valor con esta línea, por ejemplo:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main(){
+	int a;
+	cin >> a;
+	cout << "Hola! Me acabas de dar el número " << a << "\n";
+}
+```
 
 ## Operaciones aritmeticas
 
