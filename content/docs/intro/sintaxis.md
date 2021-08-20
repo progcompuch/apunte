@@ -66,7 +66,7 @@ Notemos que el flujo sigue el sentido del operador, y no funcionaría si se escr
 
 Ahora, podemos intentar "hacer funcionar" este código, es decir, correr el programa. Para esto, necesitamos compilar este código, pues c++ es un lenguaje compilado, lo que quiere decir que para que un programa funcione tenemos que pasar las líneas escritas de manera legible para un humano a líneas que un computador pueda entender y ejecutar.
 
-Este paso de compilación dependerá mucho de las herramientas que uses, y como se haga dependerá tanto del sistema operativo que usas como de los programas que estás usando. Por ejemplo, si lo haces con las herramientas más basicas estarías usando una terminal abierta en la misma carpeta donde se encuentre tu archivo .cpp, y ejecutando "g++ miPrograma.cpp" si estás en una distribución de linux.
+Este paso de compilación dependerá mucho de las herramientas que uses, y como se haga dependerá tanto del sistema operativo que usas como de los programas que estás usando. Por ejemplo, si lo haces con las herramientas más basicas estarías usando una terminal abierta en la misma carpeta donde se encuentre tu archivo .cpp, y ejecutando "g++ miPrograma.cpp".
 
 Intentar compilar el programa descrito anteriormente fallará pues no reconocerá el termino "cout"; necesita aprender a usarlo, y para esto escribimos antes del programa:
 ```c++
@@ -102,6 +102,8 @@ int main(){
 }
 ```
 Notemos que un mismo cout puede recibir multiples strings, y estas van a seguir el flujo que indiquen los símbolos "<<", imprimiendo una línea tras otra, por lo que es importante notar que si necesito un espacio entre dos valores a imprimir, como es el caso al final de algunas de las nuevas líneas, caso contrario concatenaría cada string una al lado de la otra. En el ejemplo también se muestra el uso de números, el cual la máquina interpreta antes de imprimir por lo que no tiene problemas a la hora de mezclar con las strings.
+
+Ahora
 
 ## Operaciones aritmeticas
 
@@ -140,4 +142,33 @@ Para marcar comentarios que aclaren el código, o si desear probar un programa s
 
 ## Ciclos "for" y "while"
 
+Para definir ciclos, en C++ tienes un ciclo "for" muy parecido a los "while", donde defines el ciclo a partir de un inicio, la condición final, y los pasos. Por ejemplo, en un "while" haríamos algo como lo siguiente:
 
+```c++
+#include <iostream>
+using namespace std;
+
+int main(){
+	int n=1;
+	while(n<11){
+		cout << n << " ";
+		n++;
+	}
+	cout << "\n";
+}
+```
+lo que imprime los números del 1 al 10, pues definimos la condición inicial (n=1), luego la condición final en el while (n<11) y por último ponemos el paso para que avance al final del while (n++). Esto sería equivalente al siguiente for:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main(){
+	for(int n=1; n<11; n++){
+		cout << n << " ";
+	}
+	cout << "\n";
+}
+```
+
+Así que a la hora de crear un "for" tenemos que definir estas 3 condiciones entre paréntesis, siendo estas "for(inicial; final; paso)" y las instrucciones a ejecutar en cada ciclo definidas dentro de los corchetes "{}".
