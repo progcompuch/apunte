@@ -10,7 +10,7 @@ menu:
 
 ---
 
-Ahora que tienes las herramientas para programar, podemos empezar a entender las partes de un programa en C++. En esta sección se explican todos los conceptos previos necesarios para empezar a resolver problemas de programación, sientete libre de omitir esta parte si sabes como funciona la programación o has tenido experiencia programado antes.
+Ahora que tienes las herramientas para programar, podemos empezar a entender las partes de un programa en C++. En esta sección se explican todos los conceptos previos necesarios para empezar a resolver problemas de programación, sientete libre de omitir esta parte si sabes como funciona la programación o has tenido experiencia programando antes.
 
 ## Sintaxis
 
