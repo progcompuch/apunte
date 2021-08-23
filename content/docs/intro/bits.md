@@ -13,7 +13,7 @@ menu:
 
 Probablemente te sea familiar el concepto de los números binarios, son números que están compuestos solamente por unos y ceros, cada dígito es llamado un bit, y dependiendo de la posición de este dígito es una distinta potencia de 2:
 
-<center> <img src="../bitwise-binarioadecimal.png" width="450"/> </center>
+<center> <img class="invertible" src="../bitwise-binarioadecimal.png" width="450"/> </center>
 
 Hay bastantes problemas que requieren que revises los bits de un número y trabajes sobre ellos y esto es bastante fácil si sabes como hacerlo:
 
