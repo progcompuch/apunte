@@ -29,7 +29,7 @@
 
 [[main]]
 name = "Recursos"
-url = "/recursos/contests/intro"
+url = "/recursos/prologo/intro"
 weight = 2
 
 [[main]]
