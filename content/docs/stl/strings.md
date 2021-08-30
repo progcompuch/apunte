@@ -58,9 +58,9 @@ Los strings funcionan muy parecido a los vectores de caracteres, lo cual nos da 
 
 Pero al ser un tipo de estructura distinta tiene otras propiedades como:
 
-- Al leer un string con cin se lee un grupo de carácteres hasta encontrar un espacio o un saltos de línea.
+- Al leer un string con cin se lee un grupo de carácteres hasta encontrar un espacio o un salto de línea.
 - Se pueden concatenar dos strings con el símbolo +
-- Una función útil de los strings es s.substr(i,n) que nos entrega el substring de s que parte en i tiene tamaño n como un nuevo string.
+- Una función útil de los strings es s.substr(i,n) que nos entrega el substring de s que parte en i y tiene tamaño n en un nuevo string.
 
 Para dar un ejemplo vamos a hacer un pequeño programa que imprima todos los substrings de un string:
 
