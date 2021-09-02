@@ -22,4 +22,4 @@ Los capítulos de la barra lateral se muestran un orden de complejidad ascendien
 
 ### Preparación del entorno de programación
 
-Para manejar las herramientas mínimas requeridas para programar, revisa la página sobre "Compilación y Editores de Texto".
+Para manejar las herramientas mínimas requeridas para programar, revisa la página sobre [Compilación y Editores de Texto]({{< relref "compilacion-editores" >}}).
