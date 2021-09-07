@@ -47,24 +47,24 @@ Para simplificar, nos referiremos a una "función binaria monótona" como una "c
 
 Una vez identifiquemos la propiedad de monotinicidad en nuestro problema, podemos hacer búsqueda binaria.
 
-La búsqueda binaria es una aplicación de la estrategia _divide and conquer_. En cada iteración iremos reduciendo nuestro espacio de búsqueda a la mitad, logrando así una complejidad $O(\log n)$ donde $n$ es el tamaño del espacio de búsqueda, dado que dividiendo $n$ a la mitad $\log n$ veces llegamos a un espacio de tamaño $1$. (_Nota: en computación, logaritmo es por defecto con base $2$_)
+La búsqueda binaria es una aplicación de la estrategia _divide and conquer_. En cada iteración iremos reduciendo nuestro espacio de búsqueda a la mitad, logrando así una complejidad $O(\log n)$ donde $n$ es el tamaño del espacio de búsqueda, dado que dividiendo $n$ a la mitad $\log n$ veces llegamos a un espacio de tamaño $1$. (_Nota: en computación, logaritmo es por defecto con base $2$, aunque igual no importa para la complejidad porque es una constante_)
 
 Imaginemos que tenemos una condición. En el siguiente diagrama, una $F$ significa que la condición es falsa y una $V$ que es verdadera, y nuestro objetivo es encontrar la primera $V$. El rectángulo indica nuestro espacio de búsqueda actual (inicialmente todo) y la flecha el elemento central del espacio de búsqueda:
 
-<center> <img class="invertible" src="../bbin_1.svg" width="450"/> </center>
+<center> <img class="invertible" src="../bbin_1.png" width="450"/> </center>
 
 Nuestra flecha divide al espacio en dos mitades. Nos aprovecharemos de la monoticidad para descartar una de ellas: como actualmente estamos mirando una $F$, sabemos que todo lo de la izquierda son $F$, por lo que nuestra respuesta debe estar hacia la derecha. Descartamos la mitad izquierda:
 
-<center> <img class="invertible" src="../bbin_2.svg" width="450"/> </center>
+<center> <img class="invertible" src="../bbin_2.png" width="450"/> </center>
 
 Ahora, la flecha apunta a una $V$. Análogamente a antes, todo lo de la derecha es $V$, así que nos quedamos con la mitad izquierda:
 
-<center> <img class="invertible" src="../bbin_3.svg" width="450"/> </center>
+<center> <img class="invertible" src="../bbin_3.png" width="450"/> </center>
 
 Repitiendo el algoritmo, eventualmente llegaremos a un solo elemento:
 
-<center> <img class="invertible" src="../bbin_4.svg" width="450"/> </center>
-<center> <img class="invertible" src="../bbin_5.svg" width="450"/> </center>
+<center> <img class="invertible" src="../bbin_4.png" width="450"/> </center>
+<center> <img class="invertible" src="../bbin_5.png" width="450"/> </center>
 
 ## Implementación
 
