@@ -17,6 +17,12 @@
   url = "/docs/stl/"
 
 [[docs]]
+  name = "Algoritmos fundamentales"
+  weight = 4
+  identifier = "fundamentales"
+  url = "/docs/fundamentales"
+
+[[docs]]
   name = "Anexos"
   weight = 999
   identifier = "anexos"
