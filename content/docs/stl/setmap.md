@@ -9,9 +9,9 @@ menu:
     parent: stl
 
 ---
-## Set
+### Set
 
-Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de números de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de *O( log(n) )*. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
+Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de números de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de *O( log(n) \* k )* donde *n* es el tamaño del conjunto y *k* es la complejidad de comparar dos elementos. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
 
 ```c++
 set<int> my_set; // Se inicializa un set
@@ -53,6 +53,8 @@ for (auto it = my_set.begin() ; it != my_set.end() ; it++ ){
 
 auto small_it = my_set.begin();
 cout<<"El menor elemento del set es "<<(*small_it)<<'\n';
+// Como estan ordenados podemos tomar el primer elemento del
+// set y sabemos que este es el menor
 
 auto large_it = my_set.end();
 large_it--;
@@ -60,10 +62,72 @@ cout<<"El mayor elemento del set es "<<(*large_it)<<'\n';
 // Para obtener el mayor elemento no basta con ver end
 // ya que end es el final pero esta vacío, hay que retroceder
 // una posición para encontrar el último elemento
+
+my_set.erase(large_it);
+// A erase tambien podemos entregarle un iterador, en este caso
+// va a borrar el 4 que era el valor que tenia el iterador
 ```
 
-### Detalles importantes:
+Un par de detalles importantes:
 
-- Es importante tener muy claro que la complejidad de las operaciones en el set son *O( log(n) )*, no constantes.
+- Es importante tener muy claro que la complejidad de las operaciones en el set no son constantes y dependen del elemento que esté en el set. Comparar dos números es constante y la complejidad de las operaciones solo va a ser *O( log(n) )*, pero si ponemos vectores en el set para comparar dos vectores el computador los compara elemento a elemento lo cual cambia la complejidad y es algo importante que tener en cuenta.
+
 - Hacer ```it++``` y ```it--``` no es lo mismo que sumar y restar, C++ usa estos operadores para avanzar por el set, no se le puede sumar números a estos iteradores, cosas como ```it+=1``` no funcionan, no deberían compilar.
-                 
+
+### Map
+
+Los mapas son similares a los diccionarios de python, se asignan pares [ llave , valor ] en una estructura y en C++ estos están implementados de forma similar a los sets donde la complejidad de buscar elementos es *O( log(n) \* k )* y *k* ahora es la complejidad de comparar las llaves.
+
+```c++
+map<int,string> my_map; // un mapa con pares [ int , string ]
+
+my_map[1] = "uno"; // agregar pares al map
+
+my_map[2] = "dds"; 
+my_map[2] = "dos"; // sobreescribir el valor de una llave
+
+my_map.erase(1); // borra el par [1,"uno"]
+
+// al igual que set, podemos usar iteradores con map
+my_map.erase(my_map.find(2));
+
+// creamos un mapa con las letras del alfabeto
+for (int i=0;i<26;i++) my_map[i] = string(1,'a' + i);
+
+for (auto it = my_map.begin() ; it != my_map.end() ; it++ ){
+	// de la misma forma que recorremos el set podemos
+	// recorrer el mapa, pero como este guarda un par
+	// se accede de forma distinta
+	cout<<(it->first)<<" : "<<(it->second)<<'\n';
+	// first es la llave y second es el valor
+	// el mapa esta ordenado con el valor de la llave
+}
+```
+
+Un uso tipico de los mapas es cuando se necesita indexar strings que se pueden repetir.
+
+```c++
+int n;
+string s;
+vector<string> str;
+map<string,int> string_idx;
+
+// leyendo n strings
+for (int i=0;i<n;i++){
+	cin>>s;
+	
+	if (string_idx.find(s) == string_idx.end()){
+		// si el string no esta en el mapa va a estar 
+		// estar al final del arreglo porque lo
+		// agregaremos ahora
+		int idx = str.size();
+		string_idx[s] = idx;
+		str.push_back(s);
+	} else {
+		// si no, su indice esta en el mapa
+		int idx = string_idx[s];
+	}
+}
+```
+
+                                   
