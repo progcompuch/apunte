@@ -81,8 +81,9 @@ Así, encontraremos el primer elemento tal que la condición es verdadera.
 
 ```c++
 /*  Búsqueda Binaria
- *  l: inicio del espacio de búsqueda
- *  r: fin del espacio de búsqueda
+ *  l: inicio del espacio de búsqueda (int o long long)
+ *  r: fin del espacio de búsqueda (int o long long)
+ *  mid: centro del espacio de búsqueda (int o long long)
  *  Requiere que la condición sea "monótona": es falsa hasta cierto punto. Después es siempre verdadera.
  *  Busca el primer valor entre l y r que hace la propiedad verdadera.
  */
@@ -120,12 +121,12 @@ Hay veces en la que nuestro espacio de búsqueda no es un subconjunto de los nú
 Para esto, debemos fijar un número de iteraciones, y la precisión de nuestra respuesta dependerá de este número. Usualmente $\texttt{50}$ es suficiente, porque la precisión aumenta muy rápidamente con las iteraciones (cada $4$ iteraciones nos acercamos en un factor de $16$ a la respuesta).
 
 ```c++
-// IMPORTANTE: acá l y r son doubles (o long doubles para más precisión)
+// IMPORTANTE: acá l, r y mid son doubles (o long doubles para más precisión)
 int NUMERO_ITERACIONES = 50;
 while(NUMERO_ITERACIONES--){
-  double mid = (l+r)/2;
+  mid = (l+r)/2;
   if(/* condicion es verdadera en mid */) r = mid;
-  else l = mid+1;
+  else l = mid;
 }
 ```
 
