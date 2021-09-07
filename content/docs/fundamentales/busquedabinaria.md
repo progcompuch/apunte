@@ -161,11 +161,12 @@ Podemos definir una condición como "f es creciente". Obviamente, la condición 
 ```c++
 while(l < r){
   mid = (l+r)/2;
-  if(f[mid+1]-f[mid] > 0) r = mid; // La función es creciente: la condición se cumple
+  if(f(mid+1)-f(mid) > 0) r = mid; // La función es creciente: la condición se cumple
   else l = mid+1;
 }
 ```
 
+Nota que en el código $f$ es una función, no un arreglo/vector.
 Para el caso donde la función alcanza un máximo, deberíamos hacer la condición como "f es decreciente".
 
 ### El caso continuo
