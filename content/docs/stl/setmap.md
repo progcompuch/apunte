@@ -13,7 +13,7 @@ menu:
 
 Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de números de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de *O( log(n) )*. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
 
-```
+```c++
 set<int> my_set; // Se inicializa un set
 for (int i=0;i<5;i++){
 	my_set.insert(i); // Se ingresan elementos al set
@@ -30,7 +30,7 @@ my_set.clear(); //borra todos los elementos del set
 
 Ahora, no podemos acceder directamente a posiciones del set como lo hacemos con un arreglo, los sets usan **iteradores** que funcionan como punteros a las distintas posiciones del set, para programación competitiva no usamos los punteros de forma avanzada, solo con tener claro que no son el valor en sí sino la dirección en memoria del valor debería bastar.
 
-```
+```c++
 for (int i=0;i<5;i++) my_set.insert(i);
 
 my_set.find(2);
