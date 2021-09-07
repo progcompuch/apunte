@@ -139,6 +139,64 @@ while(r-l > EPS){
 }
 ```
 
+## Búsqueda Ternaria
+
+Pensando en números enteros, uno usualmente puede hacer búsqueda binaria sobre funciones que son crecientes o decrecientes usando una condición tipo desigualdad. Por ejemplo, si tenemos un arreglo que es creciente y queremos buscar un número $c$, buscamos el primer número $x$ que cumpla la condición $x \geq c$ y al encontrarlo verificamos si $x=c$ o no.
+
+A veces pasa que podemos tener funciones que no sean crecientes ni decrecientes. Es decir, funciones que
+
+- Son estrictamente crecientes, alcanzan su máximo y luego son estrictamente decrecientes, o
+- Son estrictamente decrecientes, alcanzan su mínimo y luego son estrictamente crecientes.
+
+Resulta que en este caso también podemos encontrar el mínimo/máximo usando una variante de la búsqueda binaria.
+
+Sin pérdida de generalidad (el otro caso es simétrico), digamos que tenemos una función $f$ que primero decrece, alcanza su mínimo y luego crece.
+
+### El caso discreto
+
+Si tenemos una cantidad discreta de datos sobre los que buscar, podemos convertir el problema a uno de búsqueda binaria.
+
+Podemos definir una condición como "f es creciente". Obviamente, la condición es falsa en el tramo donde $f$ decrece, y desde que alcanza su mínimo en adelante es verdadera. Así, tenemos la monotonicidad sobre la cual podemos hacer busqueda binaria. El código quedaría así:
+
+```c++
+while(l < r){
+  mid = (l+r)/2;
+  if(f[mid+1]-f[mid] > 0) r = mid; // La función es creciente: la condición se cumple
+  else l = mid+1;
+}
+```
+
+Para el caso donde la función alcanza un máximo, deberíamos hacer la condición como "f es decreciente".
+
+### El caso continuo
+
+Para el caso continuo, estamos obligados a hacer búsqueda ternaria. La búsqueda ternaria consiste en tener dos índices entre $l$ y $r$, $mid_1$ y $mid_2$ en vez de solo uno, dividiendo el espacio de búsqueda en tres segmentos de igual largo. Para esto, $mid_1$ debe estar al final del primer tercio y $mid_2$ al inicio del último tercio.
+
+Comparando la diferencia $f(mid_2)-f(mid_1)$ podemos determinar qué segmentos eliminar:
+
+- Si la diferencia es mayor o igual a cero, descartamos el primer segmento.
+- Si es menor a cero, descartamos el tercer segmento.
+
+Los siguientes diagramas pueden ayudar a entender la correctitud del algoritmo. En ninguno de los dos casos podemos descartar el segmento del medio, porque $mid_1$ y $mid_2$ podrían estar ambos en la parte creciente o en la parte decreciente al mismo tiempo.
+
+<center> <img src="../ternary.png" width="850"/> </center>
+
+En código, quedaría así:
+
+```c++
+// l y r son doubles
+double EPS = 1e-6; // Cambiar para más o menos precisión
+while(r-l > EPS){
+  double mid1 = l+(r-l)/3;
+  double mid2 = l+2*(r-l)/3;
+  if(f(mid2)-f(mid1) >= 0) r = mid2;
+  else l = mid1;
+}
+// La respuesta queda en l
+```
+
+Otra forma es hacer lo mismo que el caso discreto, sumando un epsilon en vez de 1. La desventaja de esto es que puede dar problemas por la precisión de double.
+
 ## Problemas para ejercitar
 
 - [BBIN - SPOJ](https://www.spoj.com/problems/BBIN/)
