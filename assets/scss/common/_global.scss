@@ -88,7 +88,7 @@ body {
     border-right: 1px solid $gray-200;
   }
 
-  @supports ((position:-webkit-sticky) or (position:sticky)) {
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
     .docs-sidebar {
       position: -webkit-sticky;
       position: sticky;
@@ -131,7 +131,7 @@ body {
   order: 2;
 }
 
-@supports ((position:-webkit-sticky) or (position:sticky)) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .docs-toc {
     position: -webkit-sticky;
     position: sticky;
@@ -211,4 +211,37 @@ body {
 img {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+details {
+  overflow: hidden;
+  border-radius: 10px;
+  border: solid 1px $gray-200;
+}
+
+details > p {
+  margin-left: 0.5625rem;
+  margin-right: 0.5625rem;
+}
+
+summary {
+  position: relative;
+  width: 100%;
+  padding: 16px;
+  background-color: $gray-100;
+  border-radius: 10px;
+}
+
+details[open] summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+details > p:first-of-type {
+  margin-top: 1.125rem;
+}
+
+details .chroma {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }

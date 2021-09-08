@@ -1,0 +1,17 @@
+<!--
+  Positional Arguments:
+      0 : string -> content of summary (title of the collapsible block)
+-->
+
+<!-- Arguments -->
+{{ $summary := (.Get 0) | string }}
+
+<!-- Error Handling -->
+{{ if eq $summary "" }}
+  {{ errorf "[details shortcode] Missing required positional argument 'summary'" }}
+{{ end }} 
+
+<details>
+  <summary> {{ $summary }} </summary>
+  {{ .Inner }}
+</details>

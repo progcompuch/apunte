@@ -79,12 +79,15 @@ Mientras $l$ sea estrictamente menor a $r$, el algoritmo iterará. En cada itera
 
 Así, encontraremos el primer elemento tal que la condición es verdadera.
 
+{{% details "Código" %}}
+
 ```c++
 /*  Búsqueda Binaria
  *  l: inicio del espacio de búsqueda (int o long long)
  *  r: fin del espacio de búsqueda (int o long long)
  *  mid: centro del espacio de búsqueda (int o long long)
- *  Requiere que la condición sea "monótona": es falsa hasta cierto punto. Después es siempre verdadera.
+ *  Requiere que la condición sea "monótona": es falsa hasta cierto punto,
+ *  después es siempre verdadera.
  *  Busca el primer valor entre l y r que hace la propiedad verdadera.
  */
 while(l < r){
@@ -93,15 +96,21 @@ while(l < r){
   else l = mid+1;
 }
 if(/* condición es falsa en l */)
-  /* quejarse! la condición es falsa para todos los valores del espacio de búsqueda inicial */
+  /* quejarse! la condición es falsa para todos los valores
+  del espacio de búsqueda inicial */
 else
-  /* l (que en este punto es igual a r) es el primer valor en el espacio donde se cumple la condición */
+  /* l (que en este punto es igual a r) es el primer valor
+  en el espacio donde se cumple la condición */
 ```
+
+{{% /details %}}
 
 ### Encontrar último valor donde la condición es falsa
 
 Para esto, se puede buscar el primero donde es verdadera y restar uno. O también podemos modificar un
 poco el ciclo del código anterior:
+
+{{% details "Código" %}}
 
 ```c++
 while(l < r){
@@ -111,6 +120,8 @@ while(l < r){
 }
 ```
 
+{{% /details %}}
+
 ### Búsqueda binaria en $\mathbb{R}$
 
 Hay veces en la que nuestro espacio de búsqueda no es un subconjunto de los números enteros, si no que la respuesta también puede ser un número decimal. En este caso, debemos hacer dos cambios:
@@ -119,6 +130,8 @@ Hay veces en la que nuestro espacio de búsqueda no es un subconjunto de los nú
 - La condición $\texttt{while(l < r)}$ ya no nos sirve, porque $l$ siempre será menor a $r$.
 
 Para esto, debemos fijar un número de iteraciones, y la precisión de nuestra respuesta dependerá de este número. Usualmente $\texttt{50}$ es suficiente, porque la precisión aumenta muy rápidamente con las iteraciones (cada $4$ iteraciones nos acercamos en un factor de $16$ a la respuesta).
+
+{{% details "Código" %}}
 
 ```c++
 // IMPORTANTE: acá l, r y mid son doubles (o long doubles para más precisión)
@@ -139,6 +152,8 @@ while(r-l > EPS){
 }
 ```
 
+{{% /details %}}
+
 ## Búsqueda Ternaria
 
 Pensando en números enteros, uno usualmente puede hacer búsqueda binaria sobre funciones que son crecientes o decrecientes usando una condición tipo desigualdad. Por ejemplo, si tenemos un arreglo que es creciente y queremos buscar un número $c$, buscamos el primer número $x$ que cumpla la condición $x \geq c$ y al encontrarlo verificamos si $x=c$ o no.
@@ -156,7 +171,11 @@ Sin pérdida de generalidad (el otro caso es simétrico), digamos que tenemos un
 
 Si tenemos una cantidad discreta de datos sobre los que buscar, podemos convertir el problema a uno de búsqueda binaria.
 
-Podemos definir una condición como "f es creciente". Obviamente, la condición es falsa en el tramo donde $f$ decrece, y desde que alcanza su mínimo en adelante es verdadera. Así, tenemos la monotonicidad sobre la cual podemos hacer busqueda binaria. El código quedaría así:
+Podemos definir una condición como "f es creciente". Obviamente, la condición es falsa en el tramo donde $f$ decrece, y desde que alcanza su mínimo en adelante es verdadera. Así, tenemos la monotonicidad sobre la cual podemos hacer busqueda binaria.
+
+{{% details "Código" %}}
+Nota que en el código $f$ es una función, no un arreglo/vector.
+Para el caso donde la función alcanza un máximo, deberíamos hacer la condición como "f es decreciente".
 
 ```c++
 while(l < r){
@@ -166,8 +185,7 @@ while(l < r){
 }
 ```
 
-Nota que en el código $f$ es una función, no un arreglo/vector.
-Para el caso donde la función alcanza un máximo, deberíamos hacer la condición como "f es decreciente".
+{{% /details %}}
 
 ### El caso continuo
 
@@ -182,7 +200,7 @@ Los siguientes diagramas pueden ayudar a entender la correctitud del algoritmo. 
 
 <center> <img src="../ternary.png" width="850"/> </center>
 
-En código, quedaría así:
+{{% details "Código" %}}
 
 ```c++
 // l y r son doubles
@@ -197,6 +215,7 @@ while(r-l > EPS){
 ```
 
 Otra forma es hacer lo mismo que el caso discreto, sumando un epsilon en vez de 1. La desventaja de esto es que puede dar problemas por la precisión de double.
+{{% /details %}}
 
 ## Problemas para ejercitar
 
