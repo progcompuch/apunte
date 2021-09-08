@@ -28,6 +28,18 @@
   identifier = "anexos"
   url = "/docs/anexos/"
 
+[[recursos]]
+  name = "Prólogo"
+  weight = 1
+  identifier = "prologo"
+  url = "/recursos/prologo"
+
+[[recursos]]
+  name = "Websites"
+  weight = 2
+  identifier = "websites"
+  url = "/recursos/websites"
+
 [[main]]
   name = "Apunte"
   url = "/docs/prologo/intro"
