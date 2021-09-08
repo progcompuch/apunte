@@ -130,4 +130,41 @@ for (int i=0;i<n;i++){
 }
 ```
 
+### Multiset
+
+Finalmente, tenemos el multiset, funciona igual que el set solo que ahora podemos tener valores repetidos y, por lo tanto, sus funciones trabajan de manera similar con un par de diferencias.
+
+```c++
+multiset<int> my_multi;
+
+for (int i=0;i<5;i++){
+	my_multi.insert(i);
+	my_multi.insert(i);
+	// podemos insertar cada elemento dos veces y se guardan
+	// los dos, en un set el segundo insert no haria nada
+}
+
+// Ahora podemos usar count para saber cuantas veces se repite
+// un elemento en el multiset
+cout<<"Hay "<<my_multi.count(3)<<" elementos 3 en el multiset\n";
+
+// Una de las diferencias mas importantes es que ahora .erase()
+// borra todas las instancias del elemento, no solo una
+my_multi.erase(3);
+if (my_multi.find(3) == my_multi.end()){
+	cout<<"Ya no hay ningun 3 en el multiset :(\n";
+}
+// Para borrar solo un elemento tenemos que usar un iterador
+// al elemento que lo podemos obtener facilmente con find
+my_multi.erase(my_multi.find(2));
+// Ahora todavia queda un 2
+```
+
+De igual forma que todos los demás podemos iterar a través del multiset y los guarda de forma ordenada.
+
+### Problemas
+
+[UVa OJ 10226 - Hardwood Species](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=1167)
+
+[UVa OJ 11136 - Hoax or what](https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2077)
                                    
