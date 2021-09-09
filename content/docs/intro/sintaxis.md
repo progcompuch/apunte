@@ -1,5 +1,5 @@
 ---
-title: Sintaxis, variables, tipos y ciclos
+title: Sintaxis, Variables, Tipos y Ciclos
 lead: ''
 date: 2020-10-06T08:48:45.000+00:00
 images: []
