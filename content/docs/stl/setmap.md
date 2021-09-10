@@ -11,7 +11,7 @@ menu:
 ---
 ### Set
 
-Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de números de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de $O( log(n) \cdot k )$ donde $n$ es el tamaño del conjunto y $k$ es la complejidad de comparar dos elementos. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
+Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de números de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de $O( \log(n) \cdot k )$ donde $n$ es el tamaño del conjunto y $k$ es la complejidad de comparar dos elementos. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
 
 ```c++
 set<int> my_set; // Se inicializa un set
@@ -71,13 +71,13 @@ my_set.erase(large_it);
 
 Un par de detalles importantes:
 
-- Es importante tener muy claro que la complejidad de las operaciones en el set no son constantes y dependen del elemento que esté en el set. Comparar dos números es constante y la complejidad de las operaciones solo va a ser $O( log(n) )$, pero si ponemos vectores en el set para comparar dos vectores el computador los compara elemento a elemento lo cual cambia la complejidad y es algo importante que tener en cuenta.
+- Es importante tener muy claro que la complejidad de las operaciones en el set no son constantes y dependen del elemento que esté en el set. Comparar dos números es constante y la complejidad de las operaciones solo va a ser $O( \log(n) )$, pero si ponemos vectores en el set para comparar dos vectores el computador los compara elemento a elemento lo cual cambia la complejidad y es algo importante que tener en cuenta.
 
 - Hacer `it++` y `it--` no es lo mismo que sumar y restar, C++ usa estos operadores para avanzar por el set, no se le puede sumar números a estos iteradores, cosas como `it+=1` no funcionan, no deberían compilar.
 
 ### Map
 
-Los mapas son similares a los diccionarios de python, se asignan pares [ llave , valor ] en una estructura y en C++ estos están implementados de forma similar a los sets donde la complejidad de buscar elementos es $O( log(n) \cdot k )$ y $k$ ahora es la complejidad de comparar las llaves.
+Los mapas son similares a los diccionarios de python, se asignan pares [ llave , valor ] en una estructura y en C++ estos están implementados de forma similar a los sets donde la complejidad de buscar elementos es $O( \log(n) \cdot k )$ y $k$ ahora es la complejidad de comparar las llaves.
 
 ```c++
 map<int,string> my_map; // un mapa con pares [ int , string ]
