@@ -20,7 +20,7 @@ El stack es una estructura LIFO (Last In, First Out), lo que significa que cuand
 
 Si quisieramos representar este proceso de poner cartas y sacarlas podríamos hacerlo de la siguiente forma:
 
-```
+```c++
 int n;
 cin>>n; // leemos el numero de cartas
 
@@ -53,7 +53,7 @@ La queue es una estructura FIFO (First In, First Out), o sea, cuando saquemos un
 
 Si quisieramos representar este proceso de poner la gente en fila se podría hacer de la siguiente forma:
 
-```
+```c++
 int n;
 cin>>n; // leemos el numero de personas
 
