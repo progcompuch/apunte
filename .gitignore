@@ -1,6 +1,6 @@
 functions
 node_modules
-public/*
 public/
+public/*
 resources
 *.backup
