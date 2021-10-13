@@ -42,7 +42,7 @@ function loadStandings(data) {
   
   /* Sort by total solved */
   csesIds = csesIds.sort((id1, id2) => {
-      return solvedCount[id2] - solvedCount[id2];
+      return solvedCount[id2] - solvedCount[id1];
   });
   
   /* Order names on tables */
