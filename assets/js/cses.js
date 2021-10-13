@@ -29,10 +29,20 @@ function loadStandings(data) {
   for (const node of document.getElementsByClassName("problem-category-title")) {
     problemsCatTitles.push(node);
   };
+
+  /* Solved count */
+  let solvedCount = {};
+  for (const id of csesIds) {
+    if (data[id] == undefined) {
+      solvedCount[id] = 0;
+    } else {
+      solvedCount[id] = data[id]['accepted'].length;
+    }
+  };
   
   /* Sort by total solved */
   csesIds = csesIds.sort((id1, id2) => {
-      return data[id2]['accepted'].length - data[id1]['accepted'].length;
+      return solvedCount[id2] - solvedCount[id2];
   });
   
   /* Order names on tables */
@@ -50,7 +60,7 @@ function loadStandings(data) {
   /* Populate Totals table */
   let totalsNums = document.getElementById("cses-totales").getElementsByTagName('tr')[1].children;
   for (const i in csesIds) {
-      totalsNums[parseInt(i)+1].innerText = data[csesIds[i]]['accepted'].length
+      totalsNums[parseInt(i)+1].innerText = solvedCount[csesIds[i]];
   };
   
 
