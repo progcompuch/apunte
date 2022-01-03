@@ -11,7 +11,7 @@ menu:
 ---
 ### Set
 
-Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de números de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de $O( \log(n) \cdot k )$ donde $n$ es el tamaño del conjunto y $k$ es la complejidad de comparar dos elementos. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
+Quizás te suene una estructura llamada "árbol de búsqueda binaria", sin entrar en detalles de su implementación esta estructura guarda un conjunto de elementos de forma ordenada y permite insertar, buscar y eliminar elementos con una complejidad de $O( \log(n) \cdot k )$ donde $n$ es el tamaño del conjunto y $k$ es la complejidad de comparar dos elementos. Ahora, la parte complicada de esto es la implementación pero C++ tiene la estructura set que está implementada como uno de estos árboles lo cual nos da todos los beneficios en términos de complejidad sin tener que implementar todo desde cero, pero usar esta estructura es bastante distinto a usar un vector así que es necesario aprender a usarla.
 
 ```c++
 set<int> my_set; // Se inicializa un set
