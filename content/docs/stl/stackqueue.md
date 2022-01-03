@@ -16,7 +16,7 @@ En esta sección vamos a ver un par de estructuras que nos permiten organizar nu
 
 El stack es una estructura LIFO (Last In, First Out), lo que significa que cuando sacamos un elemento de esta vamos a obtener el último elemento que pusimos en él. La mejor forma de ver esto es como si fuera una pila de cartas donde vamos apilandolas y cuando sacamos una, sacamos la de arriba (la última que pusimos).
 
-[Imagen]
+<center> <img class="invertible" src="../stack.png" width="40%"/> </center>
 
 Si quisieramos representar este proceso de poner cartas y sacarlas podríamos hacerlo de la siguiente forma:
 
@@ -49,7 +49,7 @@ while (!cartas.empty()){
 
 La queue es una estructura FIFO (First In, First Out), o sea, cuando saquemos un elemento vamos a obtener el elemento más viejo que pusimos. La mejor forma de ver esto es como si fuera una cola de gente donde la gente se pone en fila y se van sacando a medida que van llegando.
 
-[Imagen]
+<center> <img class="invertible" src="../queue.png" width="40%"/> </center>
 
 Si quisieramos representar este proceso de poner la gente en fila se podría hacer de la siguiente forma:
 

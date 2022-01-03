@@ -3,8 +3,8 @@
   ## CSES Standings config
   ### IMPORTANT: The external API uses this file, and the `csesIds` config to fetch the user ids
 
-  csesIds   = [69586, 72638, 72385, 74066, 74173, 74511, 74546]
-  csesNames = ["Blaz", "Gonxo", "Dmitri", "wawer", "Davicom", "Lamp", "Marinkovic"]
+  csesIds   = [69586, 74066, 74546, 72385, 83700, 74173, 85342, 83810, 83823, 83698, 83825, 83827, 85726]
+  csesNames = ["Blaz", "wawer",  "Marinkovic", "Dmitri", "Jayki", "Davicom", "Lamp", "MrYhatoh", "Joa", "Lulu", "Jose", "Ale", "josesese"]
   csesEndpoint = "https://uch.ibanezd.ml/api/cses-tasks/"
   csesProblemUrl = "https://cses.fi/problemset/task/"
   csesCacheLife = 300 # in seconds

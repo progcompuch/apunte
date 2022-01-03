@@ -4,6 +4,23 @@
 {{ $problemUrl := .Site.Params.csesProblemUrl }}
 
 <div id="cses-tables-container">
+  <h2>Totales</h2>
+  <table class="table table-sm table-bordered cses-table" id="cses-totales">
+    <tbody>
+      <tr>
+          <td></td>
+          {{ range $userName := $userNames }}
+            <td>{{ $userName }}</td>
+          {{ end }}
+      </tr>
+      <tr>
+          <td>Total Resueltos</td>
+          {{ range $userNames }}
+            <td></td>
+          {{ end }}
+      </tr>
+    </tbody>
+  </table>
   <table class="table table-sm table-bordered cses-table">
     <tbody>
       {{ range $title := $titles }}

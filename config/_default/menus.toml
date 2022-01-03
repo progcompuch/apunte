@@ -23,6 +23,12 @@
   url = "/docs/fundamentales"
 
 [[docs]]
+  name = "Programación Dinámica"
+  weight = 5
+  identifier = "programacion_dinamica"
+  url = "/docs/programacion_dinamica"
+
+[[docs]]
   name = "Anexos"
   weight = 999
   identifier = "anexos"
