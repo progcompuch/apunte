@@ -29,6 +29,12 @@
   url = "/docs/programacion_dinamica"
 
 [[docs]]
+  name = "Grafos"
+  weight = 6
+  identifier = "grafos"
+  url = "/docs/grafos"
+
+[[docs]]
   name = "Anexos"
   weight = 999
   identifier = "anexos"
