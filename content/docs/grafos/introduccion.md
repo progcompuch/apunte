@@ -52,4 +52,43 @@ while (m--){
 }
 ```
 
-                       
+### Resolviendo un problema de grafos
+
+Un problema simple que podemos resolver es encontrar el nodo con el grado máximo en un grafo, el grado es la cantidad de aristas que salen de un nodo y encontrar esto en una lista de adyacencia es fácil ya que solo es el tamaño del vector:
+
+```c++
+// Partimos con la respuesta base del primer nodo
+int ans = 0;
+
+// Pasemos por todos los nodos
+for (int i=1;i<n;i++){
+	// Si el nodo tiene un grado mayor que la respuesta actual lo cambiamos
+	if ( gr[i].size() > gr[ans].size() ){  
+		ans = i;
+	}
+}
+```
+
+Si tenemos el grafo guardado como una matriz de adyacencia es un poco más difícil:
+
+```c++
+// Partimos sin respuesta ya que todavía tenemos que calcular el grado
+int ans=-1,grado_ans=-1;
+
+// Pasamos por todos los nodos
+for (int i=0;i<n;i++){
+	
+	// Calculamos el grado contando cuantos 1 hay en la fila
+	int grado_i = 0;
+	for (int j=0;j<n;j++){
+		if (gr[i][j]) grado_i++;
+	}
+	
+	// Y hacemos el mismo checkeo que antes
+	if (grado_i > grado_ans){
+		ans = i;
+		grado_ans = grado_i;
+	}
+}
+```
+                                      
