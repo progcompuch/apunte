@@ -31,5 +31,5 @@ La primera línea incluye todas las librerías estandar de C++ (iostream, vector
 
 La segunda línea nos ahorra tener que escribir ```std::``` antes de cada cosa que usamos de la librería estándar. Como en las competencias solo podemos usar la librería estándar nunca va a ser necesario especificar de donde viene lo que usamos.
 
-La cuarta línea hace que ```cin``` y ```cout``` sean casi tan rápidos como ```scanf``` y ```printf```. Recomendamos siempre ```cin``` y ```cout``` porque su formateo de input y output es muy conveniente en comparación con la alternativa. No vale la pena la optimización de tiempo, en general no va a hacer que un problema pase de dar TLE a AC. Cuidado que si se pone esta línea, **no se puede usar ni ```scanf``` no ```printf```**.
+La cuarta línea hace que ```cin``` y ```cout``` sean casi tan rápidos como ```scanf``` y ```printf```. Recomendamos siempre ```cin``` y ```cout``` porque su formateo de input y output es muy conveniente en comparación con la alternativa. No vale la pena la optimización de tiempo, en general no va a hacer que un problema pase de dar TLE a AC. Cuidado que si se pone esta línea, **no se puede usar ni ```scanf``` ni ```printf```**.
                        
