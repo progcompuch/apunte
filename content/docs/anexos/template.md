@@ -10,7 +10,7 @@ menu:
 
 ---
 
-### Template Base
+## Template Base
 
 El template básico para C++ que usamos en programación competitiva es el siguiente:
 
@@ -40,7 +40,7 @@ y output es muy conveniente en comparación con la alternativa. No vale la pena 
 optimización de tiempo, en general no va a hacer que un problema pase de dar TLE a AC.
 Cuidado que si se pone esta línea, **no se pueden mezclar `scanf` y `printf` (IO de C) con `cin` y `cout` (IO de C++)**.
 
-#### Multiples Casos de Prueba
+## Multiples Casos de Prueba
 
 Cuando te piden resolver el mismo problema, pero el input tiene varios casos de prueba
 se puede usar:
