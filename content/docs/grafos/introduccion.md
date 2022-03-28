@@ -39,7 +39,7 @@ while (m--){
 }
 ```
 
-2.Matriz de adyacencia: Aquí tendremos una matriz donde la fila y la columna nos indican de que nodos estamos hablando y el valor nos dirá si están conectados o no. Para esto usamos un vector de vectores $G$ de tamaño $n$ x $n$ y el valor $G_{i,j}$ será $0$ si los nodos $i$ y $j$ están desconectados y $1$ en otro caso. Si tenemos aristas con peso, basta con guardar el peso en las posiciones $G_{i,j}$ y algún valor específico en otro caso (asegurarse de que este valor no pueda ser un peso nunca).
+2. Matriz de adyacencia: Aquí tendremos una matriz donde la fila y la columna nos indican de que nodos estamos hablando y el valor nos dirá si están conectados o no. Para esto usamos un vector de vectores $G$ de tamaño $n$ x $n$ y el valor $G_{i,j}$ será $0$ si los nodos $i$ y $j$ están desconectados y $1$ en otro caso. Si tenemos aristas con peso, basta con guardar el peso en las posiciones $G_{i,j}$ y algún valor específico en otro caso (asegurarse de que este valor no pueda ser un peso nunca).
 
 ```c++
 // Todos parten desconectados
