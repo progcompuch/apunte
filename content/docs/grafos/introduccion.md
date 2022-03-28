@@ -18,6 +18,8 @@ Los grafos son un tipo específico de estructura que nos sirve para modelar much
 
 El área de grafos ha sido muy estudiada y se han desarrollado múltiples algoritmos para trabajar con ellos. Además, en programación competitiva es un tema que se repite con alta frecuencia.
 
+{{< alert icon="💡" text="Usaremos $|V|$ ó $n$ para denotar la cantidad de nodos. Y $|E|$ ó $m$ para la cantidad de arcos." >}}
+
 ### Guardar un grafo
 
 Esta estructura puede ser representa de múltiples formas, pero las dos más comunes que veremos serán:
@@ -26,11 +28,11 @@ Esta estructura puede ser representa de múltiples formas, pero las dos más com
 
 ```c++
 // Asumiendo que n es la cantidad de nodos
-vector< vector<int> > gr(n);
+vector<vector<int>> gr(n);
 // Vamos a leer m aristas y agregarlas al grafo
-while (m--){
+while (m--) {
 	int u,v;
-	cin>>u>>v;
+	cin >> u >> v;
 	// Agregamos v a la lista de conexiones de u...
 	gr[u].push_back(v);
 	// y agregamos u a la lista de v
@@ -39,18 +41,20 @@ while (m--){
 }
 ```
 
-2. Matriz de adyacencia: Aquí tendremos una matriz donde la fila y la columna nos indican de que nodos estamos hablando y el valor nos dirá si están conectados o no. Para esto usamos un vector de vectores $G$ de tamaño $n$ x $n$ y el valor $G_{i,j}$ será $0$ si los nodos $i$ y $j$ están desconectados y $1$ en otro caso. Si tenemos aristas con peso, basta con guardar el peso en las posiciones $G_{i,j}$ y algún valor específico en otro caso (asegurarse de que este valor no pueda ser un peso nunca).
+2. Matriz de adyacencia: Aquí tendremos una matriz donde la fila y la columna nos indican de que nodos estamos hablando y el valor nos dirá si están conectados o no. Para esto usamos un vector de vectores $G$ de tamaño $n \times n$ y el valor $G_{i,j}$ será $0$ si los nodos $i$ y $j$ están desconectados y $1$ en otro caso. Si tenemos aristas con peso, basta con guardar el peso en las posiciones $G_{i,j}$ y algún valor específico en otro caso (asegurarse de que este valor no pueda ser un peso nunca).
 
 ```c++
 // Todos parten desconectados
-vector< vector<int> > gr(n, vector<int>(n,0));
+vector<vector<int>> gr(n, vector<int>(n,0));
 
-while (m--){
-	cin>>u>>v;
+while (m--) {
+	cin >> u >> v;
 	gr[u][v] = 1;
 	gr[v][u] = 1;
 }
 ```
+
+{{< alert icon="⚠️" text="En muchos problemas te entregan los nodos numerados del $1$ al $n$, pero los vectores se indexan desde el $0$ al $n-1$ !, para solucionarlo se debe restar $1$ a los nodos cuandos se hace el input" >}}
 
 ### Resolviendo un problema de grafos
 
@@ -61,9 +65,9 @@ Un problema simple que podemos resolver es encontrar el nodo con el grado máxim
 int ans = 0;
 
 // Pasemos por todos los nodos
-for (int i=1;i<n;i++){
+for (int i=1; i<n; i++) {
 	// Si el nodo tiene un grado mayor que la respuesta actual lo cambiamos
-	if ( gr[i].size() > gr[ans].size() ){  
+	if ( gr[i].size() > gr[ans].size() ) {  
 		ans = i;
 	}
 }
@@ -73,22 +77,22 @@ Si tenemos el grafo guardado como una matriz de adyacencia es un poco más difí
 
 ```c++
 // Partimos sin respuesta ya que todavía tenemos que calcular el grado
-int ans=-1,grado_ans=-1;
+int ans=-1, grado_ans=-1;
 
 // Pasamos por todos los nodos
-for (int i=0;i<n;i++){
+for (int i=0; i<n; i++) {
 	
 	// Calculamos el grado contando cuantos 1 hay en la fila
 	int grado_i = 0;
-	for (int j=0;j<n;j++){
+	for (int j=0; j<n; j++) {
 		if (gr[i][j]) grado_i++;
 	}
 	
 	// Y hacemos el mismo checkeo que antes
-	if (grado_i > grado_ans){
+	if (grado_i > grado_ans) {
 		ans = i;
 		grado_ans = grado_i;
 	}
 }
 ```
-                                      
+
