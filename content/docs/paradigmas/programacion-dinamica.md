@@ -1,12 +1,12 @@
 ---
-title: Fundamentos
+title: Programación Dinámica
 lead: ''
 date: 2020-10-06T08:48:45.000+00:00
 images: []
-weight: 401
+weight: 302
 menu:
   docs:
-    parent: programacion_dinamica
+    parent: paradigmas
 
 ---
 

@@ -6,7 +6,7 @@ images: []
 weight: 301
 menu:
   docs:
-    parent: fundamentales
+    parent: paradigmas
 ---
 
 ## Introducción y búsqueda lineal

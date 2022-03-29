@@ -17,16 +17,10 @@
   url = "/docs/stl/"
 
 [[docs]]
-  name = "Algoritmos Fundamentales"
+  name = "Paradigmas de Resolución"
   weight = 4
-  identifier = "fundamentales"
-  url = "/docs/fundamentales"
-
-[[docs]]
-  name = "Programación Dinámica"
-  weight = 5
-  identifier = "programacion_dinamica"
-  url = "/docs/programacion_dinamica"
+  identifier = "paradigmas"
+  url = "/docs/paradigmas"
 
 [[docs]]
   name = "Grafos"
