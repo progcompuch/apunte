@@ -14,7 +14,7 @@ menu:
 
 Los grafos son un tipo específico de estructura que nos sirve para modelar muchos problemas distintos. Estos se representan como un conjunto de puntos $V$ (llamados vértices o nodos) conectados por un conjunto de líneas $E$ (llamadas aristas o arcos). Las aristas pueden ser no-dirigidas (se pueden recorrer en ambas direcciones) o dirigidas y pueden tener peso o no.
 
-<center> <img class="invertible" src="../grafo.png" width="40%"/> </center>
+<center> <img class="invertible" src="../grafo.png" width="450"/> </center>
 
 El área de grafos ha sido muy estudiada y se han desarrollado múltiples algoritmos para trabajar con ellos. Además, en programación competitiva es un tema que se repite con alta frecuencia.
 
