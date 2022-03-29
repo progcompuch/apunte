@@ -1,5 +1,5 @@
 ---
-title: pair y tuple
+title: Pair y Tuple
 lead: ''
 date: 2022-3-28T08:48:45.000+00:00
 images: []
