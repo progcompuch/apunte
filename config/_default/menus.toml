@@ -23,6 +23,12 @@
   url = "/docs/paradigmas"
 
 [[docs]]
+  name = "Estructuras de Datos"
+  weight = 5
+  identifier = "estructuras"
+  url = "/docs/ds"
+
+[[docs]]
   name = "Grafos"
   weight = 6
   identifier = "grafos"
