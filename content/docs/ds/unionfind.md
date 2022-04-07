@@ -3,7 +3,7 @@ title: Union Find
 lead: ''
 date: 2022-03-19T08:48:45.000+00:00
 images: []
-weight: 601
+weight: 402
 menu:
   docs:
     parent: estructuras
