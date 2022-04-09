@@ -107,6 +107,38 @@ vector< vector<ii> > prim(vector< vector<ii> > &gr){
 
 Este algoritmo no es popular debido a lo enredado que es de implementar en comparación con Kruskal.
 
+### Minimax (y Maximin)
+
+El problema del camino Minimax es encontrar el camino de un vértice a otro en el grafo tal que se minimice el peso de la arista más pesada del camino. El Maximin se define al revés, el camino que maximice el peso de la arista más liviana.
+
+Un problema clásico de este tipo es que tenemos computadoras conectadas con cables con una capacidad $c$, entonces la velocidad máxima va a estar en el camino donde la arista más pequeña sea lo más grande posible, o sea, Maximin.
+
+Los caminos para esta pregunta son los caminos del MST (en el caso del Maximin se usa el Maximum Spanning Tree que es fácil de construir ordenando las aristas al revés) entonces para calcular estas respuestas solo es necesario revisar la máxima arista del camino.
+
+```c++
+// Dado que tenemos el MST en gr
+vector< vector<ii> >gr;
+// Calculamos cuál es la máxima arista del nodo s a los demás
+int s;
+vector<int> cost(n,-1);
+cost[s] = 0;
+// Usamos un BFS para recorrer el grafo
+queue<int> bfs;
+bfs.push(s);
+while (!bfs.empty()){
+	int no = bfs.front();
+	bfs.pop();
+	for (ii ne:gr[no]){
+		// Si no lo hemos visitado
+		if (cost[ne.first] == -1){
+			// Su costo va a ser el máximo entre el costo del nodo y esta nueva arista
+			cost[ne.first] = max(ne.second,cost[no]);
+			bfs.push(ne);
+		}
+	}
+}
+```
+
 [^1]: Si las aristas pueden ser negativas, se puede hacer todo el procedimiento para encontrar el MST normalmente y luego agregar todas las aristas negativas que sobraron. Deja de ser un árbol claramente pero tiene menor peso conectando todos los vértices. Mientras entiendas el procedimiento no tendrás problemas para resolver un problema que necesita usar MST.
 
                               
