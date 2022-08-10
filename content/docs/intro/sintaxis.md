@@ -43,7 +43,7 @@ Se usan para registrar "palabras" o "caracteres". Puede incluir letras, números
 Es relevante destacar que para distingir entre estos dos tipos la notación en C++ es encerrar el caracter usando la comilla simple (') y rodear la string usando las comillas dobles ("), por lo que no sería equivalente escribir la string "i" que el caracter 'i'.
 
 ### Booleanos
-Es el tipo más pequeño, almacenando dos posibles valores, "_True_" (para verdadero) y "_False_" (para falso). Se guarda para registrar si cierta condición se cumple.
+Es el tipo más pequeño, almacenando dos posibles valores, `true` (para verdadero) y `False` (para falso). Se guarda para registrar si cierta condición se cumple.
 
 ## Haciendo un programa
 
@@ -152,6 +152,82 @@ int main(){
 
 Para marcar comentarios que aclaren el código, o si desear probar un programa sin que se ejecute una línea, puedes "comentar una línea", que es anteponerle dos slashes ("//") para que nuestra máquina ignore el contenido que le siga a esos caracteres.
 
+## Variables
+Para declarar variables se debe *siempre* indicar de qué tipo son, por ejemplo:
+```c++
+// Para poder usar strings
+#include <string>
+using namespace std;
+
+int main() {
+    int entero1;
+    int entero2;
+    string unaCadena;
+    char unCaracter;
+}
+```
+Una diferencia notable es que en C++ se puede declarar variables sin darles un valor inicial, hay que tener mucho cuidado con esto, ya que C++ no les da ningún valor por defecto y el valor "inicial" de una variable puede considerarse aleatorio.
+
+Luego para darle un valor a una variable:
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int entero1;
+    entero1 = 100;
+    cout << entero1 << '\n';
+    entero1 = 9;
+    cout << entero1 << '\n';
+}
+```
+
+También es posible declarar y asignar múltiples variables del mismo tipo, en la misma instrucción:
+```c++
+
+int main() {
+    int entero1 = 1235, entero2 = 999;
+}
+```
+
+## Input
+Para recibir input desde la consola usamos la función `cin` "console input", que funciona muy similar a `cout`
+
+```c++
+// <iostream> incluye tanto cin como cout
+#include <iostream>
+using namespace std;
+
+int main() {
+    int entero1, entero2;
+    cin >> entero 1;
+    cout << "Ingresaste: " << entero1 << '\n';
+}
+```
+
+Notar que ahora los ángulos salen de `cin` (consola) hacia la variable, en cout van en el otro sentido, ya que la información "va hacia" la consola.
+
+`cin` tiene la gracia de que ignora espacios, saltos de línea y tabulaciones, de forma que no debes preocuparte mucho de como son ingresados los valores desde la consola, aunque en los problemas de programación competitiva, el input siempre sigue un patrón.
+
+## If y else
+Para usar if-else es muy similar a Python, pero con cosas extras, primero, la condición siempre debe ir entre paréntesis, y además en vez de demarcar el cuerpo con identación, utizamos llaves:
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+    int foo;
+    cin >> foo;
+    if (foo >= 50) {
+        cout << "Mayor a cincuenta\n";
+    } else if (foo < 5) {
+        cout << "Muy chico\n";
+    } else {
+        cout << "Ninguna de las anteriores\n";
+    }
+}
+```
+
 ## Ciclos "for" y "while"
 
 Para definir ciclos, en C++ tienes un ciclo "for" muy parecido a los "while", donde defines el ciclo a partir de un inicio, la condición final, y los pasos. Por ejemplo, en un "while" haríamos algo como lo siguiente:
@@ -160,7 +236,7 @@ Para definir ciclos, en C++ tienes un ciclo "for" muy parecido a los "while", do
 #include <iostream>
 using namespace std;
 
-int main(){
+int main() {
 	int n=1;
 	while(n<11){
 		cout << n << " ";
