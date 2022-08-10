@@ -50,8 +50,11 @@ Para Windows, hay tres alternativas notables para obtener la GCC:
   1. WSL: Si tienes Windows 10, puedes instalar el 
   [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) 
   para tener acceso a un ambiente de GNU/Linux.
-  Lo más común es instalarle Ubuntu, 
-  y de ahí puedes seguir las instrucciones de Linux que están más arriba.
+  Para instalar WSL es necesario que tengas activada la virtualización, puedes checkear esto
+  ejecutando `Get-ComputerInfo -property "HyperVRequirementVirtualizationFirmwareEnabled"`, si muestra `True`
+  entonces sigue el tutorial, en caso contrario tendrías que activarla desde tu BIOS, si no
+  se sientes con la confianza para hacerlo, puedes usar los otros métodos para instalar `g++`.
+  En WSL lo más común es instalar Ubuntu, de ahí puedes seguir las instrucciones de Linux que están más arriba.
   1. MinGW (Minimalist GNU for Windows): Es una implementación de los 
   compiladores de la GCC para Windows. 
   Puedes descargarlo en [Sourceforge](https://sourceforge.net/projects/mingw/), 
