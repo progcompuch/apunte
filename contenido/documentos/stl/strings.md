@@ -46,7 +46,7 @@ Una lista de funciones importantes que pueden ser útiles para programación com
 3. `isupper(c)` nos permite saber si `c` es una letra mayúsucula
 4. `islower(c)` nos permite saber si `c` es una letra minúscula
 5. `tolower(c)` cambia una letra mayúscula a minúscula (o no hace nada si no es mayúscula).
-6. `toupper(c)` cambia una letra minúscula a minúscula (o no hace nada si no es minúscula).
+6. `toupper(c)` cambia una letra minúscula a mayúscula (o no hace nada si no es minúscula).
 
 ### Strings
 
