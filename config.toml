@@ -4,7 +4,7 @@
   ### IMPORTANT: The external API uses this file, and the `csesIds` config to fetch the user ids
 
   csesIds   = [69586, 74066, 74546, 72385, 83700, 74173, 85342, 92639, 58188, 107392, 49524, 109224, 87807, 114566, 114575]
-  csesNames = ["Blaz", "wawer",  "Marinkovic", "Dmitri", "Jayki", "Davicom", "Lamp", "M4thinking", "dariasc", "AngrySeal", "5038", "frann", "J", "MichaelS", "m1tu"]
+  csesNames = ["Blaz", "wawer",  "Marinkovic", "Dmitri", "Jayki", "Davicom", "Lamp", "M4thinking", "dariasc", "AngrySeal", "vi", "frann", "J", "MichaelS", "m1tu"]
   csesEndpoint = "https://uchile.davicom.cl/api/cses-tasks/"
   csesProblemUrl = "https://cses.fi/problemset/task/"
   csesCacheLife = 300 # in seconds
