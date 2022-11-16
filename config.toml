@@ -3,8 +3,8 @@
   ## CSES Standings config
   ### IMPORTANT: The external API uses this file, and the `csesIds` config to fetch the user ids
 
-  csesIds   = [ 69586,   74066,         74546,    72385,   83700,     74173,     58188,      107392, 49524, 87807,     114566, 114575,  114576,    136720,     136680]
-  csesNames = ["Blaz", "wawer",  "Marinkovic", "Dmitri", "Jayki", "Davicom", "dariasc", "AngrySeal",  "vi",   "J", "MichaelS", "m1tu", "Brito", "paul0li", "SeerLite"]
+  csesIds   = [ 69586,   74066,         74546,    72385,   83700,     74173,     58188,      107392, 49524, 87807,     114566, 114575,  114576,    136720,     136680, 139415]
+  csesNames = ["Blaz", "wawer",  "Marinkovic", "Dmitri", "Jayki", "Davicom", "dariasc", "AngrySeal",  "vi",   "J", "MichaelS", "m1tu", "Brito", "paul0li", "SeerLite", "Tega"]
   csesEndpoint = "https://uchile.davicom.cl/api/cses-tasks/"
   csesProblemUrl = "https://cses.fi/problemset/task/"
   csesCacheLife = 300 # in seconds
