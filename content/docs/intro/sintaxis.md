@@ -200,7 +200,7 @@ using namespace std;
 
 int main() {
     int entero1, entero2;
-    cin >> entero 1;
+    cin >> entero1;
     cout << "Ingresaste: " << entero1 << '\n';
 }
 ```
