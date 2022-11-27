@@ -167,7 +167,7 @@ entonces hay un camino euleriano no cíclico que empieza en el primero de estos 
 
 También en el código anterior no tenemos que agregar la arista $(v, u)$ si nos entregan una arista $(u, v)$ (marcado con un comentario).
 
-# Problemas
+## Problemas
 
 [CSES 1691 - Mail Delivery](https://cses.fi/problemset/task/1691)
 
