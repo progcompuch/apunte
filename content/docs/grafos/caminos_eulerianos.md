@@ -166,3 +166,13 @@ En un grafo dirigido hay que ser un poco más cuidadosos con las condiciones. Ah
 entonces hay un camino euleriano no cíclico que empieza en el primero de estos y termina en el segundo.
 
 También en el código anterior no tenemos que agregar la arista $(v, u)$ si nos entregan una arista $(u, v)$ (marcado con un comentario).
+
+# Problemas
+
+[CSES 1691 - Mail Delivery](https://cses.fi/problemset/task/1691)
+
+[CSES 1693 - Teleporters Path](https://cses.fi/problemset/task/1693)
+                                   
+[CODEFORCES 508D - Tanya and Password](https://codeforces.com/contest/508/problem/D)
+
+
