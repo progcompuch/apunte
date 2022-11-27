@@ -16,3 +16,6 @@ Este sitio fue creado por Blaz Korecic y Vicente Ramirez, interesados por la pro
 
 A continuación se nombran, en orden cronológico, a las personas que han colaborado de una forma u otra en el diseño y la redacción de este apunte:
 
+* David Ibáñez
+* Daniel Báez
+* Javier Oliva
