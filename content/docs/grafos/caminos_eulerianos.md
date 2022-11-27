@@ -129,7 +129,7 @@ int main(){
 		u--; v--; // borrar si ya vienen indexados de cero
 		edges.emplace_back(u,v);
 		adj[u].push_back(i);
-		adj[v].push_back(i);
+		adj[v].push_back(i); // quitar si el grafo es dirigido
 	}
 	for(int i=0; i<n; i++){
 		if(adj[i].size() % 2 != 0){
@@ -161,8 +161,8 @@ y luego quitar la arista ficticia (encontrar la rotación del ciclo tal que $u$ 
 ## Grafos dirigidos
 
 En un grafo dirigido hay que ser un poco más cuidadosos con las condiciones. Ahora:
-* Si el grado de entrada es igual al grado de salida en todos los nodos, hay ciclo euleriano.
-* Si el grado de entrada es igual al de salida en todos los nodos, y existe un nodo tal que $(\text{grado salida})-(\text{grado entrada}) = 1$, y otro nodo tal que $(\text{grado entrada})-(\text{grado salida}) = 1$,
+* Si el grado de entrada es igual al grado de salida en todos los nodos, y además las aristas forman una componente fuertemente conexa, hay ciclo euleriano.
+* Si el grado de entrada es igual al de salida en todos los nodos, y existe un nodo tal que $(\text{grado salida})-(\text{grado entrada}) = 1$, y otro nodo tal que $(\text{grado entrada})-(\text{grado salida}) = 1$, y además agregando ambas aristas entre estos dos nodos se forma una componente fuertemente conexa,
 entonces hay un camino euleriano no cíclico que empieza en el primero de estos y termina en el segundo.
 
-También en el código anterior tenemos que agregar cada arista dirigida $(u,v)$ y $(v,u)$ por separado a la lista de aristas.
+También en el código anterior no tenemos que agregar la arista $(v, u)$ si nos entregan una arista $(u, v)$ (marcado con un comentario).
