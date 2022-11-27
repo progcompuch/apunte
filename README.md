@@ -13,5 +13,3 @@ Para ver en vivo los cambios, basta con correr:
 npm install
 npm run start
 ```
-
-Notar que se borra el __public/CNAME__, que es importante para que la página no se caiga, así que hay que tener cuidado con no pushear ese cambio :((
