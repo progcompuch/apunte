@@ -3,7 +3,7 @@ title: Minimum Spanning Tree (MST)
 lead: ''
 date: 2022-03-19T08:48:45.000+00:00
 images: []
-weight: 603
+weight: 604
 menu:
   docs:
     parent: grafos

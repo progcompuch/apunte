@@ -1,9 +1,9 @@
 ---
-title: Camino más corto en un grafo
+title: Caminos más cortos
 lead: ''
 date: 2022-03-19T08:48:45.000+00:00
 images: []
-weight: 604
+weight: 605
 menu:
   docs:
     parent: grafos
@@ -12,11 +12,12 @@ menu:
 
 ### Camino más corto en un grafo
 
-Con frecuencia encontraremos problemas en los que necesitamos encontrar el camino más corto para llegar desde un nodo hasta otro y dependiendo de las características del grafo tendremos que usar algoritmos distintos.
+Con frecuencia encontraremos problemas en los que necesitamos encontrar el camino más corto para llegar desde un nodo hasta otro y dependiendo de las características del grafo tendremos que usar algoritmos distintos. Nota que en un grafo
+pueden haber múltiplices caminos más cortos (con el mismo peso).
 
 ### Grafos sin peso
 
-Si las aristas del grafo no tienen peso entonces su distancia es solo la cantidad de aristas por las que se pasa, entonces podemos calcular la distancia desde un nodo cualquiera $u$ a todos los demás usando un solo [BFS](https://uchile.progcomp.cl/docs/grafos/busqueda/#bfs) ya que este llega pasando por los nodos en orden de distancia:
+Si las aristas del grafo no tienen peso, entonces su distancia es solo la cantidad de aristas por las que se pasa, luego podemos calcular la distancia desde un nodo cualquiera $u$ a todos los demás usando un solo [BFS](https://uchile.progcomp.cl/docs/grafos/busqueda/#bfs) ya que este recorre el grafo expandiéndose. Es decir, primero recorre el nodo con distancia cero (el inicial), luego los de distancia uno, luego los de dos, etcétera.
 
 ```c++
 // n es la cantidad de nodos y s la fuente
