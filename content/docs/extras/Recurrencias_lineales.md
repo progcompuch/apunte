@@ -13,7 +13,7 @@ menu:
 Las recurrencias lineales se ven como secuencias que cumplen una ecuación del tipo:
 
 $$
-a_k = \sum_{i\geq 1} c_i(k)a_{k-i} + f(k)
+a_k = \\sum_{i\\geq 1} c_i(k)a_{k-i} + f(k)
 $$
 
 Es decir, secuencias donde cada valor depende de una función lineal de los valores anteriores, más alguna función de k.
@@ -26,7 +26,7 @@ $$
 
 La secuencia de Fibonacci. Otra clase de secuencias que podemos expresar usando esta terminología es:
 $$
-T_n = 2T_{\lceil n/2 \rceil} + O(n)
+T_n = 2T_{\\lceil n/2 \\rceil} + O(n)
 $$
 
 El tiempo que nos demoramos en ordenar un arreglo usando Quicksort. Dada la tremenda expresividad de este tipo de ecuaciones, se nos hace difícil poder resolverlas todas y nos vamos a restringir a una clase más acotada de ellas.
@@ -36,7 +36,7 @@ Vamos a decir que una recurrencia es a coeficientes constantes, si es que todos 
 Y vamos a decir que tiene grado $ n $ si es que la parte lineal tiene exactamente $ n $ términos:
 
 $$
-a_k = \sum_{i=1}^{n} c_i a_{k-i} + f(k)
+a_k = \\sum_{i=1}^{n} c_i a_{k-i} + f(k)
 $$
 
 Finalmente, diremos que es homogénea si es que $ f(k) = 0 $. Vamos a estudiar primero como resolver recurrencias lineales homogéneas, a coeficientes constantes y de grado finito primero. Luego, veremos algunas clases de recurrencias no homogéneas que también podemos resolver.
@@ -47,23 +47,23 @@ Los valores de estas secuencias crecen de forma extremadamente rápida (a veloci
 
 # Recurrencias lineales a coeficientes constantes y de grado finito
 
-Nos enfocaremos en el caso de las recurrencias más resolubles, es decir, aquellas a coeficientes constantes de grado $n$. Es importante destacar que para poder resolver la recurrencia, necesitamos los primeros $n$ terminos de la secuencia:$a_0, a_1 \dots a_{n-1}$. Esto pues no podemos utilizar la ecuación de recurrencia para determinar el valor de estos terminos, y sin ellos no hay suficiente información para determinar el resto.
+Nos enfocaremos en el caso de las recurrencias más resolubles, es decir, aquellas a coeficientes constantes de grado $n$. Es importante destacar que para poder resolver la recurrencia, necesitamos los primeros $n$ terminos de la secuencia:$a_0, a_1 \\dots a_{n-1}$. Esto pues no podemos utilizar la ecuación de recurrencia para determinar el valor de estos terminos, y sin ellos no hay suficiente información para determinar el resto.
 
 
 ## **Caso homogéneo**
 Vamos a estudiar técnicas para resolver la recurrencia lineal "más simple" posible:
 
 $$
-a_k = \sum_{i=1}^{n} c_i a_{k-i}
+a_k = \\sum_{i=1}^{n} c_i a_{k-i}
 $$
 
 La forma más común de atacar este tipo de ecuaciones es a través de estudiar el polinomio característico de la recurrencia, definido como:
 
 $$
-c(\lambda) = \lambda^n - \sum_{i=1}^n c_i \lambda^{n-i}
+c(\\lambda) = \\lambda^n - \\sum_{i=1}^n c_i \\lambda^{n-i}
 $$
 
-Se puede ver que si $ \lambda $ es raíz de este polinomio, entonces la secuencia $ a_k = \lambda^k $ cumple con la recurrencia, y 
+Se puede ver que si $ \\lambda $ es raíz de este polinomio, entonces la secuencia $ a_k = \\lambda^k $ cumple con la recurrencia, y 
 adicionalmente podemos recuperar todas las soluciones de la recurrencia si es que sabemos todas las raíces del polinomio. No 
 ahondaremos en este método pues:
 
@@ -78,8 +78,8 @@ Veremos 3 métodos de resolver esta ecuación:
 
 Es una aplicación directa de DP generar la solución de estas recurrencias. Usamos:
 
-* $\text{DP}[k] = a_k \ \text{para } k < n $
-* $\text{DP}[k] = \sum_{i=1}^n c_i \text{DP}[k-i] $
+* $\\text{DP}[k] = a_k \\ \\text{para } k < n $
+* $\\text{DP}[k] = \\sum_{i=1}^n c_i \\text{DP}[k-i] $
 
 Obtenemos una complejidad de $O(NK)$ en tiempo, y $O(K)$ en memoria para obtener la secuencia hasta un $K$ fijo. Esta es la solución más básica y menos optimizada, pero tambien la más fácil de programar. Igual es importante destacar que está es la solución más fácil de extender, pues también sirve para el caso de coeficientes no constantes y recurrencias no homogéneas.
 
@@ -113,47 +113,48 @@ ll calcular_ak(vector<ll> &a, vector<ll> &c, int K) {
 }
 ```
 {{% /details %}}
+
 ### Matrices
 
 Podemos expresar la recurrencia de forma matricial: 
 
 $$
-\begin{pmatrix}
-c_1 & c_2 & \cdots & c_n\\
-1 & 0 & \cdots & 0 \\
-0 & 1 & \cdots & 0 \\
-\vdots & \ddots & \ddots & \vdots \\
-0 & \cdots & 1 & 0
-\end{pmatrix}
-\begin{pmatrix}
-a_{k-1} \\
-a_{k-2} \\
-\vdots \\[1.05em]
+\\begin{pmatrix}
+c_1 & c_2 & \\cdots & c_n\\\\
+1 & 0 & \\cdots & 0 \\\\
+0 & 1 & \\cdots & 0 \\\\
+\\vdots & \\ddots & \\ddots & \\vdots \\\\
+0 & \\cdots & 1 & 0
+\\end{pmatrix}
+\\begin{pmatrix}
+a_{k-1} \\\\
+a_{k-2} \\\\
+\\vdots \\\\[1.5em]
 a_{k-n}
-\end{pmatrix} =
-\begin{pmatrix}
-a_{k} \\
-a_{k-1} \\
-\vdots \\[1.05em]
+\\end{pmatrix} =
+\\begin{pmatrix}
+a_{k} \\\\
+a_{k-1} \\\\
+\\vdots \\\\[1.5em]
 a_{k-(n-1)}
-\end{pmatrix}
+\\end{pmatrix}
 $$
 
-Llamando $\bold{C}$ a esta matriz, y definiendo $\bold{a_k} = (a_{k+(n-1)} \dots a_{k+1}, a_{k})^t$, podemos escribir de forma más sucinta:
+Llamando $\\mathbf{C}$ a esta matriz, y definiendo $\\mathbf{a_k} = (a_{k+(n-1)} \\dots a_{k+1}, a_{k})^t$, podemos escribir de forma más sucinta:
 
 $$
-\bold{C}\bold{a_{k-1}} = \bold{a_k}
+\\mathbf{C}\\mathbf{a_{k-1}} = \\mathbf{a_k}
 $$
 
 Que tiene una solución bastante simple para el $k$-ésimo termino:
 
 $$
-  \bold{a_k} = \bold{C^{k}}\bold{a_{0}}
+  \\mathbf{a_k} = \\mathbf{C^{k}}\\mathbf{a_{0}}
 $$
 
-Con lo que podemos rescatar el $k$-ésimo termino de la secuencia elevando la matriz a $k$, y obteniendo $a_k$ a partir de $\bold{a_k}$. ¿Cuanto tiempo nos toma calcular esta potencia de matriz? Multiplicar dos matrices de tamaño $N \times N$ nos toma tiempo $O(N^3)$, y utilizando exponenciación rápida podemos calcular la $k$-ésima potencia utilizando $O(\log(K))$ multiplicaciones. En total, utilizamos $O(N^3 \log(K))$ tiempo.
+Con lo que podemos rescatar el $k$-ésimo termino de la secuencia elevando la matriz a $k$, y obteniendo $a_k$ a partir de $\\mathbf{a_k}$. ¿Cuanto tiempo nos toma calcular esta potencia de matriz? Multiplicar dos matrices de tamaño $N \\times N$ nos toma tiempo $O(N^3)$, y utilizando exponenciación rápida podemos calcular la $k$-ésima potencia utilizando $O(\\log(K))$ multiplicaciones. En total, utilizamos $O(N^3 \\log(K))$ tiempo.
 
-Esta solución nos será útil solo para alrededor de $N \leq 500$, pero lo importante es que nos permite acceder a valores mucho más grandes de $K$. Valores como $K = 10^{18}$ no son en absoluto un problema para esta técnica.
+Esta solución nos será útil solo para alrededor de $N \\leq 500$, pero lo importante es que nos permite acceder a valores mucho más grandes de $K$. Valores como $K = 10^{18}$ no son en absoluto un problema para esta técnica.
 
 {{% details "Código" %}}
 **Código para multiplicar mátrices**
@@ -250,49 +251,49 @@ ll calcular_ak(vector<ll> &a, vector<ll> &c, ll K) {
 
 Los dos métodos anteriores nos permiten atacar recurrencias donde o bien ambos $n$ y $k$ son pequeños, o $n$ es extremadamente pequeño y $k$ puede ser tan grande como deseemos. Vamos a estudiar un último método que nos permitirá resolver recurrencias cuando $n$ es un poco más grande y no es posible aplicar el metodo matricial. 
 
-Una gracia del método matricial es que nos permite calcular $a_k$ usando solamente los primeros $n$ términos, es decir $a_k = \sum_{i=0}^{n-1} d_i(k) a_i$. Podemos intentar lograr esto aplicando la recurrencia repetidas veces. Por ejemplo, para la recurrencia $a_k = 2a_{k-1} + a_{k-2}$ vemos que:
+Una gracia del método matricial es que nos permite calcular $a_k$ usando solamente los primeros $n$ términos, es decir $a_k = \\sum_{i=0}^{n-1} d_i(k) a_i$. Podemos intentar lograr esto aplicando la recurrencia repetidas veces. Por ejemplo, para la recurrencia $a_k = 2a_{k-1} + a_{k-2}$ vemos que:
 
 $$
-\begin{matrix}
-a_5 & = & 2a_4 + a_3 \\
-a_5 & = & 2(2a_3 + a_2) + a_3   & = & 5a_3 + 2a_2 \\
-a_5 & = & 5(2a_2 + a_1) + 2a_2  & = & 12a_2 + 5a_1 \\
+\\begin{matrix}
+a_5 & = & 2a_4 + a_3 \\\\
+a_5 & = & 2(2a_3 + a_2) + a_3   & = & 5a_3 + 2a_2 \\\\
+a_5 & = & 5(2a_2 + a_1) + 2a_2  & = & 12a_2 + 5a_1 \\\\
 a_5 & = & 12(2a_1 + a_0) + 5a_1 & = & 29a_1 + 12a_0
-\end{matrix}
+\\end{matrix}
 $$
 
-En este caso $d_1 = 29$ y $d_0 = 12$. Podemos repensar este método como ir restando $q(a_k - \sum_{i=1}^n c_i a_{k-i}) = 0$ en cada paso para anular el termino lider, algo así como:
+En este caso $d_1 = 29$ y $d_0 = 12$. Podemos repensar este método como ir restando $q(a_k - \\sum_{i=1}^n c_i a_{k-i}) = 0$ en cada paso para anular el termino lider, algo así como:
 
 $$
-\begin{matrix}
-a_5 & = & 2a_4 + a_3 & - & 2(a_4 - 2a_3 - a_2)    & = & 5a_3 + 2a_2\\
-a_5 & = & 5a_3 + 2a_2 & - & 5(a_3 - 2a_2 - a_1)   & = & 12a_2 + 5a_1 \\
-a_5 & = & 12a_2 + 5a_1 & - & 12(a_2 - 2a_1 - a_0) & = & 29a_1 + 12a_0 \\
-\end{matrix}
+\\begin{matrix}
+a_5 & = & 2a_4 + a_3 & - & 2(a_4 - 2a_3 - a_2)    & = & 5a_3 + 2a_2\\\\
+a_5 & = & 5a_3 + 2a_2 & - & 5(a_3 - 2a_2 - a_1)   & = & 12a_2 + 5a_1 \\\\
+a_5 & = & 12a_2 + 5a_1 & - & 12(a_2 - 2a_1 - a_0) & = & 29a_1 + 12a_0 \\\\
+\\end{matrix}
 $$
 
 Si miramos un buen rato, este proceso puede recordarnos a otro algoritmo... ¡de hecho, este proceso es equivalente al proceso de división de polinomios!
 
 Para formalizar esta relación con polinomios, utilizaremos un poco de magia algebraica. Definiremos una aplicación lineal sobre polinomios mediante $G(x^i) = a_i$. El problema de calcular $a_k$ se reduce, entonces, al problema de calcular $G(x^k)$. ¿Que utilidad tiene $G$? Notar que $G$ cumple una relación interesante con el polinomio característico de la recurrencia:
 
-$$ \begin{align*}
-c(x) &= x^n - \sum_{i=1}^n c_i x^{n-i} \\[1.2em]
-G(c) &= a_n - \sum_{i=1}^n c_i a_{n-i} = 0
-\end{align*}
+$$ \\begin{align*}
+c(x) &= x^n - \\sum_{i=1}^n c_i x^{n-i} \\\\[1.2em]
+G(c) &= a_n - \\sum_{i=1}^n c_i a_{n-i} = 0
+\\end{align*}
 $$
 
 Aún más, dado que la recurrencia se cumple en todos los índices mayores que $n$, podemos afirmar que para $d>0$ se cumple:
 
 $$
-G(x^dc) = a_{n+d} - \sum_{i=1}^nc_ia_{(n+d)-i} = 0
+G(x^dc) = a_{n+d} - \\sum_{i=1}^nc_ia_{(n+d)-i} = 0
 $$
 
 Y luego, por extensión, tenemos que para cualquier polinomio $p$: 
 
-$$\begin{align*}
-p(x) &= \sum_{j=0}^{m} p_j x^j \\
-G(pc) &= \sum_{j=0}^m p_jG(x^jc) = 0
-\end{align*}$$
+$$\\begin{align*}
+p(x) &= \\sum_{j=0}^{m} p_j x^j \\\\
+G(pc) &= \\sum_{j=0}^m p_jG(x^jc) = 0
+\\end{align*}$$
 
 Aquí entra el gran truco: gracias al algoritmo de Euclides, sabemos que existen polinomios $q(x)$ y $r(x)$, de grado $k-n$ y $<n$ respectivamente, tal que podemos escribir:
 
@@ -309,20 +310,20 @@ $$
 Escrito de forma más formal, se cumple la ecuación:
 
 $$
-  G(x^k) = G(x^k \text{ mod } c)
+  G(x^k) = G(x^k \\text{ mod } c)
 $$
 
-Cabe destacar que como $x^k \text{ mod } c$ tiene grado $<n$, para calcular $G(r)$ solamente necesitamos aquellos valores de $a_i$ con $i<n$, y estos corresponden a los casos base de nuestra recurrencia. Entonces, el problema se reduce a calcular $x^k \text{ mod } c$. ¿Como podemos hacer esto de forma eficiente? Si aplicamos el algoritmo de Euclides de forma directa, el calculo tomaría alrededor de $k-n$ pasos donde en cada paso tenemos que restar un multiplo de $c$, es decir que en complejidad tomaría $O(N(K-N)) = O(NK)$ pasos. Esto no mejora en nada respecto al primer método.
+Cabe destacar que como $x^k \\text{ mod } c$ tiene grado $<n$, para calcular $G(r)$ solamente necesitamos aquellos valores de $a_i$ con $i<n$, y estos corresponden a los casos base de nuestra recurrencia. Entonces, el problema se reduce a calcular $x^k \\text{ mod } c$. ¿Como podemos hacer esto de forma eficiente? Si aplicamos el algoritmo de Euclides de forma directa, el calculo tomaría alrededor de $k-n$ pasos donde en cada paso tenemos que restar un multiplo de $c$, es decir que en complejidad tomaría $O(N(K-N)) = O(NK)$ pasos. Esto no mejora en nada respecto al primer método.
 
-La gracia es hacer este calculo de forma más inteligente. Aplicando el algoritmo de exponenciación rápida, podemos calcular $x^k \text{ mod } c$ a partir de $x \text{ mod } c, \ x^2 \text{ mod } c, \ x^4 \text{ mod } c \dots$. Necesitaremos $O(\log(K))$ de estos polinomios, y en cada paso tendremos que obtener el módulo $c$ de un polinomio de grado a lo más $2N$. Aplicando el algoritmo de Euclides de forma directa, esto nos toma en el peor caso tiempo $O(N(2N-N)) = O(N^2)$ pasos, ¡que nos lleva a un algoritmo final con complejidad $O(N^2 \log(K))$ pasos!
+La gracia es hacer este calculo de forma más inteligente. Aplicando el algoritmo de exponenciación rápida, podemos calcular $x^k \\text{ mod } c$ a partir de $x \\text{ mod } c, \\ x^2 \\text{ mod } c, \\ x^4 \\text{ mod } c \\dots$. Necesitaremos $O(\\log(K))$ de estos polinomios, y en cada paso tendremos que obtener el módulo $c$ de un polinomio de grado a lo más $2N$. Aplicando el algoritmo de Euclides de forma directa, esto nos toma en el peor caso tiempo $O(N(2N-N)) = O(N^2)$ pasos, ¡que nos lleva a un algoritmo final con complejidad $O(N^2 \\log(K))$ pasos!
 
 Para concluir, vamos a describir el algoritmo a grandes rasgos:
 
-1) Calcular los polinomios $r_d(x) = [x^{2^d} \text{ mod } c]$ para todos los $d \geq 1$ tales que $2^d \leq k$. Complejidad $O(N^2\log(K))$.
-2) A partir de la descomposición binaria de $k = \sum b_d 2^d$, multiplicar los $r_d(x)$ y aplicar$\text{ mod } c$ para aquellos $d$ donde $b_d = 1$, para obtener $r(x) = [x^k \text{ mod } c]$. Complejidad $O(N^2\log(K))$
+1) Calcular los polinomios $r_d(x) = [x^{2^d} \\text{ mod } c]$ para todos los $d \\geq 1$ tales que $2^d \\leq k$. Complejidad $O(N^2\\log(K))$.
+2) A partir de la descomposición binaria de $k = \\sum b_d 2^d$, multiplicar los $r_d(x)$ y aplicar$\\text{ mod } c$ para aquellos $d$ donde $b_d = 1$, para obtener $r(x) = [x^k \\text{ mod } c]$. Complejidad $O(N^2\\log(K))$
 3) Calcular $G(r)$ para obtener $a_k$. Complejidad $O(N)$.
 
-Y utilizando todo esto obtenemos un algoritmo de complejidad $O(N^2\log(K))$ para calcular $a_k$. Como último detalle, este algoritmo puede mejorarse aún más a una complejidad de $O(N\log(N)\log(K))$ utilizando técnicas avanzadas de polinomios. Se pueden encontrar más detalles [aquí](https://www.pc-arg.com/media/attachment/fft.pdf).
+Y utilizando todo esto obtenemos un algoritmo de complejidad $O(N^2\\log(K))$ para calcular $a_k$. Como último detalle, este algoritmo puede mejorarse aún más a una complejidad de $O(N\\log(N)\\log(K))$ utilizando técnicas avanzadas de polinomios. Se pueden encontrar más detalles [aquí](https://www.pc-arg.com/media/attachment/fft.pdf).
 
 {{% details "Código" %}}
 **Código para polinomios**
@@ -469,23 +470,23 @@ Hasta ahora tenemos una gran estructura para lidiar con el caso homogéneo de la
 Estás son las recurrencias lineales no homogéneas más simples posibles. Se ven de la forma:
 
 $$
-a_k = \sum_{i=1}^{n} c_i a_{k-i} + b
+a_k = \\sum_{i=1}^{n} c_i a_{k-i} + b
 $$
 
-Usando un truco parecido al del método Kitamasa, podemos restar un $0$ conveniente de la forma $0 = -a_{k-1} + \sum_{i=1}^n c_ia_{(k-1)-i} + b$. Para facilitar la notación, diremos que $c_0 = -1$ para poder escribir esta expresión como $0 = \sum_{i=0}^n c_ia_{(k-1)-i} + b$ y lo restaremos:
+Usando un truco parecido al del método Kitamasa, podemos restar un $0$ conveniente de la forma $0 = -a_{k-1} + \\sum_{i=1}^n c_ia_{(k-1)-i} + b$. Para facilitar la notación, diremos que $c_0 = -1$ para poder escribir esta expresión como $0 = \\sum_{i=0}^n c_ia_{(k-1)-i} + b$ y lo restaremos:
 
 $$
-\begin{align*}
-a_k &= \sum_{i=1}^{n} c_i a_{k-i} + b - \left[\sum_{i=0}^n c_ia_{(k-1)-i} + b\right] \\
-    &= \sum_{i=1}^{n} c_i a_{k-i} - \sum_{i=0}^n c_ia_{(k-1)-i}
-\end{align*}
+\\begin{align*}
+a_k &= \\sum_{i=1}^{n} c_i a_{k-i} + b - \\left[\\sum_{i=0}^n c_ia_{(k-1)-i} + b\\right] \\\\
+    &= \\sum_{i=1}^{n} c_i a_{k-i} - \\sum_{i=0}^n c_ia_{(k-1)-i}
+\\end{align*}
 $$
 
 Con lo que anulamos $b$ y obtenemos una recurrencia lineal homógenea para $a$. Agrupando terminos, y tomando la convención de que $c_{n+1} = 0$, podemos reescribir esta recurrencia como:
 
 $$
-  \hat{c}_i = c_i - c_{i-1} \\
-  a_k = \sum_{i=1}^{n+1} \hat{c}_i a_{k-i}
+  \\hat{c}_i = c_i - c_{i-1} \\\\
+  a_k = \\sum_{i=1}^{n+1} \\hat{c}_i a_{k-i}
 $$
 
 Notar que mediante este proceso, creamos una recurrencia homogénea de grado $n+1$ a partir de una no homogénea de grado $n$, por lo que necesitaremos calcular un caso base adicional para resolver esta recurrencia. Podemos calcular a partir de los casos base originales y utilizando la recurrencia original.
@@ -518,45 +519,45 @@ void convert(int &n, vector<ll> &a, vector<ll> &c, ll b) {
   return;
 }
 ```
-{{% details %}}
+{{% /details %}}
 
 ### Caso $f(k) = p(k)$ polinomio
 
-Podemos generalizar la técnica anterior para polinomios arbitrarios de la forma $p(k) = \sum_{j=0}^m p_j k^j$. En este caso queremos resolver la recurrencia:
+Podemos generalizar la técnica anterior para polinomios arbitrarios de la forma $p(k) = \\sum_{j=0}^m p_j k^j$. En este caso queremos resolver la recurrencia:
 
 $$
-a_k = \sum_{i=1}^{n} c_i a_{k-i} + p(k)
+a_k = \\sum_{i=1}^{n} c_i a_{k-i} + p(k)
 $$
 
 Vamos a aplicar iterativamente el truco de restar un $0$ conveniente. Usaremos el hecho de que $q(x) = p(x) - p(x-1)$ es un polinomio de grado $m-1$. Utilizaremos la notación $[x^j]p(x)$ para referirnos al coeficiente que acompaña a $x^j$ en el polinomio $p(x)$, y vemos que:
 
 $$
-\begin{matrix}
-  [x^m]p(x-1) = [x^m]p(x) \Rightarrow [x^m]q(x) = 0 \\[1.5em]
-  [x^{m-1}]q(x) = [x^{m-1}](p(x) - p(x-1)) = m[x^m]p(x) + [x^{m-1}]p(x) - [x^{m-1}]p(x) = m[x^m]p(x) \neq 0
-\end{matrix}
+\\begin{matrix}
+  [x^m]p(x-1) = [x^m]p(x) \\Rightarrow [x^m]q(x) = 0 \\\\[1.5em]
+  [x^{m-1}]q(x) = [x^{m-1}](p(x) - p(x-1)) = m[x^m]p(x) + [x^{m-1}]p(x) - [x^{m-1}]p(x) = m[x^m]p(x) \\neq 0
+\\end{matrix}
 $$
 
-Entonces, cuando restamos nuestro $0$ conveniente $0 = \sum_{i=0}^n c_ia_{(k-1)-i} + p(k)$, tenemos que: 
+Entonces, cuando restamos nuestro $0$ conveniente $0 = \\sum_{i=0}^n c_ia_{(k-1)-i} + p(k)$, tenemos que: 
 
 $$
-\begin{align*}
-a_k &= \sum_{i=1}^{n} c_i a_{k-i} + p(k) - \left[\sum_{i=0}^n c_ia_{(k-1)-i} + p(k-1)\right] \\
-    &= \sum_{i=1}^{n} c_i a_{k-i} - \sum_{i=0}^n c_ia_{(k-1)-i} + \left[p(k) - p(k-1)\right] \\
-    &= \sum_{i=1}^{n+1} (c_i-c_{i-1}) a_{k-i} + q(k) 
-\end{align*}
+\\begin{align*}
+a_k &= \\sum_{i=1}^{n} c_i a_{k-i} + p(k) - \\left[\\sum_{i=0}^n c_ia_{(k-1)-i} + p(k-1)\\right] \\\\
+    &= \\sum_{i=1}^{n} c_i a_{k-i} - \\sum_{i=0}^n c_ia_{(k-1)-i} + \\left[p(k) - p(k-1)\\right] \\\\
+    &= \\sum_{i=1}^{n+1} (c_i-c_{i-1}) a_{k-i} + q(k) 
+\\end{align*}
 $$
 
-Ojo que aquí también estamos usando la convención de que $c_0 = -1$ y $c_{n+1} = 0$. Con este procedimiento, obtenemos una recurrencia lineal no homogénea de grado $n+1$ *con un polinomio $q$ de grado $m-1$*. Es decir que podemos reducir el grado del polinomio en $1$ aumentando el grado de la recurrencia en $1$. Si repetimos este proceso en total $m+1$ veces, obtendremos una recurrencia lineal de grado $n+m+1$ donde el polinomio se anula **por completo**, osea, homogénea. Al finalizar, obtendremos coeficientes $\hat{c}_i$ tal que:
+Ojo que aquí también estamos usando la convención de que $c_0 = -1$ y $c_{n+1} = 0$. Con este procedimiento, obtenemos una recurrencia lineal no homogénea de grado $n+1$ *con un polinomio $q$ de grado $m-1$*. Es decir que podemos reducir el grado del polinomio en $1$ aumentando el grado de la recurrencia en $1$. Si repetimos este proceso en total $m+1$ veces, obtendremos una recurrencia lineal de grado $n+m+1$ donde el polinomio se anula **por completo**, osea, homogénea. Al finalizar, obtendremos coeficientes $\\hat{c}_i$ tal que:
 
 $$
-  a_k = \sum_{i=1}^{n+m+1} \hat{c}_i a_{k-i}
+  a_k = \\sum_{i=1}^{n+m+1} \\hat{c}_i a_{k-i}
 $$
 
-Tomando la convención de que $c_i = 0$ para $i < 0$, podemos escribir una formula explícita para los $\hat{c}_i$:
+Tomando la convención de que $c_i = 0$ para $i < 0$, podemos escribir una formula explícita para los $\\hat{c}_i$:
 
 $$
-  \hat{c}_i = \sum_{j=0}^{m+1} (-1)^j \binom{m+1}{j}c_j
+  \\hat{c}_i = \\sum_{j=0}^{m+1} (-1)^j \\binom{m+1}{j}c_j
 $$
 
 De nuevo, es importante recalcar que para poder resolver esta recurrencia con los métodos que conocemos para recurrencias lineales homogéneas, necesitaremos $m+1$ valores adicionales de la secuencia como base, que podemos obtener utilizando la recurrencia original.
@@ -596,6 +597,6 @@ void convert(int &n, vector<ll> &a, vector<ll> &c, poly &p) {
   return;
 }
 ```
-{{% details %}}
+{{% /details %}}
 
 
