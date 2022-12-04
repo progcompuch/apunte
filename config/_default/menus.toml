@@ -35,6 +35,12 @@
   url = "/docs/grafos"
 
 [[docs]]
+  name = "Extras"
+  weight = 998
+  identifier = "extras"
+  url = "/docs/extras/"
+
+[[docs]]
   name = "Anexos"
   weight = 999
   identifier = "anexos"

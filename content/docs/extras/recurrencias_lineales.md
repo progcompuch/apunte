@@ -3,7 +3,7 @@ title: Recurrencias Lineales
 lead: ''
 date: 2022-12-04T02:48:45.000+00:00
 images: []
-weight: 301
+weight: 1
 menu:
   docs:
     parent: extras
