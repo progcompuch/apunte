@@ -19,3 +19,4 @@ A continuación se nombran, en orden cronológico, a las personas que han colabo
 * David Ibáñez
 * Daniel Báez
 * Javier Oliva
+* Javier Marinkovic
