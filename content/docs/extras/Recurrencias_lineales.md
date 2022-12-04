@@ -462,7 +462,7 @@ ll calcular_ak(vector<ll> &a, vector<ll> &c, ll K) {
 ```
 {{% /details %}}
 
-## Caso no Homogéneo
+## **Caso no Homogéneo**
 
 Hasta ahora tenemos una gran estructura para lidiar con el caso homogéneo de las recurrencias, pero no sabemos nada respecto a enfrentar recurrencias que no son homogéneas. Veremos dos casos donde es posible reducir estas recurrencias a otras equivalentes que si son homogéneas, que nos permitirá usar todos los métodos ya explicados.
 
