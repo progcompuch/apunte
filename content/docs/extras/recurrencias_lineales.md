@@ -485,8 +485,8 @@ $$
 Con lo que anulamos $b$ y obtenemos una recurrencia lineal homógenea para $a$. Agrupando terminos, y tomando la convención de que $c_{n+1} = 0$, podemos reescribir esta recurrencia como:
 
 $$
-  \\hat{c}_i = c_i - c_{i-1} \\\\
-  a_k = \\sum_{i=1}^{n+1} \\hat{c}_i a_{k-i}
+  \\hat{c}\_i = c\_i - c_{i-1} \\\\
+  a\_k = \\sum_{i=1}^{n+1} \\hat{c}_i a_{k-i}
 $$
 
 Notar que mediante este proceso, creamos una recurrencia homogénea de grado $n+1$ a partir de una no homogénea de grado $n$, por lo que necesitaremos calcular un caso base adicional para resolver esta recurrencia. Podemos calcular a partir de los casos base originales y utilizando la recurrencia original.
