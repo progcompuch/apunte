@@ -557,7 +557,7 @@ $$
 Tomando la convención de que $c_i = 0$ para $i < 0$, podemos escribir una formula explícita para los $\\hat{c}_i$:
 
 $$
-  \\hat{c}_i = \\sum_{j=0}^{m+1} (-1)^j \\binom{m+1}{j}c_j
+  \\hat{c}\_i = \\sum_{j=0}^{m+1} (-1)^j \\binom{m+1}{j}c\_j
 $$
 
 De nuevo, es importante recalcar que para poder resolver esta recurrencia con los métodos que conocemos para recurrencias lineales homogéneas, necesitaremos $m+1$ valores adicionales de la secuencia como base, que podemos obtener utilizando la recurrencia original.
