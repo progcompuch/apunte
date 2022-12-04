@@ -534,7 +534,8 @@ Vamos a aplicar iterativamente el truco de restar un $0$ conveniente. Usaremos e
 $$
 \\begin{matrix}
   [x^m]p(x-1) = [x^m]p(x) \\Rightarrow [x^m]q(x) = 0 \\\\[1.5em]
-  [x^{m-1}]q(x) = [x^{m-1}](p(x) - p(x-1)) = m[x^m]p(x) + [x^{m-1}]p(x) - [x^{m-1}]p(x) = m[x^m]p(x) \\neq 0
+  [x^{m-1}]q(x) = [x^{m-1}](p(x) - p(x-1)) \\\\[1.5em]
+  = m[x^m]p(x) + [x^{m-1}]p(x) - [x^{m-1}]p(x) = m[x^m]p(x) \\neq 0
 \\end{matrix}
 $$
 
