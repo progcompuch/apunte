@@ -53,8 +53,6 @@
     "stylelint-config-standard": "^20.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.4",
-    "jquery": "^1.9.1",
-    "popper.js": "^1.16.1"
+    "@fortawesome/fontawesome-free": "^5.15.4"
   }
 }
