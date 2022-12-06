@@ -76,6 +76,14 @@ h6,
 
 body {
   padding-top: 3.5625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+main {
+  flex-grow: 1;
 }
 
 .docs-sidebar {
