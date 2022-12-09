@@ -1482,8 +1482,3 @@ public:
     cout << endl;
   }
 };
-
-mt19937_64 implicit_treap::MT(chrono::system_clock::now().
-                    time_since_epoch().count());
-```
-{{% /details %}}    
