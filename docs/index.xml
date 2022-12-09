@@ -3,4 +3,5 @@ $$ a_k = \sum_{i\geq 1} c_i(k)a_{k-i} + f(k) $$
 Es decir, secuencias donde cada valor depende de una función lineal de los valores anteriores, más alguna función de k.
 Hay un sinfín de variedad de estas, la más clásica de todas siendo:
 $$ f_k = f_{k-1} + f_{k-2} $$
-La secuencia de Fibonacci. Otra clase de secuencias que podemos expresar usando esta terminología es: $$ T_n = 2T_{\lceil n/2 \rceil} + O(n) $$</description></item></channel></rss>
+La secuencia de Fibonacci. Otra clase de secuencias que podemos expresar usando esta terminología es: $$ T_n = 2T_{\lceil n/2 \rceil} + O(n) $$</description></item><item><title>Treaps</title><link>/docs/extras/treaps/</link><pubDate>Sun, 04 Dec 2022 02:48:45 +0000</pubDate><guid>/docs/extras/treaps/</guid><description>Introducción ¿Que cosa es un treap? El nombre viene de la mezcla de dos cosas, tree (árboles binarios de busqueda) + heap, y es por que esta estructura incorpora características de ambas. Antes de entrar en detalle en los treaps, hagamos un pequeño repaso sobre árboles binarios de busqueda.
+Árboles binarios de busqueda Un árbol binario de busqueda, es, como lo dice su nombre, un árbol binario donde cada nodo del árbol cumple las siguientes dos propiedades:</description></item></channel></rss>

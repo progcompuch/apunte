@@ -1,0 +1,1183 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="ie=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><link rel=preload as=font href=/fonts/vendor/jost/jost-v4-latin-regular.woff2 type=font/woff2 crossorigin><link rel=preload as=font href=/fonts/vendor/jost/jost-v4-latin-700.woff2 type=font/woff2 crossorigin><link rel=stylesheet href=/main.0ce842cb63b215ba8d61d4f188cdc42d3560f46238210188ce494f7fea26b58e7a43f81f53e114beec80e352f582637fa440d4da21c0508c971824a36b077806.css integrity="sha512-DOhCy2OyFbqNYdTxiM3ELTVg9GI4IQGIzklPf+omtY56Q/gfU+EUvuyA41L1gmN/pEDU2iHAUIyXGCSjawd4Bg==" crossorigin=anonymous><noscript><style>img.lazyload{display:none}</style></noscript><meta name=robots content="index, follow"><meta name=googlebot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name=bingbot content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><title>Treaps - Programación Competitiva UChile</title><meta name=description content="DCC universidad de Chile"><link rel=canonical href=/docs/extras/treaps/><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="/logo_redondo.png"><meta name=twitter:title content="Treaps"><meta name=twitter:description content="Introducción ¿Que cosa es un treap? El nombre viene de la mezcla de dos cosas, tree (árboles binarios de busqueda) + heap, y es por que esta estructura incorpora características de ambas. Antes de entrar en detalle en los treaps, hagamos un pequeño repaso sobre árboles binarios de busqueda.
+Árboles binarios de busqueda Un árbol binario de busqueda, es, como lo dice su nombre, un árbol binario donde cada nodo del árbol cumple las siguientes dos propiedades:"><meta name=twitter:site content="@dccuchile"><meta name=twitter:creator content="@dccuchile"><meta property="og:title" content="Treaps"><meta property="og:description" content="Introducción ¿Que cosa es un treap? El nombre viene de la mezcla de dos cosas, tree (árboles binarios de busqueda) + heap, y es por que esta estructura incorpora características de ambas. Antes de entrar en detalle en los treaps, hagamos un pequeño repaso sobre árboles binarios de busqueda.
+Árboles binarios de busqueda Un árbol binario de busqueda, es, como lo dice su nombre, un árbol binario donde cada nodo del árbol cumple las siguientes dos propiedades:"><meta property="og:type" content="article"><meta property="og:url" content="/docs/extras/treaps/"><meta property="og:image" content="/logo_redondo.png"><meta property="article:published_time" content="2022-12-04T02:48:45+00:00"><meta property="article:modified_time" content="2022-12-09T00:56:41-03:00"><meta property="og:site_name" content="Programación Competitiva UChile"><meta property="article:publisher" content="https://www.facebook.com/DCCUChile"><meta property="article:author" content="https://www.facebook.com/DCCUChile"><meta property="og:locale" content="es_CL"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"\/"},{"@type":"ListItem","position":2,"name":"Docsextrastreaps","item":"\/docsextrastreaps\/"}]}</script><meta name=theme-color content="#fff"><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=manifest href=/site.webmanifest></head><body class="docs single"><div class="header-bar fixed-top"></div><header class="navbar fixed-top navbar-expand-md navbar-light"><div class=container><input class="menu-btn order-0" type=checkbox id=menu-btn>
+<label class="menu-icon d-md-none" for=menu-btn><span class=navicon></span></label><a class="navbar-brand order-1 order-md-0 mr-auto" href=/><img class=logo-light src=/images/banner.svg></img>
+<img class=logo-dark src=/images/banner_dark.svg></img></a>
+<button id=mode class="btn btn-link order-2 order-md-4" type=button aria-label="Toggle mode">
+<span class=toggle-dark><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span><span class=toggle-light><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></span></button><ul class="navbar-nav social-nav order-3 order-md-5"><li class=nav-item><a class=nav-link href=https://github.com/progcompuch/apunte><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77a5.44 5.44.0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg><span class="ml-2 sr-only">GitHub</span></a></li></ul><div class="collapse navbar-collapse order-4 order-md-1"><ul class="navbar-nav main-nav mr-auto order-5 order-md-2"><li class=nav-item><a class=nav-link href=/docs/prologo/intro>Apunte</a></li><li class=nav-item><a class=nav-link href=/recursos/prologo/intro>Recursos</a></li><li class=nav-item><a class=nav-link href=/cses>CSES</a></li><li class=nav-item><a class=nav-link href=/acerca>Acerca</a></li></ul><div class="break order-6 d-md-none"></div><form class="navbar-form flex-grow-1 order-7 order-md-3"><input id=userinput class="form-control is-search" type=search placeholder="Buscar Documentación..." aria-label="Buscar Documentación..." autocomplete=off><div id=suggestions class="shadow bg-white rounded"></div></form></div></div></header><main class="wrap container" role=document><div class=content><div class="row flex-xl-nowrap"><div class="col-lg-5 col-xl-4 docs-sidebar"><nav class=docs-links aria-label="Main navigation"><h3>Prólogo</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/prologo/intro/>Prólogo</a></li></ul><h3>Intro a la Programación</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/intro/compilacion-editores/>Compilación y Editores de Texto</a></li><li><a class=docs-link href=/docs/intro/sintaxis/>Sintaxis, Variables, Tipos y Ciclos</a></li><li><a class=docs-link href=/docs/intro/funciones/>Funciones en C++</a></li><li><a class=docs-link href=/docs/intro/vectores/>Vectores</a></li><li><a class=docs-link href=/docs/intro/bits/>Operadores Bitwise</a></li></ul><h3>La STL</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/stl/strings/>Chars y Strings</a></li><li><a class=docs-link href=/docs/stl/pair-tuple/>Pair y Tuple</a></li><li><a class=docs-link href=/docs/stl/sort/>Sort</a></li><li><a class=docs-link href=/docs/stl/setmap/>Sets, Maps y Multisets</a></li><li><a class=docs-link href=/docs/stl/stackqueue/>Stack y Queue</a></li><li><a class=docs-link href=/docs/stl/priority_queue/>Priority Queue</a></li></ul><h3>Paradigmas de Resolución</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/paradigmas/busqueda-binaria/>Búsqueda Binaria</a></li><li><a class=docs-link href=/docs/paradigmas/programacion-dinamica/>Programación Dinámica</a></li></ul><h3>Estructuras de Datos</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/ds/unionfind/>Union Find</a></li></ul><h3>Grafos</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/grafos/introduccion/>Introducción</a></li><li><a class=docs-link href=/docs/grafos/busqueda/>Búsqueda en grafos (BFS y DFS)</a></li><li><a class=docs-link href=/docs/grafos/caminos_eulerianos/>Caminos y Ciclos Eulerianos</a></li><li><a class=docs-link href=/docs/grafos/mst/>Minimum Spanning Tree (MST)</a></li><li><a class=docs-link href=/docs/grafos/dijkstra/>Caminos más cortos</a></li></ul><h3>Extras</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/extras/recurrencias_lineales/>Recurrencias Lineales</a></li><li><a class="docs-link active" href=/docs/extras/treaps/>Treaps</a></li></ul><h3>Anexos</h3><ul class=list-unstyled><li><a class=docs-link href=/docs/anexos/template/>Template</a></li></ul></nav></div><nav class="docs-toc d-none d-xl-block col-xl-3" aria-label="Secondary navigation"><div class=page-links><h3>Contenidos</h3><nav id=TableOfContents><ul><li><a href=#árboles-binarios-de-busqueda>Árboles binarios de busqueda</a><ul><li><a href=#teorema>Teorema:</a></li></ul></li></ul><ul><li><a href=#base>Base</a><ul><li><a href=#teorema-1>Teorema</a></li><li><a href=#merge>Merge</a></li><li><a href=#split>Split</a></li><li><a href=#busqueda>Busqueda</a></li><li><a href=#inserción>Inserción</a></li><li><a href=#eliminación>Eliminación</a></li><li><a href=#implementación>Implementación</a></li><li><a href=#llaves-repetidas>Llaves repetidas</a></li></ul></li><li><a href=#extensiones>Extensiones</a><ul><li><a href=#cuantiles>Cuantiles</a></li><li><a href=#rango>Rango</a></li></ul></li><li><a href=#-treaps-como-mapas--arreglos->¿ Treaps como mapas / arreglos ?</a></li><li><a href=#implicit-treap>Implicit Treap</a></li></ul></nav></div></nav><main class="docs-content col-lg-11 col-xl-9 mx-xl-auto"><h1>Treaps</h1><p class=lead></p><h1 id=introducción>Introducción</h1><p>¿Que cosa es un <em>treap</em>? El nombre viene de la mezcla de dos cosas, <em>tree</em> (árboles binarios de busqueda) + <em>heap</em>, y es por que esta estructura incorpora características de ambas. Antes de entrar en detalle en los treaps, hagamos un pequeño repaso sobre árboles binarios de busqueda.</p><h2 id=árboles-binarios-de-busqueda>Árboles binarios de busqueda<a href=#árboles-binarios-de-busqueda class=anchor aria-hidden=true>#</a></h2><p>Un árbol binario de busqueda, es, como lo dice su nombre, un árbol binario donde cada nodo del árbol cumple las siguientes dos propiedades:</p><ul><li>Cada nodo del árbol tiene un valor que llamaremos <strong>llave</strong></li><li>Para cada nodo, todas las llaves guardadas en su subárbol izquierdo tienen valor $&lt;$ al de su propia llave, y todas las llaves guardadas en el subárbol derecho tienen valor $>$</li></ul><p>Un ejemplo de un árbol binario de busqueda:</p><center><img class=invertible src=../ABB1.png width=450></center><p>Del ejemplo debemos destacar un par de cosas:</p><ol><li>No estamos pidiendo que el árbol sea <strong>completo</strong>, es decir, que cada nodo tenga dos hijos o ninguno. Está bien si un nodo tiene un solo hijo.</li><li>A pesar de que en el ejemplo se usen números enteros como llaves, esto es solo para ilustrar y las llaves no necesariamente deben ser números enteros. Solo necesitaremos que las llaves sean valores que tengan alguna idea de &ldquo;ordén&rdquo;. Por ejemplo, podrémos usar llaves que sean strings, pares de números, etc. En el resto de este documento asumiremos que las llaves si son números enteros, pero insistimos en que no necesariamente lo tienen que ser siempre.</li><li>En este modelo <strong>no permitimos</strong> que hayan valores repetidos en el árbol.</li></ol><p>Algunos de ustedes quizás recuerden los árboles binarios de busqueda de algún ramo de programación. Quizás recuerden que la gracia de estos era que es fácil hacer un programa que decide si un valor se encuentra en el árbol o no:</p><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>struct</span> <span class=nc>tree</span> <span class=p>{</span>
+  <span class=n>tree</span> <span class=o>*</span><span class=n>left</span><span class=p>,</span> <span class=o>*</span><span class=n>right</span><span class=p>;</span> <span class=c1>// Los hijos izquierdo y derecho
+</span><span class=c1></span>  <span class=kt>int</span> <span class=n>key</span><span class=p>;</span> <span class=c1>// El valor llave
+</span><span class=c1></span>
+  <span class=n>tree</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>key</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+    <span class=n>left</span> <span class=o>=</span> <span class=n>right</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>};</span>
+
+<span class=c1>// Decide si x se encuentra en el árbol
+</span><span class=c1></span><span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>tree</span> <span class=o>*</span><span class=n>T</span><span class=p>,</span> <span class=kt>int</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+  <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un árbol vacío no tienen nada
+</span><span class=c1></span>  <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=k>return</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos x
+</span><span class=c1></span>
+  <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>  <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+  <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>  <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+<span class=p>}</span>
+</code></pre></div><p>También es bastante simple crear un programa que inserta valores en el árbol, encontrando la posición hoja correcta donde va:</p><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=c1>// Inserta x en el árbol y devuelve el árbol actualizado
+</span><span class=c1></span><span class=n>tree</span><span class=o>*</span> <span class=nf>insert</span><span class=p>(</span><span class=n>tree</span> <span class=o>*</span><span class=n>T</span><span class=p>,</span> <span class=kt>int</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+  <span class=c1>// Si el árbol era vacío, devolvemos el árbol con solo x
+</span><span class=c1></span>  <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=k>new</span> <span class=n>tree</span><span class=p>(</span><span class=n>x</span><span class=p>);</span> 
+
+  <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=k>return</span> <span class=n>T</span><span class=p>;</span> <span class=c1>// x ya se encontraba en el árbol
+</span><span class=c1></span>
+  <span class=c1>// Si x es menor que la llave del árbol, 
+</span><span class=c1></span>  <span class=c1>// lo insertamos a la izquierda.
+</span><span class=c1></span>  <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span> <span class=o>=</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span> 
+
+  <span class=c1>// Y si no, a la derecha
+</span><span class=c1></span>  <span class=k>else</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span> <span class=o>=</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+  <span class=c1>// Devolvemos el árbol actualizado
+</span><span class=c1></span>  <span class=k>return</span> <span class=n>T</span><span class=p>;</span>
+<span class=p>}</span>
+</code></pre></div><p>¿Cual es la complejidad de estos algoritmos? Bueno, en el peor caso de ambas funciones debemos bajar por todo el árbol hasta una hoja, por lo que en el peor caso esto toma la altura del árbol pasos. Si llamamos $H(T)$ a la altura del árbol (del inglés <em>height</em>), podemos escribir que estos algoritmos toman tiempo $O(H(T))$.</p><p>&mldr; ¿Ok, y que tan grande puede ser $H(T)$? Bueno, si insertamos $N$ valores, todos en ordén, resulta que el árbol resultante tiene $H(T) = N$. Por ejemplo, si insertamos los valores del $1$ al $5$ en orden, el árbol resultante se ve así:</p><center><img class=invertible src=../ABB2.png width=250></center><p>Es decir que, en el peor caso esta estructura no es mejor que buscar e insertar en un arreglo 😕. Existen métodos para mantener $H(T)$ bajo, por ejemplo, los árboles <strong>AVL</strong> agregan una invariante adicional que asegura que el árbol mantiene una profundidad $H(T) = O(\log N)$. Pero, ¿Refleja esto el caso promedio del árbol? Resulta que no, en el caso que ingresamos $n$ valores en un orden aleatorio, la áltura del árbol resultante tendrá un valor de $O(\log n)$ en esperanza. Hablaremos de este tipo de árboles como un <strong>árbol binario aleatorio</strong>, cuando ingresamos los valores en un orden aleatorio en un árbol binario de busqueda.</p><p>Vamos a dar primero una demostración de un resultado más debil:</p><h3 id=teorema>Teorema:<a href=#teorema class=anchor aria-hidden=true>#</a></h3><p>La profundidad esperada de cualquier nodo en un árbol binario aleatorio es $O(\log n)$.</p><h4 id=demostración>Demostración<a href=#demostración class=anchor aria-hidden=true>#</a></h4><p>Como vamos a ingresar $n$ valores al árbol y solo nos importa su orden, podemos pensar que estamos ingresando los valores $\{1, 2, \dots n\}$. También, por simplicidad, vamos a referirnos indistintamente a el valor $x$ y al nodo que contiene a $x$ de la misma forma. Vamos a necesitar un lema:</p><h4 id=lema>Lema:<a href=#lema class=anchor aria-hidden=true>#</a></h4><p>Para un par de valores $1 \leq x &lt; y \leq n$, $x$ será ancestro de $y$ si y solamente si $x$ es el primer valor en llegar del rango $[x, y]$. El caso que $x > y$ es análogo pidiendo que $x$ sea el primero en llegar del rango $[y, x]$.</p><p>Demostraremos solamente el caso $x &lt; y$, por que el otro de nuevo es análogo. Cuando $x$ llega primero, cualquier valor de $[x+1, y]$ va a querer insertarse en el subárbol derecho de $x$ y será descendiente de $x$. Si llegará $z$ tal que $x &lt; z &lt; y$ primero, $x$ se insertará en el subárbol izquierdo e $y$ en el subárbol derecho, por lo que $x$ no podrá ser ancestro de $y$. Y, finalmente, en el caso que $y$ llegará primero claramente $x$ no podrá ser ancestro de $y$ si es que llega después.</p><p>$\blacksquare$</p><p>Con esto, podemos decir que la probabilidad de que $x$ sea ancestro de $y$ es exactamente $\frac{1}{(1+|x-y|)}$, que es el tamaño del rango $[x, y]$. Denotando $P(y)$ por la profundidad de $y$, vemos que esto es equivalente a la cantidad de ancestros que tenga $y$ y luego expresamos:</p><p>$$
+\begin{align*}
+P(y) &= \sum_{x=1}^{y-1} \mathbf{1}_{y \text{ es ancestro de } x} + \sum_{x=y+1}^{n} \mathbf{1}_{y \text{ es ancestro de } x} \\<br>\Rightarrow \mathbb{E}(P(y)) &= \sum_{x=1}^{y-1} \mathbb{E}(\mathbf{1}_{y \text{ es ancestro de } x}) + \sum_{x=y+1}^{n} \mathbb{E}(\mathbf{1}_{y \text{ es ancestro de } x}) \\<br>\Rightarrow \mathbb{E}(P(y)) &= \sum_{x=1}^{y-1} \mathbb{P}(y \text{ es ancestro de } x) + \sum_{x=y+1}^{n} \mathbb{P}(y \text{ es ancestro de } x) \\<br>\Rightarrow \mathbb{E}(P(y)) &= \sum_{x=1}^{y-1} \frac{1}{1+(y-x)} + \sum_{x=y+1}^{n} \frac{1}{1+(x-y)} \\[1.5em]
+\Rightarrow \mathbb{E}(P(y)) &\leq H_{y-1} + H_{n-y+1} \leq 2H_n = O(\log n)
+\end{align*}
+$$</p><p>Donde $H_n$ corresponde al $n$-esimo número ármonico. Concluímos que la profundidad esperada es $O(\log n)$.</p><p>$\square$</p><p>Este resultado nos dice que en promedio, las operaciones en árboles binarios aleatorios nos tomarán tiempo en $O(\log n)$, pero no nos da seguridad respecto al peor caso. Podemos obtener un resultado aún más fuerte de que la altura de un árbol binario aleatorio es efectivamente $O(\log n)$, dejaremos la demostración aparte para los interesados.</p><details><summary>Demostración profundidad</summary><p>Vamos a nombrar $X_n$ la variable aleatoria resultante de tomar un árbol binario aleatorio y luego obtener su altura. Si fijamos la identidad de la raíz del árbol en $[1, n]$, el subárbol izquierdo será un árbol de $r-1$ valores y el derecho uno de $n-r$ valores. Esto nos permite escribir la esperanza condicional como:</p><p>$$
+\mathbb{E}(X_n \mid r) = \max(1+X_{r-1}, 1+X_{n-r}) = 1 + \max(X_{r-1}, X_{n-r})
+$$</p><p>Notar que la raíz de un árbol binario aleatorio es exactamente el valor que llega primero, así que la raíz será el valor $i \in [1, n]$ con probabilidad $\frac{1}{n}$. Con esto podemos expresar</p><p>$$
+\mathbb{E}(X_n) = \sum_{i=1}^{n} \mathbb{E}(X_n \mid r = i)\mathbb{P}(r = i)
+= 1 + \frac{1}{n} \sum_{i=1}^{n} \mathbb{E}(\max(X_{i-1}, X_{i-r}))
+$$</p><p>Lamentablemente, esta expresión no es amena a ser trabajada para demostrar que la altura sea $O(\log n)$ (por lo menos, no de una forma que yo conozca). Vamos a usar un truco y definiremos $Y_n = 2^{X_n}$, la altura <em>exponencial</em> del árbol. Podemos repetir el análisis anterior y expresar:</p><p>$$
+\mathbb{E}(Y_n \mid r) = 2^{1+\max(X_{r-1}, X_{n-r})} = 2\max(2^{X_{r-1}}, 2^{X_{n-r}}) = 2\max(Y_{r-1}, Y_{n-r})
+$$</p><p>Podemos acotar esta última expresión como $\mathbb{E}(Y_n \mid r) = 2\max(Y_{r-1}, Y_{n-r}) \leq 2(Y_{r-1} + Y_{n-r})$. Y luego, acotar el valor esperado de $Y_n$ como:</p><p>$$
+\mathbb{E}(Y_n) = \sum_{i=1}^{n} \mathbb{E}(Y_n \mid r = i)\mathbb{P}(r = i)
+\leq \frac{2}{n} \sum_{i=1}^{n} \mathbb{E}(Y_{i-1} + Y_{n-i}) = \frac{4}{n} \sum_{i=0}^{n-1} \mathbb{E}(Y_i)
+$$</p><p>¿Que pasa si repetimos está cota para el valor $\mathbb{E}(Y_{n-1})$ ? Vemos que:</p><p>$$
+\newcommand{\E}{\mathbb{E}}
+\begin{align*}
+\mathbb{E}(Y_n) &\leq \frac{4}{n}\sum_{i=0}^{n-1} \mathbb{E}(Y_i)
+= \frac{4}{n} \left[ \E(Y_{n-1}) + \sum_{i=0}^{n-2} \mathbb{E}(Y_i) \right] \\<br>&\leq \frac{4}{n} \left[ \frac{4}{n-1} \sum_{i=0}^{n-2}\E(Y_i) + \sum_{i=0}^{n-2} \mathbb{E}(Y_i) \right]
+= \frac{4}{n} \frac{n+3}{n-1} \sum_{i=0}^{n-2} \mathbb{E}(Y_i)
+\end{align*}
+$$</p><p>Y si repetimos este procedimiento $n$ veces, podemos observar que:</p><p>$$
+\mathbb{E}(Y_n) \leq 4\frac{(n+3)!}{3! n!} \mathbb{E}(Y_0) = 4 \binom{n+3}{3} = O(n^3)
+$$</p><p>Tomando la convención de que $X_0 = 0$ para que $Y_0 = 1$. Con esta cota para el crecimiento de $\mathbb{E}(Y_n)$, podremos finalmente obtener una cota para el crecimiento de $\mathbb{E}(X_n)$. Utilizamos la <a href=https://en.wikipedia.org/wiki/Jensen%27s_inequality>desigualdad de Jensen</a> para afirmar que $2^{\mathbb{E}(X_n)} \leq \mathbb{E}(2^{X_n}) = \mathbb{E}(Y_n)$, y luego:</p><p>$$
+2^{\mathbb{E}(X_n)} = O(n^3) \Rightarrow \mathbb{E}(X_n) = O(\log_2 n^3) = O(\log n)
+$$</p><p>Y de hecho, obtenemos este resultado con una constante bastante competitiva de $3$. Se puede demostrar adicionalmente que la varianza de $X_n$ cumple que $\textbf{Var}(X_n) = O((\log \log n)^2)$ (<a href=https://epubs.siam.org/doi/pdf/10.1137/S0097539792237541>referencia</a>), pero no lo demostraremos aquí.</p></details><p>Armados con el resultado anterior, vemos que en el caso de que ingresemos valores a un árbol binario de busqueda en orden aleatorio, este tendrá una altura razonable con probabilidad muy alta 🎉.</p><p>&mldr; Ok, ¿y de que nos sirve esto? En la gran mayoría de los casos, sobretodo en programación competitiva, no podremos asegurar que los valores vayan a ser ingresados de forma aleatoria a la estructura. Aquí es donde va a entrar en juego la parte <em>heap</em> de la ecuación.</p><h1 id=treaps>Treaps</h1><h2 id=base>Base<a href=#base class=anchor aria-hidden=true>#</a></h2><p>Un pequeño repaso sobre <strong>heaps</strong>. Un <strong>heap</strong> es un árbol binario que cumple las siguientes dos condiciones:</p><ul><li>Cada nodo del árbol tiene un valor que llamaremos <strong>prioridad</strong></li><li>Para cada nodo, todas las prioridades guardadas en su subárbol izquierdo y derecho tienen valor $&lt;$ al de su propia prioridad.</li></ul><p>Esta definición también se puede usar usando la desigualdad al otro lado, pero la estructura definida es totalmente análoga. Un ejemplo de un heap:</p><center><img class=invertible src=../Heap1.png width=450></center><p>Generalmente, se pide también que un heap seá un árbol binario completo, pero nosotros no lo requeriremos. Con esto, definiremos un <strong>treap</strong> como un árbol que tiene ambas las propiedades de un árbol binario de busqueda y un heap:</p><ul><li>Cada nodo del árbol tiene dos valores, una <strong>llave</strong> y una <strong>prioridad</strong></li><li>Para cada nodo, todas las llaves guardadas en su subárbol izquierdo tienen valor $&lt;$ al de su propia llave, y todas las llaves guardadas en el subárbol derecho tienen valor $>$</li><li>Para cada nodo, todas las prioridades guardadas en su subárbol izquierdo y derecho tienen valor $&lt;$ al de su propia prioridad.</li></ul><p>Aquí un ejemplo de un treap, donde escribimos las prioridades en color rojo y las llaves en color azul:</p><center><img class=invertible src=../Treap1.png width=450></center><p>Los treaps cumplen una propiedad interesante de la que haremos uso:</p><h3 id=teorema-1>Teorema<a href=#teorema-1 class=anchor aria-hidden=true>#</a></h3><p>Si las prioridades en un treap <strong>no se repiten</strong>, entonces el treap tiene una sola posible estructura. Más aún, la estructura es equivalente a la que hubiera resultado si hubieramos ingresado los nodos en orden descendiente de prioridad.</p><h4 id=demostración-1>Demostración<a href=#demostración-1 class=anchor aria-hidden=true>#</a></h4><p>Llamemos $p_{\min}$ al valor mínimo entre todas las prioridades del árbol, dado que todas las prioridades son distintas existe un único nodo que tenga prioridad $p_{\min}$. Dado la propiedad **heap**, la raíz del treap solamente puede ser este nodo. Aplicando inductivamente el mismo resultado sobre el subárbol izquierdo y el subárbol derecho obtenemos que la estructura es única.</p><p>$\square$</p><p>¿De que sirve esta propiedad? Bueno, si asignamos las prioridades de forma aleatoria, ¡el treap resultante cumplira las mismas propiedades que ya demostramos para árboles binarios aleatorios 🎉! Con esto podemos asegurar que al asignar las prioridades de forma aleatoria, independiente del orden en que ingresemos los valores al treap, este tendrá con alta probabilidad una altura logarítmica respecto a la cantidad $n$ de valores que hayamos ingresado.</p><p>Bueno, ¿Y como obtenemos números aleatorios? En un computador, usando algoritmos, no podemos 😓 (y aún sin usar algoritmos, no podemos obtenerlos de forma rápida mediante ruido del ambiente u otra fuente aleatoria). Lo que podemos usar es alguna secuencia pseudo-aleatoria con suficiente entropía (i.e. suficientemente &ldquo;aleatoria&rdquo;) para las prioridades.</p><p>En <strong>C++</strong>, existe una implementación del algoritmo <a href=https://en.wikipedia.org/wiki/Mersenne_Twister>Mersenne Twister</a> (¡el mismo usado por pokémon!) en la librería estándar. (¿Y por qué no usamos rand()? <a href=https://codeforces.com/blog/entry/61587>Por que es pésimo</a>, poco aleatorio y por si fuera poco lento). En este snippet de código vemos como usar Mersenne Twister en C++:</p><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=c1>// Numeros de 64 bits
+</span><span class=c1></span><span class=k>typedef</span> <span class=kt>long</span> <span class=kt>long</span> <span class=n>ll</span><span class=p>;</span>
+
+<span class=c1>// Objeto que guarda el estado de la secuencia Mersenne Twister
+</span><span class=c1></span><span class=n>mt19937_64</span> <span class=n>MT</span><span class=p>;</span>
+
+<span class=c1>// Inicializa nuestro Mersenne Twister con la hora actual, que es 
+</span><span class=c1>// suficientemente aleatoria. Llamar al principio del main
+</span><span class=c1></span><span class=kt>void</span> <span class=nf>iniciar_MT</span><span class=p>()</span> <span class=p>{</span>
+  <span class=n>MT</span> <span class=o>=</span> <span class=n>mt19937_64</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>system_clock</span><span class=o>::</span><span class=n>now</span><span class=p>().</span>
+    <span class=n>time_since_epoch</span><span class=p>().</span><span class=n>count</span><span class=p>());</span>
+<span class=p>}</span>
+
+<span class=n>ll</span> <span class=nf>random_number</span><span class=p>()</span> <span class=p>{</span>
+  <span class=k>return</span> <span class=n>MT</span><span class=p>();</span>
+<span class=p>}</span>
+</code></pre></div><p>Esto nos entregar numeros pseudo-aleatorios de $64$ bits. Un detalle importante es que nosotros necesitábamos valores que no se repitieran para nuestro treap, y esto no nos asegura que no se vayan a repetir. La verdad es que no podemos asegurar que los valores no se vayan a repetir, pero si se repiten &ldquo;poco&rdquo; no tendremos problemas. Y dado que el espacio tiene tamaño $2^{64}$, aplicando la <a href=https://en.wikipedia.org/wiki/Birthday_problem>paradoja del cumpleaños</a> esperaríamos ver la primera colisión al insertar alrededor de $\sqrt{2^{64}} = 2^{32}$ valores. Cabe decir que en contextos de programación competitiva, podemos asumir que no habrán repeticiones 😉.</p><p>En lo que sigue, vamos a explicar como hacer las operaciones fundamentales en treaps a alto nivel. Al final de está sección, incluiremos una implementación en C++. Necesitaremos antes dos algoritmos fundamentales:</p><h3 id=merge>Merge<a href=#merge class=anchor aria-hidden=true>#</a></h3><p><strong>Merge($T_1, T_2$)</strong> recibe dos treaps $T_1$ y $T_2$ que cumplen la condición de que todas las llaves de $T_1$ son $&lt;$ a las llaves de $T_2$, y los junta en un solo treap $T$ que contiene todos sus nodos. Ojo que esto <strong>destruye</strong> $T_1$ y $T_2$ en el proceso. Dibujamos los treaps de la siguiente forma, donde $r_i$ es la raíz, $L_i$ es el subárbol izquierdo y $R_i$ es el subárbol derecho de cada árbol, respectivamente.</p><center><img class=invertible src=../TreapsMerge1.png width=600></center><p>Sabemos que la raíz del nuevo árbol deberá ser el nodo entre $r_1, r_2$ que tenga mayor prioridad. Supongamos que es el caso que $r_1$ tiene mayor prioridad que $r_2$, entonces la raíz del nuevo árbol será $r_1$:</p><center><img class=invertible src=../TreapsMerge2.png width=600></center><p>Donde separamos en el dibujo los valores que son menores a la llave de $r_1$ a la izquierda y a los valores mayores a la llave de $r_1$ a la derecha, usando el abuso de notación de referirnos a la llave de $r_1$ como $r_1$. Notemos que los valores menores a $r_1$ ya conforman un treap por que corresponden al subárbol $L_1$, entonces podemos mantenerlo como el subárbol izquierdo de $r_1$ sin problemas. Para el subárbol derecho, tenemos el problema de que tenemos dos treaps separados y si queremos usarlos como subárbol derecho debemos juntarnos en uno solo.</p><p>Justamente, podemos llamar recursivamente a <strong>Merge</strong> con <strong>Merge($R_1, T_2$)</strong> para obtener el subárbol derecho que necesitamos, y con esto asignar los subárboles apropiados:</p><center><img class=invertible src=../TreapsMerge3.png width=600></center><p>Con lo que logramos fusionar los árboles. Esto requiere que tengamos casos base para la recursión, donde los casos base obvios son que un treap fusionado con un treap vacío resulta en el mismo treap. ¿Cual es la complejidad de este algoritmo? Bueno, con cada llamada recursiva estamos llamando el algoritmo de nuevo en un par de árboles donde al menos uno tiene una altura $1$ menor que la de su antecesor, por que la complejidad en el peor caso es $O(H(T_1) + H(T_2)) = O(\log n)$ si en total $T_1$ y $T_2$ tienen $n$ valores.</p><h3 id=split>Split<a href=#split class=anchor aria-hidden=true>#</a></h3><p><strong>Split</strong> recibe un treap $T$ y un valor $x$ y lo separa en dos treaps $T_1$ y $T_2$, tal que $T_1$ contiene todos los nodos con llaves $\leq x$ y $T_2$ aquellos nodos con llaves $>x$. Ojo que esto <strong>destruye</strong> el treap $T$ original. ¿Como hacemos el split? Pongámonos en el caso que el valor de la raíz de $T$ es $\leq x$, entonces sabemos que tanto el subárbol izquierdo de $T$ y su raíz serán parte de $T_1$. Visualicemos esto, usando azul para marcar aquellos valores que ya sabemos que van en $T_1$, y rojo para aquellos valores que aún no sabemos donde van:</p><center><img class=invertible src=../TreapsSplit1.png width=600></center><p>Para separar los valores de $R$ que aún no sabemos donde van, vamos a llamar recursivamente a <strong>Split</strong> con <strong>Split($R, x$)</strong> para separar los valores de $R$ en $R_1, R_2$ donde $R_1$ contiene los valores que son $\leq x$ y $R_2$ los que son $>x$, y con esto construiremos $T_1$ y $T_2$ como corresponde:</p><center><img class=invertible src=../TreapsSplit2.png width=600></center><p>Como caso base consideraremos que el split de un treap vacío es, naturalmente, dos treaps vacíos. Con esto, como llamamos recursivamente <strong>Split</strong> sobre un árbol que en el peor caso tiene altura a lo más $1$ menor que $T$, vemos que la complejidad de este algoritmo es $O(H(T)) = O(\log n)$.</p><p>A partir de estas operaciones, podremos construir las operaciones básicas que esperamos de un árbol de busqueda: buscar, insertar y eliminar valores. En los algoritmos que siguen, llamaremos a $T$ el treap a trabajar y $L, R$ a sus subárboles izquierdo y derecho respectivamente.</p><h3 id=busqueda>Busqueda<a href=#busqueda class=anchor aria-hidden=true>#</a></h3><p>Dado que un treap es también un árbol binario de busqueda, podemos aplicar el mismo algoritmo de busqueda que usamos antes para este caso. La complejidad es la profundidad de $T$, que es $O(\log n)$</p><h3 id=inserción>Inserción<a href=#inserción class=anchor aria-hidden=true>#</a></h3><p>Para insertar un valor $x$ en el treap, destacar que debemos verificar si $x$ se encuentra ya en el treap para evitar tener valores duplicados. Si $x$ no se encuentra en el treap $T$, podemos empaquetar el valor $x$ en un nodo $n$ con su prioridad aleatoria correspondiente y utilizar el siguiente algoritmo recursivo <strong>Insert($T, n$)</strong> para ingresarlo a $T$:</p><h4 id=insertt-n>Insert($T, n$)<a href=#insertt-n class=anchor aria-hidden=true>#</a></h4><ul><li>Si $T$ es el treap vacío, entonces la inserción es lo mismo que asignar $T = n$.</li><li>Si la prioridad de $n$ es mayor a la prioridad de la raíz de $T$, $n$ se convertirá en la raíz del treap. Llamamos a <strong>Split($T, x$)</strong> para separar $T$ en $T_1, T_2$ y asignamos $T_1$ como el subárbol izquierdo de $n$, $T_2$ como el derecho.</li><li>Si no es el caso y la prioridad es menor, llamamos <strong>Insert</strong> en el subárbol que corresponda para $x$, es decir, <strong>Insert($L, n$)</strong> si es que $x$ es $&lt;$ que la llave de $T$, e <strong>Insert($R, n$)</strong> en el caso contrario.</li></ul><p>En el peor caso, este algoritmo baja por todo el treap para ingresar $x$ y hace solamente una llamada a <strong>Split</strong>, por lo que tiene complejidad $O(\log n)$.</p><h3 id=eliminación>Eliminación<a href=#eliminación class=anchor aria-hidden=true>#</a></h3><p>Para eliminar un valor $x$ del treap, podemos utilizar un algoritmo recursivo similar al de inserción. Lo llamaremos <strong>Erase($T, x$)</strong> y funciona de la siguiente forma:</p><h4 id=eraset-x>Erase($T, x$)<a href=#eraset-x class=anchor aria-hidden=true>#</a></h4><ul><li>Si $T$ es un treap vacío, podemos terminar pues $T$ no contiene a $x$.</li><li>Si la raíz de $T$ tiene llave con valor $x$, debemos eliminarla del treap. La removemos, y para juntar sus hijos en un solo treap llamamos a <strong>Merge($L, R$)</strong>.</li><li>Si no, bajamos al subárbol donde podríamos encontrar $x$ e intentamos de nuevo. Es decir, <strong>Erase($L, x$)</strong> si $x$ es $&lt;$ que la llave de $T$, <strong>Erase($R, x$)</strong> si no.</li></ul><p>Este algoritmo potencialmente puede bajar por todo el treap y hace una sola llamada a <strong>Merge</strong>, por lo que tendrá complejidad $O(\log n)$.</p><h3 id=implementación>Implementación<a href=#implementación class=anchor aria-hidden=true>#</a></h3><p>Dejamos una implementación de todas las operaciones vistas hasta ahora, que serán el treap &ldquo;base&rdquo;.</p><details><summary>Código</summary><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>typedef</span> <span class=kt>long</span> <span class=kt>long</span> <span class=n>ll</span><span class=p>;</span>
+
+<span class=c1>// Clase wrapper
+</span><span class=c1></span><span class=k>class</span> <span class=nc>treap</span> <span class=p>{</span>
+<span class=k>private</span><span class=o>:</span>
+  <span class=k>static</span> <span class=n>mt19937_64</span> <span class=n>MT</span><span class=p>;</span>
+
+  <span class=k>static</span> <span class=n>ll</span> <span class=nf>random_number</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>MT</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=k>struct</span> <span class=nc>node</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>left</span><span class=p>,</span> <span class=o>*</span><span class=n>right</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>key</span><span class=p>,</span> <span class=n>priority</span><span class=p>;</span>
+
+    <span class=n>node</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>left</span> <span class=o>=</span> <span class=n>right</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=n>key</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+      <span class=n>priority</span> <span class=o>=</span> <span class=n>random_number</span><span class=p>();</span>
+    <span class=p>}</span>    
+  <span class=p>};</span>
+
+  <span class=n>node</span> <span class=o>*</span><span class=n>root</span><span class=p>;</span>
+
+  <span class=c1>// Guardamos en T el resultado
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si un árbol es vacío, retornamos el otro
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T2</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+
+    <span class=c1>// Si T1 tiene mayor prioridad, su raíz será
+</span><span class=c1></span>    <span class=c1>// la raíz del árbol fusionado
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// En el otro caso, gana la raíz de T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guardaremos en T1, T2 los resultados
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El split del treap vacío son dos treaps vacíos
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T2</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si la llave de T es &lt;= x, entonces la raíz
+</span><span class=c1></span>    <span class=c1>// y todo el subárbol izquierdo van en T1
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;=</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, la raíz y el subárbol derecho van en T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T2</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un treap vacío no tiene nada
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=k>return</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos x
+</span><span class=c1></span>
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Llamada recursiva para ingresar nodo n
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si T es vacío, la inserción es el nodo n
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si n tiene mayor prioridad que T, debe
+</span><span class=c1></span>    <span class=c1>// ser la nueva raíz 
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, insertamos en el subárbol izquierdo
+</span><span class=c1></span>    <span class=c1>// si es que tiene una llave menor a la de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+    <span class=c1>// ... y en el caso contrario, en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El treap vacío no contiene a x
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si la llave de T es x, debemos eliminar la raíz
+</span><span class=c1></span>    <span class=c1>// y juntar sus subárboles
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, buscamos x en el subárbol izquierdo cuando
+</span><span class=c1></span>    <span class=c1>// es menor que la llave de T
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+    <span class=c1>// Y si no, intentamos en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+<span class=k>public</span><span class=o>:</span>
+  <span class=n>treap</span><span class=p>()</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>treap</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>);</span> <span class=p>}</span>
+
+  <span class=c1>// Fusiona O con T
+</span><span class=c1></span>  <span class=n>treap</span> <span class=o>&amp;</span><span class=n>merge</span><span class=p>(</span><span class=n>treap</span> <span class=o>&amp;</span><span class=n>O</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>O</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=o>*</span><span class=k>this</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Deja los valores &lt;= x en T, 
+</span><span class=c1></span>  <span class=c1>// devuelve los valores &gt; x en otro treap
+</span><span class=c1></span>  <span class=n>treap</span> <span class=nf>split</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>treap</span> <span class=n>ans</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>ans</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Busca x en el treap
+</span><span class=c1></span>  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Inserta el valor x en el treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si x ya se encuentra en el árbol, no ingresarlo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>))</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si no, procedemos a ingresarlo
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Elimina x del treap 
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>erase</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>};</span>
+
+<span class=n>mt19937_64</span> <span class=n>treap</span><span class=o>::</span><span class=n>MT</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>system_clock</span><span class=o>::</span><span class=n>now</span><span class=p>().</span>
+                    <span class=n>time_since_epoch</span><span class=p>().</span><span class=n>count</span><span class=p>());</span>
+</code></pre></div></details><h3 id=llaves-repetidas>Llaves repetidas<a href=#llaves-repetidas class=anchor aria-hidden=true>#</a></h3><p>Bueno, hasta ahora hemos pedido que las llaves no se repitan, ¿Que podemos hacer si queremos tener llaves repetidas en el treap? No podemos hacer algo simple como pedir que las llaves en el subárbol izquierdo sean $\leq$ a la llave de la raíz para incluir el caso en que son $=$, por que entonces si ingresamos $n$ veces la misma llave obtendríamos algo así:</p><center><img class=invertible src=../UnbalancedTreap.png width=450></center><p>Una solución más práctica es agregar un contador a cada nodo de forma de representar cuantas veces se repite su llave, y al momento de ingresar o borrar valores del treap, si es que ya están presentes en el árbol incrementar o decrementar el contador según corresponda. Si el contador llega a $0$, borrar el valor. Por completitud, dejamos el código aquí:</p><details><summary>Código</summary><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>typedef</span> <span class=kt>long</span> <span class=kt>long</span> <span class=n>ll</span><span class=p>;</span>
+
+<span class=c1>// Clase wrapper
+</span><span class=c1></span><span class=k>class</span> <span class=nc>treap</span> <span class=p>{</span>
+<span class=k>private</span><span class=o>:</span>
+  <span class=k>static</span> <span class=n>mt19937_64</span> <span class=n>MT</span><span class=p>;</span>
+
+  <span class=k>static</span> <span class=n>ll</span> <span class=nf>random_number</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>MT</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=k>struct</span> <span class=nc>node</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>left</span><span class=p>,</span> <span class=o>*</span><span class=n>right</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>key</span><span class=p>,</span> <span class=n>priority</span><span class=p>;</span>
+    <span class=kt>int</span> <span class=n>count</span><span class=p>;</span>
+
+    <span class=n>node</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>left</span> <span class=o>=</span> <span class=n>right</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=n>key</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+      <span class=n>priority</span> <span class=o>=</span> <span class=n>random_number</span><span class=p>();</span>
+      <span class=n>count</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>    
+  <span class=p>};</span>
+
+  <span class=n>node</span> <span class=o>*</span><span class=n>root</span><span class=p>;</span>
+
+  <span class=c1>// Guardamos en T el resultado
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si un árbol es vacío, retornamos el otro
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T2</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+
+    <span class=c1>// Si T1 tiene mayor prioridad, su raíz será
+</span><span class=c1></span>    <span class=c1>// la raíz del árbol fusionado
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// En el otro caso, gana la raíz de T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guardaremos en T1, T2 los resultados
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El split del treap vacío son dos treaps vacíos
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T2</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si la llave de T es &lt;= x, entonces la raíz
+</span><span class=c1></span>    <span class=c1>// y todo el subárbol izquierdo van en T1
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;=</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, la raíz y el subárbol derecho van en T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T2</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un treap vacío no tiene nada
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=k>return</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos x
+</span><span class=c1></span>
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Search modificado para incrementar el count de x
+</span><span class=c1></span>  <span class=kt>bool</span> <span class=nf>insert</span><span class=p>(</span><span class=n>node</span> <span class=o>*</span><span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un treap vacío no tiene nada
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=o>++</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>count</span><span class=p>;</span>
+      <span class=k>return</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos x
+</span><span class=c1></span>    <span class=p>}</span>
+
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Llamada recursiva para ingresar nodo n
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si T es vacío, la inserción es el nodo n
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si n tiene mayor prioridad que T, debe
+</span><span class=c1></span>    <span class=c1>// ser la nueva raíz 
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, insertamos en el subárbol izquierdo
+</span><span class=c1></span>    <span class=c1>// si es que tiene una llave menor a la de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+    <span class=c1>// ... y en el caso contrario, en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El treap vacío no contiene a x
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si la llave de T es x, reducimos el count
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=o>--</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>count</span><span class=p>;</span>
+      <span class=c1>// Y si llega a 0, eliminamos el nodo
+</span><span class=c1></span>      <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>count</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, buscamos x en el subárbol izquierdo cuando
+</span><span class=c1></span>    <span class=c1>// es menor que la llave de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+    <span class=c1>// Y si no, intentamos en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=k>return</span><span class=p>;</span>
+  <span class=p>}</span>
+
+<span class=k>public</span><span class=o>:</span>
+  <span class=n>treap</span><span class=p>()</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>treap</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>);</span> <span class=p>}</span>
+
+  <span class=c1>// Fusiona O con T
+</span><span class=c1></span>  <span class=c1>// Requisito: llaves(T) &lt; llaves(O)
+</span><span class=c1></span>  <span class=n>treap</span> <span class=o>&amp;</span><span class=n>merge</span><span class=p>(</span><span class=n>treap</span> <span class=o>&amp;</span><span class=n>O</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>O</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=o>*</span><span class=k>this</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Deja los valores &lt;= x en T, 
+</span><span class=c1></span>  <span class=c1>// devuelve los valores &gt; x en otro treap
+</span><span class=c1></span>  <span class=n>treap</span> <span class=nf>split</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>treap</span> <span class=n>ans</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>ans</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Busca x en el treap
+</span><span class=c1></span>  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Inserta el valor x en el treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si x ya se encuentra en el árbol,
+</span><span class=c1></span>    <span class=c1>// no agregar un nuevo nodo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>))</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si no, procedemos a ingresarlo
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Elimina x del treap 
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>erase</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>};</span>
+
+<span class=n>mt19937_64</span> <span class=n>treap</span><span class=o>::</span><span class=n>MT</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>system_clock</span><span class=o>::</span><span class=n>now</span><span class=p>().</span>
+                    <span class=n>time_since_epoch</span><span class=p>().</span><span class=n>count</span><span class=p>());</span>
+</code></pre></div></details><h2 id=extensiones>Extensiones<a href=#extensiones class=anchor aria-hidden=true>#</a></h2><p>Ok, hasta ahora hemos creado un árbol binario de busqueda con garantías fuertes sobre su altura y desempeño $O(\log n)$. ¿Que ventajas tiene sobre, digamos, un <strong>set</strong> de la librería estándar? Se pueden resumir en unos puntos:</p><ol><li>Su implementación es relativamente simple, una vez que tenemos <strong>Merge</strong> y <strong>Split</strong> implementados podemos crear operaciones bastante más complejas a partir de ellos.</li><li>Dado que la implementación la estamos haciendo nosotros, podemos modificarla a nuestro gusto para agregar funcionalidad extra, a diferencia de <strong>set</strong> que no es tan fácil de modificar.</li></ol><p>Por ejemplo, si agregamos un parametro <strong>size</strong> a los nodos del treap que guarden el tamaño de cada subárbol, podemos hacer consultas del tipo &ldquo;¿Cual es la $k$-ésima llave en el treap?&rdquo; y &ldquo;¿Cuantas llaves son $&lt;=$ al valor $x$?&rdquo;. Describiremos estos algoritmos, utilizando <strong>Size($T$)</strong> para referirnos al tamaño de $T$:</p><h3 id=cuantiles>Cuantiles<a href=#cuantiles class=anchor aria-hidden=true>#</a></h3><p>Hablaremos del $k$-ésimo cuantil como la $k$-ésima llave guardada en el treap, considerando que la llave más pequeña es la $0$-ésima. Como siempre, utilizamos un algoritmo recursivo:</p><h4 id=quantilet-k>Quantile($T, k$):<a href=#quantilet-k class=anchor aria-hidden=true>#</a></h4><ul><li>Si el tamaño del subárbol izquierdo <strong>Size($L$)</strong> es $k$, significa que la llave de $T$ es justamente el $k$-ésimo valor del treap y la devolvemos.</li><li>Si <strong>Size($L$)</strong> $ > k$, entonces la respuesta que buscamos se encuentra en el subárbol izquierdo y devolvemos <strong>Quantile($L, k$)</strong></li><li>En el caso contrario, debemos bajar al subárbol derecho a buscar la respuesta. Ojo que estamos saltándonos <strong>Size($L$)</strong> $ + 1$ llaves al hacer esto, correspondientes a las guardadas en el subárbol derecho más la raíz, por lo que debemos llamar a <strong>Quantile($R, k - (\textbf{Size}(L) + 1)$)</strong>.</li></ul><p>Claramente, este algoritmo solo tiene sentido cuando $k &lt;$ <strong>Size($T$)</strong>. Como en el peor caso descendemos por todo el árbol, esto tiene complejidad $O(\log n)$.</p><h3 id=rango>Rango<a href=#rango class=anchor aria-hidden=true>#</a></h3><p>Llamaremos al rango de un valor $x$ como la cantidad de llaves que son $\leq$ a $x$ en el treap. Podemos hacer esto mediante otro algoritmo recursivo:</p><h4 id=rankt-x>Rank($T, x$):<a href=#rankt-x class=anchor aria-hidden=true>#</a></h4><ul><li>Si $T$ es vacío, entonces <strong>Rank($T, x$)</strong> $= 0$.</li><li>Si $x$ es menor que la llave de $T$, entonces todos las llaves menores a $x$ se van a encontrar en el subárbol izquierdo de $T$, y devolvemos <strong>Rank($L, x$)</strong>.</li><li>Si no es el caso, tanto la raíz como el subárbol izquierdo de $T$ tienen llaves con valores $&lt;= x$,
+y deben ser incluídos en la respuesta. Respondemos <strong>Size($L$)</strong> + 1 + <strong>Rank($R, x$)</strong>.</li></ul><p>El algoritmo en el peor caso toma $O(\log n)$ por el argumento de profundidad.</p><details><summary>Código</summary><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>typedef</span> <span class=kt>long</span> <span class=kt>long</span> <span class=n>ll</span><span class=p>;</span>
+
+<span class=c1>// Clase wrapper
+</span><span class=c1></span><span class=k>class</span> <span class=nc>treap</span> <span class=p>{</span>
+<span class=k>private</span><span class=o>:</span>
+  <span class=k>static</span> <span class=n>mt19937_64</span> <span class=n>MT</span><span class=p>;</span>
+
+  <span class=k>static</span> <span class=n>ll</span> <span class=nf>random_number</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>MT</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=k>struct</span> <span class=nc>node</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>left</span><span class=p>,</span> <span class=o>*</span><span class=n>right</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>key</span><span class=p>,</span> <span class=n>priority</span><span class=p>;</span>
+    <span class=c1>// Tamaño del subárbol
+</span><span class=c1></span>    <span class=kt>int</span> <span class=n>sz</span><span class=p>;</span>
+
+    <span class=n>node</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>left</span> <span class=o>=</span> <span class=n>right</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=n>key</span> <span class=o>=</span> <span class=n>x</span><span class=p>;</span>
+      <span class=n>priority</span> <span class=o>=</span> <span class=n>random_number</span><span class=p>();</span>
+      <span class=n>sz</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>    
+  <span class=p>};</span>
+
+  <span class=c1>// Función utilitaria para obtener el size
+</span><span class=c1></span>  <span class=kt>int</span> <span class=nf>sz</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>T</span> <span class=o>?</span> <span class=n>T</span><span class=o>-&gt;</span><span class=nl>sz</span> <span class=p>:</span> <span class=mi>0</span><span class=p>;</span> <span class=p>}</span>
+
+  <span class=c1>// Mantiene las invariantes del treap
+</span><span class=c1></span>  <span class=c1>// llamar cada vez que se altera la estructura del Treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>update</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>T</span><span class=o>-&gt;</span><span class=n>sz</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>+</span> <span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=o>+</span> <span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=n>node</span> <span class=o>*</span><span class=n>root</span><span class=p>;</span>
+
+  <span class=c1>// Guardamos en T el resultado
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si un árbol es vacío, retornamos el otro
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T2</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+
+    <span class=c1>// Si T1 tiene mayor prioridad, su raíz será
+</span><span class=c1></span>    <span class=c1>// la raíz del árbol fusionado
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// En el otro caso, gana la raíz de T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guardaremos en T1, T2 los resultados
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El split del treap vacío son dos treaps vacíos
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T2</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si la llave de T es &lt;= x, entonces la raíz
+</span><span class=c1></span>    <span class=c1>// y todo el subárbol izquierdo van en T1
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;=</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, la raíz y el subárbol derecho van en T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T2</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un treap vacío no tiene nada
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=k>return</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos x
+</span><span class=c1></span>
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Llamada recursiva para ingresar nodo n
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si T es vacío, la inserción es el nodo n
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si n tiene mayor prioridad que T, debe
+</span><span class=c1></span>    <span class=c1>// ser la nueva raíz 
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, insertamos en el subárbol izquierdo
+</span><span class=c1></span>    <span class=c1>// si es que tiene una llave menor a la de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+    <span class=c1>// ... y en el caso contrario, en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El treap vacío no contiene a x
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si la llave de T es x, debemos eliminar la raíz
+</span><span class=c1></span>    <span class=c1>// y juntar sus subárboles
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, buscamos x en el subárbol izquierdo cuando
+</span><span class=c1></span>    <span class=c1>// es menor que la llave de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+    <span class=c1>// Y si no, intentamos en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=n>ll</span> <span class=nf>quantile</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si el tamaño del subárbol izquierdo es k,
+</span><span class=c1></span>    <span class=c1>// la respuesta es T-&gt;key
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=o>==</span> <span class=n>k</span><span class=p>)</span> <span class=k>return</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>;</span>
+    <span class=c1>// Si k &lt; el tamaño del subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>k</span> <span class=o>&lt;</span> <span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>))</span> <span class=k>return</span> <span class=n>quantile</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>quantile</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>k</span> <span class=o>-</span> <span class=p>(</span><span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=o>+</span> <span class=mi>1</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=kt>int</span> <span class=nf>rank</span><span class=p>(</span><span class=n>node</span> <span class=o>*</span><span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Un treap vacío no contiene nada
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+    <span class=c1>// Si x &lt; T-&gt;key, todas las llaves menores 
+</span><span class=c1></span>    <span class=c1>// se encuentran en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>rank</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+    <span class=c1>// Si no, incluímos la raíz y todo el subárbol
+</span><span class=c1></span>    <span class=c1>// izquierdo en la respuesta
+</span><span class=c1></span>    <span class=k>return</span> <span class=p>(</span><span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=o>+</span> <span class=n>rank</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+<span class=k>public</span><span class=o>:</span>
+  <span class=n>treap</span><span class=p>()</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>treap</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>);</span> <span class=p>}</span>
+
+  <span class=c1>// Fusiona O con T
+</span><span class=c1></span>  <span class=c1>// Requisito: llaves(T) &lt; llaves(O)
+</span><span class=c1></span>  <span class=n>treap</span> <span class=o>&amp;</span><span class=n>merge</span><span class=p>(</span><span class=n>treap</span> <span class=o>&amp;</span><span class=n>O</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>O</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=o>*</span><span class=k>this</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Deja los valores &lt;= x en T, 
+</span><span class=c1></span>  <span class=c1>// devuelve los valores &gt; x en otro treap
+</span><span class=c1></span>  <span class=n>treap</span> <span class=nf>split</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>treap</span> <span class=n>ans</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>ans</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Busca x en el treap
+</span><span class=c1></span>  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Inserta el valor x en el treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si x ya se encuentra en el árbol,
+</span><span class=c1></span>    <span class=c1>// no agregar
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>))</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si no, procedemos a ingresarlo
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Elimina x del treap 
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>erase</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kt>int</span> <span class=nf>size</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>sz</span><span class=p>(</span><span class=n>root</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Encuentra el k-esimo valor del treap
+</span><span class=c1></span>  <span class=n>ll</span> <span class=nf>quantile</span><span class=p>(</span><span class=kt>int</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>quantile</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Calcula cuantos valores son &lt;= x en el Treap
+</span><span class=c1></span>  <span class=kt>int</span> <span class=nf>rank</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>rank</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+<span class=p>};</span>
+
+<span class=n>mt19937_64</span> <span class=n>treap</span><span class=o>::</span><span class=n>MT</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>system_clock</span><span class=o>::</span><span class=n>now</span><span class=p>().</span>
+                    <span class=n>time_since_epoch</span><span class=p>().</span><span class=n>count</span><span class=p>());</span>
+</code></pre></div></details><p>¿Que otras cosas podemos hacer? También podemos guardar información extra de los subárboles, como la suma de los valores, el producto, la suma de los valores al cuadrado etc etc, y consultar por estos valores por rango.</p><h2 id=-treaps-como-mapas--arreglos->¿ Treaps como mapas / arreglos ?<a href=#-treaps-como-mapas--arreglos- class=anchor aria-hidden=true>#</a></h2><p>Hasta ahora hemos visto los <strong>treaps</strong> como implementanciones de la estructura <strong>set</strong>, que puede buscar, insertar y borrar llaves en $O(\log n)$. Si a cada llave en el treap le asociamos un valor, obtenemos directamente la implementación de un <strong>map</strong>. En el caso de que las llaves sean enteros, podemos pensar en un <strong>map</strong> implementado como <strong>treap</strong> como una implementación un poco particular de un arreglo.</p><p>Lo interesante de este &ldquo;arreglo&rdquo; son algunas cosas:</p><ol><li>Si guardamos solamente las posiciones del arreglo que han cambiado desde algún valor default, podemos trabajar con arreglos arbitrariamente grandes. Por ejemplo, podemos tener un arreglo de tamaño $10^{18}$, donde las posiciones inician en $0$, y guardamos en el <strong>treap</strong> solamente aquellos índices que se han modificado.</li><li>En cada nodo del treap podemos guardar metadatos sobre los subárboles, como por ejemplo la suma, el mínimo/máximo, el producto, etc. Y utilizando <strong>Merge</strong> y <strong>Split</strong>, podemos consultar esta información por rango (¡Como un <strong>Segment Tree</strong>!)</li></ol><p>Aquí una idea de como implementar esto:</p><details><summary>Código</summary><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=c1>// Clase wrapper
+</span><span class=c1></span><span class=k>class</span> <span class=nc>treap</span> <span class=p>{</span>
+<span class=k>private</span><span class=o>:</span>
+  <span class=k>static</span> <span class=n>mt19937_64</span> <span class=n>MT</span><span class=p>;</span>
+
+  <span class=k>static</span> <span class=n>ll</span> <span class=nf>random_number</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>MT</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=k>struct</span> <span class=nc>node</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>left</span><span class=p>,</span> <span class=o>*</span><span class=n>right</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>key</span><span class=p>,</span> <span class=n>priority</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>value</span><span class=p>,</span> <span class=n>max_value</span><span class=p>;</span>
+
+    <span class=n>node</span><span class=p>(</span><span class=n>ll</span> <span class=n>k</span><span class=p>,</span> <span class=n>ll</span> <span class=n>v</span> <span class=o>=</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>left</span> <span class=o>=</span> <span class=n>right</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=n>key</span> <span class=o>=</span> <span class=n>k</span><span class=p>;</span>
+      <span class=n>priority</span> <span class=o>=</span> <span class=n>random_number</span><span class=p>();</span>
+      <span class=n>max_value</span> <span class=o>=</span> <span class=n>value</span> <span class=o>=</span> <span class=n>v</span><span class=p>;</span>
+    <span class=p>}</span>    
+  <span class=p>};</span>
+
+  <span class=c1>// Funciones utilitarias
+</span><span class=c1></span>  <span class=n>ll</span> <span class=nf>value</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>T</span> <span class=o>?</span> <span class=n>T</span><span class=o>-&gt;</span><span class=nl>value</span> <span class=p>:</span> <span class=o>-</span><span class=n>INF</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>ll</span> <span class=nf>max_value</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>T</span> <span class=o>?</span> <span class=n>T</span><span class=o>-&gt;</span><span class=nl>max_value</span> <span class=p>:</span> <span class=o>-</span><span class=n>INF</span><span class=p>;</span> <span class=p>}</span>
+
+  <span class=c1>// Mantiene las invariantes del treap
+</span><span class=c1></span>  <span class=c1>// llamar cada vez que se altera la estructura del Treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>update</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>T</span><span class=o>-&gt;</span><span class=n>max_value</span> <span class=o>=</span> 
+    <span class=n>max</span><span class=p>({</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>value</span><span class=p>,</span> <span class=n>max_value</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>),</span> <span class=n>max_value</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)});</span>
+  <span class=p>}</span>
+
+  <span class=n>node</span> <span class=o>*</span><span class=n>root</span><span class=p>;</span>
+
+  <span class=c1>// Guardamos en T el resultado
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si un árbol es vacío, retornamos el otro
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T2</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+
+    <span class=c1>// Si T1 tiene mayor prioridad, su raíz será
+</span><span class=c1></span>    <span class=c1>// la raíz del árbol fusionado
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// En el otro caso, gana la raíz de T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Merge triple de utilidad
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T3</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guardaremos en T1, T2 los resultados
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El split del treap vacío son dos treaps vacíos
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T2</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si la llave de T es &lt;= x, entonces la raíz
+</span><span class=c1></span>    <span class=c1>// y todo el subárbol izquierdo van en T1
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;=</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, la raíz y el subárbol derecho van en T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T2</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Split triple T1 &lt; x, x &lt;= T2 &lt;= y, T3 &gt; y
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>,</span> <span class=n>ll</span> <span class=n>y</span><span class=p>,</span>
+            <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T3</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Ahora T2 contiene los valores &gt;= x
+</span><span class=c1></span>    <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>x</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span> 
+    <span class=c1>// Y con esto T2 contiene los valores en [x, y]
+</span><span class=c1></span>    <span class=n>split</span><span class=p>(</span><span class=n>T2</span><span class=p>,</span> <span class=n>y</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un treap vacío no tiene nada
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=k>return</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos x
+</span><span class=c1></span>
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Llamada recursiva para ingresar nodo n
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si T es vacío, la inserción es el nodo n
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si n tiene mayor prioridad que T, debe
+</span><span class=c1></span>    <span class=c1>// ser la nueva raíz 
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>n</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, insertamos en el subárbol izquierdo
+</span><span class=c1></span>    <span class=c1>// si es que tiene una llave menor a la de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>n</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+    <span class=c1>// ... y en el caso contrario, en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>insert</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El treap vacío no contiene a x
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si la llave de T es x, debemos eliminar la raíz
+</span><span class=c1></span>    <span class=c1>// y juntar sus subárboles
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, buscamos x en el subárbol izquierdo cuando
+</span><span class=c1></span>    <span class=c1>// es menor que la llave de T
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>x</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+    <span class=c1>// Y si no, intentamos en el subárbol derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>erase</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guarda el valor v en el nodo con llave k
+</span><span class=c1></span>  <span class=c1>// Retorna true si k estaba en el treap
+</span><span class=c1></span>  <span class=kt>bool</span> <span class=nf>set</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>k</span><span class=p>,</span> <span class=n>ll</span> <span class=n>v</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span> <span class=c1>// Un treap vacío no tiene nada
+</span><span class=c1></span>
+    <span class=kt>bool</span> <span class=n>found</span><span class=p>;</span>
+    <span class=c1>// Si la llave es k, la encontramos
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T</span><span class=o>-&gt;</span><span class=n>value</span> <span class=o>=</span> <span class=n>k</span><span class=p>;</span>
+      <span class=n>found</span> <span class=o>=</span> <span class=nb>true</span><span class=p>;</span> <span class=c1>// Encontramos k
+</span><span class=c1></span>    <span class=p>}</span>
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>k</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=n>found</span> <span class=o>=</span> <span class=n>set</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>);</span>
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>found</span> <span class=o>=</span> <span class=n>set</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>);</span>
+
+    <span class=k>if</span><span class=p>(</span><span class=n>found</span><span class=p>)</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>found</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Encuentra el nodo con llave k,
+</span><span class=c1></span>  <span class=c1>// NULL si no existe
+</span><span class=c1></span>  <span class=n>node</span><span class=o>*</span> <span class=nf>find</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=n>ll</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si T es vacío, k no está en el árbol
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=nb>NULL</span><span class=p>;</span>
+
+    <span class=c1>// Encontramos la respuesta
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span> <span class=o>==</span> <span class=n>k</span><span class=p>)</span> <span class=k>return</span> <span class=n>T</span><span class=p>;</span>
+
+    <span class=c1>// Si k &lt; T-&gt;key, buscamos en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>k</span> <span class=o>&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>key</span><span class=p>)</span> <span class=k>return</span> <span class=n>find</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+    <span class=c1>// Si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>find</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+  <span class=p>}</span>
+
+<span class=k>public</span><span class=o>:</span>
+  <span class=n>treap</span><span class=p>()</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>treap</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>);</span> <span class=p>}</span>
+
+  <span class=c1>// Fusiona O con T
+</span><span class=c1></span>  <span class=c1>// Requisito: llaves(T) &lt; llaves(O)
+</span><span class=c1></span>  <span class=n>treap</span> <span class=o>&amp;</span><span class=n>merge</span><span class=p>(</span><span class=n>treap</span> <span class=o>&amp;</span><span class=n>O</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>O</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=o>*</span><span class=k>this</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Deja los valores &lt;= x en T, 
+</span><span class=c1></span>  <span class=c1>// devuelve los valores &gt; x en otro treap
+</span><span class=c1></span>  <span class=n>treap</span> <span class=nf>split</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>treap</span> <span class=n>ans</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>ans</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Busca x en el treap
+</span><span class=c1></span>  <span class=kt>bool</span> <span class=nf>search</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Inserta el valor x en el treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si x ya se encuentra en el árbol,
+</span><span class=c1></span>    <span class=c1>// no agregar
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>search</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>))</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si no, procedemos a ingresarlo
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Elimina x del treap 
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>erase</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>x</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guarda el valor v en la llave k
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>set</span><span class=p>(</span><span class=n>ll</span> <span class=n>k</span><span class=p>,</span> <span class=n>ll</span> <span class=n>v</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si k ya se encuentra en el árbol, no crear un nodo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>set</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>))</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=c1>// Si no, procedemos a ingresarlo
+</span><span class=c1></span>    <span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Devuelve el valor v guardado en la
+</span><span class=c1></span>  <span class=c1>// llave k. Si no esta, lo crea con v = 0
+</span><span class=c1></span>  <span class=n>ll</span> <span class=k>operator</span><span class=p>[](</span><span class=n>ll</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span><span class=o>*</span> <span class=n>n</span> <span class=o>=</span> <span class=n>find</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>n</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>n</span> <span class=o>=</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>k</span><span class=p>);</span>
+      <span class=n>insert</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>n</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=k>return</span> <span class=n>n</span><span class=o>-&gt;</span><span class=n>value</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Retorna el máximo valor guardado en el treap T
+</span><span class=c1></span>  <span class=c1>// en el rango de llaves [a, b]
+</span><span class=c1></span>  <span class=n>ll</span> <span class=nf>query</span><span class=p>(</span><span class=n>ll</span> <span class=n>a</span><span class=p>,</span> <span class=n>ll</span> <span class=n>b</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>T1</span><span class=p>,</span> <span class=o>*</span><span class=n>T2</span><span class=p>,</span> <span class=o>*</span><span class=n>T3</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+
+    <span class=n>ll</span> <span class=n>ans</span> <span class=o>=</span> <span class=n>max_value</span><span class=p>(</span><span class=n>T2</span><span class=p>);</span>
+
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>};</span>
+
+<span class=n>mt19937_64</span> <span class=n>treap</span><span class=o>::</span><span class=n>MT</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>system_clock</span><span class=o>::</span><span class=n>now</span><span class=p>().</span>
+                    <span class=n>time_since_epoch</span><span class=p>().</span><span class=n>count</span><span class=p>());</span>
+</code></pre></div></details><h2 id=implicit-treap>Implicit Treap<a href=#implicit-treap class=anchor aria-hidden=true>#</a></h2><p>En el caso particular de que guardemos arreglos &ldquo;enteros&rdquo; (es decir, en un arreglo de tamaño $n$, guardamos todos los índices como llaves), podemos hacer algo aún mejor. Imaginemos queremos un arreglo donde vamos a:</p><ol><li>Agregar valores en posiciones arbitrarias</li><li>Eliminar valores en posiciones arbitrarias</li><li>Tomar rangos del arreglo y cambiarlos de posición</li></ol><p>En un arreglo normal, todas estas operaciones tomarían tiempo $O(n)$ pues involucrarían cambiar $O(n)$ posiciones en el peor caso. En un treap normal, esto también tomaría tiempo $O(n)$ pues, de nuevo, tendríamos que modificar $O(n)$ llaves para mantener el arreglo.</p><p>Pero&mldr; si no tuvieramos que guardar las llaves, no tendríamos por que preocuparnos de actualizarlas. En la implementación de <strong>Quantile</strong> vimos como acceder a la $k$-ésima llave del <strong>treap</strong> <strong>sin usar en absoluto las llaves</strong>, usando solamente los <strong>tamaños</strong> como guía.</p><p>Y, naturalmente, si en el <strong>treap</strong> guardamos un arreglo, la $k$-ésima llave es la $k$-ésima posición de nuestro arreglo. Es decir, que si nos preocupamos de mantener la información de los tamaños de forma correcta, podemos deshacernos de las llaves por completo. Y si ya no tenemos llaves, ya no tenemos que preocuparnos de mantenerlas actualizadas, y podemos implementar las operaciones antes mencionadas usando <strong>Split</strong> y <strong>Merge</strong>. No es trivial olvidarse de las llaves, y sin ellas podemos entender intuitivamente las operaciones <strong>Split</strong> y <strong>Merge</strong> como:</p><ol><li><strong>Split($T, k$)</strong> toma un arreglo guardado en un treap $T$ y lo separa en dos treaps, que guardan los primeros $k$ índices y los últimos $n-k$ índices.</li><li><strong>Merge($T_1, T_2$)</strong> concatena los arreglos guardados en $T_1$ y $T_2$.</li></ol><p>Adicionalmente, mediante estrategias de updates lazy, podemos hacer operaciones por rango como sumarle $x$ a todos los valores en $[i, j]$, y en el caso particular de treaps dar vuelta un rango. La idea es que al igual que debemos preocuparnos de mantener las invariantes en el treap como el tamaño, al momento de accesar el valor de un nodo o de intentar cambiar su estructura debemos preocuparnos de hacer el update lazy y empujarlo a los hijos.</p><p>Dejamos el detalle en el siguiente código:</p><details><summary>Código</summary><div class=highlight><pre class=chroma><code class=language-cpp data-lang=cpp><span class=k>typedef</span> <span class=kt>long</span> <span class=kt>long</span> <span class=n>ll</span><span class=p>;</span>
+
+<span class=c1>// Clase wrapper
+</span><span class=c1></span><span class=k>class</span> <span class=nc>implicit_treap</span> <span class=p>{</span>
+<span class=k>private</span><span class=o>:</span>
+  <span class=k>static</span> <span class=n>mt19937_64</span> <span class=n>MT</span><span class=p>;</span>
+
+  <span class=k>static</span> <span class=n>ll</span> <span class=nf>random_number</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>MT</span><span class=p>();</span>
+  <span class=p>}</span>
+
+  <span class=k>struct</span> <span class=nc>node</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>left</span><span class=p>,</span> <span class=o>*</span><span class=n>right</span><span class=p>;</span>
+    <span class=kt>int</span> <span class=n>sz</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>priority</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>value</span><span class=p>,</span> <span class=n>sum_value</span><span class=p>;</span>
+    <span class=n>ll</span> <span class=n>lazy_sum</span><span class=p>;</span>
+    <span class=kt>bool</span> <span class=n>lazy_flip</span><span class=p>;</span>
+
+    <span class=n>node</span><span class=p>(</span><span class=n>ll</span> <span class=n>v</span> <span class=o>=</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>left</span> <span class=o>=</span> <span class=n>right</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=n>priority</span> <span class=o>=</span> <span class=n>random_number</span><span class=p>();</span>
+      <span class=n>sz</span> <span class=o>=</span> <span class=mi>1</span><span class=p>;</span>
+      <span class=n>sum_value</span> <span class=o>=</span> <span class=n>value</span> <span class=o>=</span> <span class=n>v</span><span class=p>;</span>
+      <span class=n>lazy_sum</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+      <span class=n>lazy_flip</span> <span class=o>=</span> <span class=nb>false</span><span class=p>;</span>
+    <span class=p>}</span>    
+  <span class=p>};</span>
+
+  <span class=c1>// Funciones utilitarias
+</span><span class=c1></span>  <span class=n>ll</span> <span class=nf>value</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>T</span> <span class=o>?</span> <span class=n>T</span><span class=o>-&gt;</span><span class=nl>value</span> <span class=p>:</span> <span class=mi>0</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>ll</span> <span class=nf>sum_value</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>T</span> <span class=o>?</span> <span class=n>T</span><span class=o>-&gt;</span><span class=nl>sum_value</span> <span class=p>:</span> <span class=mi>0</span><span class=p>;</span> <span class=p>}</span>
+  <span class=kt>int</span> <span class=nf>sz</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>T</span> <span class=o>?</span> <span class=n>T</span><span class=o>-&gt;</span><span class=nl>sz</span> <span class=p>:</span> <span class=mi>0</span><span class=p>;</span> <span class=p>}</span>
+  <span class=kt>int</span> <span class=nf>key</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span> <span class=k>return</span> <span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span> <span class=p>}</span>
+
+  <span class=c1>// Mantiene las invariantes del treap
+</span><span class=c1></span>  <span class=c1>// llamar cada vez que se altera la estructura del Treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>update</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>T</span><span class=o>-&gt;</span><span class=n>sum_value</span> <span class=o>=</span> 
+      <span class=n>T</span><span class=o>-&gt;</span><span class=n>value</span> <span class=o>+</span> <span class=n>sum_value</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=o>+</span> <span class=n>sum_value</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+    <span class=n>T</span><span class=o>-&gt;</span><span class=n>sz</span> <span class=o>=</span> <span class=mi>1</span> <span class=o>+</span> <span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=o>+</span> <span class=n>sz</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>sum_push</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_sum</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T</span><span class=o>-&gt;</span><span class=n>value</span> <span class=o>+=</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_sum</span><span class=p>;</span>
+      <span class=n>T</span><span class=o>-&gt;</span><span class=n>sum_value</span> <span class=o>+=</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>sz</span><span class=o>*</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_sum</span><span class=p>;</span>
+
+      <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=o>-&gt;</span><span class=n>lazy_sum</span> <span class=o>+=</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_sum</span><span class=p>;</span>
+      <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=o>-&gt;</span><span class=n>lazy_sum</span> <span class=o>+=</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_sum</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_sum</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>flip_push</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_flip</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>swap</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+
+      <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=o>-&gt;</span><span class=n>lazy_flip</span> <span class=o>=</span> <span class=o>!</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=o>-&gt;</span><span class=n>lazy_flip</span><span class=p>;</span>
+      <span class=k>if</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=o>-&gt;</span><span class=n>lazy_flip</span> <span class=o>=</span> <span class=o>!</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=o>-&gt;</span><span class=n>lazy_flip</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=n>T</span><span class=o>-&gt;</span><span class=n>lazy_flip</span> <span class=o>=</span> <span class=nb>false</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=kt>void</span> <span class=nf>push</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>sum_push</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+    <span class=n>flip_push</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=n>node</span> <span class=o>*</span><span class=n>root</span><span class=p>;</span>
+
+  <span class=c1>// Guardamos en T el resultado
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Si un árbol es vacío, retornamos el otro
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T2</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span> <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span> <span class=k>return</span><span class=p>;</span> <span class=p>}</span>
+
+    <span class=c1>// Hacer el update a ultimo minuto
+</span><span class=c1></span>    <span class=n>push</span><span class=p>(</span><span class=n>T1</span><span class=p>);</span> <span class=n>push</span><span class=p>(</span><span class=n>T2</span><span class=p>);</span>
+
+    <span class=c1>// Si T1 tiene mayor prioridad, su raíz será
+</span><span class=c1></span>    <span class=c1>// la raíz del árbol fusionado
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>priority</span> <span class=o>&gt;</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>priority</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T1</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T1</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=c1>// En el otro caso, gana la raíz de T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>merge</span><span class=p>(</span><span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T</span> <span class=o>=</span> <span class=n>T2</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Merge triple de utilidad
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>merge</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T2</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=n>T3</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>T</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guardaremos en T1, T2 los resultados
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=kt>int</span> <span class=n>k</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// El split del treap vacío son dos treaps vacíos
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T2</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
+      <span class=k>return</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Update a ultimo minuto
+</span><span class=c1></span>    <span class=n>push</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+
+    <span class=c1>// Si key(T) &lt; k, entonces la raíz
+</span><span class=c1></span>    <span class=c1>// y todo el subárbol izquierdo van en T1
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>)</span> <span class=o>&lt;=</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>k</span> <span class=o>-</span> <span class=p>(</span><span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>)</span><span class=o>+</span><span class=mi>1</span><span class=p>),</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span>
+      <span class=n>T1</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=c1>// Si no, la raíz y el subárbol derecho van en T2
+</span><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
+      <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+      <span class=n>T2</span> <span class=o>=</span> <span class=n>T</span><span class=p>;</span>
+    <span class=p>}</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Split triple T1 &lt; i, i &lt;= T2 &lt;= j, T3 &gt; j
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>split</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=kt>int</span> <span class=n>i</span><span class=p>,</span> <span class=kt>int</span> <span class=n>j</span><span class=p>,</span>
+            <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T1</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T2</span><span class=p>,</span> <span class=n>node</span><span class=o>*</span> <span class=o>&amp;</span><span class=n>T3</span><span class=p>)</span> <span class=p>{</span>
+    <span class=c1>// Ahora T2 contiene los valores &gt;= x
+</span><span class=c1></span>    <span class=n>split</span><span class=p>(</span><span class=n>T</span><span class=p>,</span> <span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>);</span> 
+    <span class=c1>// Y con esto T2 contiene los valores en [x, y]
+</span><span class=c1></span>    <span class=n>split</span><span class=p>(</span><span class=n>T2</span><span class=p>,</span> <span class=n>j</span><span class=o>-</span><span class=n>i</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guarda el valor v en la posicion k
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>set</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=kt>int</span> <span class=n>k</span><span class=p>,</span> <span class=n>ll</span> <span class=n>v</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>push</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+
+    <span class=k>if</span><span class=p>(</span><span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>)</span> <span class=o>==</span> <span class=n>k</span><span class=p>)</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>value</span> <span class=o>=</span> <span class=n>v</span><span class=p>;</span>
+    <span class=c1>// Si es menor que la llave, debe estar en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>else</span> <span class=k>if</span><span class=p>(</span><span class=n>k</span> <span class=o>&lt;</span> <span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>))</span> <span class=n>set</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>);</span>
+    <span class=c1>// Y si no, en el derecho
+</span><span class=c1></span>    <span class=k>else</span> <span class=n>set</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>k</span> <span class=o>-</span> <span class=p>(</span><span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>)</span><span class=o>+</span><span class=mi>1</span><span class=p>),</span> <span class=n>v</span><span class=p>);</span>
+
+    <span class=k>return</span> <span class=n>update</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Encuentra el nodo que guarda la posición k
+</span><span class=c1></span>  <span class=n>node</span><span class=o>*</span> <span class=nf>find</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>,</span> <span class=kt>int</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>push</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+
+    <span class=c1>// Encontramos la respuesta
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>)</span> <span class=o>==</span> <span class=n>k</span><span class=p>)</span> <span class=k>return</span> <span class=n>T</span><span class=p>;</span>
+
+    <span class=c1>// Si k &lt; T-&gt;key, buscamos en el subárbol izquierdo
+</span><span class=c1></span>    <span class=k>if</span><span class=p>(</span><span class=n>k</span> <span class=o>&lt;</span> <span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>))</span> <span class=k>return</span> <span class=n>find</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+    <span class=c1>// Si no, en el derecho
+</span><span class=c1></span>    <span class=k>return</span> <span class=n>find</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>k</span> <span class=o>-</span> <span class=p>(</span><span class=n>key</span><span class=p>(</span><span class=n>T</span><span class=p>)</span><span class=o>+</span><span class=mi>1</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Función auxiliar para imprimir el treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>print</span><span class=p>(</span><span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>if</span><span class=p>(</span><span class=n>T</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+
+    <span class=n>push</span><span class=p>(</span><span class=n>T</span><span class=p>);</span>
+
+    <span class=n>print</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>T</span><span class=o>-&gt;</span><span class=n>value</span> <span class=o>&lt;&lt;</span> <span class=sc>&#39; &#39;</span><span class=p>;</span>
+    <span class=n>print</span><span class=p>(</span><span class=n>T</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+  <span class=p>}</span>
+
+<span class=k>public</span><span class=o>:</span>
+  <span class=n>implicit_treap</span><span class=p>()</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span> <span class=p>}</span>
+  <span class=n>implicit_treap</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span> <span class=n>root</span> <span class=o>=</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>);</span> <span class=p>}</span>
+
+  <span class=kt>int</span> <span class=nf>size</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>sz</span><span class=p>(</span><span class=n>root</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Concatena T con O
+</span><span class=c1></span>  <span class=n>implicit_treap</span> <span class=o>&amp;</span><span class=n>merge</span><span class=p>(</span><span class=n>implicit_treap</span> <span class=o>&amp;</span><span class=n>O</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>O</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=o>*</span><span class=k>this</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Deja los valores &lt;= x en T, 
+</span><span class=c1></span>  <span class=c1>// devuelve los valores &gt; x en otro treap
+</span><span class=c1></span>  <span class=n>implicit_treap</span> <span class=nf>split</span><span class=p>(</span><span class=kt>int</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>implicit_treap</span> <span class=n>ans</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>ans</span><span class=p>.</span><span class=n>root</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Elimina el rango [i, j] del treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=p>,</span> <span class=kt>int</span> <span class=n>j</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>T1</span><span class=p>,</span> <span class=o>*</span><span class=n>T2</span><span class=p>,</span> <span class=o>*</span><span class=n>T3</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Elimina la posición k del treap
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>erase</span><span class=p>(</span><span class=kt>int</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=n>erase</span><span class=p>(</span><span class=n>k</span><span class=p>,</span> <span class=n>k</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Guarda el valor v en la posición k
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>set</span><span class=p>(</span><span class=kt>int</span> <span class=n>k</span><span class=p>,</span> <span class=n>ll</span> <span class=n>v</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>set</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>k</span><span class=p>,</span> <span class=n>v</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Devuelve el valor v guardado en la posición k
+</span><span class=c1></span>  <span class=n>ll</span> <span class=k>operator</span><span class=p>[](</span><span class=kt>int</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
+    <span class=k>return</span> <span class=nf>find</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>k</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>value</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Retorna la suma de los valores guardado en T
+</span><span class=c1></span>  <span class=c1>// en el rango de indices [i, j]
+</span><span class=c1></span>  <span class=n>ll</span> <span class=nf>query</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=p>,</span> <span class=kt>int</span> <span class=n>j</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>T1</span><span class=p>,</span> <span class=o>*</span><span class=n>T2</span><span class=p>,</span> <span class=o>*</span><span class=n>T3</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+
+    <span class=n>ll</span> <span class=n>ans</span> <span class=o>=</span> <span class=n>sum_value</span><span class=p>(</span><span class=n>T2</span><span class=p>);</span>
+
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Le suma x a todo el rango [i, j]
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>update</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=p>,</span> <span class=kt>int</span> <span class=n>j</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>T1</span><span class=p>,</span> <span class=o>*</span><span class=n>T2</span><span class=p>,</span> <span class=o>*</span><span class=n>T3</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+
+    <span class=n>T2</span><span class=o>-&gt;</span><span class=n>lazy_sum</span> <span class=o>+=</span> <span class=n>x</span><span class=p>;</span>
+
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Da vuelta el rango [i, j]
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>flip</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=p>,</span> <span class=kt>int</span> <span class=n>j</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span> <span class=o>*</span><span class=n>T1</span><span class=p>,</span> <span class=o>*</span><span class=n>T2</span><span class=p>,</span> <span class=o>*</span><span class=n>T3</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+
+    <span class=n>T2</span><span class=o>-&gt;</span><span class=n>lazy_flip</span> <span class=o>=</span> <span class=o>!</span><span class=n>T2</span><span class=o>-&gt;</span><span class=n>lazy_flip</span><span class=p>;</span>
+
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>T1</span><span class=p>,</span> <span class=n>T2</span><span class=p>,</span> <span class=n>T3</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Inserta x en T de tal forma que T[i] = x
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>insert</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span><span class=p>,</span> <span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>node</span><span class=o>*</span> <span class=n>T</span><span class=p>;</span>
+    <span class=n>split</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>i</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=n>T</span><span class=p>);</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>),</span> <span class=n>T</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Agrega x al final de T
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>push_back</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>));</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Agrega x al principio de T
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>push_front</span><span class=p>(</span><span class=n>ll</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span>
+    <span class=n>merge</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=k>new</span> <span class=n>node</span><span class=p>(</span><span class=n>x</span><span class=p>),</span> <span class=n>root</span><span class=p>);</span>
+  <span class=p>}</span>
+
+  <span class=c1>// Imprime todos los valores del treap en orden
+</span><span class=c1></span>  <span class=c1>// i.e. [1, 2, 3] =&gt; 1 2 3 \\n
+</span><span class=c1></span>  <span class=kt>void</span> <span class=nf>print</span><span class=p>()</span> <span class=p>{</span>
+    <span class=n>print</span><span class=p>(</span><span class=n>root</span><span class=p>);</span> 
+    <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+  <span class=p>}</span>
+<span class=p>};</span>
+
+<span class=n>mt19937_64</span> <span class=n>implicit_treap</span><span class=o>::</span><span class=n>MT</span><span class=p>(</span><span class=n>chrono</span><span class=o>::</span><span class=n>system_clock</span><span class=o>::</span><span class=n>now</span><span class=p>().</span>
+                    <span class=n>time_since_epoch</span><span class=p>().</span><span class=n>count</span><span class=p>());</span>
+</code></pre></div></details><p class=edit-page><a href=https://github.com/progcompuch/apunte/blob/main/content/docs/extras/treaps.md><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828.0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>Editar en GitHub</a>
+<span class=date-info><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Modificado por última vez el 09/12/2022 a las 00:56:41 hrs.</span></p><div class="docs-navigation d-flex justify-content-between"><a href=/docs/extras/recurrencias_lineales/><div class="card my-1"><div class="card-body py-2">&larr; Recurrencias Lineales</div></div></a><a class=ml-auto href=/docs/prologo/intro/><div class="card my-1"><div class="card-body py-2">Prólogo &rarr;</div></div></a></div></main></div></div></main><footer class="footer text-muted"><div class=container><div class=row><div class="col-lg-8 order-last order-lg-first"><ul class=list-inline><li class=list-inline-item>Sitio generado con <a href=https://gohugo.io/>Hugo</a> y <a href=https://getdoks.org/>Doks</a></li></ul></div><div class="col-lg-8 order-first order-lg-last text-lg-right"><ul class=list-inline><a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target=_blank rel="license noopener noreferrer" style=display:inline-block>CC BY-SA 4.0<img style=height:22px!important;margin-left:3px;vertical-align:text-bottom src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style=height:22px!important;margin-left:3px;vertical-align:text-bottom src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style=height:22px!important;margin-left:3px;vertical-align:text-bottom src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></ul></div></div></div></footer><script src=/main.95e1e463215c36b92eed561d2047bd705784633ba53d9459f103fad71ac9237a03e92e1413824339f4dcfe6e260239c0e4237a48be33d73a1e686e025142d2ba.js integrity="sha512-leHkYyFcNrku7VYdIEe9cFeEYzulPZRZ8QP61xrJI3oD6S4UE4JDOfTc/m4mAjnA5CN6SL4z1zoeaG4CUULSug==" crossorigin=anonymous defer></script><script src=/index.min.4842d09dc7f066902873731a5a97076ea606633dcee608e067d3644daea6d31fe09e9d74caf1262f242d3e0427513335d7d4e4f15d57ba2a4cda20644c2bcb7d.js integrity="sha512-SELQncfwZpAoc3MaWpcHbqYGYz3O5gjgZ9NkTa6m0x/gnp10yvEmLyQtPgQnUTM119Tk8V1XuipM2iBkTCvLfQ==" crossorigin=anonymous defer></script><script>MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,processEnvironments:true},options:{skipHtmlTags:['script','noscript','style','textarea','pre']}};window.addEventListener('load',(event)=>{document.querySelectorAll("mjx-container").forEach(function(x){x.parentElement.classList+='has-jax'})});</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></body></html>
