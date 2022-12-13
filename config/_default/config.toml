@@ -8,9 +8,9 @@ enableRobotsTXT = true
 paginate = 7
 rssLimit = 10
 
-# add redirects/headers
+# outputs
 [outputs]
-home = ["HTML", "RSS", "REDIRECTS"]
+home = ["HTML", "RSS"]
 section = ["HTML", "RSS", "SITEMAP"]
 
 # add output format for section sitemap.xml
