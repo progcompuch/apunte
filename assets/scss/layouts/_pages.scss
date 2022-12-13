@@ -9,7 +9,6 @@
 
 .anchor {
   visibility: hidden;
-  padding-left: 0.5rem;
 }
 
 h1:hover a,
@@ -24,13 +23,29 @@ h4:hover a {
   margin-top: 2.25rem;
 }
 
-.edit-page {
+.page-footer-meta {
   margin-top: 3rem;
-  font-size: $font-size-base;
 }
 
-.edit-page svg {
-  margin-right: 0.5rem;
+.edit-page,
+.last-modified {
+  font-size: $font-size-sm;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+@include media-breakpoint-up(md) {
+  .edit-page,
+  .last-modified {
+    font-size: $font-size-base;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.edit-page svg,
+.last-modified svg {
+  margin-right: 0.25rem;
   margin-bottom: 0.25rem;
 }
 
@@ -39,23 +54,11 @@ p.meta {
   font-size: $font-size-base;
 }
 
-code.has-jax {
-  -webkit-font-smoothing: antialiased;
-  background: inherit !important;
-  border: none !important;
-  font-size: 100%;
+.breadcrumb {
+  margin-top: 2.25rem;
+  font-size: $font-size-base;
 }
 
-img {
-  max-width: 100%;
+.page-link:hover {
+  text-decoration: none;
 }
-
-/* styles for numered code blocks?
-table td {
-  border: 1px solid #000;
-}
-
-td code {
-  background-color: inherit;
-  color: #999;
-}*/

@@ -1,11 +1,18 @@
 .contributors .content,
+.blog .content,
 .page .content,
 .error404 .content,
 .docs.list .content,
 .tutorial.list .content,
-.showcase.list .content {
+.showcase.list .content,
+.categories.list .content,
+.tags.list .content {
   padding-top: 1rem;
   padding-bottom: 3rem;
+}
+
+.content img {
+  max-width: 100%;
 }
 
 h1,
@@ -23,10 +30,27 @@ h6,
   margin: 2rem 0 1rem;
 }
 
+.offcanvas-header {
+  border-bottom: 1px solid $gray-300;
+  padding-top: 1.0625rem;
+  padding-bottom: 0.8125rem;
+}
+
+h5.offcanvas-title {
+  margin: 0;
+}
+
+body.docs {
+  padding-top: 0 !important;
+}
+
 @include media-breakpoint-up(md) {
   body {
     font-size: $font-size-md;
+
+    /*
     padding-top: 4rem !important;
+    */
   }
 
   h1,
@@ -48,6 +72,16 @@ h6,
 .home h1 {
   /* font-size: calc(1.375rem + 1.5vw); */
   font-size: calc(1.875rem + 1.5vw);
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a.btn:hover,
+a.btn:focus {
+  text-decoration: none;
 }
 
 .section {
@@ -96,13 +130,17 @@ main {
     border-right: 1px solid $gray-200;
   }
 
-  @supports ((position: -webkit-sticky) or (position: sticky)) {
+  @supports ((position:-webkit-sticky) or (position:sticky)) {
     .docs-sidebar {
       position: -webkit-sticky;
       position: sticky;
       top: 4rem;
       z-index: 1000;
       height: calc(100vh - 4rem);
+    }
+
+    .docs-sidebar-top {
+      top: 0;
     }
   }
 }
@@ -139,13 +177,17 @@ main {
   order: 2;
 }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
+@supports ((position:-webkit-sticky) or (position:sticky)) {
   .docs-toc {
     position: -webkit-sticky;
     position: sticky;
     top: 4rem;
     height: calc(100vh - 4rem);
     overflow-y: auto;
+  }
+
+  .docs-toc-top {
+    top: 0;
   }
 }
 
@@ -175,9 +217,20 @@ main {
   }
 }
 
-#TableOfContents ul {
+.navbar a:hover,
+.navbar a:focus {
+  text-decoration: none;
+}
+
+#TableOfContents ul,
+#toc ul {
   padding-left: 0;
   list-style: none;
+}
+
+#toc a.active {
+  color: $primary;
+  font-weight: 500;
 }
 
 ::selection {
@@ -252,4 +305,27 @@ details > p:first-of-type {
 details .chroma {
   margin-top: 0px;
   margin-bottom: 0px;
+
+.katex {
+  font-size: $font-size-md;
+}
+
+.card-bar {
+  border-top: 4px solid;
+  border-image-source: linear-gradient(90deg, $primary, #8ed6fb 50%, #d32e9d);
+  border-image-slice: 1;
+}
+
+.modal-backdrop {
+  background-color: #fff;
+}
+
+.modal-backdrop.show {
+  opacity: 0.7;
+}
+
+@include media-breakpoint-up(md) {
+  .modal-backdrop.show {
+    opacity: 0;
+  }
 }
