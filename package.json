@@ -37,6 +37,9 @@
     "postinstall": "hugo-installer --version otherDependencies.hugo --extended --destination node_modules/.bin/hugo",
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4"
+  },
   "devDependencies": {
     "@babel/cli": "^7.18",
     "@babel/core": "^7.18",
