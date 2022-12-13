@@ -3,6 +3,7 @@
 ## Homepage
 title = "Programación Competitiva UChile"
 titleSeparator = "-"
+logo = "images/banner.svg"
 titleAddition = "Inicio"
 description = "Grupo organizado de Programación Competitiva en la Universidad de Chile."
 
