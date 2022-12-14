@@ -5,7 +5,7 @@
 
 [[main]]
   name = "Recursos"
-  url = "/recursos/prologo/intro"
+  url = "/recursos/recursos/introduccion"
   weight = 20
 
 [[main]]
