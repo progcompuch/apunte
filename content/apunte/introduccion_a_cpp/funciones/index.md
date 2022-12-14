@@ -77,7 +77,7 @@ float divisionNormal(int num1, int num2) {
     return (float) num1 / (float) num2;
 }
 ```
-{{< alert icon="💡" text="En C++ la división entre enteros es entera (truncada a la unidad), para obtener decimales se deben usar floats o transformar (<i>castear</i>) los operandos a float." >}}
+{{< alert icon="💡" text="En C++ la división entre enteros es entera (truncada a la unidad), para obtener decimales se deben usar floats o transformar (<i>castear</i>) los operandos a float." />}}
 
 Si la función no debe retornar nada se utiliza la keyword `void` en vez del tipo de retorno.
 
@@ -114,7 +114,7 @@ int main() {
 }
 ```
 
-{{< alert icon="💡" text="No confundir <b>&</b> en la declaración de una variable o parámetro con el operador de dirección <b>&</b>" >}}
+{{< alert icon="💡" text="No confundir <b>&</b> en la declaración de una variable o parámetro con el operador de dirección <b>&</b>" />}}
 
 Esta técnica también es útil cuando se quiere pasar a una función estructuras muy grandes, esto ya que pasarlos por copia se puede volver lento, normalmente la operación copia es a lo menos O(n), donde n es la cantidad de datos de la estructura, en cambio pasar por referencia es siempre O(1).
 
@@ -160,7 +160,7 @@ int main() {
   return 0;
 }
 ```
-{{< alert icon="👉" text="Las lambdas no necesitan llevar su tipo de retorno, ya que el compilador lo deduce de los <code>return</code>." >}}
+{{< alert icon="👉" text="Las lambdas no necesitan llevar su tipo de retorno, ya que el compilador lo deduce de los <code>return</code>." />}}
 
 ## Función `main` y el Flujo del Programa
 Como ya habrán visto, la función `main` es el punto de partida de los programas en C++. Esta función retorna un `int`, cuyo valor es el código de termino del programa y cualquier valor distinto de `0` se considera un código de error.

@@ -15,7 +15,7 @@ Los grafos son un tipo específico de estructura que nos sirve para modelar much
 
 El área de grafos ha sido muy estudiada y se han desarrollado múltiples algoritmos para trabajar con ellos. Además, en programación competitiva es un tema que se repite con alta frecuencia.
 
-{{< alert icon="💡" text="Usaremos $|V|$ ó $n$ para denotar la cantidad de nodos. Y $|E|$ ó $m$ para la cantidad de arcos." >}}
+{{< alert icon="💡" text="Usaremos $|V|$ ó $n$ para denotar la cantidad de nodos. Y $|E|$ ó $m$ para la cantidad de arcos." />}}
 
 ### Guardar un grafo
 
@@ -51,7 +51,7 @@ while (m--) {
 }
 ```
 
-{{< alert icon="⚠️" text="En muchos problemas te entregan los nodos numerados del $1$ al $n$, pero los vectores se indexan desde el $0$ al $n-1$ !, para solucionarlo se debe restar $1$ a los nodos cuandos se hace el input" >}}
+{{< alert icon="⚠️" text="En muchos problemas te entregan los nodos numerados del $1$ al $n$, pero los vectores se indexan desde el $0$ al $n-1$ !, para solucionarlo se debe restar $1$ a los nodos cuandos se hace el input" />}}
 
 ### Resolviendo un problema de grafos
 
