@@ -1,84 +1,60 @@
-.problem-name {
-  text-align: left;
-}
+$accepted-bg: #005800;
+$attempted-bg: #aa0000;
 
 .cses-table {
-  border: 0px;
+  border-style: dashed;
+  td {
+    min-width: 50px;
+  }
+  .problem-name {
+    text-align: left;
+  }
+  // Unloaded cells
+  .task-score:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f128';
+    color: $gray-600;
+  }
+  // Accepted
+  .task-score.accepted:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f00c';
+    color: $accepted-bg;
+  }
+  .task-score.accepted {
+    background-color: #c3e8c5;
+  }
+  // Attempted
+  .task-score.attempted:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f00d';
+    color: $attempted-bg;
+  }
+  .task-score.attempted {
+    background-color: #ffc3c3;
+  }
+  // Not attempted
+  .task-score.none:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: '\f068';
+  }
 }
 
-body.dark .problem-category-title {
-  background-color: $gray-900;
-  color: $body-color-dark;
-}
-
-.problem-category-title {
-  background-color: white;
-}
-
-.problem-category-title td {
-  border: 0px;
-}
-
-.task-score {
-  padding: 0.1em !important;
-  font-size: 20px;
-}
-
-.task-score:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: '\f128';
-  color: $gray-600;
-}
-
-body.dark .task-score:before {
-  color: $gray-500;
-}
-
-.task-score.none:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: '\f068';
-}
-
-.task-score.none {
-  @extend .table-active;
-}
-
-.task-score.attempted:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: '\f00d';
-  color: #aa0000;
-}
-
-body.dark .task-score.attempted {
-  background-color: darken(#fa6540, 25%);
-}
-
-body.dark .task-score.attempted:before {
-  color: #ffe7e7;
-}
-
-.task-score.attempted {
-  @extend .table-danger;
-}
-
-.task-score.accepted:before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: '\f00c';
-  color: #005800;
-}
-
-body.dark .task-score.accepted {
-  background-color: darken(#40fab0, 25%);
-}
-
-body.dark .task-score.accepted:before {
-  color: #ecffec;
-}
-
-.task-score.accepted {
-  @extend .table-success;
+[data-dark-mode] .cses-table {
+  td {
+    background-color: lighten($body-bg-dark, 2%);
+  }
+  .task-score.attempted {
+    background-color: darken($attempted-bg, 1%);
+  }
+  .task-score.accepted {
+    background-color: darken($accepted-bg, 1%)
+  }
+  .task-score:before {
+    color: #ffe7e7;
+  }
 }
