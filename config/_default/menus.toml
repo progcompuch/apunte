@@ -1,11 +1,11 @@
 [[main]]
   name = "Apunte"
-  url = "/apunte/"
+  url = "/apunte/prologo/introduccion"
   weight = 10
 
 [[main]]
   name = "Recursos"
-  url = "/recursos/"
+  url = "/recursos/prologo/intro"
   weight = 20
 
 [[main]]
