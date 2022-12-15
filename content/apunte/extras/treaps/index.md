@@ -121,23 +121,23 @@ Este resultado nos dice que en promedio, las operaciones en árboles binarios al
 Vamos a nombrar $X_n$ la variable aleatoria resultante de tomar un árbol binario aleatorio y luego obtener su altura. Si fijamos la identidad de la raíz del árbol en $[1, n]$, el subárbol izquierdo será un árbol de $r-1$ valores y el derecho uno de $n-r$ valores. Esto nos permite escribir la esperanza condicional como:
 
 $$
-\\mathbb{E}(X_n \\mid r) = \\max(1+X_{r-1}, 1+X_{n-r}) = 1 + \\max(X_{r-1}, X_{n-r})
+\\mathbb{E}(X_n \\mid r = i) = \\mathbb{E}(\\max(1+X_{r-1}, 1+X_{n-r})) = 1 + \\mathbb{E}(\\max(X_{r-1}, X_{n-r}))
 $$
 
 Notar que la raíz de un árbol binario aleatorio es exactamente el valor que llega primero, así que la raíz será el valor $i \\in [1, n]$ con probabilidad $\\frac{1}{n}$. Con esto podemos expresar
 
 $$
 \\mathbb{E}(X_n) = \\sum_{i=1}^{n} \\mathbb{E}(X_n \\mid r = i)\\mathbb{P}(r = i) 
-= 1 + \\frac{1}{n} \\sum_{i=1}^{n} \\mathbb{E}(\\max(X_{i-1}, X_{i-r}))
+= 1 + \\frac{1}{n} \\sum_{i=1}^{n} \\mathbb{E}(\\max(X_{i-1}, X_{n-i}))
 $$
 
 Lamentablemente, esta expresión no es amena a ser trabajada para demostrar que la altura sea $O(\\log n)$ (por lo menos, no de una forma que yo conozca). Vamos a usar un truco y definiremos $Y_n = 2^{X_n}$, la altura *exponencial* del árbol. Podemos repetir el análisis anterior y expresar:
 
 $$
-\\mathbb{E}(Y_n \\mid r) = 2^{1+\\max(X_{r-1}, X_{n-r})} = 2\\max(2^{X_{r-1}}, 2^{X_{n-r}}) = 2\\max(Y_{r-1}, Y_{n-r})
+\\mathbb{E}(Y_n \\mid r = i) = 2^{1+\\max(X_{i-1}, X_{n-i})} = 2\\max(2^{X_{i-1}}, 2^{X_{n-i}}) = 2\\max(Y_{i-1}, Y_{n-i})
 $$
 
-Podemos acotar esta última expresión como $\\mathbb{E}(Y_n \\mid r) = 2\\max(Y_{r-1}, Y_{n-r}) \\leq 2(Y_{r-1} + Y_{n-r})$. Y luego, acotar el valor esperado de $Y_n$ como:
+Podemos acotar esta última expresión como $\\mathbb{E}(Y_n \\mid r = i) = 2\\max(Y_{i-1}, Y_{n-i}) \\leq 2(Y_{i-1} + Y_{n-i})$. Y luego, acotar el valor esperado de $Y_n$ como:
 
 $$
 \\mathbb{E}(Y_n) = \\sum_{i=1}^{n} \\mathbb{E}(Y_n \\mid r = i)\\mathbb{P}(r = i) 
