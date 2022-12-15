@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="{{ .Site.Params.languageTag | default "es" }}">
-  {{ partial "head/head.html" . }}
+  <head>
+    {{ partial "head/head.html" . }}
+    {{ block "head/custom_head" . }}{{ end }}
+  </html>
   {{ if eq .Kind "home" -}}
     {{ .Scratch.Set "class" "home" -}}
   {{ else if eq .Kind "404" -}}
