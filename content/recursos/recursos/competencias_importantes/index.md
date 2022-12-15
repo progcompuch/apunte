@@ -51,6 +51,4 @@ A diferencia de la ICPC, esta competencia es individual. Mediante la OCI, en Chi
 ### OCI
 <center><figure><a href="https://www.olimpiada-informatica.cl/"><img src="img/logo_oci.png"/></a></figure></center>
 
-La International Olympiad in Informatics es la competencia más grande a nivel mundial de estudiantes de educación secundaria.
-
-A diferencia de la ICPC, esta competencia es individual. Mediante la OCI, en Chile se escogen los cuatro mejores estudiantes para que representen al país en la IOI.
+La Olimpiada Chilena de Informática es una competencia para estudiantes de enseñanza media. Consiste de tres fases: una fase regional, donde los mejores clasifican a la final nacional y los mejores de la final nacional clasifican a un campamento de entrenamiento de la IOI. En ese campamento se enseñan conceptos más avanzados y al final se hace una selección donde se escogen los cuatro mejores para representar a Chile en la IOI.
