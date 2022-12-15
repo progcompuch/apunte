@@ -1,6 +1,6 @@
 // Chroma 'dracula' style (modified)
 
-body.dark {
+[data-dark-mode] {
 /* Background */ .chroma { color: #f8f8ff; }
 /* Other */ .chroma .x {  }
 /* Error */ .chroma .err {  }

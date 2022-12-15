@@ -1,17 +1,17 @@
 baseurl = "/"
+canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
 enableEmoji = true
-enableGitInfo = true
+enableGitInfo = false
 enableRobotsTXT = true
-languageCode = "en-US"
 paginate = 7
 rssLimit = 10
 
+# outputs
 [outputs]
 home = ["HTML", "RSS"]
 section = ["HTML", "RSS", "SITEMAP"]
-
 
 # add output format for section sitemap.xml
 [outputFormats.SITEMAP]
@@ -22,22 +22,10 @@ isPlainText = true
 noUgly = true
 rel  = "sitemap"
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      linkify = false
-    [markup.goldmark.renderer]
-      unsafe = true
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = false
-    hl_Lines = ""
-    lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = false
-    style = "dracula"
-    tabWidth = 4
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = "10s"
 
 [sitemap]
   changefreq = "weekly"
@@ -46,11 +34,35 @@ rel  = "sitemap"
 
 [taxonomies]
   contributor = "contributors"
+  category = "categories"
+  tag = "tags"
 
 [permalinks]
   blog = "/blog/:title/"
+# docs = "/docs/1.0/:sections[1:]/:title/"
+
+[minify.tdewolff.html]
+  keepWhitespace = false
+
+[related]
+  threshold = 80
+  includeNewer = true
+  toLower = false
+    [[related.indices]]
+    name = "categories"
+    weight = 100
+    [[related.indices]]
+    name = "tags"
+    weight = 80
+    [[related.indices]]
+    name = "date"
+    weight = 10
 
 [module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.80.0"
+    max = ""
   [[module.mounts]]
     source = "assets"
     target = "assets"
@@ -58,17 +70,17 @@ rel  = "sitemap"
     source = "static"
     target = "static"
   [[module.mounts]]
-    source = "node_modules/lazysizes"
-    target = "assets/js/vendor/lazysizes"
-  [[module.mounts]]
-    source = "node_modules/instant.page"
-    target = "assets/js/vendor/instant.page"
-  [[module.mounts]]
-    source = "node_modules/lazysizes"
-    target = "assets/js/vendor/lazysizes"
+    source = "layouts"
+    target = "layouts"
   [[module.mounts]]
     source = "node_modules/flexsearch"
     target = "assets/js/vendor/flexsearch"
   [[module.mounts]]
-    source = "node_modules/clipboard"
-    target = "assets/js/vendor/clipboard"
+    source = "node_modules/katex"
+    target = "assets/js/vendor/katex"
+  [[module.mounts]]
+    source = "node_modules/mermaid"
+    target = "assets/js/vendor/mermaid"
+  [[module.mounts]]
+    source = "node_modules/@hyas/images/layouts"
+    target = "layouts"

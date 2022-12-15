@@ -1,6 +1,9 @@
 <!doctype html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
-  {{ partial "head/head.html" . }}
+<html lang="{{ .Site.Params.languageTag | default "es" }}">
+  <head>
+    {{ partial "head/head.html" . }}
+    {{ block "head/custom_head" . }}{{ end }}
+  </html>
   {{ if eq .Kind "home" -}}
     {{ .Scratch.Set "class" "home" -}}
   {{ else if eq .Kind "404" -}}
@@ -12,9 +15,9 @@
     {{ .Scratch.Set "class" .Type -}}
     {{ .Scratch.Add "class" " list" -}}
   {{ end -}}
-  <body class="{{ .Scratch.Get "class" }}">
+  <body class="{{ .Scratch.Get "class" }}"{{ if eq .Site.Params.options.scrollSpy true }} data-bs-spy="scroll" data-bs-target="#toc" data-bs-root-margin="0px 0px -90%" data-bs-smooth-scroll="true" tabindex="0"{{ end }}>
     {{ partial "header/header.html" . }}
-    <main class="wrap container" role="document">
+    <main class="wrap container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}" role="document">
       <div class="content">
         {{ block "main" . }}{{ end }}
       </div>
@@ -22,9 +25,11 @@
     {{ block "sidebar-prefooter" . }}{{ end }}
     {{ block "sidebar-footer" . }}{{ end }}
     {{ partial "footer/footer.html" . }}
-    {{ if and .IsHome .Site.Params.alert }}
-      {{ partial "footer/alert.html" . }}
-    {{ end }}
     {{ partial "footer/script-footer.html" . }}
+    {{ if eq .Site.Params.options.toTopButton true -}}
+    <div class="d-flex fixed-bottom pb-4 pb-lg-5 pe-4 pe-lg-5">
+      <a id="toTop" href="#" class="btn btn-outline-primary rounded-circle ms-auto p-2"><span class="visually-hidden">Top</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg></a>
+    </div>
+    {{ end }}
   </body>
 </html>

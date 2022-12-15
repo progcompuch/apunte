@@ -10,7 +10,7 @@ El objetivo de este sitio es servir como apoyo para los cursos de Programación 
 
 # Creadores y Licencia
 
-Este sitio fue creado por Blaz Korecic y Vicente Ramirez, interesados por la programación competitiva, y se entrega bajo licencia <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Atribución-CompartirIgual 4.0 Internacional</a>.
+Este sitio fue creado por Blaz Korecic y Vicente Ramirez, interesados por la programación competitiva, y se entrega bajo licencia <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
 
 # Agradecimientos
 

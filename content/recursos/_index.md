@@ -1,8 +1,5 @@
 ---
-title : "Recursos"
-description: "Recursos para estudiar"
-lead: ""
-date: 2020-10-06T08:48:23+00:00
-draft: false
-images: []
+title: "Recursos"
+description: "Información general, tips para empezar y practicar"
+type: docs
 ---

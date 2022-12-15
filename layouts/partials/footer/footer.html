@@ -1,17 +1,16 @@
 <footer class="footer text-muted">
-  <div class="container">
+  <div class="container-{{ if .Site.Params.options.fullWidth }}fluid{{ else }}xxl{{ end }}">
     <div class="row">
       <div class="col-lg-8 order-last order-lg-first">
         <ul class="list-inline">
           <li class="list-inline-item">{{ .Site.Params.footer | safeHTML }}</li>
         </ul>
       </div>
-      <div class="col-lg-8 order-first order-lg-last text-lg-right">
+      <div class="col-lg-8 order-first order-lg-last text-lg-end">
         <ul class="list-inline">
           {{ range .Site.Menus.footer -}}
-            <li class="list-inline-item"><a href="{{ .URL | absURL }}">{{ .Name }}</a></li>
+            <li class="list-inline-item"><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
           {{ end -}}
-          <a href="http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a>
         </ul>
       </div>
     </div>
