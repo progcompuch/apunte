@@ -6,23 +6,25 @@
 		{{ $index_of = $idx }}
 	{{ end }}
 {{ end }}
-<div class="docs-navigation d-flex justify-content-between">
-{{ with (index $siblings (sub $index_of 1)) -}}
-	<a href="{{ .RelPermalink }}">
-		<div class="card my-1">
-			<div class="card-body py-2">
-				&larr; {{ .Title }}
+{{ if (gt (len $siblings) 1) }}
+	<div class="docs-navigation d-flex justify-content-between">
+	{{ with (index $siblings (sub $index_of 1)) -}}
+		<a href="{{ .RelPermalink }}">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					&larr; {{ .Title }}
+				</div>
 			</div>
-		</div>
-	</a>
-{{ end -}}
-{{ with (index $siblings (add $index_of 1)) -}}
-	<a class="ms-auto" href="{{ .RelPermalink }}">
-		<div class="card my-1">
-			<div class="card-body py-2">
-				{{ .Title }} &rarr;
+		</a>
+	{{ end -}}
+	{{ with (index $siblings (add $index_of 1)) -}}
+		<a class="ms-auto" href="{{ .RelPermalink }}">
+			<div class="card my-1">
+				<div class="card-body py-2">
+					{{ .Title }} &rarr;
+				</div>
 			</div>
-		</div>
-	</a>
-{{ end -}}
-</div>
+		</a>
+	{{ end -}}
+	</div>
+{{ end }}
