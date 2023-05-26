@@ -10,7 +10,7 @@ weight: 50 # El menú lateral ordena artículos por su peso
 ### Camino más corto en un grafo
 
 Con frecuencia encontraremos problemas en los que necesitamos encontrar el camino más corto para llegar desde un nodo hasta otro y dependiendo de las características del grafo tendremos que usar algoritmos distintos. Nota que en un grafo
-pueden haber múltiplices caminos más cortos (con el mismo peso).
+pueden haber múltiples caminos más cortos (con el mismo peso).
 
 ### Grafos sin peso
 
@@ -51,7 +51,7 @@ while (!bfs.empty()){
 ### Grafos con pesos positivos
 
 Si las aristas tienen peso, pueden haber caminos que tengan más aristas pero que la suma de sus pesos sea menor.
-Para esto usamos el algoritmo de Dijkstra, muy similar al BFS pero en vez de usar una cola normal, usamos un [`priority_queue`](https://uchile.progcomp.cl/docs/stl/priority_queue/) que nos de los nodos más cercanos primero y al asignar la distancia revisamos si es menor a la que tenemos actualmente:
+Para esto usamos el algoritmo de [Dijkstra](https://cp-algorithms.com/graph/dijkstra.html), muy similar al BFS pero en vez de usar una cola normal, usamos un [`priority_queue`](https://uchile.progcomp.cl/docs/stl/priority_queue/) que nos de los nodos más cercanos primero y al asignar la distancia revisamos si es menor a la que tenemos actualmente:
 
 ```c++
 // Definimos los pares así al inicio para facilidad de su uso en la priority_queue
@@ -59,7 +59,7 @@ typedef pair<int,int> ii;
 
 ...
 
-// gr es la lista de adyacencia del grafo que ahora tiene pares con la distancia
+// gr es la lista de adyacencia del grafo que ahora tiene pares (nodo,distancia)
 vector< vector<ii> > gr;
 
 // Iniciamos el vector de la misma forma
@@ -77,8 +77,8 @@ distancia[s] = 0;
 while (!pq.empty()){
 
 	// Sacamos el nodo que esté a menor distancia ahora mismo
-	int nodo = pq.top().first;
-  int nodo_d = pq.top().second();
+	int nodo_d = pq.top().first;
+  int nodo = pq.top().second;
 	bfs.pop();
 
   // Si su distancia es mayor que la distancia que tenemos guardada
@@ -98,6 +98,8 @@ while (!pq.empty()){
 }
 ```
 
-### Grafos con ciclos negativos
+### Grafos con pesos negativos y ciclos negativos
 
-[Bellman-Ford](https://cp-algorithms.com/graph/bellman_ford.html)
+Para grafos con pesos negativos se puede usar el algoritmo de [Bellman-Ford](https://cp-algorithms.com/graph/bellman_ford.html).
+
+Si hay ciclos negativos alcanzables, el camino de menor peso tendrá peso $-\infty$. El algoritmo se puede modificar para [encontrar estos ciclos](https://cp-algorithms.com/graph/bellman_ford.html#the-case-of-a-negative-cycle).
