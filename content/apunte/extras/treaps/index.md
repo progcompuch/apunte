@@ -9,14 +9,14 @@ weight: 20 # El menú lateral ordena artículos por su peso
 ---
 # Introducción
 
-¿Qué es un *treap*? El nombre viene de la mezcla de dos cosas, *tree* (árboles binarios de busqueda) + *heap*, y es por que esta estructura incorpora características de ambas. Antes de entrar en detalle en los treaps, hagamos un pequeño repaso sobre árboles binarios de busqueda.
+¿Qué es un *treap*? El nombre viene de la mezcla de dos cosas, *tree* (árboles binarios de busqueda) + *heap*, y es por que esta estructura incorpora características de ambas. Antes de entrar en detalle en los treaps, hagamos un pequeño repaso sobre árboles binarios de busqueda. 
 
 ## Árboles binarios de busqueda 
 
 Un árbol binario de busqueda, es, como lo dice su nombre, un árbol binario donde cada nodo del árbol cumple las siguientes dos propiedades:
 
 * Cada nodo del árbol tiene un valor que llamaremos **llave**
-* Para cada nodo, todas las llaves guardadas en su subárbol izquierdo tienen valor $<$ al de su propia llave, y todas las llaves guardadas en el subárbol derecho tienen valor $>$
+* Para cada nodo, todas las llaves guardadas en su subárbol izquierdo tienen valor $<$ al de su propia llave, y todas las llaves guardadas en el subárbol derecho tienen valor $>$ 
 
 Un ejemplo de un árbol binario de busqueda:
 
@@ -102,12 +102,13 @@ $\\blacksquare$
 Con esto, podemos decir que la probabilidad de que $x$ sea ancestro de $y$ es exactamente $\\frac{1}{(1+|x-y|)}$, que es el tamaño del rango $[x, y]$. Denotando $P(y)$ por la profundidad de $y$, vemos que esto es equivalente a la cantidad de ancestros que tenga $y$ y luego expresamos:
 
 $$
+\\newcommand{\\E}{\\mathbb{E}}
 \\begin{align*}
-  P(y) &= \\sum_{x=1}^{y-1} \\mathbf{1}_{y \\text{ es ancestro de } x} + \\sum_{x=y+1}^{n} \\mathbf{1}_{y \\text{ es ancestro de } x} \\\\
-  \\Rightarrow \\mathbb{E}(P(y)) &= \\sum_{x=1}^{y-1} \\mathbb{E}(\\mathbf{1}_{y \\text{ es ancestro de } x}) + \\sum_{x=y+1}^{n} \\mathbb{E}(\\mathbf{1}_{y \\text{ es ancestro de } x}) \\\\
-  \\Rightarrow \\mathbb{E}(P(y)) &= \\sum_{x=1}^{y-1} \\mathbb{P}(y \\text{ es ancestro de } x) + \\sum_{x=y+1}^{n} \\mathbb{P}(y \\text{ es ancestro de } x) \\\\
-  \\Rightarrow \\mathbb{E}(P(y)) &= \\sum_{x=1}^{y-1} \\frac{1}{1+(y-x)} + \\sum_{x=y+1}^{n} \\frac{1}{1+(x-y)} \\\\[1.5em]
-  \\Rightarrow \\mathbb{E}(P(y)) &\\leq H_{y-1} + H_{n-y+1} \\leq 2H_n = O(\\log n)
+  P(y) &= \\sum_{x=1}^{y-1} 1_{y \\text{ es ancestro de } x} + \\sum_{x=y+1}^{n} 1_{y \\text{ es ancestro de } x} \\\\
+  \\Rightarrow \\E(P(y)) &= \\sum_{x=1}^{y-1} \\E(1_{y \\text{ es ancestro de } x}) + \\sum_{x=y+1}^{n} \\E(1_{y \\text{ es ancestro de } x}) \\\\
+  \\Rightarrow \\E(P(y)) &= \\sum_{x=1}^{y-1} \\mathbb{P}(y \\text{ es ancestro de } x) + \\sum_{x=y+1}^{n} \\mathbb{P}(y \\text{ es ancestro de } x) \\\\
+  \\Rightarrow \\E(P(y)) &= \\sum_{x=1}^{y-1} \\frac{1}{1+(y-x)} + \\sum_{x=y+1}^{n} \\frac{1}{1+(x-y)} \\\\[1.5em]
+  \\Rightarrow \\E(P(y)) &\\leq H_{y-1} + H_{n-y+1} \\leq 2H_n = O(\\log n)
 \\end{align*}
 $$
 

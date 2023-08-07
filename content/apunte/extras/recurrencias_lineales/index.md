@@ -484,7 +484,7 @@ Con lo que anulamos $b$ y obtenemos una recurrencia lineal homógenea para $a$. 
 
 $$
   \\hat{c}\_i = c\_i - c_{i-1} \\\\
-  a\_k = \\sum_{i=1}^{n+1} \\hat{c}_i a_{k-i}
+  a\_k = \\sum_{i=1}^{n+1} \\hat{c}\_i a_{k-i}
 $$
 
 Notar que mediante este proceso, creamos una recurrencia homogénea de grado $n+1$ a partir de una no homogénea de grado $n$, por lo que necesitaremos calcular un caso base adicional para resolver esta recurrencia. Podemos calcular a partir de los casos base originales y utilizando la recurrencia original.
@@ -550,7 +550,7 @@ $$
 Ojo que aquí también estamos usando la convención de que $c_0 = -1$ y $c_{n+1} = 0$. Con este procedimiento, obtenemos una recurrencia lineal no homogénea de grado $n+1$ *con un polinomio $q$ de grado $m-1$*. Es decir que podemos reducir el grado del polinomio en $1$ aumentando el grado de la recurrencia en $1$. Si repetimos este proceso en total $m+1$ veces, obtendremos una recurrencia lineal de grado $n+m+1$ donde el polinomio se anula **por completo**, osea, homogénea. Al finalizar, obtendremos coeficientes $\\hat{c}_i$ tal que:
 
 $$
-  a_k = \\sum_{i=1}^{n+m+1} \\hat{c}_i a_{k-i}
+  a_k = \\sum_{i=1}^{n+m+1} \\hat{c}\_i a_{k-i}
 $$
 
 Tomando la convención de que $c_i = 0$ para $i < 0$, podemos escribir una formula explícita para los $\\hat{c}_i$:
