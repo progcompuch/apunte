@@ -32,6 +32,9 @@ Aunque varias distribuciones de Linux vienen con `GCC`,
 la instalación dependerá de tu gestor de paquetes:
 * `apt`: La forma recomendada es instalar el paquete de desarrollo `build-essential`:
 `sudo apt install build-essential`
+
+  Nota: Si es tu primera vez instalando un paquete, debes correr `sudo apt update` primero.
+  
 * `pacman`: Directamente podemos instalar el paquete `gcc`:
 `pacman -S gcc`
 * `yum`: Parecido a `pacman`: `yum -y install gcc`
