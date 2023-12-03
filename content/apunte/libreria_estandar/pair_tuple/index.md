@@ -16,7 +16,7 @@ pair<int, string> p = make_pair(123, "El Blaz es pura energy");
 ```
 O usando una *initializer list*:
 ```c++
-pair<int, string> p = {123, "El Blaz es pura energy");
+pair<int, string> p = {123, "El Blaz es pura energy"};
 ```
 
 ### Indexado
