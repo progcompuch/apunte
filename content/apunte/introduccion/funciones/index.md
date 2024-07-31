@@ -3,8 +3,8 @@ title: "Funciones"
 type: docs
 menu:
     apunte:
-        identifier: "apunte-introduccion_a_cpp-funciones"
-        parent: "apunte-introduccion_a_cpp"
+        identifier: "apunte-introduccion-funciones"
+        parent: "apunte-introduccion"
 weight: 30 # El menú lateral ordena artículos por su peso
 ---
 Las funciones permiten organizar de mejor manera el código, haciendolo más legible y limpio, lo que facilita el debugging, además algunos algoritmos son más fáciles al pensarlos en funciones como el backtracking.

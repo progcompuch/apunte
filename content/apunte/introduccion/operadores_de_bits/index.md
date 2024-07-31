@@ -3,8 +3,8 @@ title: "Operadores de bits"
 type: docs
 menu:
     apunte:
-        identifier: "apunte-introduccion_a_cpp-operadores_de_bits"
-        parent: "apunte-introduccion_a_cpp"
+        identifier: "apunte-introduccion-operadores_de_bits"
+        parent: "apunte-introduccion"
 weight: 50 # El menú lateral ordena artículos por su peso
 ---
 ### Números binarios
@@ -45,22 +45,22 @@ C++ nos permite usar operadores que trabajan sobre los bits de un número, estos
 
 La mayoría de los operadores bitwise funcionan como operadores lógicos así que probablemente les resulten familiares.
 
-| Operador | Sintaxis | a    | bits de a | b    | bits de b | resultado | bits del resultado |
-| -------- | -------- | ---- | --------- | ---- | --------- | --------- | ------------------ |
-| AND      | a & b    | 5    | 0101      | 3    | 0011      | 1         | 0001               |
-| OR       | a \| b   | 5    | 0101      | 3    | 0011      | 7         | 0111               |
-| XOR      | a ^ b    | 5    | 0101      | 3    | 0011      | 6         | 0110               |
+| Operador | Sintaxis | a   | bits de a | b   | bits de b | resultado | bits del resultado |
+| -------- | -------- | --- | --------- | --- | --------- | --------- | ------------------ |
+| AND      | a & b    | 5   | 0101      | 3   | 0011      | 1         | 0001               |
+| OR       | a \| b   | 5   | 0101      | 3   | 0011      | 7         | 0111               |
+| XOR      | a ^ b    | 5   | 0101      | 3   | 0011      | 6         | 0110               |
 
 Los operadores unarios son los más interesantes:
 
 1. NOT al operarse sobre todos los bits del número va a convertir todos los ceros del principio en unos, esto siempre resulta en en ~a = -a-1 por temas de como interpretan los bits el computador.
 2. Se puede notar que LEFT SHIFT y RIGHT SHIFT son solamente formas de multiplicar y dividir por potencias de dos rápidamente, aunque usualmente los compiladores optimizan las operaciones de este tipo internamente es bueno saberla por si queremos aplicarlas directamente nosotros. También es importante recordar que la división y el RIGHT SHIFT simplemente trunca el último dígito, o sea que es equivalente a la división piso; el LEFT SHIFT hace algo similar si el número se pasa de la cantidad de bits que tiene el número asignado, los bits que se pasan simplemente se truncan.
 
-| Operador    | Sintaxis | Ejemplo | a    | bits de a | resultado | bits del resultado |
-| ----------- | -------- | ------- | ---- | --------- | --------- | ------------------ |
-| NOT         | ~a       | ~a      | 19   | 10011     | -20       | 111...01100        |
-| LEFT SHIFT  | a << x   | a << 2  | 19   | 10011     | 76        | 1001100            |
-| RIGHT SHIFT | a >> x   | a >> 2  | 19   | 10011     | 4         | 100                |
+| Operador    | Sintaxis | Ejemplo | a   | bits de a | resultado | bits del resultado |
+| ----------- | -------- | ------- | --- | --------- | --------- | ------------------ |
+| NOT         | ~a       | ~a      | 19  | 10011     | -20       | 111...01100        |
+| LEFT SHIFT  | a << x   | a << 2  | 19  | 10011     | 76        | 1001100            |
+| RIGHT SHIFT | a >> x   | a >> 2  | 19  | 10011     | 4         | 100                |
 
 Con estos operadores podemos mejorar el código que mostramos al principio:
 
