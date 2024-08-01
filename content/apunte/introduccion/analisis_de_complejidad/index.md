@@ -147,6 +147,31 @@ En este código tenemos un vector de vectores `indices` donde `indices[x]` tiene
 El segundo for es interesante: para cada $x$ entre $0$ y $n-1$ sumamos los índices en los que aparece $x$ en el arreglo original. El for de afuera se repite $n$ veces. Es fácil equivocarse y pensar que la complejidad será $O(n^2)$, porque `indices[x]` puede tener $n$ elementos en el peor caso, por lo que en una iteración del for de afuera el for de adentro se repetiría $n$ veces, pero hay una observación crucial: la cantidad de índices que guardamos en `indices` es en total $n$ a través de todos los `x` posibles. El for de adentro itera exactamente una vez por cada índice que guardamos antes, así que en total iterará $n$ veces, por lo que la complejidad final del algoritmo es $O(n)$.
 {{% /details %}}
 
+### Serie harmónica
+```c++
+int n;
+cin >> n;
+int ans = 0;
+for (int i = 1; i < n; i++) {
+  for (int j = 1; j < n; j += i) {
+    ans += i*j;
+  }
+}
+```
+{{% details "Solución" %}}
+Este tipo de patrones son muy comunes en la programación competitiva. Por ejemplo, en algoritmos como la criba, y el análisis es útil en otros casos como lo es quicksort.
+
+Notar que en la $i$-ésima iteración se realizan $\frac{n}{i}$ operaciones, por lo tanto, la cantidad de operaciones en total son:
+
+$$\sum_{i=1}^n \frac{n}{i} = n \sum_{i=1}^n \frac{1}{i}$$
+
+Esta última sumatoria es la serie harmónica $H_n$ entonces:
+
+$$n \sum_{i=1}^n \frac{1}{i} = n H_n$$
+
+Sabemos que $H_n$ tiene comportamiento $O(\log n)$ por lo que podemos concluir que el algoritmo es del orden de $O(n \log n)$.
+{{% /details %}}
+
 ## ¿Cómo se si mi solución pasa en tiempo?
 
 Hay una regla de oro que sirve para estimar el tiempo de ejecución:
