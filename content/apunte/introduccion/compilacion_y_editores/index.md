@@ -3,8 +3,8 @@ title: "Compilación y editores de texto"
 type: docs
 menu:
     apunte:
-        identifier: "apunte-introduccion_a_cpp-compilacion_y_editores"
-        parent: "apunte-introduccion_a_cpp"
+        identifier: "apunte-introduccion-compilacion_y_editores"
+        parent: "apunte-introduccion"
 weight: 10 # El menú lateral ordena artículos por su peso
 ---
 ## Prerequisitos

@@ -3,8 +3,8 @@ title: "Vectores"
 type: docs
 menu:
     apunte:
-        identifier: "apunte-introduccion_a_cpp-vectores"
-        parent: "apunte-introduccion_a_cpp"
+        identifier: "apunte-introduccion-vectores"
+        parent: "apunte-introduccion"
 weight: 40 # El menú lateral ordena artículos por su peso
 ---
 ### Vectores
