@@ -34,18 +34,20 @@ struct Point{
 };
 ```
 
-Esta `struct` guarda simplemente las coordenadas `x` e `y`, y por defecto sus valores son cero. Tenemos dos constructores, el primero sin argumentos asigna cero, y el segundo.
+Esta `struct` guarda simplemente las coordenadas `x` e `y`, y por defecto sus valores son cero. Tenemos dos constructores, el primero es sin argumentos, este asigna cero a las coordenadas, y el segundo recibe dos enteros, estos se asignan en orden a las coordenadas `x` e `y`.
 
 {{% details "Ejemplo de uso" %}}
 
-Distintas formas de inicializar un punto y el valor que se obtiene:
+Hay distintas formas de inicializar un punto, las ya nombradas y dos más que podrían resultarles útiles:
 
 ```cpp
 Point a = Point(); // se llaman con parámetros por defecto, a = {0, 0}
 Point b = Point(1, 2) // b = {1, 2}.
 Point c = {2,5}; // c = {2,5}, inicialización por copia.
 Point d{2,5}; // d = {2,5}, inicialización directa.
-
+```
+Además una vez creado un punto podemos acceder a sus coordenadas de la siguente forma
+```
 cout << d.x << ' ' << d.y << endl; // Acceder a x e y
 ```
 
@@ -103,6 +105,9 @@ struct Point{
 	// Multiplicación y división coordenada a coordenada
 	Point operator*(Point p) const { return Point(x*p.x, y*p.y); }
 	Point operator/(Point p) const { return Point(x/p.x, y/p.y); }
+	// Multiplicación y división por escalares
+	Point operator*(T lambda) const { return Point(x*lambda, y*lambda); }
+	Point operator/(T lambda) const { return Point(x/lambda, y/lambda); }
 	// Menor e igualdad. Usamos tie que retorna una tupla (y por ende compara en orden de izq. a der.)
 	bool operator<(Point p) const { return tie(x,y) < tie(p.x, p.y); }
 	bool operator==(Point p) const { return tie(x,y) == tie(p.x, p.y); }
@@ -117,9 +122,11 @@ struct Point{
 	// unit retorna el vector normalizado (largo 1)
 	Point unit() const { return *this/dist(); }
 	// perp obtiene un vector perpendicular, es decir rota en +90 grados
-	Point perp() const { return P(-y, x); }
-	// normal retorna un vector normal unitario
-	Point normal() const { return perp().unit(); }
+	Point perp() const { return Point(-y, x); }
+	// normal retorna un vector normal unitario (convencion normal a (0,0) = (inf,inf))
+	Point normal() const { return perp().unit();  }
+	// vector normal unitario (convencion normal a (0,0) = (0,0))
+	// Point normal() const { return (*this == Point()) ? *this : perp().unit(); }
 
 	// Además se puede hacer overload de operadores ">>" y "<<" para que poder leer/imprimir Point con cin/cout
 	friend istream& operator>>(istream& is, Point &p){
