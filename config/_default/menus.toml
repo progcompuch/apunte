@@ -14,9 +14,14 @@
   weight = 30
 
 [[main]]
+  name = "Standings"
+  url = "/standings"
+  weight = 40
+
+[[main]]
   name = "Acerca"
   url = "/acerca/"
-  weight = 40
+  weight = 50
 
 [[social]]
   name = "GitHub"
