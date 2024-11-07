@@ -1,0 +1,109 @@
+{{ define "main" }}
+<div class="container-fluid row justify-content-center text-center">
+  <h1>{{ .Title }}</h1>
+  {{ $titles := slice "Introductory Problems" "Sorting and Searching" "Dynamic Programming" "Graph Algorithms" "Range Queries" "Tree Algorithms" "Mathematics" "String Algorithms" "Geometry" "Advanced Techniques" "Additional Problems" }}
+
+  {{ $userNames := .Site.Params.csesNames }}
+  {{ $problemUrl := .Site.Params.csesProblemUrl }}
+  {{ $uchilePeople := .Site.Params.uchilePeople }}
+
+  <div class="ratings-container" id="standings-tables-container">
+    <table class="table table-sm table-bordered codeforces-table" id="codeforces-standings">
+      <tbody>
+        <tr>
+          <td></td>
+          <td><span class="rating-3000"><span class="rating-red">C</span>odeforces <span class="rating-red">R</span>ating</span></td>
+        </tr>
+        {{ range $uchilePerson := sort .Site.Params.uchilePeople "codeforcesRating" "desc" }}
+        {{ $icpc_allowed := $uchilePerson.icpc}}
+        {{ if $icpc_allowed}}
+        <tr>
+          {{ $rating := $uchilePerson.codeforcesRating }}
+          {{ $nickname := $uchilePerson.nickname }}
+          {{ if lt $rating 800 }}
+            <td><span class="rating-black">{{ $nickname}}</span></td>
+            <td><span class="rating-black">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 800) (le $rating 1199) }}
+            <td><span class="rating-gray">{{ $nickname}}</span></td>
+            <td><span class="rating-gray">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 1200) (le $rating 1399) }}
+            <td><span class="rating-green">{{ $nickname}}</span></td>
+            <td><span class="rating-green">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 1400) (le $rating 1599) }}
+            <td><span class="rating-cyan">{{ $nickname}}</span></td>
+            <td><span class="rating-cyan">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 1600) (le $rating 1899) }}
+          <td><span class="rating-blue">{{ $nickname}}</span></td>
+          <td><span class="rating-blue">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 1900) (le $rating 2099) }}
+          <td><span class="rating-purple">{{ $nickname}}</span></td>
+          <td><span class="rating-purple">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 2100) (le $rating 2399) }}
+          <td><span class="rating-orange">{{ $nickname}}</span></td>
+          <td><span class="rating-orange">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 2400) (le $rating 2999) }}
+          <td><span class="rating-red">{{ $nickname}}</span></td>
+          <td><span class="rating-red">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 3000) (le $rating 3999) }}
+            <td><span class="rating-3000"><span class="rating-black">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+            <td><span class="rating-3000"><span class="rating-black">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+          {{ else if ge $rating 4000 }}
+            <td><span class="rating-4000"><span class="rating-red">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+            <td><span class="rating-4000"><span class="rating-red">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+          {{ end }}
+        </tr>
+        {{ end }}
+        {{ end }}
+      </tbody>
+    </table>
+    <table class="table table-sm table-bordered codeforces-table" id="atcoder-standings">
+      <tbody>
+        <tr>
+          <td></td>
+          <td><span class="rating-3000"><span class="rating-red">A</span>tCoder <span class="rating-red">R</span>ating</span></td>
+        </tr>
+        {{ range $uchilePerson := sort .Site.Params.uchilePeople "atcoderRating" "desc" }}
+        {{ $icpc_allowed := $uchilePerson.icpc}}
+        {{ if $icpc_allowed}}
+        <tr>
+          {{ $rating := $uchilePerson.atcoderRating }}
+          {{ $nickname := $uchilePerson.nickname }}
+          {{ if lt $rating 200 }}
+            <td><span class="rating-black">{{ $nickname}}</span></td>
+            <td><span class="rating-black">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 200) (le $rating 399) }}
+            <td><span class="rating-gray">{{ $nickname}}</span></td>
+            <td><span class="rating-gray">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 400) (le $rating 799) }}
+            <td><span class="rating-green">{{ $nickname}}</span></td>
+            <td><span class="rating-green">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 800) (le $rating 1299) }}
+            <td><span class="rating-cyan">{{ $nickname}}</span></td>
+            <td><span class="rating-cyan">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 1300) (le $rating 1699) }}
+          <td><span class="rating-blue">{{ $nickname}}</span></td>
+          <td><span class="rating-blue">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 1700) (le $rating 1999) }}
+          <td><span class="rating-purple">{{ $nickname}}</span></td>
+          <td><span class="rating-purple">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 2000) (le $rating 2299) }}
+          <td><span class="rating-orange">{{ $nickname}}</span></td>
+          <td><span class="rating-orange">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 2300) (le $rating 2999) }}
+          <td><span class="rating-red">{{ $nickname}}</span></td>
+          <td><span class="rating-red">{{ $rating}}</span></td>
+          {{ else if and (ge $rating 3000) (le $rating 3999) }}
+            <td><span class="rating-3000"><span class="rating-black">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+            <td><span class="rating-3000"><span class="rating-black">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+          {{ else if ge $rating 4000 }}
+            <td><span class="rating-4000"><span class="rating-red">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+            <td><span class="rating-4000"><span class="rating-red">{{ printf "%.1s" $rating }}</span>{{ printf "%.s" $rating 1 }}</span></td>
+          {{ end }}
+        </tr>
+        {{ end }}
+        {{ end }}
+      </tbody>
+    </table>
+  </div>  
+</div>
+{{ end }}

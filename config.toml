@@ -7,6 +7,374 @@
   csesIds   = [69586, 74066, 74546, 72385, 83700, 74173, 58188, 107392, 49524, 87807, 114566, 114575, 114576, 136720, 136680, 139415, 144144, 141759, 86689, 135356]
   csesNames = ["Blaz", "wawer", "Marinkovic", "Dmitri", "Jayki", "Davicom", "dariasc", "AngrySeal", "vi", "J", "MichaelS", "m1tu", "Brito", "paul0li", "SeerLite", "Tega", "Condorchavo", "fer", "Eric K.", "Ppp"]
 
+  [[Params.uchilePeople]]
+  name = "Javier Oliva"
+  nickname = "JOliva"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "JOliva"
+  codeforcesRating = 2022
+  csesId = "74066"
+  atcoderId = "JOliva"
+  atcoderRating = 2033
+  leetcodeId = "javoliva"
+
+  [[Params.uchilePeople]]
+  name = "Blaz Korecic"
+  nickname = "Blaz"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "Blaz"
+  codeforcesRating = 1716
+  csesId = "69586"
+  atcoderId = "Blaz"
+  atcoderRating = 842
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Diego Arias"
+  nickname = "dariasc"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "dariasc"
+  codeforcesRating = 1689
+  csesId = "58188"
+  atcoderId = "dariasc"
+  atcoderRating = 1250
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Vicente Villarroel"
+  nickname = "vivivi"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "vivivi"
+  codeforcesRating = 1570
+  csesId = "49524"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Gabriel Carmona"
+  nickname = "m1tu"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "m1tu"
+  codeforcesRating = 1361
+  csesId = "114575"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Daniel Báez"
+  nickname = "AngrySeal"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "AngrySeal"
+  codeforcesRating = 1798
+  csesId = "107392"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Luciano Massa"
+  nickname = "PathToMaster"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "PathToMaster"
+  codeforcesRating = 1431
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Alonso Núñez"
+  nickname = "MapacheTactico"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "MapacheTactico"
+  codeforcesRating = 1212
+  csesId = "none"
+  atcoderId = "MapacheTactico"
+  atcoderRating = 347
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Javier Azócar"
+  nickname = "ElNChou"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "ElNChou"
+  codeforcesRating = 1298
+  csesId = "none"
+  atcoderId = "ElNChou"
+  atcoderRating = 476
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Ignacio López"
+  nickname = "ilopez15"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "ilopez15"
+  codeforcesRating = 1289
+  csesId = "none"
+  atcoderId = "ilopez15"
+  atcoderRating = 207
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Felipe Jara"
+  nickname = "Ciruela"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "Ciruela"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Antoine Metayer"
+  nickname = "ant_metayer"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "ant_metayer"
+  codeforcesRating = 385
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Alejandra Campos"
+  nickname = "AlePatata92"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "AlePatata92"
+  codeforcesRating = 905
+  csesId = "none"
+  atcoderId = "AlePatata92"
+  atcoderRating = 7
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Martina González"
+  nickname = "lu_0"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "lu_0"
+  codeforcesRating = 417
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Patricia Vera"
+  nickname = "patrici4"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "patrici4"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Dmitri Ramirez"
+  nickname = "svandich"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "svandich"
+  codeforcesRating = 1246
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 62
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Dante Mardones"
+  nickname = "Jayki"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "Jayki"
+  codeforcesRating = 1135
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Fernanda Gutiérrez"
+  nickname = "curauma03"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "curauma03"
+  codeforcesRating = 1046
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Javier Calfuala"
+  nickname = "elJunaeb"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "elJunaeb"
+  codeforcesRating = 875
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Diego Salas"
+  nickname = "daridius"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "daridius"
+  codeforcesRating = 1537
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Francisco Romero"
+  nickname = "Pansho721"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "daridius"
+  codeforcesRating = 796
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Tomás Rajevic"
+  nickname = "ThisIsThisAndThatIsThat"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "ThisIsThisAndThatIsThat"
+  codeforcesRating = 373
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 8
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Paula Carrión"
+  nickname = "pauwu"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "pauwu"
+  codeforcesRating = 379
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
   csesEndpoint = "https://uchile.davicom.cl/api/cses-tasks/"
   csesProblemUrl = "https://cses.fi/problemset/task/"
   csesCacheLife = 300 # in seconds
