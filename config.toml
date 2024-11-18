@@ -17,7 +17,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "JOliva"
-  codeforcesRating = 2022
+  codeforcesRating = 1969
   csesId = "74066"
   atcoderId = "JOliva"
   atcoderRating = 2033
@@ -81,7 +81,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "m1tu"
-  codeforcesRating = 1361
+  codeforcesRating = 1454
   csesId = "114575"
   atcoderId = "none"
   atcoderRating = 0
@@ -106,7 +106,7 @@
   [[Params.uchilePeople]]
   name = "Luciano Massa"
   nickname = "PathToMaster"
-  icpc = true
+  icpc = false
   ioi = false
   codevita = true
   meta_hackercup = true
@@ -145,7 +145,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ElNChou"
-  codeforcesRating = 1298
+  codeforcesRating = 1266
   csesId = "none"
   atcoderId = "ElNChou"
   atcoderRating = 476
@@ -161,26 +161,10 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ilopez15"
-  codeforcesRating = 1289
+  codeforcesRating = 1303
   csesId = "none"
   atcoderId = "ilopez15"
   atcoderRating = 207
-  leetcodeId = "none"
-
-  [[Params.uchilePeople]]
-  name = "Felipe Jara"
-  nickname = "Ciruela"
-  icpc = true
-  ioi = false
-  codevita = true
-  meta_hackercup = true
-  ieeextreme = true
-  rayan = true
-  codeforcesId = "Ciruela"
-  codeforcesRating = 0
-  csesId = "none"
-  atcoderId = "none"
-  atcoderRating = 0
   leetcodeId = "none"
 
   [[Params.uchilePeople]]
@@ -209,7 +193,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "AlePatata92"
-  codeforcesRating = 905
+  codeforcesRating = 902
   csesId = "none"
   atcoderId = "AlePatata92"
   atcoderRating = 7
@@ -225,7 +209,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "lu_0"
-  codeforcesRating = 417
+  codeforcesRating = 728
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
@@ -257,7 +241,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "svandich"
-  codeforcesRating = 1246
+  codeforcesRating = 1242
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 62
@@ -353,7 +337,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ThisIsThisAndThatIsThat"
-  codeforcesRating = 373
+  codeforcesRating = 704
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 8
