@@ -128,16 +128,14 @@ async function fetchContestStatus(contestId, from, count, asManager, apiKey, sec
 
     const { apiSig, time } = await generateApiSig(methodName, params, apiKey, secret);
     const url = `https://codeforces.com/api/${methodName}?apiKey=${apiKey}&asManager=${asManager}&contestId=${contestId}&count=${count}&from=${from}&time=${time}&apiSig=${apiSig}`;
-    console.log(url)
+    //console.log(url)
     const response = await fetch(url);
-    console.log(response)
     if (!response.ok) {
         console.error("Error fetching contest status:", response.statusText);
         return [];
     }
 
     const data = await response.json();
-    console.log(data)
     if (data.status !== "OK") {
         console.error("API returned an error:", data.comment);
         return [];
@@ -147,12 +145,6 @@ async function fetchContestStatus(contestId, from, count, asManager, apiKey, sec
 }
 
 async function loadData(data){
-
-
-
-    console.log(data);
-
-
 
     for (let i = 0; i < trainingProblems.length; i ++){
         const tabContent = document.getElementById(`tab-content-${i}`);
@@ -268,7 +260,6 @@ function setcache(){
         };
         data[0].push(user_data);
     });
-    console.log(data[0]);
 
     let n = data[0].length;
     for (let i = 0; i < trainingProblems.length; i ++){
@@ -278,7 +269,6 @@ function setcache(){
         }
         data[1].push(problems);
     }
-    console.log(data);
     return {
         data: data,
         expires: 0
@@ -347,13 +337,11 @@ function getProblemIdxFromLetter(letters){
 async function populateTables(contestId, apiKey, secret) {
 
     const gymTablesContainer = document.getElementById("gym-tab-content");
-    console.log(users);
     if (!gymTablesContainer) {
         console.error("Tables container not found!");
         return;
     }
 
-    console.log("here");
 
     let gymcache = localStorage.getItem('gymCache');
 
@@ -363,28 +351,22 @@ async function populateTables(contestId, apiKey, secret) {
 
     let dt = new Date();
 {{ if eq (hugo.Environment) "development" }}
-    if (true) {
+    if (gymcache === null || gymcache.expires < dt.getTime()) {
 {{ else }}
     if (gymcache === null || gymcache.expires < dt.getTime()) {
 {{ end }}
         const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 10, true, apiKey, secret));
-        console.log("after");
-        console.log(submissions);
 
         if (gymcache === null){
             gymcache = setcache();
-            console.log(gymcache);
         }
 
         submissions.forEach((submission, id) => {
             const verdict = submission.verdict;
             let res = (verdict === "OK" ? "accepted" : "attempted");
             const userId = submission.author.members[0].handle;
-            console.log(userId);
             const contestIdx = contest_ids[submission.contestId];
-            console.log(contestIdx);
             const problemIdx = getProblemIdxFromLetter(submission.problem.index);
-            console.log(problemIdx);
             for (let i = 0; i < gymcache.data[0].length; i ++){
                 if (gymcache.data[0][i].codeforcesId === userId){
                     let bef = gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx];
@@ -398,8 +380,8 @@ async function populateTables(contestId, apiKey, secret) {
                 }
             }
         });
-        console.log(gymcache.data);
-        gymcache.expires = dt.getTime();
+        gymcache.expires = (dt.getTime() + 300 * 1000);
+        localStorage.setItem('gymCache', JSON.stringify(gymcache));
         loadData(gymcache.data);
     }
     else {
