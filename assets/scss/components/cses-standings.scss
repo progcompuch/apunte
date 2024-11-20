@@ -43,7 +43,9 @@ $attempted-bg: #aa0000;
     content: '\f068';
   }
 }
-
+.cses-table td:first-child, .cses-table th:first-child {
+  min-width: 250px;
+}
 [data-dark-mode] .cses-table {
   td {
     background-color: lighten($body-bg-dark, 2%);

@@ -120,4 +120,6 @@
 
 {{ if eq .Page.Type "csesStandings" -}}
   {{ partial "footer/cses-script.html" . -}}
+{{ else if eq .Page.Type "gym" -}}
+  {{ partial "footer/gym-script.html" . -}}
 {{ end -}}

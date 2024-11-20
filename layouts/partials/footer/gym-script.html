@@ -1,0 +1,8 @@
+{{ $gymTemplate := resources.Get "js/training.js" -}}
+{{ $gym := $gymTemplate | resources.ExecuteAsTemplate "training.js" . -}}
+{{ if eq (hugo.Environment) "development" -}}
+  <script src="{{ $gym.Permalink }}" defer></script>
+{{ else -}}
+  {{ $gymProd := $gym | resources.Minify | resources.Fingerprint "sha512" -}}
+  <script src="{{ $gymProd.Permalink }}" integrity="{{ $gymProd.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}

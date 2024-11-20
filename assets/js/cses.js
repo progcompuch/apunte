@@ -117,46 +117,46 @@ function loadStandings(data) {
 
 (function() {
 
-let csesContainer = document.getElementById("cses-tables-container");
+  let csesContainer = document.getElementById("cses-tables-container");
 
-if (csesContainer !== null) {
+  if (csesContainer !== null) {
 
-  let cache = localStorage.getItem('csesCache');
+    let cache = localStorage.getItem('csesCache');
 
-  if (cache !== null) {
-    cache = JSON.parse(cache);
-  }
+    if (cache !== null) {
+      cache = JSON.parse(cache);
+    }
 
-  let dt = new Date();
-{{ if eq (hugo.Environment) "development" }}
-  if (true) {
-{{ else }}
-  if (cache === null || cache.expires < dt.getTime()) {
-{{ end }}
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4) {
-        if (xhr.status == 200) {
-          let data = JSON.parse(xhr.responseText);
-          cache = {
-            'expires': dt.getTime() + {{- .Site.Params.csesCacheLife | int | mul 1000 -}},
-            'data': data,
-          };
-          localStorage.setItem('csesCache', JSON.stringify(cache));
-          loadStandings(data);
-        } else if (cache !== null) {
-          console.warn("Could not get CSES data from API, using local cache instead.\nStatus: " + xhr.statusText);
-          loadStandings(cache.data);
-        } else {
-          console.error("Could not get CSES data from API.\nStatus: " + xhr.statusText);
-          alert("No se pudo conectar con la API.");
+    let dt = new Date();
+  {{ if eq (hugo.Environment) "development" }}
+    if (true) {
+  {{ else }}
+    if (cache === null || cache.expires < dt.getTime()) {
+  {{ end }}
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            let data = JSON.parse(xhr.responseText);
+            cache = {
+              'expires': dt.getTime() + {{- .Site.Params.csesCacheLife | int | mul 1000 -}},
+              'data': data,
+            };
+            localStorage.setItem('csesCache', JSON.stringify(cache));
+            loadStandings(data);
+          } else if (cache !== null) {
+            console.warn("Could not get CSES data from API, using local cache instead.\nStatus: " + xhr.statusText);
+            loadStandings(cache.data);
+          } else {
+            console.error("Could not get CSES data from API.\nStatus: " + xhr.statusText);
+            alert("No se pudo conectar con la API.");
+          }
         }
-      }
-    };
-    xhr.open('GET', '{{- .Site.Params.csesEndpoint -}}');
-    xhr.send();
-  } else {
-    loadStandings(cache.data);
+      };
+      xhr.open('GET', '{{- .Site.Params.csesEndpoint -}}');
+      xhr.send();
+    } else {
+      loadStandings(cache.data);
+    }
   }
-}
 })();
