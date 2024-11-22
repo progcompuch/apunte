@@ -72,6 +72,54 @@ const trainingProblems = [
             problemUrl: "https://codeforces.com/gym/567946/problem/A",
             categoryIndex: 1,
             idx: 0
+        },
+        {
+            problemName: "Counting Rooms",
+            problemId: "B",
+            problemLetter: "B",
+            problemUrl: "https://codeforces.com/gym/567946/problem/B",
+            categoryIndex: 1,
+            idx: 1
+        },
+        {
+            problemName: "Labyrinth",
+            problemId: "C",
+            problemLetter: "C",
+            problemUrl: "https://codeforces.com/gym/567946/problem/C",
+            categoryIndex: 1,
+            idx: 2
+        },
+        {
+            problemName: "Dijkstra?",
+            problemId: "D",
+            problemLetter: "D",
+            problemUrl: "https://codeforces.com/gym/567946/problem/D",
+            categoryIndex: 1,
+            idx: 3
+        },
+        {
+            problemName: "Even Walk",
+            problemId: "E",
+            problemLetter: "E",
+            problemUrl: "https://codeforces.com/gym/567946/problem/E",
+            categoryIndex: 1,
+            idx: 4
+        },
+        {
+            problemName: "Pizzas",
+            problemId: "F",
+            problemLetter: "F",
+            problemUrl: "https://codeforces.com/gym/567946/problem/F",
+            categoryIndex: 1,
+            idx: 5
+        },
+        {
+            problemName: "Treasures",
+            problemId: "G",
+            problemLetter: "G",
+            problemUrl: "https://codeforces.com/gym/567946/problem/G",
+            categoryIndex: 1,
+            idx: 5
         }
     ],
     [
@@ -82,6 +130,54 @@ const trainingProblems = [
             problemUrl: "https://codeforces.com/gym/567947/problem/A",
             categoryIndex: 2,
             idx: 0
+        },
+        {
+            problemName: "Dice Combinations",
+            problemId: "B",
+            problemLetter: "B",
+            problemUrl: "https://codeforces.com/gym/567947/problem/B",
+            categoryIndex: 2,
+            idx: 1
+        },
+        {
+            problemName: "Investigating Zeroes and Ones",
+            problemId: "C",
+            problemLetter: "C",
+            problemUrl: "https://codeforces.com/gym/567947/problem/C",
+            categoryIndex: 2,
+            idx: 2
+        },
+        {
+            problemName: "2^sort",
+            problemId: "D",
+            problemLetter: "D",
+            problemUrl: "https://codeforces.com/gym/567947/problem/D",
+            categoryIndex: 2,
+            idx: 3
+        },
+        {
+            problemName: "Woodcutters",
+            problemId: "E",
+            problemLetter: "E", 
+            problemUrl: "https://codeforces.com/gym/567947/problem/E",
+            categoryIndex: 2,
+            idx: 4
+        },
+        {
+            problemName: "Flowers",
+            problemId: "F",
+            problemLetter: "F",
+            problemUrl: "https://codeforces.com/gym/567947/problem/F",
+            categoryIndex: 2,
+            idx: 5
+        },
+        {
+            problemName: "Working out",
+            problemId: "G",
+            problemLetter: "G",
+            problemUrl: "https://codeforces.com/gym/567947/problem/G",
+            categoryIndex: 2,
+            idx: 6
         }
     ]
 ];
@@ -348,38 +444,43 @@ async function populateTables(contestId, apiKey, secret) {
     if (gymcache !== null){
         gymcache = JSON.parse(gymcache);
     }
-
     let dt = new Date();
 {{ if eq (hugo.Environment) "development" }}
-    if (gymcache === null || gymcache.expires < dt.getTime()) {
+    if (true) {
 {{ else }}
     if (gymcache === null || gymcache.expires < dt.getTime()) {
 {{ end }}
-        const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 10, true, apiKey, secret));
+        const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
 
         if (gymcache === null){
             gymcache = setcache();
         }
+        else {
+            // Fix to fill cache by standings instead of status
+            gymcache = setcache();
 
-        submissions.forEach((submission, id) => {
-            const verdict = submission.verdict;
-            let res = (verdict === "OK" ? "accepted" : "attempted");
-            const userId = submission.author.members[0].handle;
-            const contestIdx = contest_ids[submission.contestId];
-            const problemIdx = getProblemIdxFromLetter(submission.problem.index);
-            for (let i = 0; i < gymcache.data[0].length; i ++){
-                if (gymcache.data[0][i].codeforcesId === userId){
-                    let bef = gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx];
-                    if (bef === res){
+        }
+        if (submissions){
+            submissions.forEach((submission, id) => {
+                const verdict = submission.verdict;
+                let res = (verdict === "OK" ? "accepted" : "attempted");
+                const userId = submission.author.members[0].handle;
+                const contestIdx = contest_ids[submission.contestId];
+                const problemIdx = getProblemIdxFromLetter(submission.problem.index);
+                for (let i = 0; i < gymcache.data[0].length; i ++){
+                    if (gymcache.data[0][i].codeforcesId === userId){
+                        let bef = gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx];
+                        if (bef === res){
 
-                    }
-                    else{
-                        gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx] = res;
-                        gymcache.data[0][i].solves[contestIdx] = gymcache.data[0][i].solves[contestIdx] + 1;
+                        }
+                        else{
+                            gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx] = res;
+                            gymcache.data[0][i].solves[contestIdx] = gymcache.data[0][i].solves[contestIdx] + 1;
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
         gymcache.expires = (dt.getTime() + 300 * 1000);
         localStorage.setItem('gymCache', JSON.stringify(gymcache));
         loadData(gymcache.data);
