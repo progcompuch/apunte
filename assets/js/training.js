@@ -3,7 +3,8 @@
 const trainingNames = [
     "Búsqueda Binaria / Dos Punteros",
     "Grafos: BFS / DFS / Dijkstra / DSU",
-    "Programación Dinámica"
+    "Programación Dinámica",
+    "Estructuras de Datos"
 ]
 const trainingProblems = [
     [
@@ -179,13 +180,24 @@ const trainingProblems = [
             categoryIndex: 2,
             idx: 6
         }
+    ],
+    [
+        {
+            problemName: "Static Range Sum Queries",
+            problemId: "A",
+            problemLetter: "A",
+            problemUrl: "https://codeforces.com/gym/568427/problem/A",
+            categoryIndex: 3,
+            idx: 0
+        }
     ]
 ];
 
 const contest_ids = {
     "567665": 0,
     "567946": 1,
-    "567947": 2
+    "567947": 2,
+    "568427": 3
 };
 
 let users = [
