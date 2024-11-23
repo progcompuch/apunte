@@ -199,6 +199,12 @@ const contest_ids = {
     "567947": 2,
     "568427": 3
 };
+const contests_ids = [
+    "567665",
+    "567946",
+    "567947",
+    "568427"
+];
 
 let users = [
     {{- range $user := $uchilePeople -}}
@@ -442,7 +448,7 @@ function getProblemIdxFromLetter(letters){
     }
 };
 
-async function populateTables(contestId, apiKey, secret) {
+async function populateTables(apiKey, secret) {
 
     const gymTablesContainer = document.getElementById("gym-tab-content");
     if (!gymTablesContainer) {
@@ -462,7 +468,6 @@ async function populateTables(contestId, apiKey, secret) {
 {{ else }}
     if (gymcache === null || gymcache.expires < dt.getTime()) {
 {{ end }}
-        const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
 
         if (gymcache === null){
             gymcache = setcache();
@@ -470,29 +475,35 @@ async function populateTables(contestId, apiKey, secret) {
         else {
             // Fix to fill cache by standings instead of status
             gymcache = setcache();
-
         }
-        if (submissions){
-            submissions.forEach((submission, id) => {
-                const verdict = submission.verdict;
-                let res = (verdict === "OK" ? "accepted" : "attempted");
-                const userId = submission.author.members[0].handle;
-                const contestIdx = contest_ids[submission.contestId];
-                const problemIdx = getProblemIdxFromLetter(submission.problem.index);
-                for (let i = 0; i < gymcache.data[0].length; i ++){
-                    if (gymcache.data[0][i].codeforcesId === userId){
-                        let bef = gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx];
-                        if (bef === res){
 
-                        }
-                        else{
-                            gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx] = res;
-                            gymcache.data[0][i].solves[contestIdx] = gymcache.data[0][i].solves[contestIdx] + 1;
+        for (let j = 0; j < contests_ids.length; j ++){
+            const contestId = contests_ids[j]
+            const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
+
+            if (submissions){
+                submissions.forEach((submission, id) => {
+                    const verdict = submission.verdict;
+                    let res = (verdict === "OK" ? "accepted" : "attempted");
+                    const userId = submission.author.members[0].handle;
+                    const contestIdx = contest_ids[submission.contestId];
+                    const problemIdx = getProblemIdxFromLetter(submission.problem.index);
+                    for (let i = 0; i < gymcache.data[0].length; i ++){
+                        if (gymcache.data[0][i].codeforcesId === userId){
+                            let bef = gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx];
+                            if (bef === res){
+    
+                            }
+                            else{
+                                gymcache.data[1][contestIdx][problemIdx][gymcache.data[0][i].idx] = res;
+                                gymcache.data[0][i].solves[contestIdx] = gymcache.data[0][i].solves[contestIdx] + 1;
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         }
+
         gymcache.expires = (dt.getTime() + 300 * 1000);
         localStorage.setItem('gymCache', JSON.stringify(gymcache));
         loadData(gymcache.data);
@@ -505,4 +516,4 @@ async function populateTables(contestId, apiKey, secret) {
 }
 
 
-populateTables(567665, "e23005a4a475b6079a98c6c75f9d24408033ece7", "d6c254ba481a12d0370517c93e2f4a2a5595586e");
+populateTables("e23005a4a475b6079a98c6c75f9d24408033ece7", "d6c254ba481a12d0370517c93e2f4a2a5595586e");
