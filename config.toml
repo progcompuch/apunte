@@ -120,7 +120,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "PathToMaster"
-  codeforcesRating = 1431
+  codeforcesRating = 1584
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
@@ -168,7 +168,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ilopez15"
-  codeforcesRating = 1303
+  codeforcesRating = 1397
   csesId = "none"
   atcoderId = "ilopez15"
   atcoderRating = 207
@@ -264,7 +264,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "Jayki"
-  codeforcesRating = 1135
+  codeforcesRating = 1300
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
@@ -347,7 +347,7 @@
   codeforcesRating = 919
   csesId = "none"
   atcoderId = "none"
-  atcoderRating = 8
+  atcoderRating = 20
   leetcodeId = "none"
 
   [[Params.uchilePeople]]
