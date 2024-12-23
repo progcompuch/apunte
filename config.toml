@@ -27,7 +27,7 @@
   codeforcesRating = 2045
   csesId = "74066"
   atcoderId = "JOliva"
-  atcoderRating = 2224
+  atcoderRating = 2223
   leetcodeId = "javoliva"
 
   [[Params.uchilePeople]]
@@ -72,7 +72,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "vivivi"
-  codeforcesRating = 1658
+  codeforcesRating = 1611
   csesId = "49524"
   atcoderId = "none"
   atcoderRating = 0
@@ -88,7 +88,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "m1tu"
-  codeforcesRating = 1499
+  codeforcesRating = 1524
   csesId = "114575"
   atcoderId = "none"
   atcoderRating = 0
@@ -152,10 +152,10 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ElNChou"
-  codeforcesRating = 1338
+  codeforcesRating = 1333
   csesId = "none"
   atcoderId = "ElNChou"
-  atcoderRating = 476
+  atcoderRating = 562
   leetcodeId = "none"
 
   [[Params.uchilePeople]]
@@ -168,7 +168,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ilopez15"
-  codeforcesRating = 1333
+  codeforcesRating = 1374
   csesId = "none"
   atcoderId = "ilopez15"
   atcoderRating = 207
@@ -328,7 +328,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "daridius"
-  codeforcesRating = 858
+  codeforcesRating = 912
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
@@ -344,7 +344,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ThisIsThisAndThatIsThat"
-  codeforcesRating = 1014
+  codeforcesRating = 1015
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 44
