@@ -24,7 +24,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "JOliva"
-  codeforcesRating = 2045
+  codeforcesRating = 2174
   csesId = "74066"
   atcoderId = "JOliva"
   atcoderRating = 2144
@@ -40,7 +40,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "Blaz"
-  codeforcesRating = 1686
+  codeforcesRating = 1668
   csesId = "69586"
   atcoderId = "Blaz"
   atcoderRating = 842
@@ -72,7 +72,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "vivivi"
-  codeforcesRating = 1611
+  codeforcesRating = 1612
   csesId = "49524"
   atcoderId = "none"
   atcoderRating = 0
@@ -88,10 +88,10 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "m1tu"
-  codeforcesRating = 1524
+  codeforcesRating = 1486
   csesId = "114575"
   atcoderId = "none"
-  atcoderRating = 0
+  atcoderRating = 399
   leetcodeId = "none"
 
   [[Params.uchilePeople]]
@@ -152,7 +152,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ElNChou"
-  codeforcesRating = 1361
+  codeforcesRating = 1349
   csesId = "none"
   atcoderId = "ElNChou"
   atcoderRating = 562
@@ -168,7 +168,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ilopez15"
-  codeforcesRating = 1283
+  codeforcesRating = 1254
   csesId = "none"
   atcoderId = "ilopez15"
   atcoderRating = 207
@@ -184,7 +184,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "ant_metayer"
-  codeforcesRating = 385
+  codeforcesRating = 643
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
@@ -203,7 +203,7 @@
   codeforcesRating = 902
   csesId = "none"
   atcoderId = "AlePatata92"
-  atcoderRating = 7
+  atcoderRating = 35
   leetcodeId = "none"
 
   [[Params.uchilePeople]]
@@ -248,7 +248,7 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "svandich"
-  codeforcesRating = 1231
+  codeforcesRating = 1261
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 62
