@@ -27,6 +27,12 @@ let users = [
     {{- end -}}
 ]
 
+let complete_users_list = [
+    {{- range $user := $uchilePeople -}}
+        '{{- $user.codeforcesId -}}',
+    {{- end -}}
+]
+
 async function generateApiSig(methodName, params, apiKey, secret) {
     const rand = Math.random().toString(36).substring(2, 8); // Generate a random 6-character string
     const time = Math.floor(Date.now() / 1000); // Current time in UNIX format
@@ -67,11 +73,14 @@ async function fetchContestStatus(contestId, from, count, asManager, apiKey, sec
 }
 
 async function fetchContestStandings(contestId, apiKey, secret) {
-    const asManager = false, from = 1, count = 30, showUnofficial = true;
+    const asManager = true, from = 1, count = 30, showUnofficial = true;
+    participantTypes = "PRACTICE";
     const methodName = "contest.standings"
-    const params = { contestId, from, count, asManager, showUnofficial };
+    let handles = complete_users_list.join;
+    const params = { contestId, from, count, asManager, showUnofficial, participantTypes };
+    handles = complete_users_list.join(';');
     const { apiSig, time } = await generateApiSig(methodName, params, apiKey, secret);
-    const url = `https://codeforces.com/api/${methodName}?apiKey=${apiKey}&asManager=${asManager}&contestId=${contestId}&count=${count}&from=${from}&showUnofficial=${showUnofficial}&time=${time}&apiSig=${apiSig}`;
+    const url = `https://codeforces.com/api/${methodName}?apiKey=${apiKey}&asManager=${asManager}&contestId=${contestId}&count=${count}&from=${from}&participantTypes=${participantTypes}&showUnofficial=${showUnofficial}&time=${time}&apiSig=${apiSig}`;
     const response = await fetch(url);
     if (!response.ok) {
         console.error("Error fetching contest standings:", response.statusText);
@@ -87,7 +96,6 @@ async function fetchContestStandings(contestId, apiKey, secret) {
 
 // 
 async function loadData(data){
-
     for (let i = 0; i < trainingNames.length; i ++){
         const tabContent = document.getElementById(`tab-content-${i}`);
         if (!tabContent){
@@ -107,8 +115,13 @@ async function loadData(data){
         let totalsNames = table.getElementsByTagName('tr')[0].children;
         
         let users2 = {}
+        let users3 = {}
         for (let j = 0; j < users.length; j ++){
             users2[users[j].codeforcesId] = {
+                "crating": users[j].codeforcesRating,
+                "arating": users[j].atcoderRating
+            };
+            users3[users[j].codeforcesId] = {
                 "crating": users[j].codeforcesRating,
                 "arating": users[j].atcoderRating
             };
@@ -178,16 +191,20 @@ async function loadData(data){
         totalesCell.style.backgroundColor = "#f8f9fa";
         totalesCell.textContent = "Totales";
         totalesCell.style.fontWeight = "bold";
+        let ccol = 0;
         for (let j = 0; j < contest_data[1].length; j ++){
-            const userCell = row.insertCell(j + 1);
-            let solves = 0;
-            for (let j2 = 0; j2 < contest_data[1][j].solves.length; j2 ++){
-                if (contest_data[1][j].solves[j2] == 2)
-                    solves += 1
+            user_handle = contest_data[1][j].handle;
+            if (user_handle in users3){
+                const userCell = row.insertCell(ccol + 1);
+                let solves = 0;
+                for (let j2 = 0; j2 < contest_data[1][j].solves.length; j2 ++){
+                    if (contest_data[1][j].solves[j2] == 2)
+                        solves += 1
+                }
+                userCell.textContent = solves;
+                ccol ++;
             }
-            userCell.textContent = solves;
         }
-        let ccol = contest_data[1].length
         for (const [user_handle, value] of Object.entries(users2)){
             const userCell = row.insertCell(ccol + 1)
             userCell.textContent = 0;
@@ -211,13 +228,17 @@ async function loadData(data){
             problemLink.rel = "noopener noreferrer";
             problemCell.appendChild(problemLink);
 
+            let newk = 0;
             for (let k = 0; k < contest_data[1].length; k ++){
-                const userCell = problemRow.insertCell(k + 1);
-                let score_v = contest_data[1][k].solves[j];
-                let value = (score_v == 2 ? "accepted" : (score_v == 1 ? "attempted" : "notAttempted"));
-                userCell.className = `task-score ${value}`;
+                user_handle = contest_data[1][k].handle;
+                if (user_handle in users3){
+                    const userCell = problemRow.insertCell(newk + 1);
+                    let score_v = contest_data[1][k].solves[j];
+                    let value = (score_v == 2 ? "accepted" : (score_v == 1 ? "attempted" : "notAttempted"));
+                    userCell.className = `task-score ${value}`;
+                    newk ++;
+                }
             }
-            let newk = contest_data[1].length;
             for (const [user_handle, value] of Object.entries(users2)){
                 const userCell = problemRow.insertCell(newk + 1)
                 userCell.className = `task-score notAttemped`;
