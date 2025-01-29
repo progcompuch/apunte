@@ -23,12 +23,30 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "JOliva"
   codeforcesRating = 2230
   csesId = "74066"
   atcoderId = "JOliva"
   atcoderRating = 2033
   leetcodeId = "javoliva"
+
+  [[Params.uchilePeople]]
+  name = "Javier Marinkovic"
+  nickname = "Marinkovic"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "Marinkovic"
+  codeforcesRating = 2100
+  csesId = "Marinkovic"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
 
   [[Params.uchilePeople]]
   name = "Blaz Korecic"
@@ -39,6 +57,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "Blaz"
   codeforcesRating = 1668
   csesId = "69586"
@@ -55,6 +74,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "dariasc"
   codeforcesRating = 1689
   csesId = "58188"
@@ -71,6 +91,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "vivivi"
   codeforcesRating = 1612
   csesId = "49524"
@@ -87,6 +108,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "m1tu"
   codeforcesRating = 1486
   csesId = "114575"
@@ -103,6 +125,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "AngrySeal"
   codeforcesRating = 1798
   csesId = "107392"
@@ -119,6 +142,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "PathToMaster"
   codeforcesRating = 1584
   csesId = "none"
@@ -135,6 +159,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "MapacheTactico"
   codeforcesRating = 1212
   csesId = "none"
@@ -151,6 +176,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "ElNChou"
   codeforcesRating = 1349
   csesId = "none"
@@ -167,6 +193,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "ilopez15"
   codeforcesRating = 1254
   csesId = "none"
@@ -183,6 +210,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "ant_metayer"
   codeforcesRating = 643
   csesId = "none"
@@ -199,6 +227,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "AlePatata92"
   codeforcesRating = 902
   csesId = "none"
@@ -215,6 +244,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "lu_0"
   codeforcesRating = 728
   csesId = "none"
@@ -231,6 +261,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "patrici4"
   codeforcesRating = 0
   csesId = "none"
@@ -247,6 +278,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "svandich"
   codeforcesRating = 1261
   csesId = "none"
@@ -263,6 +295,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "Jayki"
   codeforcesRating = 1300
   csesId = "none"
@@ -279,6 +312,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "curauma03"
   codeforcesRating = 1046
   csesId = "none"
@@ -295,6 +329,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "elJunaeb"
   codeforcesRating = 875
   csesId = "none"
@@ -311,6 +346,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = false
   codeforcesId = "daridius"
   codeforcesRating = 1537
   csesId = "none"
@@ -327,6 +363,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "Pansho721"
   codeforcesRating = 912
   csesId = "none"
@@ -343,6 +380,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "ThisIsThisAndThatIsThat"
   codeforcesRating = 1015
   csesId = "none"
@@ -359,6 +397,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = true
   codeforcesId = "pauwu"
   codeforcesRating = 379
   csesId = "none"
@@ -375,6 +414,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = false
   codeforcesId = "Ciruela"
   codeforcesRating = 0
   csesId = "none"
@@ -391,6 +431,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = false
   codeforcesId = "davicom"
   codeforcesRating = 1469
   csesId = "none"
@@ -407,6 +448,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = false
   codeforcesId = "lazyelekid"
   codeforcesRating = 0
   csesId = "none"
@@ -423,6 +465,7 @@
   meta_hackercup = true
   ieeextreme = true
   rayan = true
+  active = false
   codeforcesId = "Zertex"
   codeforcesRating = 358
   csesId = "none"
@@ -433,91 +476,401 @@
   [[Params.team]]
   name = "globos.get()"
   year = 2024
-  members = ["dariasc", "vivivi", "m1tu"]
+  members = ["Diego Arias (dariasc)", "Vicente Villarroel (vivivi)", "Gabriel Carmona (m1tu)"]
   image = "/images/teams/2024/globos.jpg"
   url = ""
   place = 1
-  extra = "Clasificado a la Latin American Championship 2025, puesto ?"
+  global_place = 32
+  extra = "Clasificado a la Latin American Championship 2025 - Brazil, puesto ?"
 
   [[Params.team]]
   name = "team.tocar(pasto);"
   year = 2024
-  members = ["PathToMaster", "ElNChou", "MapacheTactico"]
+  members = ["Luciano Massa (PathToMaster)", "Javier Azócar (ElNChou)", "Alonso Núñez (MapacheTactico)"]
   image = "/images/teams/2024/tocarpasto.jpg"
   url = ""
   place = 4
+  global_place = 97
   extra = ""
 
   [[Params.team]]
   name = "off-by-one"
   year = 2024
-  members = ["ilopez15", "ant_metayer", "Ciruela"]
+  members = ["Ignacio López (ilopez15)", "Antoine Metayer (ant_metayer)", "Felipe Jara (Ciruela)"]
   image = "/images/teams/2024/offbyone.jpg"
   url = ""
   place = 7
+  global_place = 131
   extra = ""
 
   [[Params.team]]
   name = "GatasOnly"
   year = 2024
-  members = ["AlePatata92", "lu_0", "patrici4"]
+  members = ["Alejandra Campos (AlePatata92)", "Martina Lúcero (lu_0)", "Patricia Vera (patrici4)"]
   image = "/images/teams/2024/gatas.jpg"
   url = ""
   place = 14
+  global_place = 260
   extra = ""
 
   [[Params.team]]
   name = "CTF enjoyers"
   year = 2023
-  members = ["Blaz", "daridius", "dariasc"]
+  members = ["Blaz Korecic (Blaz)", "Diego Salas (daridius)", "Diego Arias (dariasc)"]
   image = "/images/teams/2023/ctf.jpg"
   url = ""
   place = 2
-  extra = "Clasificado a la Latin American Championship 2024, puesto 30"
+  global_place = 23
+  extra = "Clasificado a la Latin American Championship 2024 - Mexico, puesto 30"
 
   [[Params.team]]
   name = "Whatsapp 3 Dev Team"
   year = 2023
-  members = ["PathToMaster", "m1tu", "vivivi"]
+  members = ["Luciano Massa (PathToMaster)", "Gabriel Carmona (m1tu)", "Vicente Villarroel (vivivi)"]
   image = "/images/teams/2023/wpp.jpg"
   url = ""
   place = 5
+  global_place = 77
   extra = ""
 
   [[Params.team]]
   name = "Ferardcho"
   year = 2023
-  members = ["curauma03", "lazyelekid", "Zertex"]
+  members = ["Fernanda Gutiérrez (curauma03)", "Francisco Castro (lazyelekid)", "Gerard Cathalifaud (Zertex)"]
   image = "/images/teams/2023/ferard.jpg"
   url = ""
   place = 10
+  global_place = 222
   extra = ""
 
   [[Params.team]]
   name = "Dijkstra Stan Army"
   year = 2022
-  members = ["AngrySeal", "Blaz", "daridius"]
+  members = ["Daniel Báez (AngrySeal)", "Blaz Korecic (Blaz)", "Diego Salas (daridius)"]
   image = "/images/teams/2022/dijkstra.jpg"
   url = ""
   place = 3
+  global_place = 24
   extra = ""
 
   [[Params.team]]
   name = "Blue Ghost Team"
   year = 2022
-  members = ["svandich", "PathToMaster", "m1tu"]
+  members = ["Dmitri Ramirez (svandich)", "Luciano Massa (PathToMaster)", "Gabriel Carmona (m1tu)"]
   image = "/images/teams/2022/blueghost.jpg"
   url = ""
   place = 4
+  global_place = 69
   extra = ""
 
   [[Params.team]]
   name = "DaViD"
   year = 2022
-  members = ["dariasc", "davicom", "vivivi"]
+  members = ["Diego Arias (dariasc)", "David Ibáñez (davicom)", "Vicente Villarroel (vivivi)"]
   image = "/images/teams/2022/david.jpg"
   url = ""
   place = 5
+  global_place = 83
+  extra = ""
+
+  [[Params.team]]
+  name = "Dijkstra Stan Army"
+  year = 2021
+  members = ["Daniel Báez (AngrySeal)", "Blaz Korecic (Blaz)", "Diego Salas (daridius)"]
+  image = "/images/teams/2021/dijkstra2.jpg"
+  url = ""
+  place = 1
+  global_place = 16
+  extra = ""
+
+  [[Params.team]]
+  name = "Graphanatic"
+  year = 2021
+  members = ["Luciano Massa (PathToMaster)", "Michael Scott", "Sebastián Guzman"]
+  image = "/images/teams/2021/graph.jpg"
+  url = ""
+  place = 7
+  global_place = 112
+  extra = ""
+
+  [[Params.team]]
+  name = "[D]evil [D]riven [D]evelopment"
+  year = 2021
+  members = ["David Ibáñez (davicom)", "Dmitri Ramirez (svandich)", "Dante Mardones (Jayki)"]
+  image = "/images/teams/2021/ddd.jpg"
+  url = ""
+  place = 8
+  global_place = 128
+  extra = ""
+
+  [[Params.team]]
+  name = "Volan{Team}"
+  year = 2020
+  members = ["Luciano Massa (PathToMaster)", "Mateo Contela", "Jorge Cruces"]
+  image = "/images/teams/2020/ch1.jpg"
+  url = ""
+  place = 6
+  global_place = 97
+  extra = "COVID"
+
+  [[Params.team]]
+  name = "Teoría de la Compota"
+  year = 2020
+  members = ["Blaz Korecic (Blaz)", "Diego Salas (daridius)", "Beltrán Aménabar"]
+  image = "/images/teams/2020/ch2.jpg"
+  url = ""
+  place = 15
+  global_place = 223
+  extra = "COVID"
+
+  [[Params.team]]
+  name = "Polish Cow"
+  year = 2020
+  members = ["Ignacio Santos", "Benjamín Avendaño", "Jorge Cerda"]
+  image = "/images/teams/2020/ch3.jpg"
+  url = ""
+  place = 18
+  global_place = 275
+  extra = "COVID"
+
+  [[Params.team]]
+  name = "#NuevaConstitución UChile1"
+  year = 2019
+  members = ["Javier Oliva (JOliva)", "Javier Marinkovic (Marinkovic)", "Daniel Báez (AngrySeal)"]
+  image = "/images/teams/2019/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = 11
+  extra = "Clasificado a la World Finals 2020 - Russia, puesto 89"
+
+  [[Params.team]]
+  name = "#NuevaConstitución UChile3"
+  year = 2019
+  members = ["Blaz Korecic (Blaz)", "Diego Salas (daridius)", "Nicolás Lemuñir (zegram)"]
+  image = "/images/teams/2019/ch2.jpg"
+  url = ""
+  place = 3
+  global_place = 63
+  extra = ""
+
+  [[Params.team]]
+  name = "#NuevaConstitución UChile2"
+  year = 2019
+  members = ["Pablo Torres", "Benjamín Mellado", "Felipe Lizama"]
+  image = "/images/teams/2019/ch3.jpg"
+  url = ""
+  place = 6
+  global_place = 122
+  extra = ""
+
+  [[Params.team]]
+  name = "Grace Hoppers"
+  year = 2018
+  members = ["Bernardo Subercaseaux (bersub)", "Thibault Benoit (Thibo)", "Robinson Castro (robin40)"]
+  image = "/images/teams/2018/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = 43
+  extra = ""
+
+  [[Params.team]]
+  name = "TotallyNotRobots"
+  year = 2018
+  members = ["Pablo torres", "Benjamín Mellado", "Felipe Lizama"]
+  image = "/images/teams/2018/ch2.jpg"
+  url = ""
+  place = 2
+  global_place = 64
+  extra = ""
+
+  [[Params.team]]
+  name = "El pequeño equipo que sí pudo"
+  year = 2018
+  members = ["Daniel Báez (AngrySeal)", "Blaz korecic (Blaz)", "Arturo"]
+  image = "/images/teams/2018/ch3.jpg"
+  url = ""
+  place = 6
+  global_place = 107
+  extra = ""
+
+  [[Params.team]]
+  name = "No importa entrenen weon"
+  year = 2017
+  members = ["Javier Oliva (JOliva)", "Pablo Quinteros (Quinas)", "Matías Ramirez"]
+  image = "/images/teams/2017/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = "-"
+  extra = "Clasificado a la World Finals 2018 - China, puesto 94"
+
+  [[Params.team]]
+  name = "SegmentTeam"
+  year = 2017
+  members = ["Thibault Benoit (Thibo)", "Gabriel Norambuena (inanc)", "José Cañete (Jocca)"]
+  image = "/images/teams/2017/ch2.jpg"
+  url = ""
+  place = 3
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Tres doggos"
+  year = 2017
+  members = ["Daniela Campos", "Heinich Porro", "Ilana Mergudich"]
+  image = "/images/teams/2017/ch3.jpg"
+  url = ""
+  place = "-"
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "El equipo de Paulsen"
+  year = 2016
+  members = ["Javier Marinkovic (Marinkovic)", "Juan Pablo Paulsen", "Robinson Castro (Robin40)"]
+  image = "/images/teams/2016/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = "-"
+  extra = "Clasificado a la World Finals 2017 - US, puesto 79"
+
+  [[Params.team]]
+  name = "Vieitaval"
+  year = 2016
+  members = [""]
+  image = "/images/teams/2016/ch2.jpg"
+  url = ""
+  place = 3
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "letal++"
+  year = 2016
+  members = ["Thibault Benoit (Thibo)", "José Cañete (Jocca)", "Alejandro González (choreza)"]
+  image = "/images/teams/2016/ch3.jpg"
+  url = ""
+  place = "-"
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Squash Masters"
+  year = 2015
+  members = ["Juan Pablo Paulsen", "Ronie Salgado", "Felipe Contreras"]
+  image = "/images/teams/2015/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = "-"
+  extra = "Clasificado a la World Finals 2016 - Thailand, puesto 100"
+
+  [[Params.team]]
+  name = "bits please"
+  year = 2015
+  members = ["Robinson Castro (Robin40)", "Bernardo Subercaseaux (bersub)", "Lucas Cabello"]
+  image = "/images/teams/2015/ch2.jpg"
+  url = ""
+  place = 4
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "DCC++"
+  year = 2015
+  members = [""]
+  image = "/images/teams/2015/ch3.jpg"
+  url = ""
+  place = 12
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Botellita de @peréz"
+  year = 2014
+  members = ["Ronie Salgado", "Felipe Contreras", ""]
+  image = "/images/teams/2014/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Los adalides del birlibirloque"
+  year = 2014
+  members = ["Juan Pablo Paulsen"]
+  image = "/images/teams/2014/ch2.jpg"
+  url = ""
+  place = 3
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "@perez y #LosFabulososMechones"
+  year = 2014
+  members = ["Robinson Castro (Robin40)", "Bernardo Subercaseaux (bersub)", "Lucas Cabello"]
+  image = "/images/teams/2014/ch3.jpg"
+  url = ""
+  place = 4
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Alonso y los Strawberries"
+  year = 2013
+  members = ["Rodrigo Alonso", "", ""]
+  image = "/images/teams/2013/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Los recolectores de basura"
+  year = 2013
+  members = ["Ronie Salgado", "", ""]
+  image = "/images/teams/2013/ch2.jpg"
+  url = ""
+  place = 2
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "No le den mas vino a @perez"
+  year = 2013
+  members = ["Nicolás Lehmann", "", ""]
+  image = "/images/teams/2013/ch3.jpg"
+  url = ""
+  place = 4
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Los Ángeles de Jorge"
+  year = 2012
+  members = ["Sebastián Barbieri", "Nicolás Sanhueza", "Christian von Borries"]
+  image = "/images/teams/2012/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = "-"
+  extra = "Clasificado a la World Finals 2013 - Russia, puesto 110"
+
+  [[Params.team]]
+  name = "Sin comer desde la última ICPC"
+  year = 2012
+  members = ["Nicolás Lehmann", "Felipe Contreras"]
+  image = "/images/teams/2012/ch2.jpg"
+  url = ""
+  place = 2
+  global_place = "-"
+  extra = ""
+
+  [[Params.team]]
+  name = "Los jinetes del Loop"
+  year = 2012
+  members = ["Mauricio Quezada"]
+  image = "/images/teams/2012/ch3.jpg"
+  url = ""
+  place = "-"
+  global_place = "-"
   extra = ""
 
 

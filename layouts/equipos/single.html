@@ -18,8 +18,11 @@
           <img src="{{ .image }}" alt="{{ .name }}" class="team-image">
           <div class="team-info">
             <h3 class="team-name">{{ .name }}</h3>
-            <p class="team-members">{{ delimit .members ", " }}</p>
-            <p class="team-place">{{ .place}} puesto de Chile </p>
+            {{ range .members }}
+            <p class="team-members">{{ . }}</p>
+            {{ end }}
+            <p class="team-place">puesto {{ .place}} de Chile </p>
+            <p class="team-place">puesto {{ .global_place}} América Latina</p>
             <p class="team-info">{{ .extra}} </p>
           </div>
         </div>
@@ -66,7 +69,7 @@
   }
 
   .team-members {
-    color: gray;
+    color: #808080;
   }
 
   .year-title {
