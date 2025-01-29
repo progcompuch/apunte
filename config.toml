@@ -481,7 +481,7 @@
   url = ""
   place = 1
   global_place = 32
-  extra = "Clasificado a la Latin American Championship 2025 - Brazil, puesto ?"
+  extra = "Clasificado a la Latin America Championship 2025 - Brazil, puesto ?"
 
   [[Params.team]]
   name = "team.tocar(pasto);"
@@ -521,7 +521,7 @@
   url = ""
   place = 2
   global_place = 23
-  extra = "Clasificado a la Latin American Championship 2024 - Mexico, puesto 30"
+  extra = "Clasificado a la Latin America Championship 2024 - Mexico, puesto 30"
 
   [[Params.team]]
   name = "Whatsapp 3 Dev Team"
