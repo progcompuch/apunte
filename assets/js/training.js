@@ -303,7 +303,6 @@ async function populateTables(apiKey, secret) {
             // const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
             const standings = await Promise.resolve(fetchContestStandings(contestId, apiKey, secret));
             if (standings) {
-                console.log(standings);
                 standings_rows = standings.rows;
                 standings_problems = standings.problems;
                 data_rows = []
