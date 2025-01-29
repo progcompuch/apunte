@@ -30,6 +30,7 @@
   atcoderId = "JOliva"
   atcoderRating = 2033
   leetcodeId = "javoliva"
+  leetcodeRating = 2760
 
   [[Params.uchilePeople]]
   name = "Javier Marinkovic"
@@ -47,6 +48,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Blaz Korecic"
@@ -64,6 +66,7 @@
   atcoderId = "Blaz"
   atcoderRating = 842
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Diego Arias"
@@ -81,6 +84,7 @@
   atcoderId = "dariasc"
   atcoderRating = 1336
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Vicente Villarroel"
@@ -98,6 +102,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Gabriel Carmona"
@@ -115,6 +120,7 @@
   atcoderId = "none"
   atcoderRating = 399
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Daniel Báez"
@@ -132,6 +138,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Luciano Massa"
@@ -149,6 +156,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Alonso Núñez"
@@ -166,6 +174,7 @@
   atcoderId = "MapacheTactico"
   atcoderRating = 347
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Javier Azócar"
@@ -183,6 +192,7 @@
   atcoderId = "ElNChou"
   atcoderRating = 562
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Ignacio López"
@@ -200,6 +210,7 @@
   atcoderId = "ilopez15"
   atcoderRating = 207
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Antoine Metayer"
@@ -217,6 +228,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Alejandra Campos"
@@ -234,6 +246,7 @@
   atcoderId = "AlePatata92"
   atcoderRating = 35
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Martina González"
@@ -251,6 +264,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Patricia Vera"
@@ -268,6 +282,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Dmitri Ramirez"
@@ -285,6 +300,7 @@
   atcoderId = "none"
   atcoderRating = 62
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Dante Mardones"
@@ -302,6 +318,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Fernanda Gutiérrez"
@@ -319,6 +336,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Javier Calfuala"
@@ -336,6 +354,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Diego Salas"
@@ -353,6 +372,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Francisco Romero"
@@ -370,6 +390,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Tomás Rajevic"
@@ -387,6 +408,7 @@
   atcoderId = "none"
   atcoderRating = 44
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Paula Carrión"
@@ -404,6 +426,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Felipe Jara"
@@ -421,6 +444,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "David Ibáñez"
@@ -438,6 +462,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Francisco Castro"
@@ -455,6 +480,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.uchilePeople]]
   name = "Gerard Cathalifaud"
@@ -472,6 +498,7 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+  leetcodeRating = 0
 
   [[Params.team]]
   name = "globos.get()"

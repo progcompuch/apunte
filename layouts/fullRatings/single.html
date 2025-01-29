@@ -124,6 +124,65 @@
         {{ end }}
       </tbody>
     </table>
+    <table class="table table-sm table-bordered codeforces-table" id="leetcode-standings">
+      <tbody>
+        <tr>
+          <td></td>
+          <td><span class="rating-3000"><span class="rating-red">l</span>eetcode <span class="rating-red">R</span>ating</span></td>
+        </tr>
+        {{ range $uchilePerson := sort .Site.Params.uchilePeople "leetcodeRating" "desc" }}
+        {{ $icpc_allowed := $uchilePerson.icpc}}
+        {{ if $uchilePerson.active }}
+        <tr {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
+          {{ $rating := $uchilePerson.leetcodeRating }}
+          {{ $nickname := $uchilePerson.nickname }}
+          <td><span 
+            {{ if lt $rating 200 }}
+              class="rating-black"
+            {{ else if and (ge $rating 200) (le $rating 1399) }}
+              class="rating-gray"
+            {{ else if and (ge $rating 1400) (le $rating 1599) }}
+              class="rating-green"
+            {{ else if and (ge $rating 1600) (le $rating 1899) }}
+              class="rating-cyan"
+            {{ else if and (ge $rating 1900) (le $rating 2099) }}
+              class="rating-blue"
+            {{ else if and (ge $rating 2100) (le $rating 2399) }}
+              class="rating-purple"
+            {{ else if and (ge $rating 2400) (le $rating 2899) }}
+              class="rating-orange"
+            {{ else if and (ge $rating 2900) (le $rating 3400) }}
+              class="rating-red"
+            {{ end }}
+            >
+            {{ $nickname}}
+          </span>{{ if not $icpc_allowed }} * {{ end }}</td>
+          <td><span 
+            {{ if lt $rating 200 }}
+              class="rating-black"
+            {{ else if and (ge $rating 200) (le $rating 1399) }}
+              class="rating-gray"
+            {{ else if and (ge $rating 1400) (le $rating 1599) }}
+              class="rating-green"
+            {{ else if and (ge $rating 1600) (le $rating 1899) }}
+              class="rating-cyan"
+            {{ else if and (ge $rating 1900) (le $rating 2099) }}
+              class="rating-blue"
+            {{ else if and (ge $rating 2100) (le $rating 2399) }}
+              class="rating-purple"
+            {{ else if and (ge $rating 2400) (le $rating 2899) }}
+              class="rating-orange"
+            {{ else if and (ge $rating 2900) (le $rating 3400) }}
+              class="rating-red"
+            {{ end }}
+            >
+            {{ $rating}}
+          </span></td>
+        </tr>
+        {{ end }}
+        {{ end }}
+      </tbody>
+    </table>
   </div>  
 </div>
 <script>
