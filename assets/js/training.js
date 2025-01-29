@@ -303,6 +303,7 @@ async function populateTables(apiKey, secret) {
             // const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
             const standings = await Promise.resolve(fetchContestStandings(contestId, apiKey, secret));
             if (standings) {
+                console.log(standings);
                 standings_rows = standings.rows;
                 standings_problems = standings.problems;
                 data_rows = []
@@ -318,7 +319,7 @@ async function populateTables(apiKey, secret) {
                     srow_results = srow.problemResults;
                     results_data = []
                     srow_results.forEach((presult, id2) => {
-                        results_data.push(presult.points > 0 ? 2 : (presult.attemptedRejectCount > 0 ? 1 : 0));
+                        results_data.push(presult.points > 0 ? 2 : (presult.rejectedAttemptCount > 0 ? 1 : 0));
                     });
                     data_rows.push({
                         "handle": srow_handle,
