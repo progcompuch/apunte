@@ -33,6 +33,17 @@ let complete_users_list = [
     {{- end -}}
 ]
 
+// let users = [
+//     {{- range $user := $uchilePeople -}}
+//         {
+//             nickname: '{{- $user.nickname -}}',
+//             codeforcesId: '{{- $user.codeforcesId -}}',
+//             codeforcesRating: {{- $user.codeforcesRating -}},
+//             atcoderRating: {{- $user.atcoderRating -}}
+//         },
+//     {{- end -}}
+// ]
+
 async function generateApiSig(methodName, params, apiKey, secret) {
     const rand = Math.random().toString(36).substring(2, 8); // Generate a random 6-character string
     const time = Math.floor(Date.now() / 1000); // Current time in UNIX format

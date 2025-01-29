@@ -8,10 +8,10 @@
   url = "/recursos/recursos/introduccion"
   weight = 20
 
-[[main]]
-  name = "CSES"
-  url = "/cses/"
-  weight = 30
+# [[main]]
+#   name = "CSES"
+#   url = "/cses/"
+#   weight = 30
 
 [[main]]
   name = "Ratings"
@@ -22,6 +22,11 @@
   name = "Gimnasio"
   url = "/Gimnasio/"
   weight = 50
+
+[[main]]
+  name = "Equipos"
+  url = "/Equipos/"
+  weight = 55
 
 [[main]]
   name = "Acerca"

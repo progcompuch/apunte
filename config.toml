@@ -24,10 +24,10 @@
   ieeextreme = true
   rayan = true
   codeforcesId = "JOliva"
-  codeforcesRating = 2174
+  codeforcesRating = 2230
   csesId = "74066"
   atcoderId = "JOliva"
-  atcoderRating = 2144
+  atcoderRating = 2033
   leetcodeId = "javoliva"
 
   [[Params.uchilePeople]]
@@ -365,6 +365,162 @@
   atcoderId = "none"
   atcoderRating = 0
   leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Felipe Jara"
+  nickname = "Ciruela"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "Ciruela"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "David Ibáñez"
+  nickname = "davicom"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "davicom"
+  codeforcesRating = 1469
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Francisco Castro"
+  nickname = "lazyelekid"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "lazyelekid"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.uchilePeople]]
+  name = "Gerard Cathalifaud"
+  nickname = "Zertex"
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  codeforcesId = "Zertex"
+  codeforcesRating = 358
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+
+  [[Params.team]]
+  name = "globos.get()"
+  year = 2024
+  members = ["dariasc", "vivivi", "m1tu"]
+  image = "/images/teams/2024/globos.jpg"
+  url = ""
+  place = 1
+  extra = "Clasificado a la Latin American Championship 2025, puesto ?"
+
+  [[Params.team]]
+  name = "team.tocar(pasto);"
+  year = 2024
+  members = ["PathToMaster", "ElNChou", "MapacheTactico"]
+  image = "/images/teams/2024/tocarpasto.jpg"
+  url = ""
+  place = 4
+  extra = ""
+
+  [[Params.team]]
+  name = "off-by-one"
+  year = 2024
+  members = ["ilopez15", "ant_metayer", "Ciruela"]
+  image = "/images/teams/2024/offbyone.jpg"
+  url = ""
+  place = 7
+  extra = ""
+
+  [[Params.team]]
+  name = "GatasOnly"
+  year = 2024
+  members = ["AlePatata92", "lu_0", "patrici4"]
+  image = "/images/teams/2024/gatas.jpg"
+  url = ""
+  place = 14
+  extra = ""
+
+  [[Params.team]]
+  name = "CTF enjoyers"
+  year = 2023
+  members = ["Blaz", "daridius", "dariasc"]
+  image = "/images/teams/2023/ctf.jpg"
+  url = ""
+  place = 2
+  extra = "Clasificado a la Latin American Championship 2024, puesto 30"
+
+  [[Params.team]]
+  name = "Whatsapp 3 Dev Team"
+  year = 2023
+  members = ["PathToMaster", "m1tu", "vivivi"]
+  image = "/images/teams/2023/wpp.jpg"
+  url = ""
+  place = 5
+  extra = ""
+
+  [[Params.team]]
+  name = "Ferardcho"
+  year = 2023
+  members = ["curauma03", "lazyelekid", "Zertex"]
+  image = "/images/teams/2023/ferard.jpg"
+  url = ""
+  place = 10
+  extra = ""
+
+  [[Params.team]]
+  name = "Dijkstra Stan Army"
+  year = 2022
+  members = ["AngrySeal", "Blaz", "daridius"]
+  image = "/images/teams/2022/dijkstra.jpg"
+  url = ""
+  place = 3
+  extra = ""
+
+  [[Params.team]]
+  name = "Blue Ghost Team"
+  year = 2022
+  members = ["svandich", "PathToMaster", "m1tu"]
+  image = "/images/teams/2022/blueghost.jpg"
+  url = ""
+  place = 4
+  extra = ""
+
+  [[Params.team]]
+  name = "DaViD"
+  year = 2022
+  members = ["dariasc", "davicom", "vivivi"]
+  image = "/images/teams/2022/david.jpg"
+  url = ""
+  place = 5
+  extra = ""
+
+
 
   csesEndpoint = "https://uchile.davicom.cl/api/cses-tasks/"
   csesProblemUrl = "https://cses.fi/problemset/task/"
