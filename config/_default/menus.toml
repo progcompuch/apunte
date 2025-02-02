@@ -20,8 +20,9 @@
 
 [[main]]
   name = "Gimnasio"
-  url = "/Gimnasio/"
+  url = "/gimnasio/"
   weight = 50
+  hasChildren = true
 
 [[main]]
   name = "Equipos"

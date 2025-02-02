@@ -1,17 +1,148 @@
 {{ $uchilePeople := .Site.Params.uchilePeople -}}
 
+const path = window.location.pathname;
+
 const trainingNames = [
-    "Búsqueda Binaria / Dos Punteros",
-    "Grafos: BFS / DFS / Dijkstra / DSU",
-    "Programación Dinámica",
-    "Estructuras de Datos"
+    [
+        "Búsqueda Binaria / Dos Punteros",
+        "Grafos: BFS / DFS / Dijkstra / DSU",
+        "Programación Dinámica",
+        "Estructuras de Datos"
+    ],
+    [
+        "Grafos 2: Minimum Spanning Tree / Camino más corto",
+        "Teoría de números / Conteo", 
+        "Programación Dinámica 2",
+        "Estructuras de Datos 2",
+        "algoritmo de mo"
+    ],
+    [
+        "Grafos 3: Flujo y matchings",
+        "Binary Lifting",
+        "Small to Large",
+        "Técnicas en árboles 1",
+        "Teoría de juegos"
+    ],
+    [
+        "Estructuras de Datos 3",
+        "Teoría de números 2",
+        "Probabilistas",
+        "Sistemas de ecuaciones lineales"
+    ]
+];
+
+const trainingContents = [
+    [
+        [
+            "Búsqueda Binaria",
+            "Dos Punteros"
+        ],
+        [
+            "BFS",
+            "DFS",
+            "Dijkstra",
+            "DSU"
+        ],
+        [
+            "Programación Dinámica"
+        ],
+        [
+            "Segment Tree (normal)"
+        ]
+    ],
+    [
+        [
+            "Algoritmo de Kruskal",
+            "Bellman Ford",
+            "Floyd Warshall"
+        ],
+        [
+            "Aritmética Modular",
+            "Criba de Eratóstenes",
+            "Inverso Modular",
+            "Números Binomiales"
+        ],
+        [
+            "Programación Dinámica",
+            "sqrt decomposition"
+        ],
+        [
+            "Segment Tree (Lazy)",
+        ],
+        [
+            "algoritmo de mo",
+            "algoritmo de mo 3d"
+        ]
+    ],
+    [
+        [
+            "maxflow",
+            "mincut",
+            "hungarian"
+        ],
+        [
+            "binary lifting"
+        ],
+        [
+            "small to large"
+        ],
+        [
+            "binary lifting",
+            "small to large",
+            "rerooting",
+            "dfs tree"
+        ],
+        [
+            "sprague grundy"
+        ]
+    ],
+    [
+        [
+            "segment tree persistente",
+            "segment tree dinamico",
+        ],
+        [
+            "tests de primalidad",
+            "funciones multiplicativas",
+            "inversa de mobius",
+            "función phi de euler"
+        ],
+        [
+            "probabilidades"
+        ],
+        [
+            "Método de Gauss"
+        ]
+    ]
 ]
 
 const contests_ids = [
-    "567665",
-    "567946",
-    "567947",
-    "568427"
+    [
+        "567665",
+        "567946",
+        "567947",
+        "568427"
+    ],
+    [
+        "585432",
+        "585434",
+        "585435",
+        "585436",
+        "585438"
+    ],
+    [
+        "585583",
+        "585587",
+        "585588",
+        "585590",
+        "585591"
+    ],
+    [
+        "585593",
+        "585595",
+        "585598",
+        "585600"
+    ]
 ];
 
 let users = [
@@ -33,16 +164,9 @@ let complete_users_list = [
     {{- end -}}
 ]
 
-// let users = [
-//     {{- range $user := $uchilePeople -}}
-//         {
-//             nickname: '{{- $user.nickname -}}',
-//             codeforcesId: '{{- $user.codeforcesId -}}',
-//             codeforcesRating: {{- $user.codeforcesRating -}},
-//             atcoderRating: {{- $user.atcoderRating -}}
-//         },
-//     {{- end -}}
-// ]
+function getObjectSize(obj) {
+    return new Blob([JSON.stringify(obj)]).size + " bytes";
+}
 
 async function generateApiSig(methodName, params, apiKey, secret) {
     const rand = Math.random().toString(36).substring(2, 8); // Generate a random 6-character string
@@ -83,8 +207,8 @@ async function fetchContestStatus(contestId, from, count, asManager, apiKey, sec
     return data.result;
 }
 
-async function fetchContestStandings(contestId, apiKey, secret) {
-    const asManager = true, from = 1, count = 30, showUnofficial = true;
+async function fetchContestStandings(contestId, apiKey, secret, _lvlindxpath) {
+    const asManager = true, from = 1, count = 100, showUnofficial = true;
     participantTypes = "PRACTICE";
     const methodName = "contest.standings"
     let handles = complete_users_list.join;
@@ -93,6 +217,7 @@ async function fetchContestStandings(contestId, apiKey, secret) {
     const { apiSig, time } = await generateApiSig(methodName, params, apiKey, secret);
     const url = `https://codeforces.com/api/${methodName}?apiKey=${apiKey}&asManager=${asManager}&contestId=${contestId}&count=${count}&from=${from}&participantTypes=${participantTypes}&showUnofficial=${showUnofficial}&time=${time}&apiSig=${apiSig}`;
     const response = await fetch(url);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     if (!response.ok) {
         console.error("Error fetching contest standings:", response.statusText);
         return [];
@@ -106,25 +231,29 @@ async function fetchContestStandings(contestId, apiKey, secret) {
 }
 
 // 
-async function loadData(data){
-    for (let i = 0; i < trainingNames.length; i ++){
+async function loadData(data, _lvlindxpath){
+    for (let i = 0; i < trainingNames[_lvlindxpath].length; i ++){
         const tabContent = document.getElementById(`tab-content-${i}`);
         if (!tabContent){
             console.error(`Tab content ${i} not found.`);
             return;
         }
 
-        const table = tabContent.querySelector("table");
+        const table = tabContent.querySelector("div table");
         if (!table){
             console.error(`Table not found in tab ${i}.`);
             return;
         }
-        const contestId = contests_ids[i];
+        const contestId = contests_ids[_lvlindxpath][i];
         contest_data = data[contestId];
         problem_list = contest_data[0];
-
-        let totalsNames = table.getElementsByTagName('tr')[0].children;
-        
+        let frow = table.getElementsByTagName('tr')[0]
+        let totalsNames = frow.children;
+        if (totalsNames.length == 0){
+            let emptyCell = document.createElement("td");
+            emptyCell.textContent = "—";
+            frow.appendChild(emptyCell);
+        }
         let users2 = {}
         let users3 = {}
         for (let j = 0; j < users.length; j ++){
@@ -141,6 +270,11 @@ async function loadData(data){
         for (let j = 0; j < contest_data[1].length; j ++){
             user_handle = contest_data[1][j].handle;
             if (user_handle in users2){
+                if (totalsNames.length <= usedcols + 1){
+                    let emptyCell = document.createElement("td");
+                    emptyCell.textContent = "—";
+                    frow.appendChild(emptyCell);
+                }
                 totalsNames[usedcols + 1].style.fontWeight = "bold";
                 // user is relevant
                 let crating = users2[user_handle].crating;
@@ -169,6 +303,11 @@ async function loadData(data){
             }
         }
         for (const [user_handle, value] of Object.entries(users2)){
+            if (totalsNames.length <= usedcols + 1){
+                let emptyCell = document.createElement("td");
+                emptyCell.textContent = "—";
+                frow.appendChild(emptyCell);
+            }
             totalsNames[usedcols + 1].style.fontWeight = "bold";
             // user is relevant
             let crating = value.crating;
@@ -261,10 +400,28 @@ async function loadData(data){
 }
 
 function setcache(){
-    return {
-        data: [],
-        expires: 0
-    }
+    return [
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        }
+    ]
 };
 
 async function populateTables(apiKey, secret) {
@@ -274,34 +431,80 @@ async function populateTables(apiKey, secret) {
         console.error("Tables container not found!");
         return;
     }
+    const parts = path.split("/"); // Split by "/"
+    const lastPart = parts.filter(part => part !== "").pop(); // Get last non-empty part
+    const number = lastPart.replace(/\D/g, ""); // Remove non-numeric characters
 
+    _lvlindxpath = parseInt(number) - 1;
+
+    const titles = trainingNames[_lvlindxpath]
+    const contents = trainingContents[_lvlindxpath]
+
+    const tabsContainer = document.getElementById("gym-tabs");
+    const contentContainer = document.getElementById("gym-tab-content");
+
+    tabsContainer.innerHTML = "";
+    contentContainer.innerHTML = "";
+
+    titles.forEach((title, index) => {
+        const tabButton = document.createElement("li");
+        tabButton.classList.add("nav-item");
+        tabButton.innerHTML = `
+            <button class="nav-link ${index === 0 ? "active" : ""}" id="tab-${index}"
+                data-bs-toggle="tab" data-bs-target="#tab-content-${index}" type="button" role="tab"
+                aria-controls="tab-content-${index}" aria-selected="${index === 0}">
+                ${title}
+            </button>`;
+        tabsContainer.appendChild(tabButton);
+        const tabPane = document.createElement("div");
+        tabPane.classList.add("tab-pane", "fade")
+        if (index == 0)
+            tabPane.classList.add("show", "active");
+        tabPane.id = `tab-content-${index}`;
+        tabPane.setAttribute("role", "tabpanel");
+        tabPane.setAttribute("aria-labelledby", `tab-${index}`);
+        let contentHTML = "<h3>Contenidos</h3>";
+        contents[index].forEach(content => {
+            contentHTML += `<span>${content}</span><br/>`;
+        });
+        contentHTML += `
+        <div style="overflow-x: auto;">
+          <table class="table table-sm table-bordered cses-table" style="table-layout: auto; width: 100%;">
+            <thead>
+              <tr>
+                <th style="position: sticky; left: 0; background-color: #f8f9fa; z-index: 1;">User</th>
+              </tr>
+            </thead>
+            <tbody id="table-body-${index}"></tbody>
+          </table>
+        </div>
+        `;
+        tabPane.innerHTML = contentHTML;
+        contentContainer.appendChild(tabPane);
+    });
 
     let gymcache = localStorage.getItem('gymCache');
 
     if (gymcache !== null){
         gymcache = JSON.parse(gymcache);
     }
+    else {
+        gymcache = setcache();
+    }
+    if (!Array.isArray(gymcache)){
+        gymcache = setcache();
+    }
     let dt = new Date();
 {{ if eq (hugo.Environment) "development" }}
     if (true) {
 {{ else }}
-    if (gymcache === null || gymcache.expires < dt.getTime()) {
+    if (gymcache[_lvlindxpath].expires < dt.getTime()) {
 {{ end }}
-
-        if (gymcache === null){
-            gymcache = setcache();
-        }
-        else {
-            // Fix to fill cache by standings instead of status
-            gymcache = setcache();
-        }
-        
-        gymcache.data = {}
-
-        for (let j = 0; j < contests_ids.length; j ++){
-            const contestId = contests_ids[j]
+        gymcache[_lvlindxpath].data = []
+        for (let j = 0; j < contests_ids[_lvlindxpath].length; j ++){
+            const contestId = contests_ids[_lvlindxpath][j]
             // const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
-            const standings = await Promise.resolve(fetchContestStandings(contestId, apiKey, secret));
+            const standings = await Promise.resolve(fetchContestStandings(contestId, apiKey, secret, _lvlindxpath));
             if (standings) {
                 standings_rows = standings.rows;
                 standings_problems = standings.problems;
@@ -325,19 +528,22 @@ async function populateTables(apiKey, secret) {
                         "solves": results_data
                     });
                 });
-                gymcache.data[contestId] = [
+                gymcache[_lvlindxpath].data[contestId] = [
                     problem_names,
                     data_rows
-                ]
+                ];
             }
         }
-
-        gymcache.expires = (dt.getTime() + 300 * 1000);
-        localStorage.setItem('gymCache', JSON.stringify(gymcache));
-        loadData(gymcache.data);
+        gymcache[_lvlindxpath].expires = (dt.getTime() + 300 * 1000);
+        //localStorage.setItem('gymCache', JSON.stringify(gymcache));
+        loadData(gymcache[_lvlindxpath].data, _lvlindxpath);
     }
     else {
-        loadData(gymcache.data);
+        loadData(gymcache[_lvlindxpath].data, _lvlindxpath);
+    }
+    let loading = document.getElementById("loading");
+    if (loading) {
+        loading.style.display = "none";
     }
 
     return;
