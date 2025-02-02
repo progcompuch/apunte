@@ -458,7 +458,7 @@ async function populateTables(apiKey, secret) {
         tabsContainer.appendChild(tabButton);
         const tabPane = document.createElement("div");
         tabPane.classList.add("tab-pane", "fade")
-        if (index == 0)
+        if (index === 0)
             tabPane.classList.add("show", "active");
         tabPane.id = `tab-content-${index}`;
         tabPane.setAttribute("role", "tabpanel");
