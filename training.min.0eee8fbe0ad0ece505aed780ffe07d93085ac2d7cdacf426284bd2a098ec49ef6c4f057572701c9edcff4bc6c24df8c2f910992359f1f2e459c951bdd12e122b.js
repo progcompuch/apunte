@@ -3,7 +3,7 @@ const path=window.location.pathname,trainingNames=[["Búsqueda Binaria / Dos Pun
                 data-bs-toggle="tab" data-bs-target="#tab-content-${t}" type="button" role="tab"
                 aria-controls="tab-content-${t}" aria-selected="${t===0}">
                 ${e}
-            </button>`,s.appendChild(i);const n=document.createElement("div");n.classList.add("tab-pane","fade"),t==0&&n.classList.add("show","active"),n.id=`tab-content-${t}`,n.setAttribute("role","tabpanel"),n.setAttribute("aria-labelledby",`tab-${t}`);let a="<h3>Contenidos</h3>";h[t].forEach(e=>{a+=`<span>${e}</span><br/>`}),a+=`
+            </button>`,s.appendChild(i);const n=document.createElement("div");n.classList.add("tab-pane","fade"),t===0&&n.classList.add("show","active"),n.id=`tab-content-${t}`,n.setAttribute("role","tabpanel"),n.setAttribute("aria-labelledby",`tab-${t}`);let a="<h3>Contenidos</h3>";h[t].forEach(e=>{a+=`<span>${e}</span><br/>`}),a+=`
         <div style="overflow-x: auto;">
           <table class="table table-sm table-bordered cses-table" style="table-layout: auto; width: 100%;">
             <thead>
