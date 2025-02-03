@@ -52,7 +52,7 @@ $navbar-dark-active-color: $link-color-dark;
   color: $navbar-dark-color;
 }
 
-[data-dark-mode] body .show > .btn-doks-light,
+[data-dark-mode] body .show>.btn-doks-light,
 [data-dark-mode] body .btn-doks-light:hover,
 [data-dark-mode] body .btn-doks-light:active {
   color: $link-color-dark;
@@ -122,8 +122,8 @@ $navbar-dark-active-color: $link-color-dark;
   color: $navbar-dark-disabled-color;
 }
 
-[data-dark-mode] body .navbar-light .navbar-nav .show > .nav-link,
-[data-dark-mode] body .navbar-light .navbar-nav .active > .nav-link,
+[data-dark-mode] body .navbar-light .navbar-nav .show>.nav-link,
+[data-dark-mode] body .navbar-light .navbar-nav .active>.nav-link,
 [data-dark-mode] body .navbar-light .navbar-nav .nav-link.show,
 [data-dark-mode] body .navbar-light .navbar-nav .nav-link.active {
   color: $navbar-dark-active-color;
@@ -560,7 +560,7 @@ $navbar-dark-active-color: $link-color-dark;
   background: $body-overlay-dark;
 }
 
-[data-dark-mode] details[open] > summary {
+[data-dark-mode] details[open]>summary {
   border-bottom: 1px solid $border-dark;
 }
 
@@ -584,4 +584,9 @@ $navbar-dark-active-color: $link-color-dark;
 
 [data-dark-mode] summary {
   background-color: $black;
+}
+
+[data-dark-mode] .team-card {
+  background-color: $body-overlay-dark;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, .3);
 }

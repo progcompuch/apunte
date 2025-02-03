@@ -1,34 +1,79 @@
-.rating-black { color: black; font-weight: bold; }
-.rating-gray { color: gray; font-weight: bold; }
-.rating-green { color: green; font-weight: bold; }
-.rating-cyan { color: #00CED1; font-weight: bold; }
-.rating-blue { color: blue; font-weight: bold; }
-.rating-purple { color: purple; font-weight: bold; }
-.rating-orange { color: orange; font-weight: bold; }
-.rating-red { color: red; font-weight: bold; }
-.rating-3000 { font-weight: bold; }
-.rating-4000 { font-weight: bold; }
-.rating-3000 span:first-letter { color: black; }
-.rating-4000 span:first-letter { color: red; }
+.rating-black {
+  color: black;
+  font-weight: bold;
+}
+
+.rating-gray {
+  color: gray;
+  font-weight: bold;
+}
+
+.rating-green {
+  color: green;
+  font-weight: bold;
+}
+
+.rating-cyan {
+  color: #00CED1;
+  font-weight: bold;
+}
+
+.rating-blue {
+  color: blue;
+  font-weight: bold;
+}
+
+.rating-purple {
+  color: purple;
+  font-weight: bold;
+}
+
+.rating-orange {
+  color: orange;
+  font-weight: bold;
+}
+
+.rating-red {
+  color: red;
+  font-weight: bold;
+}
+
+.rating-3000 {
+  font-weight: bold;
+}
+
+.rating-4000 {
+  font-weight: bold;
+}
+
+.rating-3000 span:first-letter {
+  color: black;
+}
+
+.rating-4000 span:first-letter {
+  color: red;
+}
+
 .cforces-title {
-    font-family: Arial, sans-serif;
-    font-size: 1.5em;
-    font-weight: bold;
-    display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: inline-block;
 }
 
 .cforces-title .code {
-    color: black;
+  color: black;
 }
 
 .cforces-title .forces {
-    color: #3D5DA6;
+  color: #3D5DA6;
 }
 
 .codeforces-table {
   border-style: dashed;
   width: auto;
   max-width: 500px;
+
   td {
     max-width: 300px;
   }
@@ -38,19 +83,26 @@
   td {
     background-color: lighten($body-bg-dark, 2%);
   }
+
   .task-score.attempted {
     background-color: darken($attempted-bg, 1%);
   }
+
   .task-score.accepted {
     background-color: darken($accepted-bg, 1%)
   }
+
   .task-score:before {
     color: #ffe7e7;
   }
 }
 
 .ratings-container {
-    display: flex;
-    gap: 20px; 
-    justify-content: center; 
-  }
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+#toggle-icpc {
+  width: auto;
+}

@@ -3,12 +3,15 @@ $attempted-bg: #aa0000;
 
 .cses-table {
   border-style: dashed;
+
   td {
     min-width: 50px;
   }
+
   .problem-name {
     text-align: left;
   }
+
   // Unloaded cells
   .task-score:before {
     font-family: "Font Awesome 5 Free";
@@ -16,6 +19,7 @@ $attempted-bg: #aa0000;
     content: '\f128';
     color: $gray-600;
   }
+
   // Accepted
   .task-score.accepted:before {
     font-family: "Font Awesome 5 Free";
@@ -23,9 +27,11 @@ $attempted-bg: #aa0000;
     content: '\f00c';
     color: $accepted-bg;
   }
+
   .task-score.accepted {
     background-color: #c3e8c5;
   }
+
   // Attempted
   .task-score.attempted:before {
     font-family: "Font Awesome 5 Free";
@@ -33,9 +39,11 @@ $attempted-bg: #aa0000;
     content: '\f00d';
     color: $attempted-bg;
   }
+
   .task-score.attempted {
     background-color: #ffc3c3;
   }
+
   // Not attempted
   .task-score.none:before {
     font-family: "Font Awesome 5 Free";
@@ -43,20 +51,49 @@ $attempted-bg: #aa0000;
     content: '\f068';
   }
 }
-.cses-table td:first-child, .cses-table th:first-child {
+
+.cses-table td:first-child,
+.cses-table th:first-child {
   min-width: 250px;
 }
+
 [data-dark-mode] .cses-table {
   td {
     background-color: lighten($body-bg-dark, 2%);
   }
+
   .task-score.attempted {
     background-color: darken($attempted-bg, 1%);
   }
+
   .task-score.accepted {
     background-color: darken($accepted-bg, 1%)
   }
+
   .task-score:before {
     color: #ffe7e7;
   }
+}
+
+[data-dark-mode] #gym-tabs {
+  border-color: $border-dark;
+
+
+  .nav-link {
+    color: $link-color-dark;
+  }
+
+  .nav-link.active {
+    background-color: $body-overlay-dark;
+    color: $body-color-dark;
+  }
+
+  .nav-link.active {
+    border-color: $border-dark;
+  }
+}
+
+[data-dark-mode] #gym-tab-content td:first-child,
+[data-dark-mode] #gym-tab-content th:first-child {
+  background-color: lighten($body-bg-dark, 0%) !important;
 }
