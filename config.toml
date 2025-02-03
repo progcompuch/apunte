@@ -643,7 +643,7 @@
   [[Params.team]]
   name = "Teoría de la Compota"
   year = 2020
-  members = ["Blaz Korecic (Blaz)", "Diego Salas (daridius)", "Beltrán Aménabar"]
+  members = ["Dmitri Ramirez (svandich)", "Gonzalo Alarcón", "Louise Schmidt"]
   image = "/images/teams/2020/ch2.jpg"
   url = ""
   place = 15
@@ -713,7 +713,7 @@
   [[Params.team]]
   name = "El pequeño equipo que sí pudo"
   year = 2018
-  members = ["Daniel Báez (AngrySeal)", "Blaz korecic (Blaz)", "Arturo"]
+  members = ["Daniel Báez (AngrySeal)", "Blaz Korecic (Blaz)", "Arturo"]
   image = "/images/teams/2018/ch3.jpg"
   url = ""
   place = 6
