@@ -6,13 +6,17 @@
 
   csesIds   = [69586, 74066, 74546, 72385, 83700, 74173, 58188, 107392, 49524, 87807, 114566, 114575, 114576, 136720, 136680, 139415, 144144, 141759, 86689, 135356]
   csesNames = ["Blaz", "wawer", "Marinkovic", "Dmitri", "Jayki", "Davicom", "dariasc", "AngrySeal", "vi", "J", "MichaelS", "m1tu", "Brito", "paul0li", "SeerLite", "Tega", "Condorchavo", "fer", "Eric K.", "Ppp"]
-
+  csesEndpoint = "https://uchile.davicom.cl/api/cses-tasks/"
+  csesProblemUrl = "https://cses.fi/problemset/task/"
+  csesCacheLife = 300 # in seconds
   trainingNames = [
       "Búsqueda Binaria / Dos Punteros",
       "Grafos: BFS / DFS / Dijkstra / DSU",
       "Programación Dinámica",
       "Estructuras De Datos"
   ]
+
+  # TODO: Send all of this to data as json.
 
   [[Params.uchilePeople]]
   name = "Javier Oliva"
@@ -500,6 +504,8 @@
   leetcodeId = "none"
   leetcodeRating = 0
 
+
+  # Teams ICPC
   [[Params.team]]
   name = "globos.get()"
   year = 2024
@@ -780,6 +786,7 @@
   global_place = "-"
   extra = ""
 
+  # 2015
   [[Params.team]]
   name = "Squash Masters"
   year = 2015
@@ -810,6 +817,7 @@
   global_place = "-"
   extra = ""
 
+  # 2014
   [[Params.team]]
   name = "Botellita de @peréz"
   year = 2014
@@ -840,6 +848,7 @@
   global_place = "-"
   extra = ""
 
+  # 2013
   [[Params.team]]
   name = "Alonso y los Strawberries"
   year = 2013
@@ -870,6 +879,7 @@
   global_place = "-"
   extra = ""
 
+  # 2012
   [[Params.team]]
   name = "Los Ángeles de Jorge"
   year = 2012
@@ -900,8 +910,84 @@
   global_place = "-"
   extra = ""
 
+# Teams IEEEXtreme
+  [[Params.teamieee]]
+  name = "pipiripapu"
+  year = 2024
+  members = ["Javier Oliva (JOliva)", "Blaz Korecic (Blaz)", "Gabriel Carmona (MrYhatoh)"]
+  image = "/images/ieeextreme/2024/sedeudp.jpg"
+  url = ""
+  place = 1
+  global_place = 59
+  extra = ""
 
+  [[Params.teamieee]]
+  name = "ieeegaming"
+  year = 2024
+  members = ["Diego Arias (dariasc)", "Vicente Villarroel (vivivi)"]
+  image = "/images/ieeextreme/2024/sedeudp.jpg"
+  url = ""
+  place = 9
+  global_place = 1440
+  extra = ""
 
-  csesEndpoint = "https://uchile.davicom.cl/api/cses-tasks/"
-  csesProblemUrl = "https://cses.fi/problemset/task/"
-  csesCacheLife = 300 # in seconds
+  [[Params.teamieee]]
+  name = "MinorChanges"
+  year = 2024
+  members = ["Alonso Núñez (MapacheTactico)", "Javier Azócar (ElNChou)", "Tomás Rajevic (ThisIsThisAndThatIsThat)"]
+  image = "/images/ieeextreme/2024/sedeudp.jpg"
+  url = ""
+  place = 10
+  global_place = 1895
+  extra = ""
+
+  [[Params.teamieee]]
+  name = "GatasOnly"
+  year = 2024
+  members = ["Alejandra Campos (AlePatata92)", "Martina Lúcero (lu_0)", "Patricia Vera (patrici4)"]
+  image = "/images/ieeextreme/2024/sedeudp.jpg"
+  url = ""
+  place = 15
+  global_place = 2840
+  extra = ""
+
+  [[Params.teamieee]]
+  name = "ConsortesDeRanni"
+  year = 2024
+  members = ["Pamela Mendoza", "Paula Guerrero", "Tomás Ubilla"]
+  image = "/images/ieeextreme/2024/sedeudp.jpg"
+  url = ""
+  place = 20
+  global_place = 3314
+  extra = ""
+
+  [[Params.teamieee]]
+  name = "Bisectriz"
+  year = 2024
+  members = ["Francisco Romero (Pansho721)"]
+  image = "/images/ieeextreme/2024/sedeudp.jpg"
+  url = ""
+  place = 23
+  global_place = 3633
+  extra = ""
+
+  [[Params.premiosieee]]
+  name = "La Mesa Pide"
+  year = 2024
+  members = ["Blaz Korecic (Blaz)"]
+  image = "/images/ieeextreme/2024/premio1.jpg"
+  url = ""
+
+  [[Params.premiosieee]]
+  name = "Trivia"
+  year = 2024
+  members = ["Vicente Villarroel (vivivi)"]
+  image = "/images/ieeextreme/2024/premio2.jpg"
+  url = ""
+
+  [[Params.premiosieee]]
+  name = "Torneo Care Caca"
+  year = 2024
+  members = ["Alejandra Campos (AlePatata92)"]
+  image = "/images/ieeextreme/2024/premio3.jpg"
+  url = ""

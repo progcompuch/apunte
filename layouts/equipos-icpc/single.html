@@ -1,0 +1,115 @@
+{{ define "main" }}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let container = document.querySelector(".teams-container");
+      if (container) {
+          console.log("Width of teams-container:", container.scrollWidth, "vs", container.clientWidth);
+          console.log("Overflow style:", window.getComputedStyle(container).overflowX);
+      }
+  });
+  </script>
+<div class="container-fluid text-center">
+  <h1>Equipos</h1>
+
+  {{ $years := slice }} <!-- Initialize an empty slice -->
+  {{ range .Site.Params.team }}
+    {{ if not (in $years .year) }}
+      {{ $years = $years | append (int .year) }} <!-- Ensure it's treated as an integer -->
+    {{ end }}
+  {{ end }}
+  {{ $years = sort $years "value" "desc" }} <!-- Sort in descending order -->
+
+  {{ range $years }}
+    <h2 class="year-title">Equipos ICPC {{ . }}</h2>
+    <div class="teams-container">
+      {{ range where $.Site.Params.team "year" . }}
+        <div class="team-card">
+          <img src="{{ .image }}" alt="{{ .name }}" class="team-image">
+          <div class="team-info">
+            <h3 class="team-name">{{ .name }}</h3>
+            {{ range .members }}
+            <p class="team-members">{{ . }}</p>
+            {{ end }}
+            <p class="team-place">Puesto {{ .place }} de Chile</p>
+            <p class="team-place">Puesto {{ .global_place }} América Latina</p>
+            <p class="team-info">{{ .extra }}</p>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+
+<style>
+  .teams-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 320px;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-type: x mandatory;
+    align-items: start;
+  }
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* Ensures equal spacing */
+    align-items: left;
+    width: 100%;
+    height: 100%;  /* 🔥 Forces equal height */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+    background: white;
+    scroll-snap-align: start;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .teams-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .teams-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  .teams-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .team-image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+
+  .team-info {
+    text-align: left;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .team-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .team-members {
+    color: #808080;
+  }
+
+  .year-title {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+{{ end }}

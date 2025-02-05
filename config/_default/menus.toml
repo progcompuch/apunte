@@ -15,7 +15,7 @@
 
 [[main]]
   name = "Ratings"
-  url = "/Ratings/"
+  url = "/ratings/"
   weight = 40
 
 [[main]]
@@ -26,13 +26,20 @@
 
 [[main]]
   name = "Equipos"
-  url = "/Equipos/"
-  weight = 55
+  url = "/equipos/"
+  weight = 60
+  hasChildren = true
+
+[[main]]
+  name = "Camps"
+  url = "/training-camps/"
+  weight = 70
+  hasChildren = true
 
 [[main]]
   name = "Acerca"
   url = "/acerca/"
-  weight = 60
+  weight = 80
 
 [[social]]
   name = "GitHub"
