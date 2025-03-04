@@ -540,6 +540,22 @@
   leetcodeId = "none"
   leetcodeRating = 0
 
+  [[Params.uchilePeople]]
+  name = ""
+  nickname = "niainamandis"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  rayan = true
+  active = true
+  codeforcesId = "niainamandis"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
 
   # Teams ICPC
   [[Params.team]]
