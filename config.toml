@@ -504,6 +504,42 @@
   leetcodeId = "none"
   leetcodeRating = 0
 
+  [[Params.uchilePeople]]
+  name = "Hector"
+  nickname = "ESnoRe"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "ESnoRe"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Alejandro Molina"
+  nickname = "Vlxn"
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "Vlxn"
+  codeforcesRating = 0
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
 
   # Teams ICPC
   [[Params.team]]
