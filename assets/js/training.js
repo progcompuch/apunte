@@ -4,6 +4,11 @@ const path = window.location.pathname;
 
 const trainingNames = [
     [
+        "1: Variables y estructura de control if/else",
+        "2: Ciclos",
+        "3: STL (vectores, matrices, sets, pairs, etc)"
+    ],
+    [
         "Búsqueda Binaria / Dos Punteros",
         "Grafos: BFS / DFS / Dijkstra / DSU",
         "Programación Dinámica",
@@ -32,6 +37,17 @@ const trainingNames = [
 ];
 
 const trainingContents = [
+    [
+        [
+            ""
+        ],
+        [
+            ""
+        ],
+        [
+            ""
+        ]
+    ],
     [
         [
             "Búsqueda Binaria",
@@ -117,6 +133,11 @@ const trainingContents = [
 ]
 
 const contests_ids = [
+    [
+        "593411",
+        "593413",
+        "593415"
+    ],
     [
         "567665",
         "567946",
@@ -435,7 +456,7 @@ async function populateTables(apiKey, secret) {
     const lastPart = parts.filter(part => part !== "").pop(); // Get last non-empty part
     const number = lastPart.replace(/\D/g, ""); // Remove non-numeric characters
 
-    _lvlindxpath = parseInt(number) - 1;
+    _lvlindxpath = parseInt(number);
 
     const titles = trainingNames[_lvlindxpath]
     const contents = trainingContents[_lvlindxpath]

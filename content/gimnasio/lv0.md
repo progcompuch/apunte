@@ -1,12 +1,12 @@
 ---
-title: "Intermedio 2"
+title: "Nuevo en C++"
 date: 2025-02-01
 type: gym
 images: []
 description: ""
 menu:
   main:
-    identifier: "gimnasio-4"
+    identifier: "gimnasio-0"
     parent: "Gimnasio"
-    weight: 55
+    weight: 51
 ---
