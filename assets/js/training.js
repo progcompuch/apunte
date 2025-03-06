@@ -173,7 +173,8 @@ let users = [
                 nickname: '{{- $user.nickname -}}',
                 codeforcesId: '{{- $user.codeforcesId -}}',
                 codeforcesRating: {{- $user.codeforcesRating -}},
-                atcoderRating: {{- $user.atcoderRating -}}
+                atcoderRating: {{- $user.atcoderRating -}},
+                university: '{{- $user.university -}}'
             },
         {{- end -}}
     {{- end -}}
@@ -291,12 +292,14 @@ async function loadData(data, _lvlindxpath){
         for (let j = 0; j < contest_data[1].length; j ++){
             user_handle = contest_data[1][j].handle;
             if (user_handle in users2){
+                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
                 if (totalsNames.length <= usedcols + 1){
                     let emptyCell = document.createElement("td");
                     emptyCell.textContent = "—";
                     frow.appendChild(emptyCell);
                 }
                 totalsNames[usedcols + 1].style.fontWeight = "bold";
+                totalsNames[usedcols + 1].setAttribute("data-university", userUniversity.toLowerCase());
                 // user is relevant
                 let crating = users2[user_handle].crating;
                 let arating = users2[user_handle].arating;
@@ -324,12 +327,14 @@ async function loadData(data, _lvlindxpath){
             }
         }
         for (const [user_handle, value] of Object.entries(users2)){
+            let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
             if (totalsNames.length <= usedcols + 1){
                 let emptyCell = document.createElement("td");
                 emptyCell.textContent = "—";
                 frow.appendChild(emptyCell);
             }
             totalsNames[usedcols + 1].style.fontWeight = "bold";
+            totalsNames[usedcols + 1].setAttribute("data-university", userUniversity.toLowerCase());
             // user is relevant
             let crating = value.crating;
             let arating = value.arating;
@@ -366,7 +371,9 @@ async function loadData(data, _lvlindxpath){
         for (let j = 0; j < contest_data[1].length; j ++){
             user_handle = contest_data[1][j].handle;
             if (user_handle in users3){
+                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
                 const userCell = row.insertCell(ccol + 1);
+                userCell.setAttribute("data-university", userUniversity.toLowerCase());
                 let solves = 0;
                 for (let j2 = 0; j2 < contest_data[1][j].solves.length; j2 ++){
                     if (contest_data[1][j].solves[j2] == 2)
@@ -377,8 +384,46 @@ async function loadData(data, _lvlindxpath){
             }
         }
         for (const [user_handle, value] of Object.entries(users2)){
-            const userCell = row.insertCell(ccol + 1)
+            let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+            const userCell = row.insertCell(ccol + 1);
+            userCell.setAttribute("data-university", userUniversity.toLowerCase());
             userCell.textContent = 0;
+            ccol += 1
+        }
+
+        const logorow = table.insertRow();
+        const UCell = logorow.insertCell(0);
+        UCell.style.position = "sticky";
+        UCell.style.left = "0";
+        UCell.style.backgroundColor = "#f8f9fa";
+        UCell.textContent = "U";
+        UCell.style.fontWeight = "bold";
+        ccol = 0;
+
+        for (let j = 0; j < contest_data[1].length; j ++){
+            user_handle = contest_data[1][j].handle;
+            if (user_handle in users3){
+                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+                const userCell = logorow.insertCell(ccol + 1);
+                userCell.setAttribute("data-university", userUniversity.toLowerCase());
+
+                let img = document.createElement("img");
+                img.src = `/images/universities/${userUniversity.toLowerCase()}.png`;
+                img.alt = userUniversity;
+                img.classList.add("university-logo");
+                userCell.appendChild(img);
+                ccol ++;
+            }
+        }
+        for (const [user_handle, value] of Object.entries(users2)){
+            let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+            const userCell = logorow.insertCell(ccol + 1);
+            userCell.setAttribute("data-university", userUniversity.toLowerCase());
+            let img = document.createElement("img");
+            img.src = `/images/universities/${userUniversity}.png`;
+            img.alt = userUniversity;
+            img.classList.add("university-logo");
+            userCell.appendChild(img);
             ccol += 1
         }
 
@@ -403,7 +448,9 @@ async function loadData(data, _lvlindxpath){
             for (let k = 0; k < contest_data[1].length; k ++){
                 user_handle = contest_data[1][k].handle;
                 if (user_handle in users3){
+                    let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
                     const userCell = problemRow.insertCell(newk + 1);
+                    userCell.setAttribute("data-university", userUniversity.toLowerCase());
                     let score_v = contest_data[1][k].solves[j];
                     let value = (score_v == 2 ? "accepted" : (score_v == 1 ? "attempted" : "notAttempted"));
                     userCell.className = `task-score ${value}`;
@@ -411,7 +458,9 @@ async function loadData(data, _lvlindxpath){
                 }
             }
             for (const [user_handle, value] of Object.entries(users2)){
-                const userCell = problemRow.insertCell(newk + 1)
+                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+                const userCell = problemRow.insertCell(newk + 1);
+                userCell.setAttribute("data-university", userUniversity.toLowerCase());
                 userCell.className = `task-score notAttemped`;
                 newk += 1
             }

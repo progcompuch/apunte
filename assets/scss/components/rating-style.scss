@@ -76,12 +76,23 @@
 
   td {
     max-width: 300px;
+    vertical-align: middle;
+    text-align: center;
   }
 }
 
 [data-dark-mode] .codeforces-table {
   td {
+    vertical-align: middle;
     background-color: lighten($body-bg-dark, 2%);
+    text-align: center;
+  }
+  
+  td span {
+    display: inline-block;
+    background-color: lighten($body-bg-dark, 2%);
+    vertical-align: middle;
+    text-align: center;
   }
 
   .task-score.attempted {
@@ -105,4 +116,12 @@
 
 #toggle-icpc {
   width: auto;
+}
+
+.university-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  margin-right: 10px;
+  vertical-align: middle;
 }

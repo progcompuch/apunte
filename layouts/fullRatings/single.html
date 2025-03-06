@@ -1,22 +1,50 @@
 {{ define "main" }}
 <div class="container-fluid row justify-content-center text-center">
   <h1>{{ .Title }}</h1>
-  <button id="toggle-icpc" class="btn btn-primary">Mostrar a todos los activos</button>
+
   {{ $uchilePeople := .Site.Params.uchilePeople }}
+  
+  <div class="dropdown">
+
+    <button id="toggle-icpc" class="btn btn-primary">Mostrar activos</button>
+
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="universityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Filtrar por universidad
+    </button>
+    <ul class="dropdown-menu" id="university-filter">
+      <li>
+        <label class="dropdown-item">
+          TODAS <input type="checkbox" value="TODAS" checked>
+        </label>
+      </li>
+      {{ $universities := .Site.Params.universities }}
+      {{ range $universities }}
+        <li>
+          <label class="dropdown-item">
+            <img src="/images/universities/{{ . }}.png" alt="{{ . }}" class="university-logo"> 
+            {{ . }} <input type="checkbox" value="{{ . }}" checked>
+          </label>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  
 
   <div class="ratings-container" id="standings-tables-container">
     <table class="table table-sm table-bordered codeforces-table" id="codeforces-standings">
       <tbody>
         <tr>
           <td></td>
+          <td><span style="font-weight: bold;">U</span></td>
           <td><span class="rating-3000"><span class="rating-red">C</span>odeforces <span class="rating-red">R</span>ating</span></td>
         </tr>
         {{ range $uchilePerson := sort .Site.Params.uchilePeople "codeforcesRating" "desc" }}
         {{ $icpc_allowed := $uchilePerson.icpc}}
         {{ if $uchilePerson.active }}
-        <tr {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
+        <tr data-university="{{ $uchilePerson.university }}" {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
           {{ $rating := $uchilePerson.codeforcesRating }}
           {{ $nickname := $uchilePerson.nickname }}
+          {{ $u := $uchilePerson.university }}
           <td><span 
             {{ if lt $rating 800 }}
               class="rating-black"
@@ -36,8 +64,9 @@
               class="rating-red"
             {{ end }}
             >
-            {{ $nickname}}
+            {{ $nickname }}
           </span>{{ if not $icpc_allowed }} * {{ end }}</td>
+          <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
           <td><span 
             {{ if lt $rating 800 }}
               class="rating-black"
@@ -69,12 +98,22 @@
       <tbody>
         <tr>
           <td></td>
+          <td><span style="font-weight: bold;">U</span></td>
           <td><span class="rating-3000"><span class="rating-red">A</span>tCoder <span class="rating-red">R</span>ating</span></td>
         </tr>
         {{ range $uchilePerson := sort .Site.Params.uchilePeople "atcoderRating" "desc" }}
         {{ $icpc_allowed := $uchilePerson.icpc}}
+        {{ $u := $uchilePerson.university }}
+        {{ $fem_allowed := $uchilePerson.femeligible }}
         {{ if $uchilePerson.active }}
-        <tr {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
+        <tr data-university="{{ $uchilePerson.university }}" 
+          {{ if not $icpc_allowed }} 
+            style="display: none;" 
+          {{ end }}
+          {{ if or (not $icpc_allowed) (not $fem_allowed)}}
+          class="{{ if not $icpc_allowed}}hidden-icpc{{ end }} {{if not $fem_allowed }}hidden-fem{{ end }}"
+          {{ end }}
+          >
           {{ $rating := $uchilePerson.atcoderRating }}
           {{ $nickname := $uchilePerson.nickname }}
           <td><span 
@@ -98,6 +137,7 @@
             >
             {{ $nickname}}
           </span>{{ if not $icpc_allowed }} * {{ end }}</td>
+          <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
           <td><span 
             {{ if lt $rating 200 }}
               class="rating-black"
@@ -128,12 +168,14 @@
       <tbody>
         <tr>
           <td></td>
+          <td><span style="font-weight: bold;">U</span></td>
           <td><span class="rating-3000"><span class="rating-red">l</span>eetcode <span class="rating-red">R</span>ating</span></td>
         </tr>
         {{ range $uchilePerson := sort .Site.Params.uchilePeople "leetcodeRating" "desc" }}
         {{ $icpc_allowed := $uchilePerson.icpc}}
+        {{ $u := $uchilePerson.university }}
         {{ if $uchilePerson.active }}
-        <tr {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
+        <tr data-university="{{ $uchilePerson.university }}" {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
           {{ $rating := $uchilePerson.leetcodeRating }}
           {{ $nickname := $uchilePerson.nickname }}
           <td><span 
@@ -157,6 +199,7 @@
             >
             {{ $nickname}}
           </span>{{ if not $icpc_allowed }} * {{ end }}</td>
+          <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
           <td><span 
             {{ if lt $rating 200 }}
               class="rating-black"
@@ -186,15 +229,71 @@
   </div>  
 </div>
 <script>
-  document.getElementById("toggle-icpc").addEventListener("click", function() {
-    let hiddenRows = document.querySelectorAll(".hidden-icpc");
-    let isHidden = hiddenRows.length > 0 && hiddenRows[0].style.display === "none";
+  document.addEventListener("DOMContentLoaded", function () {
+    const universityFilter = document.getElementById("university-filter");
+    const icpcToggle = document.getElementById("toggle-icpc");
 
-    hiddenRows.forEach(row => {
-      row.style.display = isHidden ? "table-row" : "none";
+    function applyFilters() {
+      let selectedUniversities = [];
+      let checkboxes = universityFilter.querySelectorAll("input[type='checkbox']:checked");
+
+      checkboxes.forEach(checkbox => {
+        selectedUniversities.push(checkbox.value.toLowerCase());
+      });
+
+      let showICPC = !icpcToggle.textContent.includes("ICPC");
+      let rows = document.querySelectorAll("table tbody tr");
+
+      rows.forEach(row => {
+        let university = row.getAttribute("data-university")?.toLowerCase();
+        let isICPCEligible = !row.classList.contains("hidden-icpc");
+
+        if (university == null){
+          row.style.display = "table-row";
+        }
+        else{
+          let matchesUniversity = selectedUniversities.includes("TODAS") || selectedUniversities.includes(university);
+          let matchesICPC = !showICPC || isICPCEligible;
+
+          row.style.display = (matchesUniversity && matchesICPC) ? "table-row" : "none";
+        }
+      });
+    }
+
+    function updateAllCheckbox() {
+      let allCheckbox = universityFilter.querySelector("input[value='TODAS']");
+      let otherCheckboxes = universityFilter.querySelectorAll("input[type='checkbox']:not([value='TODAS'])");
+      
+      let allChecked = Array.from(otherCheckboxes).every(checkbox => checkbox.checked);
+
+      allCheckbox.checked = allChecked;
+    }
+
+    universityFilter.addEventListener("change", applyFilters);
+
+    icpcToggle.addEventListener("click", function() {
+      let hiddenRows = document.querySelectorAll(".hidden-icpc");
+      let isHidden = hiddenRows.length > 0 && hiddenRows[0].style.display === "none";
+
+      this.textContent = isHidden ? "Mostrar solo a ICPC - elegibles" : "Mostrar activos";
+      
+      updateAllCheckbox();
+      applyFilters();
     });
 
-    this.textContent = isHidden ? "Esconder a los ICPC - no elegibles" : "Mostrar a todos los activos";
+    universityFilter.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
+      if (checkbox.value !== "TODAS") {
+        checkbox.addEventListener("change", function () {
+          if (this.checked) {
+            universityFilter.querySelector("input[value='TODAS']").checked = false;
+          }
+
+          updateAllCheckbox();
+          applyFilters();
+        });
+      }
+    });
+
   });
 </script>
 {{ end }}

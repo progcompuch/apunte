@@ -15,12 +15,18 @@
       "Programación Dinámica",
       "Estructuras De Datos"
   ]
+  universities = [
+    "UChile",
+    "UTFSM"
+  ]
 
   # TODO: Send all of this to data as json.
 
   [[Params.uchilePeople]]
   name = "Javier Oliva"
   nickname = "JOliva"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -37,8 +43,30 @@
   leetcodeRating = 2760
 
   [[Params.uchilePeople]]
+  name = "Gabriel Carmona"
+  nickname = "MrYhatoh"
+  university = "UTFSM"
+  femeligible = false
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "MrYhatoh"
+  codeforcesRating = 1409
+  csesId = "none"
+  atcoderId = "MrYhatoh"
+  atcoderRating = 354
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
   name = "Javier Marinkovic"
   nickname = "Marinkovic"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -57,6 +85,8 @@
   [[Params.uchilePeople]]
   name = "Blaz Korecic"
   nickname = "Blaz"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -75,6 +105,8 @@
   [[Params.uchilePeople]]
   name = "Diego Arias"
   nickname = "dariasc"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -93,6 +125,8 @@
   [[Params.uchilePeople]]
   name = "Vicente Villarroel"
   nickname = "vivivi"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -111,6 +145,8 @@
   [[Params.uchilePeople]]
   name = "Gabriel Carmona"
   nickname = "m1tu"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -129,6 +165,8 @@
   [[Params.uchilePeople]]
   name = "Daniel Báez"
   nickname = "AngrySeal"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -147,6 +185,8 @@
   [[Params.uchilePeople]]
   name = "Luciano Massa"
   nickname = "PathToMaster"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -165,6 +205,8 @@
   [[Params.uchilePeople]]
   name = "Alonso Núñez"
   nickname = "MapacheTactico"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -183,6 +225,8 @@
   [[Params.uchilePeople]]
   name = "Javier Azócar"
   nickname = "ElNChou"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -201,6 +245,8 @@
   [[Params.uchilePeople]]
   name = "Ignacio López"
   nickname = "ilopez15"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -219,6 +265,8 @@
   [[Params.uchilePeople]]
   name = "Antoine Metayer"
   nickname = "ant_metayer"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -237,6 +285,8 @@
   [[Params.uchilePeople]]
   name = "Alejandra Campos"
   nickname = "AlePatata92"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
@@ -255,6 +305,8 @@
   [[Params.uchilePeople]]
   name = "Martina González"
   nickname = "lu_0"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
@@ -273,6 +325,8 @@
   [[Params.uchilePeople]]
   name = "Patricia Vera"
   nickname = "patrici4"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
@@ -291,6 +345,8 @@
   [[Params.uchilePeople]]
   name = "Dmitri Ramirez"
   nickname = "svandich"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -309,6 +365,8 @@
   [[Params.uchilePeople]]
   name = "Dante Mardones"
   nickname = "Jayki"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -327,6 +385,8 @@
   [[Params.uchilePeople]]
   name = "Fernanda Gutiérrez"
   nickname = "curauma03"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
@@ -345,6 +405,8 @@
   [[Params.uchilePeople]]
   name = "Javier Calfuala"
   nickname = "elJunaeb"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -363,6 +425,8 @@
   [[Params.uchilePeople]]
   name = "Diego Salas"
   nickname = "daridius"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -381,6 +445,8 @@
   [[Params.uchilePeople]]
   name = "Francisco Romero"
   nickname = "Pansho721"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -399,6 +465,8 @@
   [[Params.uchilePeople]]
   name = "Tomás Rajevic"
   nickname = "ThisIsThisAndThatIsThat"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -417,6 +485,8 @@
   [[Params.uchilePeople]]
   name = "Paula Carrión"
   nickname = "pauwu"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
@@ -435,6 +505,8 @@
   [[Params.uchilePeople]]
   name = "Felipe Jara"
   nickname = "Ciruela"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -453,6 +525,8 @@
   [[Params.uchilePeople]]
   name = "David Ibáñez"
   nickname = "davicom"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -471,6 +545,8 @@
   [[Params.uchilePeople]]
   name = "Francisco Castro"
   nickname = "lazyelekid"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -489,6 +565,8 @@
   [[Params.uchilePeople]]
   name = "Gerard Cathalifaud"
   nickname = "Zertex"
+  university = "UChile"
+  femeligible = false
   icpc = false
   ioi = false
   codevita = true
@@ -507,6 +585,8 @@
   [[Params.uchilePeople]]
   name = "Hector"
   nickname = "ESnoRe"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -525,6 +605,8 @@
   [[Params.uchilePeople]]
   name = "Alejandro Molina"
   nickname = "Vlxn"
+  university = "UChile"
+  femeligible = false
   icpc = true
   ioi = false
   codevita = true
@@ -543,6 +625,8 @@
   [[Params.uchilePeople]]
   name = ""
   nickname = "niainamandis"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
@@ -560,6 +644,8 @@
   [[Params.uchilePeople]]
   name = ""
   nickname = "deragonie"
+  university = "UChile"
+  femeligible = true
   icpc = true
   ioi = false
   codevita = true
