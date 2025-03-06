@@ -408,7 +408,7 @@ async function loadData(data, _lvlindxpath){
                 userCell.setAttribute("data-university", userUniversity.toLowerCase());
 
                 let img = document.createElement("img");
-                img.src = `/images/universities/${userUniversity.toLowerCase()}.png`;
+                img.src = `/images/universities/${userUniversity}.png`;
                 img.alt = userUniversity;
                 img.classList.add("university-logo");
                 userCell.appendChild(img);
