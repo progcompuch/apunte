@@ -660,6 +660,26 @@
   leetcodeId = "none"
   leetcodeRating = 0
 
+  [[Params.uchilePeople]]
+  name = "Abner Vidal"
+  nickname = "abner_vidal"
+  university = "UTFSM"
+  femeligible = false
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "abner_vidal"
+  codeforcesRating = 1668
+  csesId = "none"
+  atcoderId = "abner_vidal"
+  atcoderRating = 292
+  leetcodeId = "none"
+  leetcodeRating = 0
+
   # Teams ICPC
   [[Params.team]]
   name = "globos.get()"
