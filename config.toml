@@ -743,6 +743,46 @@
   leetcodeRating = 0
 
   [[Params.uchilePeople]]
+  name = "Sebastian Torrealba"
+  nickname = "storrealbac"
+  university = "UTFSM"
+  femeligible = false
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "storrealbac"
+  codeforcesRating = 1418
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = ""
+  nickname = "Rafoka"
+  university = "UTFSM"
+  femeligible = false
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "Rafoka"
+  codeforcesRating = 625
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
   name = "Benjamin Letelier"
   nickname = "WrathionTBP"
   university = "UDEC"
