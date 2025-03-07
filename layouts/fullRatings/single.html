@@ -12,11 +12,6 @@
       Filtrar por universidad
     </button>
     <ul class="dropdown-menu" id="university-filter">
-      <li>
-        <label class="dropdown-item">
-          TODAS <input type="checkbox" value="TODAS" checked>
-        </label>
-      </li>
       {{ $universities := .Site.Params.universities }}
       {{ range $universities }}
         <li>
@@ -252,21 +247,12 @@
           row.style.display = "table-row";
         }
         else{
-          let matchesUniversity = selectedUniversities.includes("TODAS") || selectedUniversities.includes(university);
+          let matchesUniversity = selectedUniversities.includes(university);
           let matchesICPC = !showICPC || isICPCEligible;
 
           row.style.display = (matchesUniversity && matchesICPC) ? "table-row" : "none";
         }
       });
-    }
-
-    function updateAllCheckbox() {
-      let allCheckbox = universityFilter.querySelector("input[value='TODAS']");
-      let otherCheckboxes = universityFilter.querySelectorAll("input[type='checkbox']:not([value='TODAS'])");
-      
-      let allChecked = Array.from(otherCheckboxes).every(checkbox => checkbox.checked);
-
-      allCheckbox.checked = allChecked;
     }
 
     universityFilter.addEventListener("change", applyFilters);
@@ -277,21 +263,13 @@
 
       this.textContent = isHidden ? "Mostrar solo a ICPC - elegibles" : "Mostrar activos";
       
-      updateAllCheckbox();
       applyFilters();
     });
 
     universityFilter.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
-      if (checkbox.value !== "TODAS") {
-        checkbox.addEventListener("change", function () {
-          if (this.checked) {
-            universityFilter.querySelector("input[value='TODAS']").checked = false;
-          }
-
-          updateAllCheckbox();
-          applyFilters();
-        });
-      }
+      checkbox.addEventListener("change", function () {
+        applyFilters();
+      });
     });
 
   });

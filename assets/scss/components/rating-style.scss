@@ -125,3 +125,13 @@
   margin-right: 10px;
   vertical-align: middle;
 }
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Adjust spacing between logo, text, and checkbox */
+}
+
+.dropdown-item input[type="checkbox"] {
+  margin-left: auto; /* Push the checkbox to the right */
+}

@@ -13,11 +13,6 @@
     Filtrar por universidad
   </button>
   <ul class="dropdown-menu" id="university-filter">
-    <li>
-      <label class="dropdown-item">
-        <input type="checkbox" value="TODAS" checked> TODAS
-      </label>
-    </li>
     {{ $universities := .Site.Params.universities }}
     {{ range $universities }}
       <li>
@@ -71,35 +66,12 @@
         col.style.display = shouldShow ? "table-cell" : "none";
       });
 
-      updateAllCheckbox();
     }
-
-    function updateAllCheckbox() {
-      const allCheckbox = universityFilter.querySelector("input[value='TODAS']");
-      const otherCheckboxes = universityFilter.querySelectorAll("input[type='checkbox']:not([value='TODAS'])");
-
-      let allSelected = Array.from(otherCheckboxes).every(checkbox => checkbox.checked);
-      allCheckbox.checked = allSelected;
-    }
-
-    universityFilter.querySelector("input[value='TODAS']").addEventListener("change", function () {
-      let allChecked = this.checked;
-      universityFilter.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
-        checkbox.checked = allChecked;
-      });
-      applyFilters();
-    });
 
     universityFilter.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
-      if (checkbox.value !== "TODAS") {
-        checkbox.addEventListener("change", function () {
-          if (!this.checked) {
-            universityFilter.querySelector("input[value='TODAS']").checked = false;
-          }
-          updateAllCheckbox();
-          applyFilters();
-        });
-      }
+      checkbox.addEventListener("change", function () {
+        applyFilters();
+      });
     });
 
     applyFilters();

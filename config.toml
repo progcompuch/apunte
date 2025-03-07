@@ -19,7 +19,8 @@
     "UChile",
     "UTFSM",
     "OCI",
-    "UDEC"
+    "UDEC",
+    "PUC"
   ]
 
   # TODO: Send all of this to data as json.
@@ -796,6 +797,66 @@
   active = true
   codeforcesId = "WrathionTBP"
   codeforcesRating = 1064
+  csesId = "none"
+  atcoderId = "WrathionTBP"
+  atcoderRating = 45
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Alberto Ferrada"
+  nickname = "albfr"
+  university = "UDEC"
+  femeligible = false
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "albfr"
+  codeforcesRating = 1453
+  csesId = "none"
+  atcoderId = "albfr"
+  atcoderRating = 73
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Claudia"
+  nickname = "ccserm"
+  university = "UDEC"
+  femeligible = true
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "ccserm"
+  codeforcesRating = 1258
+  csesId = "none"
+  atcoderId = "ccserm"
+  atcoderRating = 250
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Javiera"
+  nickname = "sunrayito"
+  university = "PUC"
+  femeligible = true
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "sunrayito"
+  codeforcesRating = 1441
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
