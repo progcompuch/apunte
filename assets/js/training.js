@@ -168,7 +168,7 @@ const contests_ids = [
 
 let users = [
     {{- range $user := $uchilePeople -}}
-        {{- if $user.icpc -}}
+        {{- if or $user.icpc $user.ioi -}}
             {
                 nickname: '{{- $user.nickname -}}',
                 codeforcesId: '{{- $user.codeforcesId -}}',

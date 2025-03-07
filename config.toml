@@ -17,7 +17,9 @@
   ]
   universities = [
     "UChile",
-    "UTFSM"
+    "UTFSM",
+    "OCI",
+    "UDEC"
   ]
 
   # TODO: Send all of this to data as json.
@@ -677,6 +679,86 @@
   csesId = "none"
   atcoderId = "abner_vidal"
   atcoderRating = 292
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Victor"
+  nickname = "Victorsitou"
+  university = "OCI"
+  femeligible = false
+  icpc = false
+  ioi = true
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "Victorsitou"
+  codeforcesRating = 1165
+  csesId = "none"
+  atcoderId = "Victorsitou"
+  atcoderRating = 13
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Francisco Munoz"
+  nickname = "fmunoz"
+  university = "OCI"
+  femeligible = false
+  icpc = false
+  ioi = true
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "fmunoz"
+  codeforcesRating = 1159
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Bastian"
+  nickname = "bastifwp"
+  university = "UTFSM"
+  femeligible = false
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "bastifwp"
+  codeforcesRating = 413
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Benjamin Letelier"
+  nickname = "WrathionTBP"
+  university = "UDEC"
+  femeligible = false
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "WrathionTBP"
+  codeforcesRating = 1064
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
   leetcodeId = "none"
   leetcodeRating = 0
 
