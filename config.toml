@@ -241,7 +241,7 @@
   codeforcesRating = 1405
   csesId = "none"
   atcoderId = "ElNChou"
-  atcoderRating = 562
+  atcoderRating = 589
   leetcodeId = "none"
   leetcodeRating = 0
 
@@ -620,13 +620,13 @@
   codeforcesId = "Vlxn"
   codeforcesRating = 0
   csesId = "none"
-  atcoderId = "none"
-  atcoderRating = 0
+  atcoderId = "Vlxn"
+  atcoderRating = 16
   leetcodeId = "none"
   leetcodeRating = 0
 
   [[Params.uchilePeople]]
-  name = ""
+  name = "Amanda"
   nickname = "niainamandis"
   university = "UChile"
   femeligible = true
@@ -639,8 +639,8 @@
   codeforcesId = "niainamandis"
   codeforcesRating = 0
   csesId = "none"
-  atcoderId = "none"
-  atcoderRating = 0
+  atcoderId = "niainamandis"
+  atcoderRating = 5
   leetcodeId = "none"
   leetcodeRating = 0
 
