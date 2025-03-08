@@ -24,72 +24,73 @@
     </ul>
   </div>
   
+  <div class="table-responsive">
+  <div class="ratings-container flex-nowrap" id="standings-tables-container">
+      <div class="d-flex">
+      <table class="table table-sm table-bordered codeforces-table mx-2" id="codeforces-standings">
+        <tbody>
+          <tr>
+            <td></td>
+            <td><span style="font-weight: bold;">U</span></td>
+            <td><span class="rating-3000"><span class="rating-red">C</span>odeforces <span class="rating-red">R</span>ating</span></td>
+          </tr>
+          {{ range $uchilePerson := sort .Site.Params.uchilePeople "codeforcesRating" "desc" }}
+          {{ $icpc_allowed := $uchilePerson.icpc}}
+          {{ if $uchilePerson.active }}
+          <tr data-university="{{ $uchilePerson.university }}" {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
+            {{ $rating := $uchilePerson.codeforcesRating }}
+            {{ $nickname := $uchilePerson.nickname }}
+            {{ $u := $uchilePerson.university }}
+            <td><span 
+              {{ if lt $rating 800 }}
+                class="rating-black"
+              {{ else if and (ge $rating 800) (le $rating 1199) }}
+                class="rating-gray"
+              {{ else if and (ge $rating 1200) (le $rating 1399) }}
+                class="rating-green"
+              {{ else if and (ge $rating 1400) (le $rating 1599) }}
+                class="rating-cyan"
+              {{ else if and (ge $rating 1600) (le $rating 1899) }}
+                class="rating-blue"
+              {{ else if and (ge $rating 1900) (le $rating 2099) }}
+                class="rating-purple"
+              {{ else if and (ge $rating 2100) (le $rating 2399) }}
+                class="rating-orange"
+              {{ else if and (ge $rating 2400) (le $rating 2999) }}
+                class="rating-red"
+              {{ end }}
+              >
+              {{ $nickname }}
+            </span>{{ if not $icpc_allowed }} * {{ end }}</td>
+            <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
+            <td><span 
+              {{ if lt $rating 800 }}
+                class="rating-black"
+              {{ else if and (ge $rating 800) (le $rating 1199) }}
+                class="rating-gray"
+              {{ else if and (ge $rating 1200) (le $rating 1399) }}
+                class="rating-green"
+              {{ else if and (ge $rating 1400) (le $rating 1599) }}
+                class="rating-cyan"
+              {{ else if and (ge $rating 1600) (le $rating 1899) }}
+                class="rating-blue"
+              {{ else if and (ge $rating 1900) (le $rating 2099) }}
+                class="rating-purple"
+              {{ else if and (ge $rating 2100) (le $rating 2399) }}
+                class="rating-orange"
+              {{ else if and (ge $rating 2400) (le $rating 2999) }}
+                class="rating-red"
+              {{ end }}
+              >
+              {{ $rating}}
+            </span></td>
 
-  <div class="ratings-container" id="standings-tables-container">
-    <table class="table table-sm table-bordered codeforces-table" id="codeforces-standings">
-      <tbody>
-        <tr>
-          <td></td>
-          <td><span style="font-weight: bold;">U</span></td>
-          <td><span class="rating-3000"><span class="rating-red">C</span>odeforces <span class="rating-red">R</span>ating</span></td>
-        </tr>
-        {{ range $uchilePerson := sort .Site.Params.uchilePeople "codeforcesRating" "desc" }}
-        {{ $icpc_allowed := $uchilePerson.icpc}}
-        {{ if $uchilePerson.active }}
-        <tr data-university="{{ $uchilePerson.university }}" {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
-          {{ $rating := $uchilePerson.codeforcesRating }}
-          {{ $nickname := $uchilePerson.nickname }}
-          {{ $u := $uchilePerson.university }}
-          <td><span 
-            {{ if lt $rating 800 }}
-              class="rating-black"
-            {{ else if and (ge $rating 800) (le $rating 1199) }}
-              class="rating-gray"
-            {{ else if and (ge $rating 1200) (le $rating 1399) }}
-              class="rating-green"
-            {{ else if and (ge $rating 1400) (le $rating 1599) }}
-              class="rating-cyan"
-            {{ else if and (ge $rating 1600) (le $rating 1899) }}
-              class="rating-blue"
-            {{ else if and (ge $rating 1900) (le $rating 2099) }}
-              class="rating-purple"
-            {{ else if and (ge $rating 2100) (le $rating 2399) }}
-              class="rating-orange"
-            {{ else if and (ge $rating 2400) (le $rating 2999) }}
-              class="rating-red"
-            {{ end }}
-            >
-            {{ $nickname }}
-          </span>{{ if not $icpc_allowed }} * {{ end }}</td>
-          <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
-          <td><span 
-            {{ if lt $rating 800 }}
-              class="rating-black"
-            {{ else if and (ge $rating 800) (le $rating 1199) }}
-              class="rating-gray"
-            {{ else if and (ge $rating 1200) (le $rating 1399) }}
-              class="rating-green"
-            {{ else if and (ge $rating 1400) (le $rating 1599) }}
-              class="rating-cyan"
-            {{ else if and (ge $rating 1600) (le $rating 1899) }}
-              class="rating-blue"
-            {{ else if and (ge $rating 1900) (le $rating 2099) }}
-              class="rating-purple"
-            {{ else if and (ge $rating 2100) (le $rating 2399) }}
-              class="rating-orange"
-            {{ else if and (ge $rating 2400) (le $rating 2999) }}
-              class="rating-red"
-            {{ end }}
-            >
-            {{ $rating}}
-          </span></td>
-
-        </tr>
-        {{ end }}
-        {{ end }}
-      </tbody>
-    </table>
-    <table class="table table-sm table-bordered codeforces-table" id="atcoder-standings">
+          </tr>
+          {{ end }}
+          {{ end }}
+        </tbody>
+      </table>
+    <table class="table table-sm table-bordered codeforces-table mx-2" id="atcoder-standings">
       <tbody>
         <tr>
           <td></td>
@@ -159,7 +160,7 @@
         {{ end }}
       </tbody>
     </table>
-    <table class="table table-sm table-bordered codeforces-table" id="leetcode-standings">
+    <table class="table table-sm table-bordered codeforces-table mx-2" id="leetcode-standings">
       <tbody>
         <tr>
           <td></td>
@@ -221,7 +222,9 @@
         {{ end }}
       </tbody>
     </table>
+    </div>
   </div>  
+  </div>
 </div>
 <script>
   document.addEventListener("DOMContentLoaded", function () {

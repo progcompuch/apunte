@@ -109,9 +109,18 @@
 }
 
 .ratings-container {
-  display: flex;
+  display: block;
   gap: 20px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .ratings-container {
+    overflow-x: auto; /* Allows horizontal scrolling */
+    flex-wrap: nowrap; /* Ensures tables NEVER stack */
+  }
 }
 
 #toggle-icpc {
