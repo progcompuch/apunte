@@ -121,6 +121,10 @@
     overflow-x: auto; /* Allows horizontal scrolling */
     flex-wrap: nowrap; /* Ensures tables NEVER stack */
   }
+  .table {
+    min-width: 180px; /* Make tables even smaller on mobile */
+    font-size: 0.7rem; /* Reduce text size further */
+  }
 }
 
 #toggle-icpc {
