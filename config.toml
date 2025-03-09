@@ -724,6 +724,66 @@
   leetcodeRating = 0
 
   [[Params.uchilePeople]]
+  name = "Matías Nova"
+  nickname = "Bors__"
+  university = "OCI"
+  femeligible = false
+  icpc = true
+  ioi = true
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "Bors__"
+  codeforcesRating = 408
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Francisco Pinhao"
+  nickname = "FranciscoPinhao"
+  university = "OCI"
+  femeligible = false
+  icpc = true
+  ioi = true
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "FranciscoPinhao"
+  codeforcesRating = 1258
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Nicolás Aballay"
+  nickname = "Nicolo_010"
+  university = "OCI"
+  femeligible = false
+  icpc = false
+  ioi = true
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "Nicolo_010"
+  codeforcesRating = 1259
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
   name = "Bastian"
   nickname = "bastifwp"
   university = "UTFSM"
