@@ -863,6 +863,26 @@
   leetcodeId = "none"
   leetcodeRating = 0
 
+  [[Params.uchilePeople]]
+  name = "Amelia"
+  nickname = "amongas"
+  university = "PUC"
+  femeligible = true
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "amongas"
+  codeforcesRating = 843
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
   # Teams ICPC
   [[Params.team]]
   name = "globos.get()"
