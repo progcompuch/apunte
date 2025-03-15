@@ -118,7 +118,7 @@
   rayan = true
   active = true
   codeforcesId = "dariasc"
-  codeforcesRating = 1778
+  codeforcesRating = 1780
   csesId = "58188"
   atcoderId = "dariasc"
   atcoderRating = 1378
@@ -158,7 +158,7 @@
   rayan = true
   active = true
   codeforcesId = "m1tu"
-  codeforcesRating = 1613
+  codeforcesRating = 1621
   csesId = "114575"
   atcoderId = "none"
   atcoderRating = 0
@@ -358,10 +358,10 @@
   rayan = true
   active = true
   codeforcesId = "svandich"
-  codeforcesRating = 1189
+  codeforcesRating = 1196
   csesId = "none"
   atcoderId = "none"
-  atcoderRating = 87
+  atcoderRating = 125
   leetcodeId = "none"
   leetcodeRating = 0
 
@@ -601,7 +601,7 @@
   codeforcesRating = 0
   csesId = "none"
   atcoderId = "none"
-  atcoderRating = 0
+  atcoderRating = 8
   leetcodeId = "none"
   leetcodeRating = 0
 
@@ -640,7 +640,7 @@
   codeforcesRating = 0
   csesId = "none"
   atcoderId = "niainamandis"
-  atcoderRating = 5
+  atcoderRating = 21
   leetcodeId = "none"
   leetcodeRating = 0
 
@@ -824,6 +824,66 @@
   leetcodeRating = 0
 
   [[Params.uchilePeople]]
+  name = "Carlos Lagos"
+  nickname = "CharlesLakes"
+  university = "UTFSM"
+  femeligible = false
+  icpc = false
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "CharlesLakes"
+  codeforcesRating = 1604
+  csesId = "none"
+  atcoderId = "CharlesLakes"
+  atcoderRating = 22
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = "Jaime Inostroza"
+  nickname = "poloyuyu"
+  university = "UTFSM"
+  femeligible = false
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "poloyuyu"
+  codeforcesRating = 1035
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
+  name = ""
+  nickname = "skiesfallen"
+  university = "UTFSM"
+  femeligible = true
+  icpc = true
+  ioi = false
+  codevita = true
+  meta_hackercup = true
+  ieeextreme = true
+  rayan = true
+  active = true
+  codeforcesId = "skiesfallen"
+  codeforcesRating = 363
+  csesId = "none"
+  atcoderId = "none"
+  atcoderRating = 0
+  leetcodeId = "none"
+  leetcodeRating = 0
+
+  [[Params.uchilePeople]]
   name = ""
   nickname = "Rafoka"
   university = "UTFSM"
@@ -876,7 +936,7 @@
   rayan = true
   active = true
   codeforcesId = "albfr"
-  codeforcesRating = 1453
+  codeforcesRating = 1499
   csesId = "none"
   atcoderId = "albfr"
   atcoderRating = 73
@@ -896,7 +956,7 @@
   rayan = true
   active = true
   codeforcesId = "ccserm"
-  codeforcesRating = 1258
+  codeforcesRating = 1250
   csesId = "none"
   atcoderId = "ccserm"
   atcoderRating = 250
@@ -916,7 +976,7 @@
   rayan = true
   active = true
   codeforcesId = "sunrayito"
-  codeforcesRating = 1441
+  codeforcesRating = 1403
   csesId = "none"
   atcoderId = "none"
   atcoderRating = 0
