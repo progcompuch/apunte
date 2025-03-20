@@ -57,7 +57,7 @@ Para Windows, hay tres alternativas notables para obtener la GCC:
   En WSL lo más común es instalar Ubuntu, de ahí puedes seguir las instrucciones de Linux que están más arriba.
   1. MinGW (Minimalist GNU for Windows): Es una implementación de los 
   compiladores de la GCC para Windows. 
-  Puedes descargarlo en [Sourceforge](https://sourceforge.net/projects/mingw/), 
+  Puedes descargarlo en [GitHub](https://github.com/skeeto/w64devkit), 
   y la instalación es relativamente sencilla.
   1. Cygwin: Es una colección de herramientas (entre ellas GCC) para proporcionar un
   entorno tipo UNIX en Windows. Puedes descargarlo [en su sitio web](https://www.cygwin.com/).
