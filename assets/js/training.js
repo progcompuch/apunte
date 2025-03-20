@@ -31,6 +31,9 @@ const trainingNames = [
         "Teoría de números 2",
         "Probabilistas",
         "Sistemas de ecuaciones lineales"
+    ],
+    [
+        "Problemas semanales"
     ]
 ];
 
@@ -127,6 +130,11 @@ const trainingContents = [
         [
             "Método de Gauss"
         ]
+    ],
+    [
+        [
+            "Problemas de atcoder se actualizan una vez al día"
+        ]
     ]
 ]
 
@@ -161,6 +169,9 @@ const contests_ids = [
         "18",
         "19",
         "20"
+    ],
+    [
+        "21"
     ]
 ];
 
@@ -343,6 +354,10 @@ function setcache(){
         {
             data: {},
             expires: 0
+        },
+        {
+            data: {},
+            expires: 0
         }
     ]
 };
@@ -356,10 +371,10 @@ async function populateTables() {
     }
     const parts = path.split("/"); // Split by "/"
     const lastPart = parts.filter(part => part !== "").pop(); // Get last non-empty part
-    const number = lastPart.replace(/\D/g, ""); // Remove non-numeric characters
+
+    const number = lastPart === "semanales" ? trainingNames.length - 1 : lastPart.replace(/\D/g, ""); // Remove non-numeric characters
 
     _lvlindxpath = parseInt(number);
-
     const titles = trainingNames[_lvlindxpath]
     const contents = trainingContents[_lvlindxpath]
 
@@ -417,6 +432,7 @@ async function populateTables() {
     if (!Array.isArray(gymcache)){
         gymcache = setcache();
     }
+    gymcache = setcache();
     let dt = new Date();
 {{ if eq (hugo.Environment) "development" }}
     if (true) {
@@ -427,6 +443,7 @@ async function populateTables() {
         for (let j = 0; j < contests_ids[_lvlindxpath].length; j ++){
             const contestId = contests_ids[_lvlindxpath][j]
             const standings = await Promise.resolve(fetchContestStandings(contestId));
+            console.log(standings);
             if (standings) {
                 gymcache[_lvlindxpath].data[contestId] = standings;
             }
