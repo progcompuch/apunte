@@ -169,7 +169,7 @@ function getObjectSize(obj) {
 }
 
 async function fetchContestStandings(contestId){
-    const url = `http://137.184.14.244:5000/api/standings/${contestId}`;
+    const url = `https://137.184.14.244:5000/api/standings/${contestId}`;
     console.log(url);
     const response = await fetch(url);
     if (!response.ok) {

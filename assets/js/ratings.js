@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function populateRatings() {
         try {
-            const response = await fetch("http://137.184.14.244:5000/api/userRatings");
+            const response = await fetch("https://137.184.14.244:5000/api/userRatings");
             if (!response.ok) throw new Error("Failed to fetch user ratings");
 
             const userRatings = (await response.json()).result;
