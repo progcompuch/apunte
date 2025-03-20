@@ -1,12 +1,32 @@
 {{ define "main" }}
+<style>
+  /* ✅ Ensures first column (nickname) has a fixed width */
+.table th:first-child,
+.table td:first-child {
+    width: 200px; /* Adjust the width as needed */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." for long nicknames */
+}
+
+/* ✅ Ensures table remains centered */
+.table {
+    table-layout: fixed; /* Ensures column widths stay fixed */
+    width: auto;
+}
+
+/* ✅ Ensures that text in all table cells is centered */
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+</style>
 <div class="container-fluid row justify-content-center text-center">
   <h1>{{ .Title }}</h1>
-
-  {{ $uchilePeople := .Site.Params.uchilePeople }}
   
   <div class="dropdown">
-
-    <button id="toggle-icpc" class="btn btn-primary">Mostrar activos</button>
 
     <button class="btn btn-secondary dropdown-toggle" type="button" id="universityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
       Filtrar por universidad
@@ -23,258 +43,58 @@
       {{ end }}
     </ul>
   </div>
+
+  <div class="filters">
+    <label>
+        <input type="checkbox" id="filter-femeligible"> Mostrar solo elegibles para equipo femenino
+    </label>
+    <p></p>
+    <label>
+        <input type="checkbox" id="filter-icpc"> Mostrar solo ICPC elegibles
+    </label>
+</div>
   
   <div class="table-responsive">
   <div class="ratings-container flex-nowrap" id="standings-tables-container">
       <div class="d-flex">
       <table class="table table-sm table-bordered codeforces-table mx-2" id="codeforces-standings">
-        <tbody>
+        <thead>
           <tr>
-            <td></td>
-            <td><span style="font-weight: bold;">U</span></td>
-            <td><span class="rating-3000"><span class="rating-red">C</span>odeforces <span class="rating-red">R</span>ating</span></td>
+            <th></th>
+            <th><span style="font-weight: bold;">U</span></th>
+            <th><span class="rating-3000"><span class="rating-red">C</span>odeforces <span class="rating-red">R</span>ating</span></th>
           </tr>
-          {{ range $uchilePerson := sort .Site.Params.uchilePeople "codeforcesRating" "desc" }}
-          {{ $icpc_allowed := $uchilePerson.icpc}}
-          {{ if $uchilePerson.active }}
-          <tr data-university="{{ $uchilePerson.university }}" {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
-            {{ $rating := $uchilePerson.codeforcesRating }}
-            {{ $nickname := $uchilePerson.nickname }}
-            {{ $u := $uchilePerson.university }}
-            <td><span 
-              {{ if lt $rating 800 }}
-                class="rating-black"
-              {{ else if and (ge $rating 800) (le $rating 1199) }}
-                class="rating-gray"
-              {{ else if and (ge $rating 1200) (le $rating 1399) }}
-                class="rating-green"
-              {{ else if and (ge $rating 1400) (le $rating 1599) }}
-                class="rating-cyan"
-              {{ else if and (ge $rating 1600) (le $rating 1899) }}
-                class="rating-blue"
-              {{ else if and (ge $rating 1900) (le $rating 2099) }}
-                class="rating-purple"
-              {{ else if and (ge $rating 2100) (le $rating 2399) }}
-                class="rating-orange"
-              {{ else if and (ge $rating 2400) (le $rating 2999) }}
-                class="rating-red"
-              {{ end }}
-              >
-              {{ $nickname }}
-            </span>{{ if not $icpc_allowed }} * {{ end }}</td>
-            <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
-            <td><span 
-              {{ if lt $rating 800 }}
-                class="rating-black"
-              {{ else if and (ge $rating 800) (le $rating 1199) }}
-                class="rating-gray"
-              {{ else if and (ge $rating 1200) (le $rating 1399) }}
-                class="rating-green"
-              {{ else if and (ge $rating 1400) (le $rating 1599) }}
-                class="rating-cyan"
-              {{ else if and (ge $rating 1600) (le $rating 1899) }}
-                class="rating-blue"
-              {{ else if and (ge $rating 1900) (le $rating 2099) }}
-                class="rating-purple"
-              {{ else if and (ge $rating 2100) (le $rating 2399) }}
-                class="rating-orange"
-              {{ else if and (ge $rating 2400) (le $rating 2999) }}
-                class="rating-red"
-              {{ end }}
-              >
-              {{ $rating}}
-            </span></td>
+        </thead>
+        <tbody id="codeforces-tbody">
 
-          </tr>
-          {{ end }}
-          {{ end }}
         </tbody>
       </table>
     <table class="table table-sm table-bordered codeforces-table mx-2" id="atcoder-standings">
-      <tbody>
+      <thead>
         <tr>
-          <td></td>
-          <td><span style="font-weight: bold;">U</span></td>
-          <td><span class="rating-3000"><span class="rating-red">A</span>tCoder <span class="rating-red">R</span>ating</span></td>
+          <th></th>
+          <th><span style="font-weight: bold;">U</span></th>
+          <th><span class="rating-3000"><span class="rating-red">A</span>tCoder <span class="rating-red">R</span>ating</span></th>
         </tr>
-        {{ range $uchilePerson := sort .Site.Params.uchilePeople "atcoderRating" "desc" }}
-        {{ $icpc_allowed := $uchilePerson.icpc}}
-        {{ $u := $uchilePerson.university }}
-        {{ $fem_allowed := $uchilePerson.femeligible }}
-        {{ if $uchilePerson.active }}
-        <tr data-university="{{ $uchilePerson.university }}" 
-          {{ if not $icpc_allowed }} 
-            style="display: none;" 
-          {{ end }}
-          {{ if or (not $icpc_allowed) (not $fem_allowed)}}
-          class="{{ if not $icpc_allowed}}hidden-icpc{{ end }} {{if not $fem_allowed }}hidden-fem{{ end }}"
-          {{ end }}
-          >
-          {{ $rating := $uchilePerson.atcoderRating }}
-          {{ $nickname := $uchilePerson.nickname }}
-          <td><span 
-            {{ if lt $rating 200 }}
-              class="rating-black"
-            {{ else if and (ge $rating 200) (le $rating 399) }}
-              class="rating-gray"
-            {{ else if and (ge $rating 400) (le $rating 899) }}
-              class="rating-green"
-            {{ else if and (ge $rating 900) (le $rating 1399) }}
-              class="rating-cyan"
-            {{ else if and (ge $rating 1400) (le $rating 1699) }}
-              class="rating-blue"
-            {{ else if and (ge $rating 1700) (le $rating 1999) }}
-              class="rating-purple"
-            {{ else if and (ge $rating 2000) (le $rating 2399) }}
-              class="rating-orange"
-            {{ else if and (ge $rating 2400) (le $rating 2999) }}
-              class="rating-red"
-            {{ end }}
-            >
-            {{ $nickname}}
-          </span>{{ if not $icpc_allowed }} * {{ end }}</td>
-          <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
-          <td><span 
-            {{ if lt $rating 200 }}
-              class="rating-black"
-            {{ else if and (ge $rating 200) (le $rating 399) }}
-              class="rating-gray"
-            {{ else if and (ge $rating 400) (le $rating 899) }}
-              class="rating-green"
-            {{ else if and (ge $rating 900) (le $rating 1399) }}
-              class="rating-cyan"
-            {{ else if and (ge $rating 1400) (le $rating 1699) }}
-              class="rating-blue"
-            {{ else if and (ge $rating 1700) (le $rating 1999) }}
-              class="rating-purple"
-            {{ else if and (ge $rating 2000) (le $rating 2399) }}
-              class="rating-orange"
-            {{ else if and (ge $rating 2400) (le $rating 2999) }}
-              class="rating-red"
-            {{ end }}
-            >
-            {{ $rating}}
-          </span></td>
-        </tr>
-        {{ end }}
-        {{ end }}
+      </thead>
+      <tbody id="atcoder-tbody">
+
       </tbody>
     </table>
     <table class="table table-sm table-bordered codeforces-table mx-2" id="leetcode-standings">
-      <tbody>
+      <thead>
         <tr>
-          <td></td>
-          <td><span style="font-weight: bold;">U</span></td>
-          <td><span class="rating-3000"><span class="rating-red">l</span>eetcode <span class="rating-red">R</span>ating</span></td>
+          <th></th>
+          <th><span style="font-weight: bold;">U</span></th>
+          <th><span class="rating-3000"><span class="rating-red">l</span>eetcode <span class="rating-red">R</span>ating</span></th>
         </tr>
-        {{ range $uchilePerson := sort .Site.Params.uchilePeople "leetcodeRating" "desc" }}
-        {{ $icpc_allowed := $uchilePerson.icpc}}
-        {{ $u := $uchilePerson.university }}
-        {{ if $uchilePerson.active }}
-        <tr data-university="{{ $uchilePerson.university }}" {{ if not $icpc_allowed }} class="hidden-icpc" style="display: none;" {{ end }}>
-          {{ $rating := $uchilePerson.leetcodeRating }}
-          {{ $nickname := $uchilePerson.nickname }}
-          <td><span 
-            {{ if lt $rating 200 }}
-              class="rating-black"
-            {{ else if and (ge $rating 200) (le $rating 1399) }}
-              class="rating-gray"
-            {{ else if and (ge $rating 1400) (le $rating 1599) }}
-              class="rating-green"
-            {{ else if and (ge $rating 1600) (le $rating 1899) }}
-              class="rating-cyan"
-            {{ else if and (ge $rating 1900) (le $rating 2099) }}
-              class="rating-blue"
-            {{ else if and (ge $rating 2100) (le $rating 2399) }}
-              class="rating-purple"
-            {{ else if and (ge $rating 2400) (le $rating 2899) }}
-              class="rating-orange"
-            {{ else if and (ge $rating 2900) (le $rating 3400) }}
-              class="rating-red"
-            {{ end }}
-            >
-            {{ $nickname}}
-          </span>{{ if not $icpc_allowed }} * {{ end }}</td>
-          <td><img src="/images/universities/{{ $u }}.png" alt="{{ $u }}" class="university-logo"> </td>
-          <td><span 
-            {{ if lt $rating 200 }}
-              class="rating-black"
-            {{ else if and (ge $rating 200) (le $rating 1399) }}
-              class="rating-gray"
-            {{ else if and (ge $rating 1400) (le $rating 1599) }}
-              class="rating-green"
-            {{ else if and (ge $rating 1600) (le $rating 1899) }}
-              class="rating-cyan"
-            {{ else if and (ge $rating 1900) (le $rating 2099) }}
-              class="rating-blue"
-            {{ else if and (ge $rating 2100) (le $rating 2399) }}
-              class="rating-purple"
-            {{ else if and (ge $rating 2400) (le $rating 2899) }}
-              class="rating-orange"
-            {{ else if and (ge $rating 2900) (le $rating 3400) }}
-              class="rating-red"
-            {{ end }}
-            >
-            {{ $rating}}
-          </span></td>
-        </tr>
-        {{ end }}
-        {{ end }}
+      </thead>
+      <tbody id="leetcode-tbody">
+
       </tbody>
     </table>
     </div>
   </div>  
   </div>
 </div>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const universityFilter = document.getElementById("university-filter");
-    const icpcToggle = document.getElementById("toggle-icpc");
-
-    function applyFilters() {
-      let selectedUniversities = [];
-      let checkboxes = universityFilter.querySelectorAll("input[type='checkbox']:checked");
-
-      checkboxes.forEach(checkbox => {
-        selectedUniversities.push(checkbox.value.toLowerCase());
-      });
-
-      let showICPC = !icpcToggle.textContent.includes("ICPC");
-      let rows = document.querySelectorAll("table tbody tr");
-
-      rows.forEach(row => {
-        let university = row.getAttribute("data-university")?.toLowerCase();
-        let isICPCEligible = !row.classList.contains("hidden-icpc");
-
-        if (university == null){
-          row.style.display = "table-row";
-        }
-        else{
-          let matchesUniversity = selectedUniversities.includes(university);
-          let matchesICPC = !showICPC || isICPCEligible;
-
-          row.style.display = (matchesUniversity && matchesICPC) ? "table-row" : "none";
-        }
-      });
-    }
-
-    universityFilter.addEventListener("change", applyFilters);
-
-    icpcToggle.addEventListener("click", function() {
-      let hiddenRows = document.querySelectorAll(".hidden-icpc");
-      let isHidden = hiddenRows.length > 0 && hiddenRows[0].style.display === "none";
-
-      this.textContent = isHidden ? "Mostrar solo a ICPC - elegibles" : "Mostrar activos";
-      
-      applyFilters();
-    });
-
-    universityFilter.querySelectorAll("input[type='checkbox']").forEach(checkbox => {
-      checkbox.addEventListener("change", function () {
-        applyFilters();
-      });
-    });
-
-  });
-</script>
 {{ end }}

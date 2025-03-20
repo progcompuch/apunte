@@ -1,0 +1,8 @@
+{{ $fullRatingsTemplate := resources.Get "js/ratings.js" -}}
+{{ $fullRatings := $fullRatingsTemplate | resources.ExecuteAsTemplate "ratings.js" . -}}
+{{ if eq (hugo.Environment) "development" -}}
+  <script src="{{ $fullRatings.Permalink }}" defer></script>
+{{ else -}}
+  {{ $fullRatingsProd := $fullRatings | resources.Minify | resources.Fingerprint "sha512" -}}
+  <script src="{{ $fullRatingsProd.Permalink }}" integrity="{{ $fullRatingsProd.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}

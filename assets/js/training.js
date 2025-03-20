@@ -1,5 +1,3 @@
-{{ $uchilePeople := .Site.Params.uchilePeople -}}
-
 const path = window.location.pathname;
 
 const trainingNames = [
@@ -134,125 +132,59 @@ const trainingContents = [
 
 const contests_ids = [
     [
-        "593411",
-        "593413",
-        "593415"
+        "0",
+        "1",
+        "2"
     ],
     [
-        "567665",
-        "567946",
-        "567947",
-        "568427"
+        "3",
+        "4",
+        "5",
+        "6"
     ],
     [
-        "585432",
-        "585434",
-        "585435",
-        "585436",
-        "585438"
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
     ],
     [
-        "585583",
-        "585587",
-        "585588",
-        "585590",
-        "585591"
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
     ],
     [
-        "585593",
-        "585595",
-        "585598",
-        "585600"
+        "17",
+        "18",
+        "19",
+        "20"
     ]
 ];
-
-let users = [
-    {{- range $user := $uchilePeople -}}
-        {{- if or $user.icpc $user.ioi -}}
-            {
-                nickname: '{{- $user.nickname -}}',
-                codeforcesId: '{{- $user.codeforcesId -}}',
-                codeforcesRating: {{- $user.codeforcesRating -}},
-                atcoderRating: {{- $user.atcoderRating -}},
-                university: '{{- $user.university -}}'
-            },
-        {{- end -}}
-    {{- end -}}
-]
-
-let complete_users_list = [
-    {{- range $user := $uchilePeople -}}
-        '{{- $user.codeforcesId -}}',
-    {{- end -}}
-]
 
 function getObjectSize(obj) {
     return new Blob([JSON.stringify(obj)]).size + " bytes";
 }
 
-async function generateApiSig(methodName, params, apiKey, secret) {
-    const rand = Math.random().toString(36).substring(2, 8); // Generate a random 6-character string
-    const time = Math.floor(Date.now() / 1000); // Current time in UNIX format
-    const sortedParams = Object.keys(params)
-        .sort()
-        .map((key) => `${key}=${params[key]}`)
-        .join('&');
-    const hashInput = `${rand}/${methodName}?apiKey=${apiKey}&${sortedParams}&time=${time}#${secret}`;
-    const hashBuffer = await crypto.subtle.digest("SHA-512", new TextEncoder().encode(hashInput));
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-    return {
-        apiSig: `${rand}${hashHex}`,
-        time
-    };
-}
-
-async function fetchContestStatus(contestId, from, count, asManager, apiKey, secret) {
-    const methodName = "contest.status";
-    const params = { contestId, from, count, asManager };
-
-    const { apiSig, time } = await generateApiSig(methodName, params, apiKey, secret);
-    const url = `https://codeforces.com/api/${methodName}?apiKey=${apiKey}&asManager=${asManager}&contestId=${contestId}&count=${count}&from=${from}&time=${time}&apiSig=${apiSig}`;
-    //console.log(url)
+async function fetchContestStandings(contestId){
+    const url = `http://137.184.14.244:5000/api/standings/${contestId}`;
+    console.log(url);
     const response = await fetch(url);
-    if (!response.ok) {
-        console.error("Error fetching contest status:", response.statusText);
-        return [];
-    }
-
-    const data = await response.json();
-    if (data.status !== "OK") {
-        console.error("API returned an error:", data.comment);
-        return [];
-    }
-
-    return data.result;
-}
-
-async function fetchContestStandings(contestId, apiKey, secret, _lvlindxpath) {
-    const asManager = true, from = 1, count = 100, showUnofficial = true;
-    participantTypes = "PRACTICE";
-    const methodName = "contest.standings"
-    let handles = complete_users_list.join;
-    const params = { contestId, from, count, asManager, showUnofficial, participantTypes };
-    handles = complete_users_list.join(';');
-    const { apiSig, time } = await generateApiSig(methodName, params, apiKey, secret);
-    const url = `https://codeforces.com/api/${methodName}?apiKey=${apiKey}&asManager=${asManager}&contestId=${contestId}&count=${count}&from=${from}&participantTypes=${participantTypes}&showUnofficial=${showUnofficial}&time=${time}&apiSig=${apiSig}`;
-    const response = await fetch(url);
-    await new Promise(resolve => setTimeout(resolve, 1000));
     if (!response.ok) {
         console.error("Error fetching contest standings:", response.statusText);
         return [];
     }
     const data = await response.json();
-    if (data.status !== "OK") {
+    if (data.status !== "OK"){
         console.error("API returned an error:", data.comment);
+        console.log(data);
         return [];
     }
     return data.result;
 }
 
-// 
 async function loadData(data, _lvlindxpath){
     for (let i = 0; i < trainingNames[_lvlindxpath].length; i ++){
         const tabContent = document.getElementById(`tab-content-${i}`);
@@ -268,76 +200,30 @@ async function loadData(data, _lvlindxpath){
         }
         const contestId = contests_ids[_lvlindxpath][i];
         contest_data = data[contestId];
-        problem_list = contest_data[0];
-        let frow = table.getElementsByTagName('tr')[0]
+
+        let frow = table.getElementsByTagName('tr')[0];
+        
         let totalsNames = frow.children;
+
         if (totalsNames.length == 0){
             let emptyCell = document.createElement("td");
-            emptyCell.textContent = "—";
+            emptyCell.textContent = "-";
             frow.appendChild(emptyCell);
         }
-        let users2 = {}
-        let users3 = {}
-        for (let j = 0; j < users.length; j ++){
-            users2[users[j].codeforcesId] = {
-                "crating": users[j].codeforcesRating,
-                "arating": users[j].atcoderRating
-            };
-            users3[users[j].codeforcesId] = {
-                "crating": users[j].codeforcesRating,
-                "arating": users[j].atcoderRating
-            };
-        }
+
         let usedcols = 0;
-        for (let j = 0; j < contest_data[1].length; j ++){
-            user_handle = contest_data[1][j].handle;
-            if (user_handle in users2){
-                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
-                if (totalsNames.length <= usedcols + 1){
-                    let emptyCell = document.createElement("td");
-                    emptyCell.textContent = "—";
-                    frow.appendChild(emptyCell);
-                }
-                totalsNames[usedcols + 1].style.fontWeight = "bold";
-                totalsNames[usedcols + 1].setAttribute("data-university", userUniversity.toLowerCase());
-                // user is relevant
-                let crating = users2[user_handle].crating;
-                let arating = users2[user_handle].arating;
-                let className = "";
-                if (crating < 800 && arating < 200) {
-                    className = "rating-black";
-                } else if (crating <= 1199 && arating <= 399) {
-                    className = "rating-gray";
-                } else if (crating <= 1399 && arating <= 799) {
-                    className = "rating-green";
-                } else if (crating <= 1599 && arating <= 1299) {
-                    className = "rating-cyan";
-                } else if (crating <= 1899 && arating <= 1699) {
-                    className = "rating-blue";
-                } else if (crating <= 2099 && arating <= 1999) {
-                    className = "rating-purple";
-                } else if (crating <= 2399 && arating <= 2299) {
-                    className = "rating-orange";
-                } else if (crating <= 2999 && arating <= 2999) {
-                    className = "rating-red";
-                }
-                totalsNames[usedcols + 1].innerHTML = `<span class="${className}">${user_handle}</span>`;
-                delete users2[user_handle];
-                usedcols += 1;
-            }
-        }
-        for (const [user_handle, value] of Object.entries(users2)){
-            let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+        for (let j = 1; j < contest_data[0].length; j ++){
+            if (!contest_data[0][j].active || (!contest_data[0][j].icpc && !contest_data[0][j].ioi))
+                continue;
+            let user_nickname = contest_data[0][j].nickname;
+            let userUniversity = contest_data[0][j].organization;
             if (totalsNames.length <= usedcols + 1){
                 let emptyCell = document.createElement("td");
-                emptyCell.textContent = "—";
+                emptyCell.textContent = "-";
                 frow.appendChild(emptyCell);
             }
-            totalsNames[usedcols + 1].style.fontWeight = "bold";
-            totalsNames[usedcols + 1].setAttribute("data-university", userUniversity.toLowerCase());
-            // user is relevant
-            let crating = value.crating;
-            let arating = value.arating;
+            let crating = contest_data[0][j].codeforcesRating;
+            let arating = contest_data[0][j].atcoderRating;
             let className = "";
             if (crating < 800 && arating < 200) {
                 className = "rating-black";
@@ -356,7 +242,8 @@ async function loadData(data, _lvlindxpath){
             } else if (crating <= 2999 && arating <= 2999) {
                 className = "rating-red";
             }
-            totalsNames[usedcols + 1].innerHTML = `<span class="${className}">${user_handle}</span>`;
+            totalsNames[usedcols + 1].innerHTML = `<span class="${className}">${user_nickname}</span>`;
+            totalsNames[usedcols + 1].setAttribute("data-university", userUniversity.toLowerCase());
             usedcols += 1;
         }
 
@@ -368,27 +255,14 @@ async function loadData(data, _lvlindxpath){
         totalesCell.textContent = "Totales";
         totalesCell.style.fontWeight = "bold";
         let ccol = 0;
-        for (let j = 0; j < contest_data[1].length; j ++){
-            user_handle = contest_data[1][j].handle;
-            if (user_handle in users3){
-                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
-                const userCell = row.insertCell(ccol + 1);
-                userCell.setAttribute("data-university", userUniversity.toLowerCase());
-                let solves = 0;
-                for (let j2 = 0; j2 < contest_data[1][j].solves.length; j2 ++){
-                    if (contest_data[1][j].solves[j2] == 2)
-                        solves += 1
-                }
-                userCell.textContent = solves;
-                ccol ++;
-            }
-        }
-        for (const [user_handle, value] of Object.entries(users2)){
-            let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+        for (let j = 1; j < contest_data[0].length; j ++){
+            if (!contest_data[0][j].active || (!contest_data[0][j].icpc && !contest_data[0][j].ioi))
+                continue;
+            let userUniversity = contest_data[0][j].organization;
             const userCell = row.insertCell(ccol + 1);
             userCell.setAttribute("data-university", userUniversity.toLowerCase());
-            userCell.textContent = 0;
-            ccol += 1
+            userCell.textContent = contest_data[0][j].solved_count;
+            ccol ++;
         }
 
         const logorow = table.insertRow();
@@ -400,23 +274,10 @@ async function loadData(data, _lvlindxpath){
         UCell.style.fontWeight = "bold";
         ccol = 0;
 
-        for (let j = 0; j < contest_data[1].length; j ++){
-            user_handle = contest_data[1][j].handle;
-            if (user_handle in users3){
-                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
-                const userCell = logorow.insertCell(ccol + 1);
-                userCell.setAttribute("data-university", userUniversity.toLowerCase());
-
-                let img = document.createElement("img");
-                img.src = `/images/universities/${userUniversity}.png`;
-                img.alt = userUniversity;
-                img.classList.add("university-logo");
-                userCell.appendChild(img);
-                ccol ++;
-            }
-        }
-        for (const [user_handle, value] of Object.entries(users2)){
-            let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+        for (let j = 1; j < contest_data[0].length; j ++){
+            if (!contest_data[0][j].active || (!contest_data[0][j].icpc && !contest_data[0][j].ioi))
+                continue;
+            let userUniversity = contest_data[0][j].organization;
             const userCell = logorow.insertCell(ccol + 1);
             userCell.setAttribute("data-university", userUniversity.toLowerCase());
             let img = document.createElement("img");
@@ -424,45 +285,37 @@ async function loadData(data, _lvlindxpath){
             img.alt = userUniversity;
             img.classList.add("university-logo");
             userCell.appendChild(img);
-            ccol += 1
+            ccol ++;
         }
 
 
-        for (let j = 0; j < problem_list.length; j ++){
+        for (let j = 1; j < contest_data.length; j ++){
             const problemRow = table.insertRow();
-
             const problemCell = problemRow.insertCell(0);
+
             problemCell.style.position = "sticky";
             problemCell.style.left = "0";
             problemCell.style.backgroundColor = "#f8f9fa";
             problemCell.style.fontWeight = "bold";
 
             const problemLink = document.createElement("a");
-            problemLink.href = problem_list[j].url;
-            problemLink.textContent = problem_list[j].name;
+            problemLink.href = contest_data[j][0].url;
+            problemLink.textContent = contest_data[j][0].name;
             problemLink.target = "_blank";
             problemLink.rel = "noopener noreferrer";
             problemCell.appendChild(problemLink);
 
             let newk = 0;
-            for (let k = 0; k < contest_data[1].length; k ++){
-                user_handle = contest_data[1][k].handle;
-                if (user_handle in users3){
-                    let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
-                    const userCell = problemRow.insertCell(newk + 1);
-                    userCell.setAttribute("data-university", userUniversity.toLowerCase());
-                    let score_v = contest_data[1][k].solves[j];
-                    let value = (score_v == 2 ? "accepted" : (score_v == 1 ? "attempted" : "notAttempted"));
-                    userCell.className = `task-score ${value}`;
-                    newk ++;
-                }
-            }
-            for (const [user_handle, value] of Object.entries(users2)){
-                let userUniversity = users.find(user => user.codeforcesId === user_handle)?.university || "unknown";
+            for (let k = 1; k < contest_data[j].length; k ++){
+                if (!contest_data[0][k].active || (!contest_data[0][k].icpc && !contest_data[0][k].ioi))
+                    continue;
+                let userUniversity = contest_data[0][k].organization;
                 const userCell = problemRow.insertCell(newk + 1);
                 userCell.setAttribute("data-university", userUniversity.toLowerCase());
-                userCell.className = `task-score notAttemped`;
-                newk += 1
+                let score_v = contest_data[j][k].solved;
+                let value = (score_v == 2 ? "accepted" : (score_v == 1 ? "attempted" : "notAttempted"));
+                userCell.className = `task-score ${value}`;
+                newk ++;
             }
         }
     }
@@ -494,7 +347,7 @@ function setcache(){
     ]
 };
 
-async function populateTables(apiKey, secret) {
+async function populateTables() {
 
     const gymTablesContainer = document.getElementById("gym-tab-content");
     if (!gymTablesContainer) {
@@ -573,39 +426,12 @@ async function populateTables(apiKey, secret) {
         gymcache[_lvlindxpath].data = []
         for (let j = 0; j < contests_ids[_lvlindxpath].length; j ++){
             const contestId = contests_ids[_lvlindxpath][j]
-            // const submissions = await Promise.resolve(fetchContestStatus(contestId, 1, 100, true, apiKey, secret));
-            const standings = await Promise.resolve(fetchContestStandings(contestId, apiKey, secret, _lvlindxpath));
+            const standings = await Promise.resolve(fetchContestStandings(contestId));
             if (standings) {
-                standings_rows = standings.rows;
-                standings_problems = standings.problems;
-                data_rows = []
-                problem_names = []
-                standings_problems.forEach((problem_data, id) => {
-                    problem_names.push({
-                        "name": problem_data["name"],
-                        "url": "https://codeforces.com/gym/" + contestId + "/problem/" + problem_data["index"]
-                    });
-                });
-                standings_rows.forEach((srow, id) => {
-                    srow_handle = srow.party.members[0].handle;
-                    srow_results = srow.problemResults;
-                    results_data = []
-                    srow_results.forEach((presult, id2) => {
-                        results_data.push(presult.points > 0 ? 2 : (presult.rejectedAttemptCount > 0 ? 1 : 0));
-                    });
-                    data_rows.push({
-                        "handle": srow_handle,
-                        "solves": results_data
-                    });
-                });
-                gymcache[_lvlindxpath].data[contestId] = [
-                    problem_names,
-                    data_rows
-                ];
+                gymcache[_lvlindxpath].data[contestId] = standings;
             }
         }
         gymcache[_lvlindxpath].expires = (dt.getTime() + 300 * 1000);
-        //localStorage.setItem('gymCache', JSON.stringify(gymcache));
         loadData(gymcache[_lvlindxpath].data, _lvlindxpath);
     }
     else {
@@ -620,4 +446,4 @@ async function populateTables(apiKey, secret) {
 }
 
 
-populateTables("e23005a4a475b6079a98c6c75f9d24408033ece7", "d6c254ba481a12d0370517c93e2f4a2a5595586e");
+populateTables();
