@@ -27,7 +27,7 @@
   url = ""
   place = 1
   global_place = 32
-  extra = "Clasificado a la Latin America Championship 2025 - Brazil, puesto ?"
+  extra = "Clasificado a la Latin America Championship 2025 - Brazil, puesto 15\nClasificado a la World Finals 2025 - Azerbaijan, puesto ?"
 
   [[Params.team]]
   name = "team.tocar(pasto);"
