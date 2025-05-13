@@ -34,6 +34,26 @@ const trainingNames = [
     ],
     [
         "Problemas semanales"
+    ],
+    [
+        "Introductory Problems",
+        "Sorting and Searching",
+        "Dynamic Programming",
+        "Graph Algorithms",
+        "Range Queries",
+        "Tree Algorithms",
+        "Mathematics",
+        "String Algorithms",
+        "Geometry",
+        "Advanced Techniques",
+        "Sliding Window Problems",
+        "Interactive Problems",
+        "Bitwise Operations",
+        "Construction Problems",
+        "Advanced Graph Problems",
+        "Counting Problems",
+        "Additional Problems I",
+        "Additional Problems II"
     ]
 ];
 
@@ -135,6 +155,68 @@ const trainingContents = [
         [
             "Problemas de atcoder se actualizan una vez al día"
         ]
+    ],
+    [
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
+        [
+
+        ],
     ]
 ]
 
@@ -172,6 +254,26 @@ const contests_ids = [
     ],
     [
         "21"
+    ],
+    [
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28", 
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39"
     ]
 ];
 
@@ -224,8 +326,6 @@ async function loadData(data, _lvlindxpath){
 
         let usedcols = 0;
         for (let j = 1; j < contest_data[0].length; j ++){
-            if (!contest_data[0][j].active || (!contest_data[0][j].icpc && !contest_data[0][j].ioi))
-                continue;
             let user_nickname = contest_data[0][j].nickname;
             let userUniversity = contest_data[0][j].organization;
             if (totalsNames.length <= usedcols + 1){
@@ -267,8 +367,6 @@ async function loadData(data, _lvlindxpath){
         totalesCell.style.fontWeight = "bold";
         let ccol = 0;
         for (let j = 1; j < contest_data[0].length; j ++){
-            if (!contest_data[0][j].active || (!contest_data[0][j].icpc && !contest_data[0][j].ioi))
-                continue;
             let userUniversity = contest_data[0][j].organization;
             const userCell = row.insertCell(ccol + 1);
             userCell.setAttribute("data-university", userUniversity.toLowerCase());
@@ -286,8 +384,6 @@ async function loadData(data, _lvlindxpath){
         ccol = 0;
 
         for (let j = 1; j < contest_data[0].length; j ++){
-            if (!contest_data[0][j].active || (!contest_data[0][j].icpc && !contest_data[0][j].ioi))
-                continue;
             let userUniversity = contest_data[0][j].organization;
             const userCell = logorow.insertCell(ccol + 1);
             userCell.setAttribute("data-university", userUniversity.toLowerCase());
@@ -318,8 +414,6 @@ async function loadData(data, _lvlindxpath){
 
             let newk = 0;
             for (let k = 1; k < contest_data[j].length; k ++){
-                if (!contest_data[0][k].active || (!contest_data[0][k].icpc && !contest_data[0][k].ioi))
-                    continue;
                 let userUniversity = contest_data[0][k].organization;
                 const userCell = problemRow.insertCell(newk + 1);
                 userCell.setAttribute("data-university", userUniversity.toLowerCase());
@@ -358,6 +452,78 @@ function setcache(){
         {
             data: {},
             expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
+        },
+        {
+            data: {},
+            expires: 0
         }
     ]
 };
@@ -369,10 +535,10 @@ async function populateTables() {
         console.error("Tables container not found!");
         return;
     }
-    const parts = path.split("/"); // Split by "/"
-    const lastPart = parts.filter(part => part !== "").pop(); // Get last non-empty part
+    const parts = path.split("/");
+    const lastPart = parts.filter(part => part !== "").pop();
 
-    const number = lastPart === "semanales" ? trainingNames.length - 1 : lastPart.replace(/\D/g, ""); // Remove non-numeric characters
+    const number = lastPart === "semanales" ? 5 : (lastPart == "cses" ? 6 : lastPart.replace(/\D/g, ""));
 
     _lvlindxpath = parseInt(number);
     const titles = trainingNames[_lvlindxpath]
