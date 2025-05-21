@@ -63,12 +63,14 @@ function updateTables(userRatings) {
     clearTable("atcoder-tbody");
     clearTable("leetcode-tbody");
     clearTable("codechef-tbody");
+    clearTable("luogu-tbody");
 
     const tables = {
         "codeforces-tbody": [],
         "atcoder-tbody": [],
         "leetcode-tbody": [],
-        "codechef-tbody": []
+        "codechef-tbody": [],
+        "luogu-tbody": []
     };
 
     userRatings.forEach(user => {
@@ -78,6 +80,7 @@ function updateTables(userRatings) {
             tables["atcoder-tbody"].push(createTableRow(user.nickname, user.atcoderRating, "atcoder", user.organization, user.femeligible, user.icpc));
             tables["leetcode-tbody"].push(createTableRow(user.nickname, user.leetcodeRating, "leetcode", user.organization, user.femeligible, user.icpc));
             tables["codechef-tbody"].push(createTableRow(user.nickname, user.codechefRating, "codechef", user.organization, user.femeligible, user.icpc));
+            tables["luogu-tbody"].push(createTableRow(user.nickname, user.luoguRating, "luogu", user.organization, user.femeligible, user.icpc));
         }
     });
 
