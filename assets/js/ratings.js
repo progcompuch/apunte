@@ -62,11 +62,13 @@ function updateTables(userRatings) {
     clearTable("codeforces-tbody");
     clearTable("atcoder-tbody");
     clearTable("leetcode-tbody");
+    clearTable("codechef-tbody");
 
     const tables = {
         "codeforces-tbody": [],
         "atcoder-tbody": [],
-        "leetcode-tbody": []
+        "leetcode-tbody": [],
+        "codechef-tbody": []
     };
 
     userRatings.forEach(user => {
@@ -75,6 +77,7 @@ function updateTables(userRatings) {
             tables["codeforces-tbody"].push(createTableRow(user.nickname, user.codeforcesRating, "codeforces", user.organization, user.femeligible, user.icpc));
             tables["atcoder-tbody"].push(createTableRow(user.nickname, user.atcoderRating, "atcoder", user.organization, user.femeligible, user.icpc));
             tables["leetcode-tbody"].push(createTableRow(user.nickname, user.leetcodeRating, "leetcode", user.organization, user.femeligible, user.icpc));
+            tables["codechef-tbody"].push(createTableRow(user.nickname, user.codechefRating, "codechef", user.organization, user.femeligible, user.icpc));
         }
     });
 
@@ -134,6 +137,10 @@ function getRatingClass(judge, rating) {
         return getAtcoderRatingClass(rating);
     } else if (judge === "leetcode") {
         return getLeetcodeRatingClass(rating);
+    } else if (judge === "codechef") {
+        return getCodechefRatingClass(rating);
+    } else if (judge === "luogu") {
+        return getLuoguRatingClass(rating);
     }
     return "";
 }
@@ -161,12 +168,34 @@ function getAtcoderRatingClass(rating) {
 }
 
 function getLeetcodeRatingClass(rating) {
-    if (rating < 200) return "rating-black";
+    if (rating < 800) return "rating-black";
     if (rating < 1400) return "rating-gray";
     if (rating < 1600) return "rating-green";
     if (rating < 1900) return "rating-cyan";
     if (rating < 2100) return "rating-blue";
     if (rating < 2400) return "rating-purple";
     if (rating < 2900) return "rating-orange";
+    return "rating-red";
+}
+
+function getCodechefRatingClass(rating) {
+    if (rating < 1000) return "rating-black";
+    if (rating < 1200) return "rating-gray";
+    if (rating < 1500) return "rating-green";
+    if (rating < 1700) return "rating-cyan";
+    if (rating < 1900) return "rating-blue";
+    if (rating < 2200) return "rating-purple";
+    if (rating < 2600) return "rating-orange";
+    return "rating-red";
+}
+
+function getLuoguRatingClass(rating) {
+    if (rating < 200) return "rating-black";
+    if (rating < 600) return "rating-gray";
+    if (rating < 900) return "rating-green";
+    if (rating < 1100) return "rating-cyan";
+    if (rating < 1400) return "rating-blue";
+    if (rating < 1700) return "rating-purple";
+    if (rating < 2100) return "rating-orange";
     return "rating-red";
 }
