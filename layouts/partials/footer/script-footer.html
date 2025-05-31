@@ -124,4 +124,6 @@
   {{ partial "footer/gym-script.html" . -}}
 {{ else if eq .Page.Type "fullRatings" -}}
   {{ partial "footer/fullRatings-script.html" . -}}
+{{ else if eq .Page.Type "icpcing" -}}
+  {{ partial "footer/icpcing-script.html" . -}}
 {{ end -}}

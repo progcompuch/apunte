@@ -37,6 +37,11 @@
   hasChildren = true
 
 [[main]]
+  name = "ICPCing"
+  url = "/icpcing/"
+  weight = 75
+
+[[main]]
   name = "Acerca"
   url = "/acerca/"
   weight = 80

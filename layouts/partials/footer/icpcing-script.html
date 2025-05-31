@@ -1,0 +1,8 @@
+{{ $icpcingTemplate := resources.Get "js/gym-sim.js" -}}
+{{ $icpcing := $icpcingTemplate | resources.ExecuteAsTemplate "gym-sim.js" . -}}
+{{ if eq (hugo.Environment) "development" -}}
+  <script src="{{ $icpcing.Permalink }}" defer></script>
+{{ else -}}
+  {{ $icpcingProd := $icpcing | resources.Minify | resources.Fingerprint "sha512" -}}
+  <script src="{{ $icpcingProd.Permalink }}" integrity="{{ $icpcingProd.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}

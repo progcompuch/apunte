@@ -1,0 +1,111 @@
+{{ define "main" }}
+<style>
+  /* ✅ Ensures first column (nickname) has a fixed width */
+.table th:first-child,
+.table td:first-child {
+    width: 300px; /* Adjust the width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." for long nicknames */
+}
+
+/* ✅ Ensures table remains centered */
+.table {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  table-layout: auto;
+}
+
+/* ✅ Ensures that text in all table cells is centered */
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.table tbody tr:hover {
+  background-color: #eef;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+.table th {
+  font-weight: bold;
+}
+
+
+td {
+vertical-align: middle;
+}
+
+td:nth-child(2) {
+font-size: 18px;
+color: gold;
+}
+
+</style>
+<div class="container-fluid row justify-content-center text-center">
+  <h1>{{ .Title }}</h1>
+  
+  <!-- <div class="dropdown">
+
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="universityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+      Filtrar por universidad
+    </button>
+    <ul class="dropdown-menu" id="university-filter">
+      {{ $universities := .Site.Params.universities }}
+      {{ range $universities }}
+        <li>
+          <label class="dropdown-item">
+            <img src="/images/universities/{{ . }}.png" alt="{{ . }}" class="university-logo"> 
+            {{ . }} <input type="checkbox" value="{{ . }}" checked>
+          </label>
+        </li>
+      {{ end }}
+    </ul>
+  </div> -->
+  <div id="dummy-styles" style="display: none;">
+    <span class="rating-red">Dummy</span>
+    <span class="rating-blue">Dummy</span>
+    <span class="rating-green">Dummy</span>
+    <span class="rating-orange">Dummy</span>
+    <span class="rating-purple">Dummy</span>
+    <span class="rating-gray">Dummy</span>
+    <span class="rating-cyan">Dummy</span>
+    <span class="rating-black">Dummy</span>
+  </div>
+
+
+  <!-- <div class="filters">
+    <label>
+        <input type="checkbox" id="filter-femeligible"> Mostrar solo elegibles para equipo femenino
+    </label>
+    <p></p>
+    <label>
+        <input type="checkbox" id="filter-icpc"> Mostrar solo ICPC elegibles
+    </label>
+    </div> -->
+  
+  <div class="table-responsive">
+  <div class="ratings-container flex-nowrap" id="standings-tables-container">
+      <div class="d-flex">
+      <table class="table table-sm table-bordered codeforces-table mx-2" id="codeforces-gyms-sim">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Difficulty</th>
+                <th>PDA 2025 teams</th>
+                <th>Chilean 2025 teams</th>
+                <th>Season</th>
+            </tr>
+        </thead>
+        <tbody id="codeforces-gyms-sim-tbody">
+
+        </tbody>
+      </table>
+    </div>
+  </div>  
+  </div>
+</div>
+{{ end }}
