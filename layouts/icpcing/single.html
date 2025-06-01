@@ -3,7 +3,7 @@
   /* ✅ Ensures first column (nickname) has a fixed width */
 .table th:first-child,
 .table td:first-child {
-    width: 300px; /* Adjust the width as needed */
+    width: 250px; /* Adjust the width as needed */
     overflow: hidden;
     text-overflow: ellipsis; /* Adds "..." for long nicknames */
 }
@@ -34,6 +34,10 @@
   font-weight: bold;
 }
 
+.tippy-box .tippy-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
 
 td {
 vertical-align: middle;
@@ -45,6 +49,9 @@ color: gold;
 }
 
 </style>
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 <div class="container-fluid row justify-content-center text-center">
   <h1>{{ .Title }}</h1>
   
@@ -93,11 +100,27 @@ color: gold;
       <table class="table table-sm table-bordered codeforces-table mx-2" id="codeforces-gyms-sim">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Difficulty</th>
-                <th>PDA 2025 teams</th>
-                <th>Chilean 2025 teams</th>
-                <th>Season</th>
+                <th>Contest</th>
+                <th>Dificultad</th>
+                <th>Simulaciones PDA 2025</th>
+                <th>Simulaciones Chilenas 2025</th>
+                <th>Temporada</th>
+                <th>Duración</th>
+            </tr>
+              <tr>
+              <th></th>
+              <th></th>
+              <th>
+                <button id="sort-pda" type="button" class="btn btn-sm btn-outline-secondary">↓ Ordenar</button>
+              </th>
+              <th>
+                <button id="sort-chilean" type="button" class="btn btn-sm btn-outline-secondary">↓ Ordenar</button>
+              </th>
+              <th></th>
+              <th>
+                <input type="number" id="filter-duration-min" placeholder="Min" step="0.5" style="width: 60px; margin-right: 4px;">
+                <input type="number" id="filter-duration-max" placeholder="Max" step="0.5" style="width: 60px;">
+              </th>
             </tr>
         </thead>
         <tbody id="codeforces-gyms-sim-tbody">
