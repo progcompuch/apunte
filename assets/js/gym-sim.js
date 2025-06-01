@@ -63,7 +63,7 @@ async function populateGymsTable() {
                 if (index === 0) return "🥇";
                 if (index === 1) return "🥈";
                 if (index === 2) return "🥉";
-                return `🏵️ #${index + 1}`;
+                return ``;
             }
 
             const getCodeforcesRatingClass = (rating) => {
@@ -97,10 +97,64 @@ async function populateGymsTable() {
                     }).join(", ");
 
                     return `
-                        <div>
-                            ${rankSymbol} (${team.teamRank}) – <strong>${team.teamName}</strong><br>
-                            ${flag} ${memberList}<br>
-                            ✅ ${team.teamSolves}
+                        <div style="
+                            display: grid;
+                            grid-template-columns: 36px 2fr 64px;
+                            align-items: center;
+                            column-gap: 12px;
+                        ">
+                        <div style="
+                            height: 32px;
+                            width: 48px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            font-size: ${index < 3 ? '2em' : '1.6em'};
+                            line-height: 1;
+                        ">
+                            ${getRankSymbolByPosition(index)}
+                            ${index >= 3 ? `
+                            <span style="
+                                position: absolute;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background-color: #ffcc66;
+                                color: #222;
+                                font-weight: bold;
+                                font-size: 0.6em;
+                                box-shadow: 0 0 2px rgba(0,0,0,0.6);
+                            ">
+                                ${index + 1}
+                            </span>
+                            ` : ''}
+                        </div>
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <div>
+                                    (${team.teamRank}) – <strong>${team.teamName}</strong>
+                                </div>
+                                <div>
+                                    ${flag} ${team.teamMembers.map(member => {
+                                        const colorClass = getCodeforcesRatingClass(member.rating ?? 0);
+                                        return `<span class="${colorClass}">${member.handle}</span>`;
+                                    }).join(", ")}
+                                </div>
+                            </div>
+                            <div style="
+                                height: 32px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-end;
+                                font-size: 1.5em;
+                                font-weight: bold;
+                                line-height: 1;
+                            ">
+                                ✅ ${team.teamSolves}
+                            </div>
                         </div>`;
                 }).join("<hr>");
             }
@@ -116,10 +170,64 @@ async function populateGymsTable() {
                     }).join(", ");
 
                     return `
-                        <div>
-                            ${rankSymbol} (${team.teamRank}) – <strong>${team.teamName}</strong><br>
-                            ${cIcon} ${memberList}<br>
-                            ✅ ${team.teamSolves}
+                        <div style="
+                            display: grid;
+                            grid-template-columns: 36px 2fr 64px;
+                            align-items: center;
+                            column-gap: 12px;
+                        ">
+                        <div style="
+                            height: 32px;
+                            width: 48px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            font-size: ${index < 3 ? '2em' : '1.6em'};
+                            line-height: 1;
+                        ">
+                            ${getRankSymbolByPosition(index)}
+                            ${index >= 3 ? `
+                            <span style="
+                                position: absolute;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                background-color: #ffcc66;
+                                color: #222;
+                                font-weight: bold;
+                                font-size: 0.6em;
+                                box-shadow: 0 0 2px rgba(0,0,0,0.6);
+                            ">
+                                ${index + 1}
+                            </span>
+                            ` : ''}
+                        </div>
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <div>
+                                    (${team.teamRank}) – <strong>${team.teamName}</strong>
+                                </div>
+                                <div>
+                                    ${getIcon(team)} ${team.teamMembers.map(member => {
+                                        const colorClass = getCodeforcesRatingClass(member.rating ?? 0);
+                                        return `<span class="${colorClass}">${member.handle}</span>`;
+                                    }).join(", ")}
+                                </div>
+                            </div>
+                            <div style="
+                                height: 32px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-end;
+                                font-size: 1.5em;
+                                font-weight: bold;
+                                line-height: 1;
+                            ">
+                                ✅ ${team.teamSolves}
+                            </div>
                         </div>`;
                 }).join("<hr>");
             }

@@ -46,6 +46,22 @@
   font-weight: bold;
 }
 
+[data-dark-mode] .rating-blue {
+    color: #4ea4f5 !important;
+}
+
+[data-dark-mode] .rating-purple {
+    color: #c084fc !important;
+}
+
+[data-dark-mode] .rating-green {
+    color: #5efb8f !important;
+}
+
+[data-dark-mode] .rating-red {
+    color: #ff6b6b !important;
+}
+
 .rating-3000 span:first-letter {
   color: black;
 }
