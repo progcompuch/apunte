@@ -77,29 +77,17 @@ async function populateGymsTable() {
                 return "rating-red";
             };
 
-            const getIcon = (teamMembers, chileanTeams) => {
+            const getIcon = (team) => {
+                console.log(team);
                 const worldIcon = `🌍`;
-                const flagIcon = `<img src="/images/chile-flag-xs.png" alt="🇨🇱" style="width: 16px; vertical-align: middle; margin-right: 4px;">`;
-
-                const memberHandles = teamMembers.map(m => m.handle).sort();
-
-                for (const chileanTeam of chileanTeams) {
-                    const chileanHandles = chileanTeam.teamMembers.map(m => m.handle).sort();
-
-                    if (
-                        memberHandles.length === chileanHandles.length &&
-                        memberHandles.every((h, i) => h === chileanHandles[i])
-                    ) {
-                        return flagIcon;
-                    }
-                }
-
-                return worldIcon;
+                if (!team.teamCountry || team.teamCountry === "World" || team.teamCountry === "")
+                    return worldIcon;
+                const flagIcon = `<img src="/images/${team.teamCountry.replace(/\s+/g, "")}.png" alt="🇨🇱" style="width: 16px; vertical-align: middle; margin-right: 4px;">`;
+                return flagIcon;
             };
 
             let cTooltip = "";
-            const world = `🌍`;
-            const flag = `<img src="/images/chile-flag-xs.png" alt="🇨🇱" style="width: 16px; vertical-align: middle; margin-right: 4px;">`;
+            const flag = `<img src="/images/Chile.png" alt="🇨🇱" style="width: 16px; vertical-align: middle; margin-right: 4px;">`;
             if (gym.chileanTeams && gym.chileanTeams.length > 0) {
                 cTooltip = gym.chileanTeams.map((team, index) => {
                     const rankSymbol = getRankSymbolByPosition(index);
@@ -121,7 +109,7 @@ async function populateGymsTable() {
             if (gym.pdaTeams && gym.pdaTeams.length > 0) {
                 pTooltip = gym.pdaTeams.map((team, index) => {
                     const rankSymbol = getRankSymbolByPosition(index);
-                    const cIcon = getIcon(team.teamMembers, gym.chileanTeams);
+                    const cIcon = getIcon(team);
                     const memberList = team.teamMembers.map(member => {
                         const colorClass = getCodeforcesRatingClass(member.rating ?? 0);
                         return `<span class="${colorClass}">${member.handle}</span>`;
