@@ -1,0 +1,8 @@
+{{ $teamIcpcTemplate := resources.Get "js/teamIcpc.js" -}}
+{{ $teamIcpc := $teamIcpcTemplate | resources.ExecuteAsTemplate "teamIcpc.js" . -}}
+{{ if eq (hugo.Environment) "development" -}}
+  <script src="{{ $teamIcpc.Permalink }}" defer></script>
+{{ else -}}
+  {{ $teamIcpcProd := $teamIcpc | resources.Minify | resources.Fingerprint "sha512" -}}
+  <script src="{{ $teamIcpcProd.Permalink }}" integrity="{{ $teamIcpcProd.Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ end }}

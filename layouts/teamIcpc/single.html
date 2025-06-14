@@ -1,0 +1,86 @@
+{{ define "main" }}
+<style>
+.table th:first-child,
+.table td:first-child {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table {
+    width: 100%;
+    table-layout: auto;
+}
+
+.table-responsive {
+    width: 100%;
+}
+
+.table th,
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.team-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Fira Sans', sans-serif;
+    text-shadow: 0 0 2px rgba(0,0,0,0.08);
+    color: #333;
+}
+
+.table td:nth-child(2),
+.table th:nth-child(2) {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.university-logo {
+    display: block;
+    margin: 0 auto;
+    max-height: 32px;
+}
+
+</style>
+<div class="container-fluid row justify-content-center text-center">
+  <h1>{{ .Title }}</h1>
+  
+  
+  <div id="dummy-styles" style="display: none;">
+    <span class="rating-red">Dummy</span>
+    <span class="rating-blue">Dummy</span>
+    <span class="rating-green">Dummy</span>
+    <span class="rating-orange">Dummy</span>
+    <span class="rating-purple">Dummy</span>
+    <span class="rating-gray">Dummy</span>
+    <span class="rating-cyan">Dummy</span>
+    <span class="rating-black">Dummy</span>
+  </div>
+
+
+  <div class="filters">
+    <label>
+        <input type="checkbox" id="filter-femeligible"> Mostrar solo equipos femeninos
+    </label>
+</div>
+  
+  <div class="table-responsive">
+<div class="container-fluid px-4">
+  <table class="table table-sm table-bordered w-100" id="teamsIcpc-standings">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th><span style="font-weight: bold;">U</span></th>
+            <th><span style="font-weight: bold;">Miembros</th>
+          </tr>
+        </thead>
+        <tbody id="teamsIcpc-tbody">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{{ end }}

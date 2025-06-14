@@ -10,7 +10,9 @@ const trainingNames = [
         "Búsqueda Binaria / Dos Punteros",
         "Grafos: BFS / DFS / Dijkstra / DSU",
         "Programación Dinámica",
-        "Estructuras de Datos"
+        "Estructuras de Datos",
+        "X de Prefijos",
+        "Combinadas Básico I"
     ],
     [
         "Grafos 2: Minimum Spanning Tree / Camino más corto",
@@ -85,6 +87,12 @@ const trainingContents = [
         ],
         [
             "Segment Tree (normal)"
+        ],
+        [
+            "Precomputación (mas o menos dp) en prefijos / sufijos 1D, 2D y 3D"
+        ],
+        [
+            ""
         ]
     ],
     [
@@ -230,7 +238,9 @@ const contests_ids = [
         "3",
         "4",
         "5",
-        "6"
+        "6",
+        "43",
+        "44"
     ],
     [
         "7",

@@ -126,4 +126,6 @@
   {{ partial "footer/fullRatings-script.html" . -}}
 {{ else if eq .Page.Type "icpcing" -}}
   {{ partial "footer/icpcing-script.html" . -}}
+{{ else if eq .Page.Type "teamIcpc" -}}
+  {{ partial "footer/teamIcpc.html" . -}}
 {{ end -}}

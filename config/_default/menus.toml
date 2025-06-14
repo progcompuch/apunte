@@ -37,14 +37,15 @@
   hasChildren = true
 
 [[main]]
-  name = "ICPCing"
-  url = "/icpcing/"
-  weight = 75
+  name = "ICPC"
+  url = "/icpc/"
+  weight = 80
+  hasChildren = true
 
 [[main]]
   name = "Acerca"
   url = "/acerca/"
-  weight = 80
+  weight = 90
 
 [[social]]
   name = "GitHub"
