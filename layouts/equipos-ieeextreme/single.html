@@ -2,28 +2,26 @@
 <div class="container-fluid text-center">
   <h1>Equipos y Juegos</h1>
 
-  {{ $years := slice }} <!-- Initialize an empty slice -->
+  {{ $years := slice }}
 
-  <!-- Collect all years from premiosieee -->
   {{ range .Site.Params.premiosieee }}
     {{ if not (in $years .year) }}
       {{ $years = $years | append (int .year) }}
     {{ end }}
   {{ end }}
 
-  <!-- Collect all years from ieeepremios -->
   {{ range .Site.Params.ieeepremios }}
     {{ if not (in $years .year) }}
       {{ $years = $years | append (int .year) }}
     {{ end }}
   {{ end }}
 
-  {{ $years = sort $years "value" "desc" }} <!-- Sort in descending order -->
+  {{ $years = sort $years "value" "desc" }}
 
   {{ range $years }}
     <h2 class="year-title">IEEEXtreme {{ . }}</h2>
 
-    <!-- Teams for this year -->
+    <!-- Equipos -->
     {{ $teams := where $.Site.Params.teamieee "year" . }}
     {{ if gt (len $teams) 0 }}
     <h3 class="team-name">Equipos</h3>
@@ -45,7 +43,7 @@
       </div>
     {{ end }}
 
-    <!-- Individual Prizes for this year -->
+    <!-- Premios -->
     {{ $prizes := where $.Site.Params.premiosieee "year" . }}
     {{ if gt (len $prizes) 0 }}
       <h3 class="team-title">Premios Individuales</h3>

@@ -11,10 +11,10 @@
 <div class="container-fluid text-center">
   <h1>Equipos</h1>
 
-  {{ $years := slice }} <!-- Initialize an empty slice -->
+  {{ $years := slice }} <!-- Initialize an empty slice to store each year -->
   {{ range .Site.Params.team }}
     {{ if not (in $years .year) }}
-      {{ $years = $years | append (int .year) }} <!-- Ensure it's treated as an integer -->
+      {{ $years = $years | append (int .year) }} <!-- Ensure it is treated as an integer -->
     {{ end }}
   {{ end }}
   {{ $years = sort $years "value" "desc" }} <!-- Sort in descending order -->

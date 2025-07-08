@@ -1,0 +1,83 @@
+{{ define "main" }}
+<div class="container-fluid text-center">
+  <h1>Maratona Feminina de Programação</h1>
+
+  <h2 class="year-title">MFP 2025</h2>
+ 
+</div>
+
+<style>
+  .teams-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 340px;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    scroll-snap-type: x mandatory;
+    align-items: start;
+  }
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: left;
+    background: white;
+    scroll-snap-align: start;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .team-info {
+    text-align: left;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .team-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .team-members {
+    color: #808080;
+  }
+
+  .year-title {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .teams-container::-webkit-scrollbar, .prizes-container::-webkit-scrollbar {
+    height: 8px;
+  }
+  .teams-container::-webkit-scrollbar-thumb, .prizes-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+  .teams-container::-webkit-scrollbar-track, .prizes-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .team-image {
+    width: auto;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+</style>
+
+{{ end }}
