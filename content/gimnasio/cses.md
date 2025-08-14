@@ -8,5 +8,5 @@ menu:
   main:
     identifier: "gimnasio-cses"
     parent: "Gimnasio"
-    weight: 57
+    weight: 58
 ---

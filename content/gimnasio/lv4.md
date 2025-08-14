@@ -8,5 +8,5 @@ menu:
   main:
     identifier: "gimnasio-4"
     parent: "Gimnasio"
-    weight: 56
+    weight: 57
 ---

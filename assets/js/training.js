@@ -35,7 +35,7 @@ const trainingNames = [
         "Sistemas de ecuaciones lineales"
     ],
     [
-        "Problemas semanales"
+        "Problemas semanales 2025-1"
     ],
     [
         "Introductory Problems",
@@ -56,7 +56,10 @@ const trainingNames = [
         "Counting Problems",
         "Additional Problems I",
         "Additional Problems II"
-    ]
+    ],
+    [
+        "Problemas semanales 2025-2"
+    ],
 ];
 
 const trainingContents = [
@@ -225,7 +228,12 @@ const trainingContents = [
         [
 
         ],
-    ]
+    ],
+    [
+        [
+            "Problemas de atcoder se actualizan una vez al día"
+        ]
+    ],
 ]
 
 const contests_ids = [
@@ -284,6 +292,9 @@ const contests_ids = [
         "37",
         "38",
         "39"
+    ],
+    [
+        "45"
     ]
 ];
 
@@ -548,7 +559,7 @@ async function populateTables() {
     const parts = path.split("/");
     const lastPart = parts.filter(part => part !== "").pop();
 
-    const number = lastPart === "semanales" ? 5 : (lastPart == "cses" ? 6 : lastPart.replace(/\D/g, ""));
+    const number = lastPart === "semanales" ? 5 : (lastPart === "semanales2" ? 7 : (lastPart == "cses" ? 6 : lastPart.replace(/\D/g, "")));
 
     _lvlindxpath = parseInt(number);
     const titles = trainingNames[_lvlindxpath]

@@ -1,12 +1,12 @@
 ---
-title: "Intermedio 1"
+title: "Semanal 2025-2"
 date: 2025-02-01
 type: gym
 images: []
 description: ""
 menu:
   main:
-    identifier: "gimnasio-3"
+    identifier: "gimnasio-p"
     parent: "Gimnasio"
-    weight: 56
+    weight: 53
 ---
