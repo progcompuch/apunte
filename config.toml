@@ -27,7 +27,7 @@
   url = ""
   place = 1
   global_place = 32
-  extra = "Clasificado a la Latin America Championship 2025 - Brazil, puesto 15\nClasificado a la World Finals 2025 - Azerbaijan, puesto ?"
+  extra = "Clasificado a la Latin America Championship 2025 - Brazil, puesto 15\nClasificado a la World Finals 2025 - Azerbaijan, puesto 118"
 
   [[Params.team]]
   name = "team.tocar(pasto);"
@@ -152,7 +152,7 @@
   [[Params.team]]
   name = "Volan{Team}"
   year = 2020
-  members = ["Luciano Massa (PathToMaster)", "Mateo Contela", "Jorge Cruces"]
+  members = ["Luciano Massa (PathToMaster)", "Antonia Labarca (labarcoiris)", "Jorge Cruces"]
   image = "/images/teams/2020/ch1.jpg"
   url = ""
   place = 6
