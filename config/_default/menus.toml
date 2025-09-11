@@ -31,21 +31,20 @@
   hasChildren = true
 
 [[main]]
-  name = "Camps"
-  url = "/training-camps/"
-  weight = 70
-  hasChildren = true
-
-[[main]]
   name = "ICPC"
   url = "/icpc/"
   weight = 80
   hasChildren = true
 
 [[main]]
+  name = "Competencias"
+  url = "/competencias/"
+  weight = 90
+
+[[main]]
   name = "Acerca"
   url = "/acerca/"
-  weight = 90
+  weight = 100
 
 [[social]]
   name = "GitHub"

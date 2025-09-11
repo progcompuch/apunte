@@ -7,6 +7,6 @@ type: brasilcamp
 menu:
   main:
     identifier: "training-camp-brasil"
-    parent: "Camps"
-    weight: 73
+    parent: "ICPC"
+    weight: 83
 ---

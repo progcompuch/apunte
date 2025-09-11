@@ -13,7 +13,8 @@ function applyDurationFilter() {
         const match = durationCell.textContent.match(/([\d.]+)/);
         const duration = match ? parseFloat(match[1]) : 0;
 
-        row.style.display = (duration >= min && duration <= max) ? "" : "none";
+        if (duration < min || duration > max)
+            row.style.display = "none";
     });
 }
 
@@ -43,6 +44,47 @@ function sortByChileanDescending() {
 
     rows.forEach(row => tbody.appendChild(row));
     applyDurationFilter();
+}
+
+function applyNamesFilter() {
+    const names = getUserFilterNames();
+    const rows = document.querySelectorAll("#codeforces-gyms-sim-tbody tr");
+    if (names.length === 0) {
+        rows.forEach(r => r.style.display = '');
+        return;
+    }
+    console.log(names);
+    rows.forEach(row => {
+        let members = [];
+        var oka = false;
+        try {
+            members = JSON.parse(row.dataset.members || '[]');
+        } catch {
+            members = String(row.dataset.members || '').split(/[,\|]+/).map(s => s.trim().toLowerCase());
+        }
+        names.forEach(team => {
+            const hasMatch = members.length > 0 && team.every(n => members.includes(n));
+            if (hasMatch)
+                oka = true;
+        });
+
+        row.style.display = oka ? '' : 'none';
+    });
+}
+
+function getUserFilterNames() {
+    const finput = document.getElementById('user-filter-input');
+    if (finput && finput.value){
+        const l = finput.value.split(/[;]+/).map(s => s.trim()).filter(Boolean);
+        var lists = [];
+        l.forEach(team => {
+            const teamlist = team.split(/[,]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
+            if (teamlist.length)
+                lists.push(Array.from(new Set(teamlist)));
+        });
+        if (lists.length) return lists;
+    }
+    return [];
 }
 
 async function populateGymsTable() {
@@ -268,11 +310,21 @@ async function populateGymsTable() {
                     }
                 });
             }
+            const memberSet = new Set();
 
+            (gym.chileanTeams || []).forEach(team =>
+                (team.teamMembers || []).forEach(m => m?.handle && memberSet.add(m.handle.toLowerCase().trim()))
+            );
+
+            (gym.pdaTeams || []).forEach(team =>
+                (team.teamMembers || []).forEach(m => m?.handle && memberSet.add(m.handle.toLowerCase().trim()))
+            );
+            row.dataset.members = JSON.stringify(Array.from(memberSet));
             tbody.appendChild(row);
         });
         document.getElementById("filter-duration-min").addEventListener("input", applyDurationFilter);
         document.getElementById("filter-duration-max").addEventListener("input", applyDurationFilter);
+
 
         document.getElementById("sort-pda").addEventListener("click", () => {
             sortByPdaDescending();
@@ -282,6 +334,22 @@ async function populateGymsTable() {
         document.getElementById("sort-chilean").addEventListener("click", () => {
             sortByChileanDescending();
             document.getElementById("sort-chilean").blur(); // ✅ visually un-presses the button
+        });
+
+        document.getElementById("user-filter-search").addEventListener("click", () => {
+            applyNamesFilter();
+            applyDurationFilter();
+            document.getElementById("user-filter-search").blur();
+        });
+
+        document.getElementById("user-filter-clear").addEventListener("click", () => {
+            const finput = document.getElementById("user-filter-input");
+            if (finput)
+                finput.textContent = '';
+            finput.value = '';
+            applyNamesFilter();
+            applyDurationFilter();
+            document.getElementById("user-filter-clear").blur();
         });
 
         applyDurationFilter();
