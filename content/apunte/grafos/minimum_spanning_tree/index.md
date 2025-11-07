@@ -9,14 +9,14 @@ weight: 40 # El menú lateral ordena artículos por su peso
 ---
 El Minimum Spanning Tree (MST) o Árbol Recubridor Mínimo es un subconjunto de las aristas de un grafo que conectan a todos los vértices usando el menor peso posible.
 
-<center> <img class="invertible" src="../mst.png" width="450"/> </center>
+<center> <img class="invertible" src="img/mst.png" width="450"/> </center>
 
 En este ejemplo podemos ver el grafo completo con las aristas grises y el subgrafo MST marcado en negro que deja a todos los vértices conectados usando la menor suma de los pesos de las aristas posible.
 
 Esto es un árbol siempre que todas las aristas sean positivas [^1] ya que si no fuera un árbol, existe un ciclo y si existe un ciclo, podemos eliminar la arista más pesada del ciclo y el grafo sigue conectado con menor peso.
 
 Los algoritmos que vamos a enseñar para encontrar los algoritmos son bastante simples y pueden parecer poco formales, pero funcionan y existen pruebas de que funcionan si les interesa buscar.
- 
+
 ### Algoritmo de Kruskal
 
 El algoritmo de Kruskal ordena las aristas de menor a mayor peso y para cada arista revisa si está conectando dos componentes desconectadas usando un [Union Find](https://uchile.progcomp.cl/docs/ds/unionfind/) para determinar si dos nodos son parte del mismo conjunto.
