@@ -20,6 +20,56 @@
 
   # Teams ICPC
   [[Params.team]]
+  name = "sin globito no hay fiesta"
+  year = 2025
+  members = ["Diego Arias (dariasc)", "Gabriel Carmona (m1tu)", "Martin Ruiz-Tagle (MartinRT)"]
+  image = "/images/teams/2025/globito.jpg"
+  url = ""
+  place = 1
+  global_place = 15
+  extra = "Clasificado a la Latin America Championship 2026 - Chile, puesto ?"
+
+  [[Params.team]]
+  name = "from enviar import suchy"
+  year = 2025
+  members = ["Alejandro Molina (Vlxn)", "Antoine Metayer (ant_metayer)", "Tomás Rajevic (ThisIsThisAndThatIsThat)"]
+  image = "/images/teams/2025/suchy.jpg"
+  url = ""
+  place = 5
+  global_place = 98
+  extra = ""
+
+  [[Params.team]]
+  name = "Alonso.Rename(\"Javier\")"
+  year = 2025
+  members = ["Alonso Núñez (MapacheTactico)", "Javier Azócar (ElNChou)", "Javier Calfuala (elJunaeb)"]
+  image = "/images/teams/2025/javier.jpg"
+  url = ""
+  place = 6
+  global_place = 128
+  extra = ""
+
+  [[Params.team]]
+  name = "tiburoncín uh ha ha"
+  year = 2025
+  members = ["Emilia Leñam (emeoww)", "María José Zambrano (cot3)", "Paula Carrión (pauwu)"]
+  image = "/images/teams/2025/tiburon.jpg"
+  url = ""
+  place = 11
+  global_place = 192
+  extra = ""
+
+  [[Params.team]]
+  name = "labubu matcha code"
+  year = 2025
+  members = ["Alejandra Campos (AlePatata92)", "Amanda Núñez (niainamandis)", "Daniela Espinoza (deragonie)"]
+  image = "/images/teams/2025/labubu.jpg"
+  url = ""
+  place = 35
+  global_place = 498
+  extra = ""
+
+  [[Params.team]]
   name = "globos.get()"
   year = 2024
   members = ["Diego Arias (dariasc)", "Vicente Villarroel (vivivi)", "Gabriel Carmona (m1tu)"]
