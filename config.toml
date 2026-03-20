@@ -27,7 +27,7 @@
   url = ""
   place = 1
   global_place = 15
-  extra = "Clasificado a la Latin America Championship 2026 - Chile, puesto ?"
+  extra = "Clasificado a la Latin America Championship 2026 - Chile, puesto 4 (Medalla de oro)"
 
   [[Params.team]]
   name = "from enviar import suchy"
