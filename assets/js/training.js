@@ -16,7 +16,7 @@ const trainingNames = [
     ],
     [
         "Grafos 2: Minimum Spanning Tree / Camino más corto",
-        "Teoría de números / Conteo", 
+        "Teoría de números / Conteo",
         "Programación Dinámica 2",
         "Estructuras de Datos 2",
         "algoritmo de mo"
@@ -280,7 +280,7 @@ const contests_ids = [
         "25",
         "26",
         "27",
-        "28", 
+        "28",
         "29",
         "30",
         "31",
@@ -336,7 +336,7 @@ async function loadData(data, _lvlindxpath){
         contest_data = data[contestId];
 
         let frow = table.getElementsByTagName('tr')[0];
-        
+
         let totalsNames = frow.children;
 
         if (totalsNames.length == 0){
@@ -411,6 +411,7 @@ async function loadData(data, _lvlindxpath){
             let img = document.createElement("img");
             img.src = `/images/universities/${userUniversity}.png`;
             img.alt = userUniversity;
+            img.title = userUniversity;
             img.classList.add("university-logo");
             userCell.appendChild(img);
             ccol ++;

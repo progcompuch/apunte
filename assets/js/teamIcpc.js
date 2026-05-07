@@ -57,7 +57,14 @@ function updateTeamTable(teams) {
 
         row.innerHTML = `
             <td><span class="team-name">${team.name}</span></td>
-            <td><img src="/images/universities/${team.organization}.png" class="university-logo"></td>
+            <td>
+                <img
+                    src="/images/universities/${team.organization}.png"
+                    alt="${team.organization}"
+                    title="${team.organization}"
+                    class="university-logo"
+                >
+            </td>
             <td>${membersHtml}</td>
         `;
 
@@ -97,7 +104,14 @@ function createTableRow(nickname, rating, judge, organization, femeligible, icpc
 
     row.innerHTML = `
         <td><span class="${getRatingClass(judge, rating)}">${nickname}</span></td>
-        <td><img src="/images/universities/${organization}.png" class="university-logo"></td>
+        <td>
+            <img
+                src="/images/universities/${organization}.png"
+                alt="${organization}"
+                title="${organization}"
+                class="university-logo"
+            >
+        </td>
         <td><span class="${getRatingClass(judge, rating)}">${rating}</span></td>
     `;
     return { nickname, rating, row };
