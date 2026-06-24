@@ -42,9 +42,9 @@
     "@fortawesome/fontawesome-free": "^5.15.4"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18",
-    "@babel/core": "^7.18",
-    "@babel/preset-env": "^7.18",
+    "@babel/cli": "^8.0",
+    "@babel/core": "^8.0",
+    "@babel/preset-env": "^8.0",
     "@fullhuman/postcss-purgecss": "^4.1",
     "@hyas/images": "^0.2.2",
     "auto-changelog": "^2.4",
