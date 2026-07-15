@@ -332,7 +332,7 @@
   [[Params.team]]
   name = "Vieitaval"
   year = 2016
-  members = [""]
+  members = ["Stefano Gioia", "Rodrigo Valdés", "Francisco Clavero"]
   image = "/images/teams/2016/ch2.jpg"
   url = ""
   place = 3
@@ -373,7 +373,7 @@
   [[Params.team]]
   name = "DCC++"
   year = 2015
-  members = [""]
+  members = ["Stefano Gioia", "Rodrigo Valdés", "Francisco Clavero"]
   image = "/images/teams/2015/ch3.jpg"
   url = ""
   place = 12
@@ -384,7 +384,7 @@
   [[Params.team]]
   name = "Botellita de @peréz"
   year = 2014
-  members = ["Ronie Salgado", "Felipe Contreras", ""]
+  members = ["Ronie Salgado", "Felipe Contreras", "Cristóbal Miranda"]
   image = "/images/teams/2014/ch1.jpg"
   url = ""
   place = 1
@@ -394,7 +394,7 @@
   [[Params.team]]
   name = "Los adalides del birlibirloque"
   year = 2014
-  members = ["Juan Pablo Paulsen"]
+  members = ["Juan Pablo Paulsen", "Edgardo Matthies", "Abner Turkleltaub"] # abner 50%
   image = "/images/teams/2014/ch2.jpg"
   url = ""
   place = 3
@@ -415,7 +415,7 @@
   [[Params.team]]
   name = "Alonso y los Strawberries"
   year = 2013
-  members = ["Rodrigo Alonso", "", ""]
+  members = ["Rodrigo Alonso", "Christian von Borries", "Francisco Montoto"]
   image = "/images/teams/2013/ch1.jpg"
   url = ""
   place = 1
@@ -425,7 +425,7 @@
   [[Params.team]]
   name = "Los recolectores de basura"
   year = 2013
-  members = ["Ronie Salgado", "", ""]
+  members = ["Ronie Salgado", "Cristóbal Miranda", "Carlos Alvarado"]
   image = "/images/teams/2013/ch2.jpg"
   url = ""
   place = 2
@@ -435,7 +435,7 @@
   [[Params.team]]
   name = "No le den mas vino a @perez"
   year = 2013
-  members = ["Nicolás Lehmann", "", ""]
+  members = ["Nicolás Lehmann", "Rodolfo Gutiérrez", "Felipe Contreras"]
   image = "/images/teams/2013/ch3.jpg"
   url = ""
   place = 4
@@ -450,13 +450,13 @@
   image = "/images/teams/2012/ch1.jpg"
   url = ""
   place = 1
-  global_place = "-"
+  global_place = 9
   extra = "Clasificado a la World Finals 2013 - Russia, puesto 110"
 
   [[Params.team]]
   name = "Sin comer desde la última ICPC"
   year = 2012
-  members = ["Nicolás Lehmann", "Felipe Contreras"]
+  members = ["Nicolás Lehmann", "Felipe Contreras", "Rodolfo Gutiérrez"]
   image = "/images/teams/2012/ch2.jpg"
   url = ""
   place = 2
@@ -466,11 +466,42 @@
   [[Params.team]]
   name = "Los jinetes del Loop"
   year = 2012
-  members = ["Mauricio Quezada"]
+  members = ["Mauricio Quezada", "Rodrigo Alonso", "David Contreras"]
   image = "/images/teams/2012/ch3.jpg"
   url = ""
-  place = "-"
+  place = 7
   global_place = "-"
+  extra = ""
+
+  # 2011
+  [[Params.team]]
+  name = "Los Talentosos Campeones"
+  year = 2011
+  members = ["Camilo Garrido", "Miguel Campusano", "Mauricio Quezada"]
+  image = "/images/teams/2011/ch1.jpg"
+  url = ""
+  place = 1
+  global_place = 16
+  extra = ""
+
+  [[Params.team]]
+  name = "JTeam"
+  year = 2011
+  members = ["Sebastián Barbieri", "Nicolás Sanhueza", "Christian von Borries"]
+  image = "/images/teams/2020/ch1.jpg"
+  url = ""
+  place = 2
+  global_place = 48
+  extra = ""
+
+  [[Params.team]]
+  name = "You Shell Not Parse"
+  year = 2011
+  members = ["Nicolás Lehmann", "Rodolfo Gutiérrez", "Tomás Valdivia"]
+  image = "/images/teams/2020/ch1.jpg"
+  url = ""
+  place = 3
+  global_place = 51
   extra = ""
 
 # Teams IEEEXtreme
