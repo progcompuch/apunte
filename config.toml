@@ -475,7 +475,7 @@
 
   # 2011
   [[Params.team]]
-  name = "Los Talentosos Campeones"
+  name = "Los Talentosos Campesinos"
   year = 2011
   members = ["Camilo Garrido", "Miguel Campusano", "Mauricio Quezada"]
   image = "/images/teams/2011/ch1.jpg"
@@ -490,7 +490,7 @@
   members = ["Sebastián Barbieri", "Nicolás Sanhueza", "Christian von Borries"]
   image = "/images/teams/2020/ch1.jpg"
   url = ""
-  place = 2
+  place = 7
   global_place = 48
   extra = ""
 
@@ -500,7 +500,7 @@
   members = ["Nicolás Lehmann", "Rodolfo Gutiérrez", "Tomás Valdivia"]
   image = "/images/teams/2020/ch1.jpg"
   url = ""
-  place = 3
+  place = 9
   global_place = 51
   extra = ""
 
