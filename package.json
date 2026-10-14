@@ -45,7 +45,7 @@
     "@babel/cli": "^7.18",
     "@babel/core": "^7.18",
     "@babel/preset-env": "^7.18",
-    "@fullhuman/postcss-purgecss": "^4.1",
+    "@fullhuman/postcss-purgecss": "^8.0",
     "@hyas/images": "^0.2.2",
     "auto-changelog": "^2.4",
     "autoprefixer": "^10.4",
@@ -66,8 +66,8 @@
     "postcss-cli": "^10.0",
     "purgecss-whitelister": "^2.4",
     "shx": "^0.3.4",
-    "stylelint": "^14.9",
-    "stylelint-config-standard-scss": "^4.0"
+    "stylelint": "^17.16",
+    "stylelint-config-standard-scss": "^17.0"
   },
   "otherDependencies": {
     "hugo": "0.107.0"
